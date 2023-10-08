@@ -28,4 +28,4 @@ _Брайан Керниган (Brian Kernighan), Деннис Ритчи (Denni
 
 ||||
 |:-|:-:|-:|
-[Оглавление](/LearnCinfo/README.md) | ![Вставка](/LearnCinfo/Pictures/000_000.PNG) | [Пишем первую программу (Windows)](/LearnCinfo/03_firststeps.md)
+[Оглавление](/LearnCinfo/README.md) | ![Вставка](/LearnCinfo/Pictures/02_01.PNG) | [Пишем первую программу (Windows)](/LearnCinfo/03_firststeps.md)

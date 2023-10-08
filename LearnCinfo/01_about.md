@@ -10,4 +10,4 @@
 
 ||||
 |:-|:-:|-:|
-[Оглавление](/LearnCinfo/README.md) | ![Вставка](/LearnCinfo/Pictures/000_000.PNG) | [История Языка](/LearnCinfo/02_history.md)
+[Оглавление](/LearnCinfo/README.md) | ![Вставка](/LearnCinfo/Pictures/01_01.PNG) | [История Языка](/LearnCinfo/02_history.md)
