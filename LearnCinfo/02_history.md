@@ -1,6 +1,9 @@
-# История Языка Си
 
-![01](/LearnCinfo/Pictures/02_01.PNG)
+| [Введение](/LearnCinfo/01_about.md) |[Оглавление](/LearnCinfo/README.md) | [Пишем первую программу (Windows)](/LearnCinfo/03_firststeps.md)|
+|:-|:-:|-:|
+||![01](/LearnCinfo/Pictures/02_01.PNG)||
+
+# История Языка Си
 
 ## Истоки
 
@@ -26,5 +29,9 @@ _Брайан Керниган (Brian Kernighan), Деннис Ритчи (Denni
 
 В 2011 году вместе с редакцией языка Си++ был выпущен стандарт C11. Несмотря на наличие стандарта 11 года, многие компиляторы до сих пор не поддерживают полностью даже версии C99, так что использование стандарта С11 будет указано явно.
 
-|[Оглавление](/LearnCinfo/README.md) | ![Вставка](/LearnCinfo/Pictures/_insert.png) | [Пишем первую программу (Windows)](/LearnCinfo/03_firststeps.md)|
+| [Введение](/LearnCinfo/01_about.md) |[Оглавление](/LearnCinfo/README.md) | [Пишем первую программу (Windows)](/LearnCinfo/03_firststeps.md)|
 |:-|:-:|-:|
+
+| [Введение](/LearnCinfo/01_about.md) |[Оглавление](/LearnCinfo/README.md) | [Пишем первую программу (Windows)](/LearnCinfo/03_firststeps.md)|
+|:-|:-:|-:|
+||![01](/LearnCinfo/Pictures/02_01.PNG)||
