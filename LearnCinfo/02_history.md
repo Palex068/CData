@@ -1,7 +1,7 @@
-
+![01](/LearnCinfo/Pictures/02_01.PNG)
 | [Введение](/LearnCinfo/01_about.md) |[Оглавление](/LearnCinfo/README.md) | [Пишем первую программу (Windows)](/LearnCinfo/03_firststeps.md)|
 |:-|:-:|-:|
-||![01](/LearnCinfo/Pictures/02_01.PNG)||
+
 
 # История Языка Си
 
@@ -31,7 +31,3 @@ _Брайан Керниган (Brian Kernighan), Деннис Ритчи (Denni
 
 | [Введение](/LearnCinfo/01_about.md) |[Оглавление](/LearnCinfo/README.md) | [Пишем первую программу (Windows)](/LearnCinfo/03_firststeps.md)|
 |:-|:-:|-:|
-
-| [Введение](/LearnCinfo/01_about.md) |[Оглавление](/LearnCinfo/README.md) | [Пишем первую программу (Windows)](/LearnCinfo/03_firststeps.md)|
-|:-|:-:|-:|
-||![01](/LearnCinfo/Pictures/02_01.PNG)||

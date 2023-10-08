@@ -1,8 +1,11 @@
+![06](/LearnCinfo/Pictures/06_01.PNG)
+
+|[Переменные](/LearnCinfo/05_variables.md)|[Оглавление](/LearnCinfo/README.md) | [Форматированный ввод и вывод](/LearnCinfo/07_formatted_input_output.md)|
+|:-|:-:|-:|
+
 # Оператор присваивания
 
-![05](/LearnCinfo/Pictures/06_01.PNG)
-
-# Содержание
+## Содержание
 + [Оператор присваивания](#оператор-присваивания-описание)
 + [rvalue и lvalue](#rvalue-и-lvalue)
 
@@ -143,4 +146,5 @@ i = j;
 
 <hr>
 
-[Оглавление](/LearnCinfo/README.md)
+|[Переменные](/LearnCinfo/05_variables.md)|[Оглавление](/LearnCinfo/README.md) | [Форматированный ввод и вывод](/LearnCinfo/07_formatted_input_output.md)|
+|:-|:-:|-:|

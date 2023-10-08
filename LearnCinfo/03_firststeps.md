@@ -1,8 +1,11 @@
-# Первая программа
-
 ![01](/LearnCinfo/Pictures/03_01.PNG)
 
-# Содержание
+| [История Языка](/LearnCinfo/02_history.md) |[Оглавление](/LearnCinfo/README.md) | [Пишем первую программу (Linux)](/LearnCinfo/04_firststeps_nix.md)|
+|:-|:-:|-:|
+
+# Первая программа
+
+## Содержание
 
 + [Пример для cc/gcc](#пример-для-ccgcc-для-терминала)
 + [Код программы](#код-программы)
@@ -175,3 +178,6 @@ int main(int argc, char* argv[]) {
 [Содержание](#содержание)
 
 <hr>
+
+| [История Языка](/LearnCinfo/02_history.md) |[Оглавление](/LearnCinfo/README.md) | [Пишем первую программу (Linux)](/LearnCinfo/04_firststeps_nix.md)|
+|:-|:-:|-:|

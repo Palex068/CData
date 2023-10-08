@@ -1,6 +1,7 @@
+![](/LearnCinfo/Pictures/01_01.PNG)
 |[Оглавление](/LearnCinfo/README.md) || [История Языка](/LearnCinfo/02_history.md)|
 |:-|:-:|-:|
-||![](/LearnCinfo/Pictures/01_01.PNG)||
+
 
 # Введение
 
@@ -12,5 +13,3 @@
 
 |[Оглавление](/LearnCinfo/README.md) || [История Языка](/LearnCinfo/02_history.md)|
 |:-|:-:|-:|
-||![](/LearnCinfo/Pictures/01_01.PNG)||
-

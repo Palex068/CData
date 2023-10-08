@@ -1,6 +1,9 @@
-# Первая программа на си под linux
-
 ![04](/LearnCinfo/Pictures/04_01.PNG)
+
+|[Пишем первую программу (Windows)](/LearnCinfo/03_firststeps.md)|[Оглавление](/LearnCinfo/README.md) | [Переменные](/LearnCinfo/05_variables.md)|
+|:-|:-:|-:|
+
+# Первая программа на си под linux
 
 Академическое программирование на си на unix-like операционных системах достаточно тривиально. 
 
@@ -109,3 +112,6 @@ gcc hello.c simple.c -o hello
 ```
 
 Для удаления скомпилированного файла вызовите make clean.
+
+|[Пишем первую программу (Windows)](/LearnCinfo/03_firststeps.md)|[Оглавление](/LearnCinfo/README.md) | [Переменные](/LearnCinfo/05_variables.md)|
+|:-|:-:|-:|

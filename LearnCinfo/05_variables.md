@@ -1,8 +1,11 @@
-# Переменные в Си
-
 ![05](/LearnCinfo/Pictures/05_01.PNG)
 
-# Содержание
+|[Пишем первую программу (Linux)](/LearnCinfo/04_firststeps_nix.md)|[Оглавление](/LearnCinfo/README.md) | [Оператор присваивания](/LearnCinfo/06_assignment.md)|
+|:-|:-:|-:|
+
+# Переменные в Си
+
+## Содержание
 + [Переменные](#переменные)
 + [Типы переменных](#типы-переменных)
 + [Целые](#целые)
@@ -545,4 +548,5 @@ int main() {
 
 <hr>
 
-[Оглавление](/LearnCinfo/README.md)
+|[Пишем первую программу (Linux)](/LearnCinfo/04_firststeps_nix.md)|[Оглавление](/LearnCinfo/README.md) | [Оператор присваивания](/LearnCinfo/06_assignment.md)|
+|:-|:-:|-:|

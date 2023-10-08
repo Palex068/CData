@@ -1,11 +1,10 @@
+![09](/LearnCinfo/Pictures/09_01.PNG)
+
+|[Ветвления](/LearnCinfo/08_branches.md)|[Оглавление](/LearnCinfo/README.md) | [Логические операторы](/LearnCinfo/10_logic_operators.md)|
+|:-|:-:|-:|
+
 # Оператор Switch
 
-![05](/LearnCinfo/Pictures/09_01.PNG)
-
-
-[Оглавление](/LearnCinfo/README.md)
-
-## Оператор Switch
 Рассмотрим пример из темы "ветвления". Программа выводит название дня недели по порядковому номера
 
 ```c
@@ -288,4 +287,5 @@ int main() {
 
 <hr>
 
-[Оглавление](/LearnCinfo/README.md)
+|[Ветвления](/LearnCinfo/08_branches.md)|[Оглавление](/LearnCinfo/README.md) | [Логические операторы](/LearnCinfo/10_logic_operators.md)|
+|:-|:-:|-:|

@@ -1,8 +1,9 @@
-# Ветвления в си
-
 ![05](/LearnCinfo/Pictures/08_01.PNG)
 
-[Оглавление](/LearnCinfo/README.md)
+|[Форматированный ввод и вывод](/LearnCinfo/07_formatted_input_output.md)|[Оглавление](/LearnCinfo/README.md) | [Оператор Switch](/LearnCinfo/09_switch.md)|
+|:-|:-:|-:|
+
+# Ветвления в си
 
 ## Ветвления и логические операторы
 
@@ -237,4 +238,5 @@ int main() {
 
 <hr>
 
-[Оглавление](/LearnCinfo/README.md)
+|[Форматированный ввод и вывод](/LearnCinfo/07_formatted_input_output.md)|[Оглавление](/LearnCinfo/README.md) | [Оператор Switch](/LearnCinfo/09_switch.md)|
+|:-|:-:|-:|
