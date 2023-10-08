@@ -28,9 +28,8 @@
     + [Форматированный вывод](/LearnCinfo/07_formatted_input_output.md#форматированный-вывод)
     + [Форматированный ввод](/LearnCinfo/07_formatted_input_output.md#форматированный-ввод)
     + [Непечатные символы](/LearnCinfo/07_formatted_input_output.md#непечатные-символы)
-
-+ [Ветвления]()
-+ [Оператор Switch]()
++ [Ветвления](/LearnCinfo/08_branches.md)
++ [Оператор Switch](/LearnCinfo/09_switch.md)
 + [Логические операторы]()
 + [Циклы]()
 + [Массивы]()
