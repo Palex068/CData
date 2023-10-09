@@ -1,6 +1,6 @@
 Взято с [youngcoder.ru](https://youngcoder.ru/) и [Stepik](https://stepik.org/course/3078/syllabus)
 
-[..](/README.md)
+[Список материалов](/README.md)
 
 # Основы языка Си 
 

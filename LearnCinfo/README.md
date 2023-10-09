@@ -1,15 +1,18 @@
 # Основы языка C
 
-[..](/README.md)
+[Список материалов](/README.md)
 
 Взято с [learnc.info](https://learnc.info/)
 
 ## [Введение](/LearnCinfo/01_about.md)
 ## [История Языка](/LearnCinfo/02_history.md)
 ## [Пишем первую программу (Windows)](/LearnCinfo/03_firststeps.md)
-    + [Пример для cc/gcc](/LearnCinfo/03_firststeps.md#пример-для-ccgcc-для-терминала)
-    + [Код программы](/LearnCinfo/03_firststeps.md#код-программы)
+
++ [Пример для cc/gcc](/LearnCinfo/03_firststeps.md#пример-для-ccgcc-для-терминала)
++ [Код программы](/LearnCinfo/03_firststeps.md#код-программы)
+
 ## [Пишем первую программу (Linux)](/LearnCinfo/04_firststeps_nix.md)
+
 ## [Переменные](/LearnCinfo/05_variables.md)
 + [Переменные](/LearnCinfo/05_variables.md#переменные)
 + [Типы переменных](/LearnCinfo/05_variables.md#типы-переменных)
@@ -31,7 +34,9 @@
 + [Форматированный ввод](/LearnCinfo/07_formatted_input_output.md#форматированный-ввод)
 + [Непечатные символы](/LearnCinfo/07_formatted_input_output.md#непечатные-символы)
 ## [Ветвления](/LearnCinfo/08_branches.md)
+
 ## [Оператор Switch](/LearnCinfo/09_switch.md)
+
 ## [Логические операторы](/LearnCinfo/10_logic_operators.md)
 
 + [Логические операторы](/LearnCinfo/10_logic_operators.md#логические-операторы)
