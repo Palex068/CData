@@ -1,5 +1,7 @@
 # Основы языка C
 
+[..](/README.md)
+
 Взято с [learnc.info](https://learnc.info/)
 
 ## [Введение](/LearnCinfo/01_about.md)
