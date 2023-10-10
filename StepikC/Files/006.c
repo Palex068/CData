@@ -147,27 +147,270 @@ r -- себя потеряешь, коня спасёшь!<br>
 Одно вещественное число, либо строку ERROR!, если введено недопустимое действие или действие выполнить невозможно (деление на ноль). Формат вывода чисел: два знака после запятой.
 */
 
+// #include <stdio.h>
+// #include <conio.h>
+// #include <locale.h>
+// #include <math.h> // подключаем math.h
+
+// int main() {
+//     char c;  
+//     int a, b;
+
+//     scanf("%d %d %c", &a, &b, &c);
+      
+//     switch (c) {
+//         case '+' : printf("%.2lf\n", (double)(a + b)); break;
+//         case '-' : printf("%.2lf\n", (double)(a - b)); break;
+//         case '*' : printf("%.2lf\n", (double)(a * b)); break;
+//         case '/' : b == 0? printf("ERROR!\n") : printf("%.2lf\n", (double)(a / b)); break;
+//         default : printf("ERROR!\n"); break;
+//     }
+    
+//     getch();  
+//     return 0;
+// }
+
+/*
+## Уровень базового обмена веществ
+
+В [третьем уроке](http://youngcoder.ru/lessons/3/vvod_dannyh_scanf.php) был приведён код программы, которая подсчитывает уровень базового обмена веществ по формуле Миффлина-Сан Жеора исходя из данных, которые вы введёте (возраст, рост и вес). Модифицируйте данную программу так, чтобы она дополнительно принимала и учитывала сведения о половой принадлежности человека.
+
+Входные данные:<br>
+Один символ и три целых числа.<br>
+Символ f (female) или m(male), обозначающий половую принадлежность.<br>
+Первое число a -- целое, возраст человека<br>
+Второе число ℎ -- целое, рост человека в сантиметрах<br>
+Третье число w -- целое, вес человека в килограммах.<br>
+
+Выходные данные:
+
+Вывести уровень базового обмена веществ в таблице, оформленной в соответствии примером ниже. 
+
+Если первый аргумент не является символом f или m, то необходимо вывести одно слово ERROR!
+
+*/
+
+// #include <stdio.h>
+// #include <conio.h>
+// #include <locale.h>
+// #include <math.h> // подключаем math.h
+
+// int main() {
+
+//     char sex;
+//     int age, height, weight;
+//     double bov;
+    
+//     scanf("%c %d %d %d", &sex, &age, &height, &weight); 
+//     switch (sex)
+//     {
+//     case 'f':
+//         bov = 10*weight + 6.25*height - 5*age - 161;
+//         break;
+//     case 'm':
+//         bov = 10*weight + 6.25*height - 5*age + 5;
+//         break;
+//     default:
+//         printf("ERROR!\n"); return 0;
+//     }
+  
+//     printf("|  BMR  |\n");
+//     printf("|%7.2f|\n",bov);
+    
+//     getch();  
+//     return 0;
+// }
+
+/*
+## Високосный год
+
+Вычислить номер дня в невисокосном году по заданным числу и месяцу.
+
+Входные данные:
+
+Два целых числа. Первое число m -- номер месяца. 1≤m≤12
+
+Второе число d -- номер дня в месяце. 1≤d≤31
+
+Выходные данные:
+
+Одно целое число -- порядковый номер дня в невисокосном году.
+*/
+// #include <stdio.h>
+// #include <conio.h>
+// #include <locale.h>
+// #include <math.h> // подключаем math.h
+
+// int main() {
+
+//     int m, d, res, D[12] = {0, 31, 59, 90, 120, 151, 181, 212, 243, 273, 304, 334};
+    
+//     scanf("%d%d", &m, &d);
+
+//     res = D[m-1] + d;
+    
+//     printf("%d\n", res);
+    
+//     getch();  
+//     return 0;
+// }
+
+
+// #include <stdio.h>
+// #include <conio.h>
+// #include <locale.h>
+// #include <math.h> // подключаем math.h
+
+// int main() {
+
+//     int k, x, res = 1;
+    
+//     scanf("%d%d", &k, &x);
+
+//     while (x>0)
+//     {
+//         res *= x % 10;
+//         x /= 10;
+//     }
+    
+//     printf("%d\n", res);
+    
+//     getch();  
+//     return 0;
+// }
+
+/*
+## Мне K лет
+
+Для целого числа K (от 1 до 99 включительно) напечатать фразу «Мне K лет», учитывая при этом, что при некоторых значениях K слово «лет» надо заменить на слово «год» или «года». Например, 11 лет, 22 года, 51 год.
+
+Входные данные: Одно целое число K, 1≤k≤99
+
+Выходные данные: Фраза с правильным окончанием
+*/
+
+// #include <stdio.h>
+// #include <conio.h>
+// #include <locale.h>
+// #include <math.h> // подключаем math.h
+
+// int main() {
+
+//     setlocale(LC_ALL, "");
+//     int K, d;
+    
+//     scanf("%d", &K);
+//     d = K % 10;
+
+//     switch (K)
+//     {
+//     case 11 :
+//     case 12 :
+//     case 13 :
+//     case 14 :
+//         printf("Мне %d лет\n", K);
+//         return 0;
+//     default:
+//         switch (d)
+//         {
+//         case 1 :
+//             printf("Мне %d год\n", K);
+//             break;
+//         case 2 :
+//         case 3 :
+//         case 4 :
+//             printf("Мне %d года\n", K);
+//             break;
+//         default:
+//             printf("Мне %d лет\n", K);
+//             break;
+//         }    
+//     }
+    
+//     getch();  
+//     return 0;
+// }
+
+/*
+## Сравнение чисел
+Напишите программу, сравнивающую два целых числа.
+
+Входные данные:
+
+Два целых числа x, y 
+
+Выходные данные:
+1 -- если x=y
+0 -- если x≠y
+*/
+// #include <stdio.h>
+// #include <conio.h>
+// #include <locale.h>
+// #include <math.h> // подключаем math.h
+
+// int main() {
+
+//     int x, y;
+    
+//     scanf("%d %d", &x, &y);
+
+//     printf("%d", x == y);
+
+//     getch();  
+//     return 0;
+// }
+
+/*
+## Квадранты
+
+На координатной плоскости $O_{xy}$ задана точка A(x,y). Необходимо указать квадрант, в котором она расположена. Номера квадрантов представлены на рисунке ниже.
+
+ ![006](/StepikC/Pictures/006_015.jpg)
+
+|||
+-|-
+2|1
+3|4
+
+Входные данные:
+
+Два вещественных числа x, y, которые не равны нулю.
+
+Выходные данные:
+Вывести одно целое -- номер квадранта.
+*/
+
 #include <stdio.h>
 #include <conio.h>
 #include <locale.h>
 #include <math.h> // подключаем math.h
 
 int main() {
-    char c;  
-    int a, b;
 
-    scanf("%d %d %c", &a, &b, &c);
-      
-    switch (c) {
-        case '+' : printf("%.2lf\n", (double)(a + b)); break;
-        case '-' : printf("%.2lf\n", (double)(a - b)); break;
-        case '*' : printf("%.2lf\n", (double)(a * b)); break;
-        case '/' : b == 0? printf("ERROR!\n") : printf("%.2lf\n", (double)(a / b)); break;
-        default : printf("ERROR!\n"); break;
+    double x, y;
+    int res;
+    
+    scanf("%lf %lf", &x, &y);
+
+    if (x > 0 && y > 0)
+    {
+        res = 1;
+    }
+    else if (x < 0 && y > 0)
+    {
+        res = 2;
+    }
+    else if (x < 0 && y < 0)
+    {
+        res = 3;
+    }
+    else
+    {
+        res = 4;
     }
     
+    printf("%d", res);
+
     getch();  
     return 0;
 }
-
-
