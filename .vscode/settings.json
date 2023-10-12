@@ -3,7 +3,8 @@
         "stdio.h": "c",
         "conio.h": "c",
         "math.h": "c",
-        "locale.h": "c"
+        "locale.h": "c",
+        "limits": "c"
     },
     "code-runner.runInTerminal": false,
     "code-runner.executorMap": {
