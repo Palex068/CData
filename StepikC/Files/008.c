@@ -512,43 +512,303 @@ n    n-1  n-2 ...  3    2    1
 Два целых числа, записанных через пробел. Первым вывести большее из чисел.
 */
 
+// #include <stdio.h>
+// #include <conio.h>
+// #include <math.h>
+
+// int main() {
+
+//     int N, i, j; scanf("%d", &N);
+
+//     int D[N][N];
+    
+//     for (i = 0; i < N; i++) 
+//     {   
+//         for (j = 0; j < N; j++) scanf("%d", &D[i][j]);
+//     }
+    
+//     int resA = 1, resB = 1;
+
+//     for (i = 0; i < N; i++) 
+//     {   
+//         for (j = 0; j < N; j++) 
+//         {
+//             if (i == j)
+//             {
+//                 resA *= D[i][j];
+//             }
+//             if (N - i - 1 == j)
+//             {
+//                 resB *= D[i][j];
+//             }
+//         }
+//     }
+//     if (resA > resB)
+//     {
+//         printf("%d %d", resA, resB);
+//     }
+//     else printf("%d %d", resB, resA);
+    
+//     getch();  
+//     return 0;
+// }
+
+// #include <stdio.h>
+// #include <conio.h>
+// #include <math.h>
+
+// int main() {
+
+//     int N, i, j; scanf("%d", &N);
+
+//     int D[N][N];
+    
+//     for (i = 0; i < N; i++) 
+//     {   
+//         for (j = 0; j < N; j++) scanf("%d", &D[i][j]);
+//     }
+    
+//     int resA = 0, resB = 0;
+
+//     for (i = 0; i < N; i++) 
+//     {   
+//         for (j = 0; j < N; j++) 
+//         {
+//             if (j > i)
+//             {
+//                 resA += D[i][j];
+//             }
+//             if (N - i - 1 < j)
+//             {
+//                 resB += D[i][j];
+//             }
+//         }
+//     }
+//     if (resA < resB)
+//     {
+//         printf("%d %d", resA, resB);
+//     }
+//     else printf("%d %d", resB, resA);
+    
+//     getch();  
+//     return 0;
+// }
+
+/*
+## Столбцы
+Для заданной матрицы посчитать сумму элементов каждого столбца.
+
+Входные данные:
+
+Два натуральных числа N и M. Далее с новой строки N строк по M целых чисел в каждой. 
+
+N и M не превышают десяти.
+
+Выходные данные:
+
+M целых чисел, записанных через пробел. Первой вывести сумму последнего столбца, второй предпоследнего и т.д.
+*/
+
+// #include <stdio.h>
+// #include <conio.h>
+// #include <math.h>
+
+// int main() {
+
+//     int N, M, i, j; scanf("%d %d", &N, &M);
+
+//     int D[N][M];
+    
+//     for (i = 0; i < N; i++) 
+//     {   
+//         for (j = 0; j < M; j++) scanf("%d", &D[i][j]);
+//     }
+    
+//     int Res[10] = {0};
+
+//     for (i = 0; i < N; i++) 
+//     {   
+//         for (j = 0; j < M; j++) 
+//         {
+//             Res[j] += D[i][j];
+//         }
+//     }
+
+//     for (j = M - 1; j >= 0; j--)
+//     {
+//         printf("%d ", Res[j]);
+//     }
+        
+//     getch();  
+//     return 0;
+// }
+
+/*
+## Поменять местами столбцы с минимальной и максимальной суммой элементов.
+
+Входные данные:
+
+Два натуральных числа N и M. Далее с новой строки N строк по M целых чисел в каждой. 
+
+N и M не превышают десяти.
+
+Выходные данные:
+
+Вывести исходную матрицу N на M, в которой столбцы с минимальной и максимальной суммой элементов поменяны местами. 
+
+Числа разделять пробелами. 
+
+Если присутствует несколько столбцов с одинаковой минимальной суммой элементов, то использовать первый по порядку. 
+
+Аналогично с максимальной суммой.
+*/
+
+// #include <stdio.h>
+// #include <conio.h>
+// #include <math.h>
+
+// int main() {
+
+//     int N, M, i, j, min, max, minJ = 0, maxJ = 0, tmp;
+//     scanf("%d %d", &N, &M);
+
+//     int D[N][M];
+    
+//     for (i = 0; i < N; i++) // заполняем матрицу
+//     {   
+//         for (j = 0; j < M; j++) scanf("%d", &D[i][j]);
+//     }
+    
+//     int Res[10] = {0};
+
+//     for (i = 0; i < N; i++) // считаем суммы столбцов
+//     {   
+//         for (j = 0; j < M; j++) 
+//         {
+//             Res[j] += D[i][j];
+//         }
+//     }
+
+//     min = max = Res[0];
+
+//     for (j = 1; j < M; j++) // находим мин и макс суммы столбцов
+//     {
+//         if (min > Res[j]) {min = Res[j]; minJ = j;}
+//         if (max < Res[j]) {max = Res[j]; maxJ = j;}
+//     }
+    
+//     for (i = 0; i < N; i++) // перестановка
+//     {
+//         tmp = D[i][maxJ]; D[i][maxJ] = D[i][minJ]; D[i][minJ] = tmp;
+//     }
+    
+//     for (int i = 0; i < N; ++i) // печать
+//     {
+//       for (int j = 0; j < M; ++j) printf("%d ", D[i][j]);         
+//       printf("\n");
+//     }
+
+//     getch();  
+//     return 0;
+// }
+
+/*
+## Циклический сдвиг
+Произвести циклический сдвиг столбцов квадратной матрицы A[N] на K позиций вправо.
+
+Входные данные:
+
+Одно натуральное число N. Далее с новой строки N строк по N целых чисел в каждой. 
+
+N не превышают десяти. Затем с новой строки записано натуральное число K.
+
+Выходные данные:
+
+Вывести на исходную матрицу N на N, столбцы которой циклически сдвинуты на K позиций вправо. Числа разделять пробелами.
+*/
+
+// #include <stdio.h>
+// #include <conio.h>
+// #include <math.h>
+
+// int main() {
+
+//     int N, k, i, j, tmp;
+//     scanf("%d", &N);
+
+//     int D[N][N], res[N][N];
+    
+//     for (i = 0; i < N; i++) // заполняем матрицу
+//     {   
+//         for (j = 0; j < N; j++) scanf("%d", &D[i][j]);
+//     }
+    
+//     scanf("%d", &k);
+
+//     for (j = 0; j < N; j++) // перестановка
+//     {
+//         for (i = 0; i < N; i++) // перестановка
+//         {
+//             res[i][(j + k)%N] = D[i][j];
+//         }
+//     }
+
+//     for (int i = 0; i < N; ++i) // печать
+//     {
+//       for (int j = 0; j < N; ++j) printf("%d ", res[i][j]);         
+//       printf("\n");
+//     }
+
+//     getch();  
+//     return 0;
+// }
+
+/*
+## Змейка
+Для заданных чисел M и N сформировать матрицу, заполненную по спирали числами от 1 до M⋅N.
+*/
+
 #include <stdio.h>
 #include <conio.h>
 #include <math.h>
 
 int main() {
 
-    int N, i, j; scanf("%d", &N);
+    int N, M, i = 0, j = 0, num = 1, flag = 0;
+    scanf("%d%d", &N, &M);
 
-    int D[N][N];
+    int D[N][M];
     
-    for (i = 0; i < N; i++) 
-    {   
-        for (j = 0; j < N; j++) scanf("%d", &D[i][j]);
-    }
+    int LL = 0, LR = 0, LU = 0, LD = 0;     // добавляем ограничители
     
-    int resA = 1, resB = 1;
-
-    for (i = 0; i < N; i++) 
-    {   
-        for (j = 0; j < N; j++) 
+    while(num <= M * N)       
+    {
+        switch (flag)
         {
-            if (i == j)
-            {
-                resA *= D[i][j];
-            }
-            if (N - i - 1 == j)
-            {
-                resB *= D[i][j];
-            }
+        // идём направо
+        case 0:     
+            for(int i =  LL; i < M - LR; i++) D[LU][i] = ++num;
+            flag = 1; LU ++; break;
+        // идем вниз
+        case 1:     
+            for(int i =  LU; i < N - LD; i++) D[i][M - LR-1] = ++num;
+            flag = 2; LR++; break;
+        // идём влево
+        case 2:     
+            for(int i =  M - LR-1; i >= LL; i--) D[N - LD-1][i] = ++num;
+            flag = 3; LD++; break;
+        // идем вверх
+        case 3:     
+            for(int i =  N - LD - 1; i >= LU ; i--) D[i][LL] = ++num;
+            flag = 0; LL++; break;
         }
     }
-    if (resA > resB)
+    for (int i = 0; i < N; i++) // печать
     {
-        printf("%d %d", resA, resB);
+      for (int j = 0; j < M; j++) printf("%d\t", D[i][j]);         
+      printf("\n");
     }
-    else printf("%d %d", resB, resA);
-    
+
     getch();  
     return 0;
 }
