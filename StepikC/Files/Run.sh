@@ -5,9 +5,9 @@ file=$1
 # cp ../materials/linters/.clang-format .clang-format
 
 clang-format $file -i 
-# cppcheck --enable=all --suppress=missingIncludeSystem $file
+cppcheck --platform=win64 --enable=all --suppress=missingIncludeSystem $file
 
-gcc -Wall -Wextra -Werror $file -o build
+gcc -Wall -Wextra -Werror $file -o build.exe
 
-./build
-rm build
+./build.exe
+rm build.exe
