@@ -388,21 +388,120 @@
 Найти в строке слова, которые начинаются и оканчиваются одной и той же буквой. Слова разделяются пробелами.
 */
 
+// #include <stdio.h>
+// #include <string.h>
+
+// int main() {
+//     char str[52];
+//     fgets(str, 52, stdin);
+
+//     char* tok = strtok(str, " ");
+
+//     while (tok != NULL) {
+//         int len = strlen(tok) - 1;
+//         if (tok[0] == tok[len] || (tok[len] == '\n' && tok[0] == tok[len - 1])) {
+//             printf("%s ", tok);
+//         }
+//         tok = strtok(NULL, " ");
+//     }
+//     return 0;
+// }
+
+/*
+В строке слова зашифрованы — каждое из них записано наоборот. Написать программу, расшифровывающую строку
+*/
+
+// #include <stdio.h>
+// #include <string.h>
+
+// int main(void) {
+//     char word[40], c;
+
+//     while (scanf("%39s%c", word, &c) == 2) {
+//         int len = strlen(word);
+//         for (int i = 0; i < len; i++) {
+//             printf("%c%s", word[len - i - 1], i == len - 1 ? " " : "");
+//         }
+//         if (c == 10) break;
+//     }
+//     return 0;
+// }
+
+// #include <stdio.h>
+// #include <string.h>
+
+// int main(void) {
+//     // объявляем строку
+//     char str1[] = "Peace! ";
+
+//     int l1 = strlen(str1);  // вычисляем длину первой строки
+
+//     // выводим на экран строку str1 и её длину
+//     printf("%d\n", l1);
+
+//     return 0;
+// }
+
+// #include <stdio.h>
+// #include <string.h>
+
+// int main(void) {
+//     // объявляем три строки
+//     char str1[19] = "Peace! ";
+//     char str2[] = "Labor! ";
+//     char str3[] = "May!";
+
+//     // выводим строки на экран
+//     printf("str1: %s\n", str1);
+//     printf("str2: %s\n", str2);
+//     printf("str3: %s\n\n", str3);
+
+//     // присоединяем к первой строке вторую
+//     strcat(str1, str2);
+//     // теперь str1 = "Peace! Labor!"
+
+//     // присоединяем к первой строке третью
+//     strcat(str1, str3);
+//     // теперь str1 = "Peace! Labor! May!"
+
+//     // выводим на экран строку str1 и её длину
+//     printf("str1: %s %d\n", str1, strlen(str1));
+
+//     return 0;
+// }
+
+// #include <stdio.h>
+// #include <string.h>
+
+// int main(void) {
+//     char str1[] = "hello world", str2[] = "hello world", str3[] = "hello World";
+//     // сравниваем строки между собой
+//     int n12 = strcmp(str1, str2);
+//     int n13 = strcmp(str1, str3);
+//     int n31 = strcmp(str3, str1);
+
+//     // выводим строки и результат работы strcmp
+//     printf(" %s i %s =  %d\n", str1, str2, n12);
+//     printf(" %s i %s = %d\n", str1, str3, n13);
+//     printf(" %s i %s = %d\n", str3, str1, n31);
+
+//     // выводим седьмой символ в строке и его ASCII-код
+//     printf("%c / %d\n", str1[6], str1[6]);
+//     printf("%c / %d\n", str3[6], str3[6]);
+
+//     return (0);
+// }
+
 #include <stdio.h>
 #include <string.h>
 
-int main() {
-    char str[52];
-    fgets(str, 52, stdin);
+int main(void) {
+    char str1[] = "Hello World!", str2[] = "Hi man!";
+    printf("str1: %s \nstr2 %s\n\n", str1, str2);
 
-    char* tok = strtok(str, " ");
+    strcpy(str1, str2);
 
-    while (tok != NULL) {
-        int len = strlen(tok) - 1;
-        if (tok[0] == tok[len] || (tok[len] == '\n' && tok[0] == tok[len - 1])) {
-            printf("%s ", tok);
-        }
-        tok = strtok(NULL, " ");
-    }
-    return 0;
+    printf("str1: %s \nstr2 %s\n", str1, str2);
+
+    return (0);
 }
