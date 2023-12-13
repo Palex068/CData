@@ -492,16 +492,133 @@
 //     return (0);
 // }
 
+// #include <stdio.h>
+// #include <string.h>
+
+// int main(void) {
+//     char str1[] = "Hello World!", str2[] = "Hi man!";
+//     printf("str1: %s \nstr2 %s\n\n", str1, str2);
+
+//     strcpy(str1, str2);
+
+//     printf("str1: %s \nstr2 %s\n", str1, str2);
+
+//     return (0);
+// }
+
+/*
+Программа приветствие
+Допишите программу приветствие.
+Программа должна склеивать строку, которая уже есть в программе и строку, введенную пользователем.
+*/
+
+// #include <stdio.h>
+// #include <string.h>
+
+// int main(void) {
+//     char str1[40] = "Hello, ";
+//     char str2[20];
+//     scanf("%s", str2);
+
+//     strcat(str1, str2);
+
+//     printf("%s", str1);
+
+//     return 0;
+// }
+
+/*
+Имя файла.
+Вывести полное название файла в формате
+имя_файла.расширение
+*/
+
+// #include <stdio.h>
+// #include <string.h>
+
+// int main(void) {
+//     char str1[30];
+//     char str3[4];
+//     scanf("%s ", str1);
+//     scanf("%s", str3);
+
+//     strcat(str1, ".");
+
+//     strcat(str1, str3);
+
+//     printf("%s", str1);
+
+//     return 0;
+// }
+
+/*
+Города
+Определить можно ли из указанных слов составить цепочку для игры в "Города"
+*/
+
+// #include <ctype.h>
+// #include <stdio.h>
+// #include <string.h>
+
+// int main(void) {
+//     char str1[51];
+//     char str2[51];
+//     scanf("%50s ", str1);
+//     scanf("%50s", str2);
+
+//     int flag1 = tolower(str2[0]) == str1[strlen(str1) - 1];
+//     int flag2 = tolower(str1[0]) == str2[strlen(str2) - 1];
+
+//     printf("%s", flag1 || flag2 ? "yes" : "no");
+
+//     return 0;
+// }
+
+/*
+Сравнение строк
+*/
+
+// #include <ctype.h>
+// #include <stdio.h>
+// #include <string.h>
+
+// int mystrcmp(char str1[], char str2[]);
+
+// int main(void) {
+//     char str1[51];
+//     char str2[51];
+//     fgets(str1, 50, stdin);
+//     fgets(str2, 50, stdin);
+
+//     printf("%s", mystrcmp(str1, str2) ? "no" : "yes");
+
+//     return 0;
+// }
+
+// int mystrcmp(char str1[], char str2[]) {
+//     int len1 = strlen(str1), len2 = strlen(str2), flag = 0;
+//     if (len1 != len2) {
+//         return len1 > len2 ? 1 : -1;
+//     } else {
+//         for (int i = 0; i < len1; i++) {
+//             if (tolower(str1[i]) != tolower(str2[i])) {
+//                 return str1[i] > str2[i] ? 1 : -1;
+//             }
+//         }
+//     }
+//     return flag;
+// }
+
 #include <stdio.h>
-#include <string.h>
 
 int main(void) {
-    char str1[] = "Hello World!", str2[] = "Hi man!";
-    printf("str1: %s \nstr2 %s\n\n", str1, str2);
+    int sum[2] = {0}, digit;
 
-    strcpy(str1, str2);
-
-    printf("str1: %s \nstr2 %s\n", str1, str2);
-
-    return (0);
+    for (int i = 0; i < 2; i++) {
+        for (int j = 0; j < 3; j++) {
+            scanf("%1d", &digit);
+            sum[i] += digit;
+        }
+    }
+    printf("%s", (sum[0] - sum[1]) ? "no" : "yes");
 }

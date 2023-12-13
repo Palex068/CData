@@ -5,11 +5,12 @@
         "math.h": "c",
         "locale.h": "c",
         "limits": "c",
-        "limits.h": "c"
+        "limits.h": "c",
+        "string.h": "c",
+        "strings.h": "c"
     },
     "code-runner.runInTerminal": false,
     "code-runner.executorMap": {
-
         "javascript": "node",
         "java": "cd $dir && javac $fileName && java $fileNameWithoutExt",
         "c": "cd $dir && gcc -std=c99 $fileName -o $fileNameWithoutExt && $dir$fileNameWithoutExt",
