@@ -266,29 +266,143 @@
 Капитан Флинт зарыл клад на Острове сокровищ. Есть описание, как найти клад.
 */
 
+// #include <stdio.h>
+// #include <string.h>
+
+// #define MAXLEN 6
+
+// int main(void) {
+//     int count, arg, x = 0, y = 0;
+//     char str[MAXLEN];
+//     scanf("%d", &count);
+
+//     for (int i = 0; i < count; i++) {
+//         scanf("%s %d", str, &arg);
+//         if (strcmp(str, "North") == 0) {
+//             y += arg;
+//         } else if (strcmp(str, "South") == 0) {
+//             y -= arg;
+//         } else if (strcmp(str, "East") == 0) {
+//             x += arg;
+//         } else {
+//             x -= arg;
+//         }
+//     }
+
+//     printf("%d %d", x, y);
+//     return 0;
+// }
+
+/*
+Комментарии
+Удалить часть символьной строки, заключенную между последовательностями символов и */
+
+// #include <stdio.h>
+// #include <string.h>
+
+// #define MAXLEN 100
+
+// int main(void) {
+//     int len, left_flag = 1, right_flag = 1, left_index = 0, right_index = 0;
+//     char str[MAXLEN];
+//     fgets(str, MAXLEN, stdin);
+//     len = strlen(str);
+
+//     for (int i = 0; i < len; i++) {
+//         if (str[i] == '/' && str[i + 1] == '*') {
+//             left_index += (i - 1) * left_flag;
+//             left_flag = 0;
+//         }
+
+//         if (!left_flag && i != left_index + 2 && str[i] == '*' && str[i + 1] == '/') {
+//             right_index += (i + 2) * right_flag;
+//             right_flag = 0;
+//         }
+//     }
+
+//     // printf("%d %d\n%d %d\n", right_flag, right_index, left_flag, left_index);
+
+//     for (int i = 0; i < len; i++) {
+//         if (!left_flag * !right_flag && i < right_index && i > left_index) {
+//             continue;
+//         } else {
+//             printf("%c", str[i]);
+//         }
+//     }
+//     return 0;
+// }
+
+/*
+Форматированный вывод числа.
+Написать программу, реализующую вывод числа N с разделением на триады цифр.
+*/
+
+// #include <stdio.h>
+// #include <string.h>
+
+// #define MAXLEN 9
+
+// int main(void) {
+//     int len;
+//     char str[MAXLEN];
+//     fgets(str, MAXLEN, stdin);
+//     len = strlen(str) - 1;
+//     for (int i = 0; i < len; i++) {
+//         printf("%c%s", str[i], (i == (len - 1) % 3) || (i == (len - 1) % 3 + 3) ? " " : "");
+//     }
+//     return 0;
+// }
+
+// #include <ctype.h>
+// #include <stdio.h>
+// #include <string.h>
+
+// int main() {
+//     char str[21];
+//     fgets(str, 21, stdin);
+//     int len = strlen(str) - 1, I = 1, F = 2, i = 0;
+
+//     if (str[len - 1] == '.' || str[0] == '.') {
+//         printf("error");
+//         return 0;
+//     }
+
+//     if (str[0] == '-') {
+//         str[0] = '0';
+//     }
+
+//     while (str[i] != '\0' && str[i] != '\n' && I && F) {
+//         if (str[i] == '.') {
+//             F--;
+//         } else if (!isdigit(str[i])) {
+//             I--;
+//         }
+//         i++;
+//     }
+
+//     printf("%s", I * F ? F == 1 ? "float" : "int" : "error");
+//     return 0;
+// }
+
+/*
+Найти в строке слова, которые начинаются и оканчиваются одной и той же буквой. Слова разделяются пробелами.
+*/
+
 #include <stdio.h>
 #include <string.h>
 
-#define MAXLEN 6
+int main() {
+    char str[52];
+    fgets(str, 52, stdin);
 
-int main(void) {
-    int count, arg, x = 0, y = 0;
-    char str[MAXLEN];
-    scanf("%d", &count);
+    char* tok = strtok(str, " ");
 
-    for (int i = 0; i < count; i++) {
-        scanf("%s %d", str, &arg);
-        if (strcmp(str, "North") == 0) {
-            y += arg;
-        } else if (strcmp(str, "South") == 0) {
-            y -= arg;
-        } else if (strcmp(str, "East") == 0) {
-            x += arg;
-        } else {
-            x -= arg;
+    while (tok != NULL) {
+        int len = strlen(tok) - 1;
+        if (tok[0] == tok[len] || (tok[len] == '\n' && tok[0] == tok[len - 1])) {
+            printf("%s ", tok);
         }
+        tok = strtok(NULL, " ");
     }
-
-    printf("%d %d", x, y);
     return 0;
 }
