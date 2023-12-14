@@ -609,16 +609,244 @@
 //     return flag;
 // }
 
+// #include <stdio.h>
+
+// int main(void) {
+//     int sum[2] = {0}, digit;
+
+//     for (int i = 0; i < 2; i++) {
+//         for (int j = 0; j < 3; j++) {
+//             scanf("%1d", &digit);
+//             sum[i] += digit;
+//         }
+//     }
+//     printf("%s", (sum[0] - sum[1]) ? "no" : "yes");
+// }
+
+/*
+Написать программу, проверяющую, можно ли из букв,
+входящих в первую строку, составить вторую строку.
+(буквы можно использовать не более одного раза и можно переставлять)
+*/
+
+// #include <ctype.h>
+// #include <stdio.h>
+// #include <string.h>
+
+// int main(void) {
+//     char str1[51];
+//     char str2[51];
+//     scanf("%50s ", str1);
+//     scanf("%50s", str2);
+
+//     int len1 = strlen(str1);
+//     int len2 = strlen(str2);
+
+//     for (int i = 0; i < len2; i++) {
+//         int flag = 1;
+//         for (int j = 0; j < len1; j++) {
+//             if (tolower(str2[i]) == tolower(str1[j])) {
+//                 str1[j] = ' ';
+//                 flag--;
+//                 break;
+//             }
+//         }
+//         if (flag) {
+//             printf("no");
+//             return 0;
+//         }
+//     }
+//     printf("yes");
+//     return 0;
+// }
+
+// #include <stdio.h>
+// #include <string.h>
+
+// int main() {
+//     char *ptr = NULL;
+//     char str1[52], str2[52];
+//     fgets(str1, 52, stdin);
+//     fgets(str2, 52, stdin);
+//     int len2 = strlen(str2);
+//     for (int i = 0; i < len2 - 1; i++) {
+//         ptr = strchr(str1, str2[i]);
+//         if (ptr != NULL)
+//             *ptr = ' ';
+//         else
+//             break;
+//     }
+//     if (ptr != NULL)
+//         printf("yes");
+//     else
+//         printf("no");
+//     return 0;
+// }
+
+/*
+Азбука Морзе
+*/
+
+// #include <ctype.h>
+// #include <stdio.h>
+// #include <string.h>
+
+// int main(void) {
+//     char str1[51];
+//     fgets(str1, 50, stdin);
+
+//     int len1 = strlen(str1);
+
+//     for (int i = 0; i < len1; i++) {
+//         char ch = str1[i];
+//         switch (ch) {
+//             case ' ':
+//                 printf("|:_..._:|");
+//                 break;
+//             case 'A':
+//             case 'a':
+//                 printf(".-|");
+//                 break;
+//             case 'B':
+//             case 'b':
+//                 printf("-...|");
+//                 break;
+//             case 'W':
+//             case 'w':
+//                 printf(".--|");
+//                 break;
+//             case 'G':
+//             case 'g':
+//                 printf("--.|");
+//                 break;
+//             case 'D':
+//             case 'd':
+//                 printf("-..|");
+//                 break;
+//             case 'E':
+//             case 'e':
+//                 printf(".|");
+//                 break;
+//             case 'V':
+//             case 'v':
+//                 printf("...-|");
+//                 break;
+//             case 'Z':
+//             case 'z':
+//                 printf("--..|");
+//                 break;
+//             case 'I':
+//             case 'i':
+//                 printf("..|");
+//                 break;
+//             case 'J':
+//             case 'j':
+//                 printf(".---|");
+//                 break;
+//             case 'K':
+//             case 'k':
+//                 printf("-.-|");
+//                 break;
+//             case 'L':
+//             case 'l':
+//                 printf(".-..|");
+//                 break;
+//             case 'M':
+//             case 'm':
+//                 printf("--|");
+//                 break;
+//             case 'N':
+//             case 'n':
+//                 printf("-.|");
+//                 break;
+//             case 'O':
+//             case 'o':
+//                 printf("---|");
+//                 break;
+//             case 'P':
+//             case 'p':
+//                 printf(".--.|");
+//                 break;
+//             case 'R':
+//             case 'r':
+//                 printf(".-.|");
+//                 break;
+//             case 'S':
+//             case 's':
+//                 printf("...|");
+//                 break;
+//             case 'T':
+//             case 't':
+//                 printf("-|");
+//                 break;
+//             case 'U':
+//             case 'u':
+//                 printf("..-|");
+//                 break;
+//             case 'F':
+//             case 'f':
+//                 printf("..-.|");
+//                 break;
+//             case 'H':
+//             case 'h':
+//                 printf("....|");
+//                 break;
+//             case 'C':
+//             case 'c':
+//                 printf("-.-.|");
+//                 break;
+//             case 'Q':
+//             case 'q':
+//                 printf("--.-|");
+//                 break;
+//             case 'Y':
+//             case 'y':
+//                 printf("-.--|");
+//                 break;
+//             case 'X':
+//             case 'x':
+//                 printf("-..-|");
+//                 break;
+//         }
+//     }
+//     return 0;
+// }
+
 #include <stdio.h>
+#include <string.h>
+
+int charToDec(char *p) {
+    const char *str = "||ETIANMSURWDKGOHVF|L|PJBXCYZQ||54|3|||2|||||||16|||||||7|||8|90";
+    return strchr(str, (*p -= 32 * (*p > 64))) - str;
+}
+
+void *decToMorse(int n, char *p) {
+    int c, shift = 0, f = 0;
+
+    for (c = 5; c >= 0; c--) {
+        if (n >> c & 1 && f++)
+            *(p + shift++) = '-';
+        else if (f > 1)
+            *(p + shift++) = '.';
+        if (f) f++;
+    }
+    p[shift] = '|';
+    return 0;
+}
 
 int main(void) {
-    int sum[2] = {0}, digit;
+    char c[50] = {}, m[450] = {};
+    fgets(c, 50, stdin);
+    size_t lc = strlen(c) - 1;
 
-    for (int i = 0; i < 2; i++) {
-        for (int j = 0; j < 3; j++) {
-            scanf("%1d", &digit);
-            sum[i] += digit;
+    for (size_t i = 0; i < lc; ++i) {
+        if (*(c + i) == ' ')
+            strcat(m, "|:_..._:|");
+        else {
+            char p[7] = {};
+            decToMorse(charToDec(c + i), p);
+            strcat(m, p);
         }
     }
-    printf("%s", (sum[0] - sum[1]) ? "no" : "yes");
+    printf("%s\n", m);
 }
