@@ -245,22 +245,46 @@
 //     return 0;
 // }
 
-#include <stdio.h>
-int main(void) {
-    int a = 0, b = 0, c = 0;
-    scanf("%d %d %d", &a, &b, &c);
+// #include <stdio.h>
+// int main(void) {
+//     int a = 0, b = 0, c = 0;
+//     scanf("%d %d %d", &a, &b, &c);
 
-    int* p_a = &a;
-    int* p_b = &b;
-    int* p_c = &c;
+//     int* p_a = &a;
+//     int* p_b = &b;
+//     int* p_c = &c;
 
-    if (*p_a > *p_b) *p_a = *p_b;
-    if (*p_a > *p_c) *p_a = *p_c;
+//     if (*p_a > *p_b) *p_a = *p_b;
+//     if (*p_a > *p_c) *p_a = *p_c;
 
-    *p_b = *p_a;
-    *p_c = *p_a;
+//     *p_b = *p_a;
+//     *p_c = *p_a;
 
-    printf("%d %d %d", a, b, c);
+//     printf("%d %d %d", a, b, c);
 
-    return 0;
-}
+//     return 0;
+// }
+
+// #include <stdio.h>
+
+// int delim_konfety(int a) {
+//     int res = 1;
+//     while (a > 1) {
+//         a = a - a / 2;
+//         res++;
+//     }
+//     return res;
+// }
+
+// int main()
+// {
+//     int konfet;
+//     scanf("%d", &konfet);
+
+//     int detey = delim_konfety(konfet);
+//     printf("%d\n", detey);
+
+//     return 0;
+// }
+
+
