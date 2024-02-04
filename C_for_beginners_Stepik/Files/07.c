@@ -94,28 +94,130 @@
 //   return 0;
 // }
 
-#include <stdio.h>
-#include <math.h>
+// #include <stdio.h>
+// #include <math.h>
 
-int main() {
-    int num, k, result = 1;
-    scanf("%d %d", &num, &k);
-	
-    while (num > pow(2, k)) {
-	    A:
-	    for (int i = 2; i < 10; i++) {
-		    int del = (int)pow(i, k);
-		    if (num % del == 0) {
-			    num /= del;
-			    printf("%d %d\n", i, num);
-			    result *=i;
-			    goto A;				
-			}
-        }
-        break;
+// int main() {
+//     int num, k, result = 1;
+//     scanf("%d %d", &num, &k);
+
+//     while (num > pow(2, k)) {
+// 	    A:
+// 	    for (int i = 2; i < 10; i++) {
+// 		    int del = (int)pow(i, k);
+// 		    if (num % del == 0) {
+// 			    num /= del;
+// 			    printf("%d %d\n", i, num);
+// 			    result *=i;
+// 			    goto A;
+// 			}
+//         }
+//         break;
+//     }
+//     printf("%d", num != 1 ? -1 : result);
+//     return 0;
+// }
+
+// #include <stdio.h>
+// #include <math.h>
+
+// int main() {
+//     int d, k, result = 0, num;
+//     scanf("%d %d", &d, &k);
+// 	num = k;
+//     while (num > 0) {
+// 	    if (num % 10 == d) {
+// 			result++;
+// 		}
+// 		num /=10;
+//     }
+//     printf("%d %d %d", d, k, result);
+//     return 0;
+// }
+
+// #include <stdio.h>
+// #include <string.h>
+// #define MAX 1001
+
+// int main() {
+//   char d;
+//   int result = 0;
+//   scanf("%c", &d);
+//   printf("%c ", d);
+//   char number[MAX];
+//   scanf("%1000s", number);
+//   printf("%s", number);
+//   int len = strlen(number);
+//   for (int i = 0; i < len; i++) {
+//     if (number[i] == d) {
+//       result++;
+//     }
+//   }
+//   printf(" %d", result);
+//   return 0;
+// }
+
+// #include <ctype.h>
+// #include <stdio.h>
+
+// int main() {
+//   char d, x;  // d - эталонный символ, x - очередной ОДИН символ
+//   scanf("%c ", &d);
+//   printf("%c ", d);
+
+//   int n = 0;
+//   int res;
+//   while (1) {
+//     res = scanf("%c", &x);
+//     if (res != 1 || !isdigit(x))  // не прочитали или прочитали не цифру
+//       break;
+//     printf("%c", x);
+//     if (d == x) n++;
+//     // printf("n=%d d=%с=%d x=%c=%d\n", n, d, d, x, x);
+//   };
+
+//   printf(" %d\n", n);
+
+//   return 0;
+// }
+
+// #include <stdio.h>
+// #include <string.h>
+// #define MAX 100
+
+// int main() {
+//   int result = 0;
+//   char number[MAX];
+//   scanf("%99s", number);
+//   int len = strlen(number);
+
+//   for (int i = 0; i < len; i++) {
+//     if (result < 0) {
+//       break;
+//     } else if (number[i] == '(') {
+//       result++;
+//     } else if (number[i] == ')') {
+//       result--;
+//     }
+//   }
+//   printf("%s", result ? "NO" : "YES");
+//   return 0;
+// }
+
+
+#include <stdio.h>
+
+int main(){
+    int b[10] = {0};
+    int n, result = 0;
+    scanf("%d", &n);
+	int * a = malloc(n * sizeof(int));
+    for(int i = 0; i < n; i++) {
+        scanf("%d", &a[i]);
+        b[a[i]]++;
     }
-    printf("%d", num != 1 ? -1 : result);
+    for(int i = 0; i < 10; i++) {
+        printf("%d %d\n", i, b[i]);
+    }
     return 0;
 }
-
-
