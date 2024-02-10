@@ -59,8 +59,10 @@
 //   return 0;
 // }
 
+#include <check.h>
 #include <stdio.h>
 #include <string.h>
+
 
 int main() {
   int x = 0, y = 0;
