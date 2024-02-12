@@ -16,7 +16,7 @@
 
 Пожалуйста, отправьте исправления к этому руководству по адресу check-devel ПО адресу lists.sourceforge.net . Мы бы предпочли, чтобы вы могли отправить унифицированную разницу (diff -u) с файлом ‘doc / check.texi’, который поставляется вместе с Check, но если это невозможно, то что-нибудь лучше, чем ничего.
 
-## Содержание
+# Содержание
 1. [Введение (Introduction)](#введение-introduction)
 2. [Модульное тестирование на C (Unit Testing in C)](#модульное-тестирование-на-c-unit-testing-in-c)
     + [Другие фреймворки для C (Other Frameworks for C)](#другие-фреймворки-для-c-other-frameworks-for-c)
@@ -27,8 +27,9 @@
     + [Немного тестируем, немного кодируем (Test a Little, Code a Little)](#немного-тестируем-немного-кодируем-test-a-little-code-a-little)
     + [Создание пакета (Creating a Suite)](#создание-пакета-creating-a-suite)
     + [Выходные данные SRunner (SRunner Output)](#выходные-данные-srunner-srunner-output)
-    + 
+
 4. [Расширенные функции (Advanced Features)](#расширенные-функции-advanced-features)
+    + [Удобные функции тестирования (Convenience Test Functions)](#удобные-функции-тестирования-convenience-test-functions)
     + [Ведение журнала тестирования (Test Logging)](#ведение-журнала-тестирования-test-logging)
 5. Поддерживаемых систем сборки	  	
 6. Заключение и ссылки	  	
@@ -99,7 +100,7 @@ Check - это фреймворк модульного тестирования 
 
 [Содержание](#содержание)
 
-## Модульное тестирование на C (Unit Testing in C)
+# Модульное тестирование на C (Unit Testing in C)
 
 >The approach to unit testing frameworks used for Check originated with Smalltalk, which is a late binding object-oriented language supporting reflection. 
 
@@ -147,55 +148,55 @@ Check - это фреймворк модульного тестирования 
 
 [Содержание](#содержание)
 
-### Другие фреймворки для C (Other Frameworks for C)
+## Другие фреймворки для C (Other Frameworks for C)
 
 >The authors know of the following additional unit testing frameworks for C:
 
 Авторам известны следующие дополнительные фреймворки модульного тестирования для C:
 
-#### AceUnit
+### AceUnit
 
 >AceUnit (Advanced C and Embedded Unit) bills itself as a comfortable C code unit test framework. It tries to mimic JUnit 4.x and includes reflection-like capabilities. AceUnit can be used in resource constraint environments, e.g. embedded software development, and importantly it runs fine in environments where you cannot include a single standard header file and cannot invoke a single standard C function from the ANSI / ISO C libraries. It also has a Windows port. It does not use forks to trap signals, although the authors have expressed interest in adding such a feature. See the [AceUnit homepage](http://aceunit.sourceforge.net/).
 
 AceUnit (Advanced C и Embedded Unit) позиционирует себя как удобный фреймворк модульного тестирования кода на C. Он пытается имитировать JUnit 4.x и включает возможности, подобные reflection. AceUnit может использоваться в средах с ограниченными ресурсами, например, при разработке встроенного программного обеспечения, и, что важно, он отлично работает в средах, где вы не можете включить ни одного стандартного заголовочного файла и не можете вызвать ни одной стандартной функции C из библиотек ANSI / ISO C. У него также есть порт Windows. Он не использует forks для перехвата сигналов, хотя авторы выразили заинтересованность в добавлении такой функции. Смотрите [AceUnit homepage](http://aceunit.sourceforge.net/).
 
-#### GNU Autounit
+### GNU Autounit
 >Much along the same lines as Check, including forking to run unit tests in a separate address space (in fact, the original author of Check borrowed the idea from GNU Autounit). GNU Autounit uses GLib extensively, which means that linking and such need special options, but this may not be a big problem to you, especially if you are already using GTK or GLib. See the [GNU Autounit homepage](http://autounit.tigris.org/).
 
 Во многом аналогично Check, включая разветвление для запуска модульных тестов в отдельном адресном пространстве (фактически, первоначальный автор Check позаимствовал идею у GNU Autounit). GNU Autounit широко использует GLib, что означает, что для связывания и тому подобного нужны специальные опции, но для вас это может не быть большой проблемой, особенно если вы уже используете GTK или GLib. Смотрите  [GNU Autounit homepage](http://autounit.tigris.org/).
 
-#### cUnit
+### cUnit
 >Also uses GLib, but does not fork to protect the address space of unit tests. See the archived [cUnit homepage](http://cunit.sourceforge.net/).
 
 Также использует GLib, но не использует fork для защиты адресного пространства модульных тестов. Смотрите [cUnit homepage](http://cunit.sourceforge.net/).
 
-#### CUnit
+### CUnit
 >Standard C, with plans for a Win32 GUI implementation. Does not currently fork or otherwise protect the address space of unit tests. In early development. See the [CUnit homepage](http://cunit.sourceforge.net/).
 
 Стандартный C с планами реализации графического интерфейса Win32. В настоящее время не разветвляет и иным образом не защищает адресное пространство модульных тестов. На ранней стадии разработки. Смотрите [CUnit homepage](http://cunit.sourceforge.net/).
 
-#### CuTest
+### CuTest
 >A simple framework with just one .c and one .h file that you drop into your source tree. See the [CuTest homepage](http://cutest.sourceforge.net/).
 
 Простой фреймворк с одним файлом .c и одним файлом .h, который вы добавляете в дерево исходных текстов. Посмотрите на [CuTest homepage](http://cutest.sourceforge.net/).
 
-#### CppUnit
+### CppUnit
 >The premier unit testing framework for C++; you can also use it to test C code. It is stable, actively developed, and has a GUI interface. The primary reasons not to use CppUnit for C are first that it is quite big, and second you have to write your tests in C++, which means you need a C++ compiler. If these don’t sound like concerns, it is definitely worth considering, along with other C++ unit testing frameworks. See the [CppUnit homepage](http://cppunit.sourceforge.net/cppunit-wiki).
 
 Лучший фреймворк модульного тестирования для C++; вы также можете использовать его для тестирования кода на C. Он стабилен, активно разрабатывается и имеет графический интерфейс. Основные причины не использовать CppUnit для C заключаются, во-первых, в том, что он довольно большой, а во-вторых, вы должны писать свои тесты на C++, что означает, что вам нужен компилятор C++. Если это не вызывает беспокойства, его определенно стоит рассмотреть вместе с другими фреймворками модульного тестирования C++. Смотрите [CppUnit homepage](http://cppunit.sourceforge.net/cppunit-wiki).
 
-#### embUnit
+### embUnit
 >embUnit (Embedded Unit) is another unit test framework for embedded systems. This one appears to be superseded by AceUnit. [Embedded Unit homepage](https://sourceforge.net/projects/embunit/).
 
 embUnit (Embedded Unit) - это еще один фреймворк модульного тестирования для встраиваемых систем. Похоже, этот фреймворк заменен AceUnit. [Embedded Unit homepage](https://sourceforge.net/projects/embunit/).
 
-#### MinUnit
+### MinUnit
 
 >A minimal set of macros and that’s it! The point is to show how easy it is to unit test your code. See the [MinUnit homepage](http://www.jera.com/techinfo/jtns/jtn002.html).
 
 Минимальный набор макросов и все! Смысл в том, чтобы показать, насколько легко модульно тестировать ваш код. Смотрите [MinUnit homepage](http://www.jera.com/techinfo/jtns/jtn002.html).
 
-#### CUnit for Mr. Ando
+### CUnit for Mr. Ando
 > A CUnit implementation that is fairly new, and apparently still in early development. See the [CUnit for Mr.Ando homepage](http://park.ruru.ne.jp/ando/work/CUnitForAndo/html/).
 
 Реализация CUnit, которая является довольно новой и, по-видимому, все еще находится на ранней стадии разработки. Смотрите [CUnit for Mr.Ando homepage](http://park.ruru.ne.jp/ando/work/CUnitForAndo/html/).
@@ -238,7 +239,7 @@ embUnit (Embedded Unit) - это еще один фреймворк модуль
 
 [Содержание](#содержание)
 
-### Как написать тест (How to Write a Test)
+## Как написать тест (How to Write a Test)
 
 >Test writing using Check is very simple. The file in which the checks are defined must include ‘check.h’ as so:
 
@@ -266,7 +267,7 @@ END_TEST
 
 [Содержание](#содержание)
 
-### Настройка сборки Money с помощью Autotools (Setting Up the Money Build Using Autotools)
+## Настройка сборки Money с помощью Autotools (Setting Up the Money Build Using Autotools)
 
 >Since we are creating a library to handle money, we will first create an interface in `money.h`, an implementation in `money.c`, and a place to store our unit tests, `check_money.c`.
 
@@ -443,7 +444,7 @@ $ make
 
 [Содержание](#содержание)
 
-### Настройка сборки Money с помощью CMake (Setting Up the Money Build Using CMake)
+## Настройка сборки Money с помощью CMake (Setting Up the Money Build Using CMake)
 
 >Since we are creating a library to handle money, we will first create an interface in ‘money.h’, an implementation in ‘money.c’, and a place to store our unit tests, ‘check_money.c’. We want to integrate these core files into our build system, and will need some additional structure. To manage everything we’ll use CMake for this example. Note that one could do something similar with ordinary Makefiles, or any other build system. It is in the authors’ opinion that it is generally easier to use CMake than bare Makefiles, and they provide built-in support for running tests.
 
@@ -583,7 +584,7 @@ $ nmake
 
 [Содержание](#содержание)
 
-### Немного тестируем, немного кодируем (Test a Little, Code a Little)
+## Немного тестируем, немного кодируем (Test a Little, Code a Little)
 
 >The Test Infected article starts out with a Money class, and so will we. Of course, we can’t do classes with C, but we don’t really need to. The Test Infected approach to writing code says that we should write the unit test before we write the code, and in this case, we will be even more dogmatic and doctrinaire than the authors of Test Infected (who clearly don’t really get this stuff, only being some of the originators of the Patterns approach to software development and OO design).
 
@@ -690,7 +691,7 @@ void money_free(Money * m);
 
 [Содержание](#содержание)
 
-### Создание пакета (Creating a Suite)
+## Создание пакета (Creating a Suite)
 
 >To run unit tests with Check, we must create some test cases, aggregate them into a suite, and run them with a suite runner. That’s a bit of overhead, but it is mostly one-off. Here’s a diff for the new version of ‘check_money.c’. Note that we include stdlib.h to get the definitions of EXIT_SUCCESS and EXIT_FAILURE.
 
@@ -784,7 +785,7 @@ void money_free(Money * m) {
 
 [Содержание](#содержание)
 
-### Выходные данные SRunner (SRunner Output)
+## Выходные данные SRunner (SRunner Output)
 
 >The functions to run tests in an SRunner are defined as follows:
 
@@ -826,37 +827,37 @@ void srunner_print (SRunner *sr, enum print_output print_mode);
 Значения перечисления, print_output определенные в Check, которые этот параметр print_mode может принимать, следующие:
 
 
-#### CK_SILENT
+### CK_SILENT
 
 >Specifies that no output is to be generated. If you use this flag, you either need to programmatically examine the SRunner object, print separately, or use test logging (see section Test Logging.)
 
 Указывает, что выходные данные генерироваться не должны. Если вы используете этот флаг, вам нужно либо программно проверить объект SRunner, распечатать отдельно, либо использовать ведение журнала тестирования (см. [Test Logging](#ведение-журнала-тестирования-test-logging))
 
-#### CK_MINIMAL
+### CK_MINIMAL
 
 > Only a summary of the test run will be printed (number run, passed, failed, errors).
 
 Будет напечатана только сводка по тестовому запуску (количество запусков, пройдено, сбой, ошибки).
 
-#### CK_NORMAL
+### CK_NORMAL
 
 >Prints the summary of the run, and prints one message per failed test.
 
 Выводит сводку выполнения и одно сообщение для каждого неудачного теста.
 
-#### CK_VERBOSE
+### CK_VERBOSE
 
 >Prints the summary, and one message per test (passed or failed)
 
 Выводит сводку и по одному сообщению для каждого теста (пройден или не пройден)
 
-#### CK_ENV
+### CK_ENV
 
 >Gets the print mode from the environment variable CK_VERBOSITY, which can have the values "silent", "minimal", "normal", "verbose". If the variable is not found or the value is not recognized, the print mode is set to CK_NORMAL.
 
 Получает режим печати из переменной окружения CK_VERBOSITY, которая может иметь значения "тихий", "минимальный", "обычный", "подробный". Если переменная не найдена или значение не распознано, режим печати устанавливается на CK_NORMAL.
 
-#### CK_SUBUNIT
+### CK_SUBUNIT
 
 >Prints running progress through the [subunit](https://launchpad.net/subunit/) test runner protocol. See ’subunit support’ under the Advanced Features section for more information.
 
@@ -984,13 +985,278 @@ void money_free(Money * m) {
 
 [Содержание](#содержание)
 
-## Расширенные функции (Advanced Features)
+# Расширенные функции (Advanced Features)
+
+## Удобные функции тестирования (Convenience Test Functions)
+
+>Using the `ck_assert` function for all tests can lead to lot of repetitive code that is hard to read. For your convenience Check provides a set of functions (actually macros) for testing often used conditions.
+
+Использование функции `ck_assert` для всех тестов может привести к большому количеству повторяющегося кода, который трудно прочитать. Для вашего удобства проверка предоставляет набор функций (фактически макросов) для тестирования часто используемых условий.
+
+>The typical size of an assertion message is less than 80 bytes. However, some of the functions listed below can generate very large messages (up to 4GB allocations were seen in the wild). To prevent this, a limit is placed on the assertion message size. This limit is 4K bytes by default. It can be modified by setting the `CK_MAX_MSG_SIZE` environment variable, or, if it is not set, by invoking the `check_set_max_msg_size()` function. If used, this function must be called, once, before the first assertion.
+
+Типичный размер сообщения с утверждением составляет менее 80 байт. Однако некоторые из перечисленных ниже функций могут генерировать очень большие сообщения (в обычном режиме выделялось до 4 ГБ). Чтобы предотвратить это, на размер сообщения с утверждением установлено ограничение. По умолчанию это ограничение составляет 4k байт. Его можно изменить, установив `CK_MAX_MSG_SIZE` переменную среды или, если она не установлена, вызвав `check_set_max_msg_size()` функцию. Если используется, эта функция должна быть вызвана один раз перед первым утверждением.
+
+### ck_abort
+
+>Unconditionally fails test with default message.
+
+Безоговорочный сбой теста с сообщением по умолчанию.
+
+### ck_abort_msg
+
+>Unconditionally fails test with user supplied message.
+
+Безоговорочный сбой теста с сообщением, предоставленным пользователем.
+
+### ck_assert
+
+>Fails test if supplied condition evaluates to `false`.
+
+Проверка завершается ошибкой, если заданное условие принимает значение `false`.
+
+### ck_assert_msg
+
+>Fails test if supplied condition evaluates to `false` and displays user provided message.
+
+Проверка завершается ошибкой, если заданное условие принимает значение `false` и отображается сообщение, предоставленное пользователем.
+
+### ck_assert_int_eq
+### ck_assert_int_ne
+### ck_assert_int_lt
+### ck_assert_int_le
+### ck_assert_int_gt
+### ck_assert_int_ge
+
+>Compares two signed integer values (`intmax_t`) and displays a predefined message with both the condition and input parameters on failure. The operator used for comparison is different for each function and is indicated by the last two letters of the function name. The abbreviations `eq`, `ne`, `lt`, `le`, `gt`, and `ge` correspond to `==`, `!=`, `<`, `<=`, `>`, and `>=` respectively.
+
+Сравнивает два целых значения со знаком (`intmax_t`) и отображает предопределенное сообщение как с условием, так и с входными параметрами при сбое. Оператор, используемый для сравнения, отличается для каждой функции и обозначается двумя последними буквами названия функции. Сокращения `eq`, `ne`, `lt`, `le`, `gt` и `ge` соответствуют `==`, `!=`, `<`, `<=`, `>` и `>=`.
+
+### ck_assert_uint_eq
+### ck_assert_uint_ne
+### ck_assert_uint_lt
+### ck_assert_uint_le
+### ck_assert_uint_gt
+### ck_assert_uint_ge
+
+>Similar to `ck_assert_int_*`, but compares two unsigned integer values (`uintmax_t`) instead.
+
+Аналогично `ck_assert_int_*`, но вместо этого сравнивает два целых значения без знака (`uintmax_t`).
+
+### ck_assert_float_eq
+### ck_assert_float_ne
+### ck_assert_float_lt
+### ck_assert_float_le
+### ck_assert_float_gt
+### ck_assert_float_ge
+
+>Compares two floating point numbers (float) and displays a predefined message with both the condition and input parameters on failure. The operator used for comparison is different for each function and is indicated by the last two letters of the function name. The abbreviations `eq`, `ne`, `lt`, `le`, `gt`, and `ge` correspond to `==`, `!=`, `<`, `<=`, `>`, and `>=` respectively. <br>
+Beware using those operators for floating point numbers because of precision possible loss on every operation on floating point numbers. <br>
+For example (1/3)*3==1 would return false, because 1/3==1.333... (or 1.(3) notation in Europe) and cannot be represented by computer logic. As another example 1.1f in fact could be 1.10000002384185791015625 and 2.1f could be 2.099999904632568359375 because of binary representation of floating point numbers. <br>
+If you have different mathematical operations used on floating point numbers consider using precision comparisons or integer numbers instead. <br>
+But in some cases those operators could be used. For example if you cyclically increment your floating point number only by positive or only by negative values than you may use <, <=, > and >= operators in tests. If your computations must end up with a certain value than == and != operators may be used.
+
+Сравнивает два числа с плавающей запятой (float) и отображает предопределенное сообщение как с условием, так и с входными параметрами при сбое. Оператор, используемый для сравнения, отличается для каждой функции и обозначается двумя последними буквами названия функции. Сокращения `eq`, `ne`, `lt`, `le`, `gt` `ge`, соответствуют `==` и `!=`  `<`, `<=`,` >` и `>=`. <br>
+Остерегайтесь использования этих операторов для чисел с плавающей запятой из-за возможной потери точности при каждой операции с числами с плавающей запятой. <br>
+Например, (1/3)*3==1 вернет false, потому что 1/3 ==1.333... (или 1.(3) обозначения в Европе) и не могут быть представлены компьютерной логикой. В качестве другого примера 1.1f на самом деле может быть 1.1000000002384185791015625, а 2.1f может быть 2.09999904632568359375 из-за двоичного представления чисел с плавающей запятой. <br>
+Если у вас используются другие математические операции с числами с плавающей запятой, рассмотрите возможность использования вместо них прецизионных сравнений или целых чисел. <br>
+Но в некоторых случаях эти операторы могут быть использованы. Например, если вы циклически увеличиваете число с плавающей запятой только на положительные или только на отрицательные значения, вы можете использовать операторы <, <=, > и >= в тестах. Если ваши вычисления должны завершиться определенным значением, чем == и != могут использоваться операторы.
+
+### ck_assert_double_eq
+### ck_assert_double_ne
+### ck_assert_double_lt
+### ck_assert_double_le
+### ck_assert_double_gt
+### ck_assert_double_ge
+
+>Similar to ck_assert_float_*, but compares two double precision floating point values (double) instead.
+
+Аналогично ck_assert_float_*, но вместо этого сравнивает два значения с плавающей запятой двойной точности (double).
+
+### ck_assert_ldouble_eq
+### ck_assert_ldouble_ne
+### ck_assert_ldouble_lt
+### ck_assert_ldouble_le
+### ck_assert_ldouble_gt
+### ck_assert_ldouble_ge
+
+>Similar to ck_assert_float_*, but compares two double precision floating point values (long double) instead.
+
+Аналогично ck_assert_float_*, но вместо этого сравнивает два значения с плавающей запятой двойной точности (long double).
+
+### ck_assert_float_eq_tol
+### ck_assert_float_ne_tol
+### ck_assert_float_le_tol
+### ck_assert_float_ge_tol
+
+>Compares two floating point numbers (float) with specified user tolerance set by the third parameter (float) and displays a predefined message with both the condition and input parameters on failure. The abbreviations eq, ne, le, and ge correspond to ==, !=, <=, and >= respectively with acceptable error (tolerance) specified by the last parameter. <br>
+Beware using those functions for floating comparisons because of (1) errors coming from floating point number representation, (2) rounding errors, (3) floating point errors are platform dependent. Floating point numbers are often internally represented in binary so they cannot be exact power of 10. <br>
+All these operators have significant error in comparisons so use them only if you know what you’re doing. Some assertions could fail on one platform and would be passed on another. For example expression 0.02<=0.01+10^-2 is true by meaning, but some platforms may calculate it as false. IEEE 754 standard specifies the floating point number format representation but it does not promise that the same computation carried out on all hardware will produce the same result.
+
+Сравнивает два числа с плавающей запятой (float) с заданным пользователем допуском, установленным третьим параметром (float), и отображает предопределенное сообщение как с условием, так и с входными параметрами при сбое. Сокращения eq, ne, le и ge соответствуют ==, !=, <= и >= соответственно с допустимой ошибкой (допуском), указанной в последнем параметре. <br>
+Остерегайтесь использования этих функций для сравнений с плавающей запятой из-за (1) ошибок, возникающих при представлении чисел с плавающей запятой, (2) ошибок округления, (3) ошибок с плавающей запятой зависят от платформы. Числа с плавающей запятой часто внутренне представлены в двоичном формате, поэтому они не могут быть точной степенью 10. <br>
+Все эти операторы допускают значительную ошибку при сравнении, поэтому используйте их, только если вы знаете, что делаете. Некоторые утверждения могут завершиться ошибкой на одной платформе и будут переданы на другой. Например, выражение 0.02<=0.01+10^-2 истинно по смыслу, но некоторые платформы могут вычислить его как false . Стандарт IEEE 754 определяет формат представления чисел с плавающей запятой, но он не гарантирует, что одинаковые вычисления, выполняемые на всех аппаратных средствах, приведут к одинаковому результату.
+
+### ck_assert_double_eq_tol
+### ck_assert_double_ne_tol
+### ck_assert_double_le_tol
+### ck_assert_double_ge_tol
+
+>Similar to ck_assert_float_*_tol, but compares two double precision floating point values (double) instead.
+
+Аналогично ck_assert_float_*_tol, но вместо этого сравнивает два значения с плавающей запятой двойной точности (double).
+
+### ck_assert_ldouble_eq_tol
+### ck_assert_ldouble_ne_tol
+### ck_assert_ldouble_le_tol
+### ck_assert_ldouble_ge_tol
+
+>Similar to ck_assert_float_*_tol, but compares two double precision floating point values (long double) instead.
+
+Аналогично ck_assert_float_*_tol, но вместо этого сравнивает два значения с плавающей запятой двойной точности (long double).
+
+### ck_assert_float_finite
+
+>Checks that a floating point number (float) is finite and displays a predefined message with both the condition and input parameter on failure. Finite means that value cannot be positive infinity, negative infinity or NaN ("Not a Number").
+
+Проверяет, что число с плавающей запятой (float) является конечным, и отображает предопределенное сообщение как с условием, так и с входным параметром при сбое. Конечное означает, что значение не может быть положительной бесконечностью, отрицательной бесконечностью или NaN ("Не число").
+
+### ck_assert_double_finite
+
+>Similar to ck_assert_float_finite, but checks double precision floating point value (double) instead.
+
+Аналогично ck_assert_float_finite, но вместо этого проверяет значение с плавающей запятой двойной точности (double).
+
+### ck_assert_ldouble_finite
+
+>Similar to ck_assert_float_finite, but checks double precision floating point value (long double) instead.
+
+Аналогично ck_assert_float_finite, но вместо этого проверяет значение с плавающей запятой двойной точности (long double).
+
+### ck_assert_float_infinite
+
+>Checks that a floating point number (float) is infinite and displays a predefined message with both the condition and input parameter on failure. Infinite means that value may only be positive infinity or negative infinity.
+
+Проверяет, что число с плавающей запятой (float) бесконечно, и при сбое выводит предопределенное сообщение как с условием, так и с входным параметром. Бесконечность означает, что значение может быть только положительной бесконечностью или отрицательной бесконечностью.
+
+### ck_assert_double_infinite
+
+>Similar to ck_assert_float_infinite, but checks double precision floating point value (double) instead.
+
+Аналогично ck_assert_float_infinite, но вместо этого проверяет значение с плавающей запятой двойной точности (double).
+
+### ck_assert_ldouble_infinite
+
+>Similar to ck_assert_float_infinite, but checks double precision floating point value (long double) instead.
+
+Аналогично ck_assert_float_infinite, но вместо этого проверяет значение с плавающей запятой двойной точности (long double).
+
+### ck_assert_float_nan
+
+>Checks that a floating point number (float, double or long double abbreviated as ldouble) is NaN ("Not a Number") and displays a predefined message with both the condition and input parameter on failure.
+
+Проверяет, является ли число с плавающей запятой (float, double или long double ldouble сокращенно как,,,) NaN ("Не числом") и отображает предопределенное сообщение как с условием, так и с входным параметром при сбое.
+
+### ck_assert_double_nan
+
+>Similar to ck_assert_float_nan, but checks double precision floating point value (double) instead.
+
+Аналогично ck_assert_float_nan, но вместо этого проверяет значение с плавающей запятой двойной точности (double).
+
+### ck_assert_ldouble_nan
+
+>Similar to ck_assert_float_nan, but checks double precision floating point value (long double) instead.
+
+Аналогично ck_assert_float_nan, но вместо этого проверяет значение с плавающей запятой двойной точности (long double).
+
+### ck_assert_float_nonnan
+
+>Checks that a floating point number (float) is not NaN ("Not a Number") and displays a predefined message with both the condition and input parameter on failure.
+
+Проверяет, что число с плавающей запятой (float) не является NaN ("Не число"), и отображает предопределенное сообщение как с условием, так и с входным параметром при сбое.
+
+### ck_assert_double_nonnan
+
+>Similar to ck_assert_float_nonnan, but checks double precision floating point value (double) instead.
+
+Аналогично ck_assert_float_nonnan, но вместо этого проверяет значение с плавающей запятой двойной точности (double).
+
+### ck_assert_ldouble_nonnan
+
+>Similar to ck_assert_float_nonnan, but checks double precision floating point value (long double) instead.
+
+Аналогично ck_assert_float_nonnan, но вместо этого проверяет значение с плавающей запятой двойной точности (long double).
+
+### ck_assert_str_eq
+### ck_assert_str_ne
+### ck_assert_str_lt
+### ck_assert_str_le
+### ck_assert_str_gt
+### ck_assert_str_ge
+
+>Compares two null-terminated `char *` string values, using the `strcmp()` function internally, and displays predefined message with condition and input parameter values on failure. The comparison operator is again indicated by last two letters of the function name. `ck_assert_str_lt(a, b)` will pass if the unsigned numerical value of the character string a is less than that of b. If a NULL pointer is be passed to any comparison macro the check will fail.
+
+Сравнивает два null-завершенной `char *` строку значений, используя `strcmp()` функцию внутренне, и отображает предопределенный сообщение с состоянием и ввод значений параметров при сбое. Оператор сравнения снова обозначается двумя последними буквами названия функции. `ck_assert_str_lt(a, b)` пройдет, если числовое значение без знака символьной строки a меньше, чем у b. Если нулевой указатель будет передан любому макросу сравнения, проверка завершится ошибкой.
+
+### ck_assert_pstr_eq
+### ck_assert_pstr_ne
+
+>Similar to ck_assert_str_* macros, but able to check undefined strings. If a NULL pointer would be passed to a comparison macro it would mean that a string is undefined. If both strings are undefined ck_assert_pstr_eq would pass, but ck_assert_pstr_ne would fail. If only one of strings is undefined ck_assert_pstr_eq macro would fail and ck_assert_pstr_ne would pass.
+
+Аналогично ck_assert_str_* макросам, но с возможностью проверки неопределенных строк. Если бы нулевой указатель был передан макросу сравнения, это означало бы, что строка не определена. Если обе строки не определены, ck_assert_pstr_eq пройдет, но ck_assert_pstr_ne завершится ошибкой. Если только одна из строк не определена, ck_assert_pstr_eq макрос завершится ошибкой и ck_assert_pstr_ne пройдет.
+
+### ck_assert_ptr_eq
+### ck_assert_ptr_ne
+
+>Compares two pointers and displays predefined message with condition and values of both input parameters on failure. The operator used for comparison is different for each function and is indicated by the last two letters of the function name. The abbreviations eq and ne correspond to == and != respectively.
+
+Сравнивает два указателя и отображает предопределенное сообщение с условием и значениями обоих входных параметров при сбое. Оператор, используемый для сравнения, отличается для каждой функции и обозначается двумя последними буквами названия функции. Сокращения eq и ne соответствуют == и != соответственно.
+
+### ck_assert_ptr_null
+### ck_assert_ptr_nonnull
+
+>Compares a pointers against null and displays predefined message with condition and value of the input parameter on failure. ck_assert_ptr_null checks that pointer is equal to NULL and ck_assert_ptr_nonnull checks that pointer is not equal to NULL. ck_assert_ptr_nonnull is highly recommended to use in situations when a function call can return NULL as error indication (like functions that use malloc, calloc, strdup, mmap, etc).
+
+Сравнивает указатели a с null и отображает предопределенное сообщение с условием и значением входного параметра при сбое. ck_assert_ptr_null проверяет, что указатель равен NULL, и ck_assert_ptr_nonnull проверяет, что указатель не равен NULL. ck_assert_ptr_nonnull настоятельно рекомендуется использовать в ситуациях, когда вызов функции может возвращать значение NULL в качестве указания на ошибку (например, функции, использующие malloc, calloc, strdup, mmap и т.д.).
+
+### ck_assert_mem_eq
+### ck_assert_mem_ne
+### ck_assert_mem_lt
+### ck_assert_mem_le
+### ck_assert_mem_gt
+### ck_assert_mem_ge
+
+>Compares contents of two memory locations of the given length, using the memcmp() function internally, and displays predefined message with condition and input parameter values on failure. The comparison operator is again indicated by last two letters of the function name. ck_assert_mem_lt(a, b) will pass if the unsigned numerical value of memory location a is less than that of b.
+
+Сравнивает содержимое двух ячеек памяти заданной длины, используя внутреннюю функцию memcmp(), и отображает предопределенное сообщение с условием и значениями входных параметров при сбое. Оператор сравнения снова обозначается двумя последними буквами названия функции. ck_assert_mem_lt(a, b) пройдет, если числовое значение ячейки памяти без знака a меньше, чем у b.
+
+### fail
+
+>(Deprecated) Unconditionally fails test with user supplied message.
+
+(Устарело) Безоговорочный сбой теста с сообщением, предоставленным пользователем.
+
+### fail_if
+
+>(Deprecated) Fails test if supplied condition evaluates to true and displays user provided message.
+
+(Устарело) Тест завершается ошибкой, если заданное условие оценивается как true и отображается сообщение, предоставленное пользователем.
+
+### fail_unless
+
+>(Deprecated) Fails test if supplied condition evaluates to false and displays user provided message.
+
+(Устарело) Тест завершается ошибкой, если заданное условие принимает значение false и отображается сообщение, предоставленное пользователем.
+
+[Содержание](#содержание)
+
+## Запуск нескольких обращений (Running Multiple Cases)
 
 
 
 [Содержание](#содержание)
 
-### Ведение журнала тестирования (Test Logging)
+## Ведение журнала тестирования (Test Logging)
 
 [Содержание](#содержание)
 
