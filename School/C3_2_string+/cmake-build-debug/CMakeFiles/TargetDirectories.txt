@@ -1,0 +1,3 @@
+/Users/timur/github/string.h/cmake-build-debug/CMakeFiles/string_h.dir
+/Users/timur/github/string.h/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/timur/github/string.h/cmake-build-debug/CMakeFiles/rebuild_cache.dir
