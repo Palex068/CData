@@ -7,7 +7,8 @@
         "limits": "c",
         "limits.h": "c",
         "string.h": "c",
-        "strings.h": "c"
+        "strings.h": "c",
+        "ctype.h": "c"
     },
     "code-runner.runInTerminal": false,
     "code-runner.executorMap": {
@@ -63,5 +64,6 @@
         "fortran_fixed-form": "cd $dir && gfortran $fileName -o $fileNameWithoutExt && $dir$fileNameWithoutExt",
         "fortran": "cd $dir && gfortran $fileName -o $fileNameWithoutExt && $dir$fileNameWithoutExt",
         "sml": "cd $dir && sml $fileName"
-    }
+    },
+    "cmake.sourceDirectory": "C:/Users/Palex/Desktop/MyRep/CData/School/C3_2_string+"
 }

@@ -2,6 +2,15 @@
 #define S21_STRING_H
 
 #define S21_NULL ((void *)0)
+
+#define MAX_ERROR_LEN 256
+
+#ifdef __APPLE__
+#define UNKNOWN_PREFIX "Unknown error: "
+#elif __linux__
+#define UNKNOWN_PREFIX "Unknown error "
+#endif
+
 #include <stdarg.h>
 
 typedef long unsigned s21_size_t;

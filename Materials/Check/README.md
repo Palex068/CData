@@ -30,6 +30,7 @@
 
 4. [Расширенные функции (Advanced Features)](#расширенные-функции-advanced-features)
     + [Удобные функции тестирования (Convenience Test Functions)](#удобные-функции-тестирования-convenience-test-functions)
+    + [Режим без разветвления (No Fork Mode)](#режим-без-разветвления-no-fork-mode)
     + [Ведение журнала тестирования (Test Logging)](#ведение-журнала-тестирования-test-logging)
 5. Поддерживаемых систем сборки	  	
 6. Заключение и ссылки	  	
@@ -1252,7 +1253,147 @@ All these operators have significant error in comparisons so use them only if yo
 
 ## Запуск нескольких обращений (Running Multiple Cases)
 
+> What happens if we pass -1 as the amount in money_create()? What should happen? Let’s write a unit test. Since we are now testing limits, we should also test what happens when we create Money where amount == 0. Let’s put these in a separate test case called “Limits” so that money_suite is changed like so:
 
+Что произойдет, если мы передадим -1 как amount в money_create()? Что должно произойти? Давайте напишем модульный тест. Поскольку сейчас мы тестируем ограничения, нам также следует протестировать, что происходит, когда мы создаем Money where amount == 0. Давайте поместим их в отдельный тестовый пример под названием “Limits”, чтобы money_suite изменить его следующим образом:
+
+```c
+#include <stdlib.h>
+#include <check.h>
+#include "../src/money.h"
+ 
+START_TEST(test_money_create) {
+    Money *m;
+ 
+    m = money_create(5, "USD");
+    ck_assert_int_eq(money_amount(m), 5);
+    ck_assert_str_eq(money_currency(m), "USD");
+    money_free(m);
+}
+END_TEST
+ 
+START_TEST(test_money_create_neg) {
+    Money *m = money_create(-1, "USD");
+
+    ck_assert_msg(m == NULL,
+                  "NULL should be returned on attempt to create with "
+                  "a negative amount");
+}
+END_TEST
+
+START_TEST(test_money_create_zero) {
+    Money *m = money_create(0, "USD");
+
+    if (money_amount(m) != 0) {
+        ck_abort_msg("Zero is a valid amount of money");
+    }
+}
+END_TEST
+
+Suite * money_suite(void) {
+    Suite *s;
+    TCase *tc_core;
+    TCase *tc_limits;
+
+    s = suite_create("Money");
+
+    /* Core test case */
+    tc_core = tcase_create("Core");
+
+    tcase_add_test(tc_core, test_money_create);
+    suite_add_tcase(s, tc_core);
+ 
+    /* Limits test case */
+    tc_limits = tcase_create("Limits");
+
+    tcase_add_test(tc_limits, test_money_create_neg);
+    tcase_add_test(tc_limits, test_money_create_zero);
+    suite_add_tcase(s, tc_limits);
+
+    return s;
+}
+
+int main(void) {
+    int number_failed;
+    Suite *s;
+    SRunner *sr;
+
+    s = money_suite();
+    sr = srunner_create(s);
+
+    srunner_run_all(sr, CK_NORMAL);
+    number_failed = srunner_ntests_failed(sr);
+    srunner_free(sr);
+    return (number_failed == 0) ? EXIT_SUCCESS : EXIT_FAILURE;
+}
+```
+
+>Now we can rerun our suite, and fix the problem(s). Note that errors in the `Core` test case will be reported as `Core`, and errors in the `Limits` test case will be reported as `Limits`, giving you additional information about where things broke.
+
+Теперь мы можем перезапустить наш пакет и устранить проблему (проблемы). Обратите внимание, что об ошибках в тестовом примере `Core` будет сообщено как `Core`, а об ошибках в тестовом примере `Limits` будет сообщено как `Limits`, что даст вам дополнительную информацию о том, где что-то сломалось.
+
+```c
+#include <stdlib.h>
+#include "money.h"
+ 
+struct Money {
+    int amount;
+    char *currency;
+};
+ 
+Money *money_create(int amount, char *currency) {
+    Money *m;
+
+    if (amount < 0) {
+        return NULL;
+    }
+
+    m = malloc(sizeof(Money));
+
+    if (m == NULL) {
+        return NULL;
+    }
+
+    m->amount = amount;
+    m->currency = currency;
+    return m;
+}
+ 
+int money_amount(Money * m) {
+    return m->amount;
+}
+ 
+char *money_currency(Money * m) {
+    return m->currency;
+}
+ 
+void money_free(Money * m) {
+    free(m);
+    return;
+}
+```
+
+[Содержание](#содержание)
+
+## Режим без разветвления (No Fork Mode)
+
+>Check normally forks to create a separate address space. This allows a signal or early exit to be caught and reported, rather than taking down the entire test program, and is normally very useful. However, when you are trying to debug why the segmentation fault or other program error occurred, forking makes it difficult to use debugging tools. To define fork mode for an SRunner object, you can do one of the following:
+
+Проверка обычно разветвляется для создания отдельного адресного пространства. Это позволяет перехватывать сигнал или ранний выход и сообщать о них, а не отключать всю тестовую программу, и обычно это очень полезно. Однако, когда вы пытаетесь отладить причину сбоя сегментации или другой программной ошибки, разветвление затрудняет использование инструментов отладки. Чтобы определить режим разветвления для SRunner объекта, вы можете выполнить одно из следующих действий:
+
+>1. Define the CK_FORK environment variable to equal “no”.
+>2. Explicitly define the fork status through the use of the following function:
+
+1. Определите переменную окружения CK_FORK равной ”no".
+2. Явно определите состояние разветвления с помощью следующей функции:
+
+```c
+void srunner_set_fork_status (SRunner * sr, enum fork_status fstat);
+```
+
+>The enum fork_status allows the fstat parameter to assume the following values: CK_FORK and CK_NOFORK. An explicit call to srunner_set_fork_status() overrides the CK_FORK environment variable.
+
+Перечисление fork_status позволяет fstat параметру принимать следующие значения: CK_FORK и CK_NOFORK. Явный вызов srunner_set_fork_status() переопределяет CK_FORK переменную окружения.
 
 [Содержание](#содержание)
 

@@ -59,38 +59,48 @@
 //   return 0;
 // }
 
-#include <check.h>
-#include <stdio.h>
-#include <string.h>
+// #include <check.h>
+// #include <stdio.h>
+// #include <string.h>
 
+// int main() {
+//   int x = 0, y = 0;
+//   char s[10];
+
+//   while (1) {
+//     scanf("%9s", s);
+//     if (0 != strcmp(s, "Treasure!")) {
+//       int step;
+//       scanf("%d", &step);
+//       switch (s[0]) {
+//         case 'N':
+//           y += step;
+//           break;
+//         case 'S':
+//           y -= step;
+//           break;
+//         case 'E':
+//           x += step;
+//           break;
+//         case 'W':
+//           x -= step;
+//           break;
+//         default:
+//           break;
+//       }
+//     } else
+//       break;
+//   }
+//   printf("%d %d", x, y);
+// }
+
+#include <ctype.h>  // для функции tolower
+#include <stdio.h>
 
 int main() {
-  int x = 0, y = 0;
-  char s[10];
-
-  while (1) {
-    scanf("%9s", s);
-    if (0 != strcmp(s, "Treasure!")) {
-      int step;
-      scanf("%d", &step);
-      switch (s[0]) {
-        case 'N':
-          y += step;
-          break;
-        case 'S':
-          y -= step;
-          break;
-        case 'E':
-          x += step;
-          break;
-        case 'W':
-          x -= step;
-          break;
-        default:
-          break;
-      }
-    } else
-      break;
-  }
-  printf("%d %d", x, y);
+  char str1[] = "";
+  char str2[] = "";
+  const char* str = trim(&str1, &str2);
+  printf("%s", str);
+  return 0;
 }
