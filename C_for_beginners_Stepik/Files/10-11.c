@@ -94,13 +94,73 @@
 //   printf("%d %d", x, y);
 // }
 
-#include <ctype.h>  // для функции tolower
+// #include <ctype.h>  // для функции tolower
+// #include <stdio.h>
+
+// int main() {
+//   char str1[] = "";
+//   char str2[] = "";
+//   const char* str = trim(&str1, &str2);
+//   printf("%s", str);
+//   return 0;
+// }
+
+// #include <stdio.h>
+// #include <string.h>
+
+// int my_strsrt(char s[], int len, const char word[], int word_len) {
+//   int total = 0;
+//   if (len > word_len) {
+//     for (int i = 0; i < len - word_len + 1; i++) {
+//       int result = 0;
+//       for (int j = 0; j < word_len; j++) {
+//         if (s[i + j] == word[j]) {
+//           result++;
+//         } else
+//           break;
+//         if (result == word_len - 1) total++;
+//       }
+//     }
+//   }
+//   //  if (total) printf("%s %d\n", s, total);
+//   return total;
+// }
+
+// int main() {
+//   const char word[] = "bomb";
+//   int word_len = strlen(word);
+//   char s[21];
+//   int answer = 0;
+//   while (1 == scanf("%20s", s)) {
+//     int len = strlen(s);
+//     answer += my_strsrt(s, len, word, word_len);
+//   }
+//   printf("%d", answer);
+// }
+
+#include <math.h>
 #include <stdio.h>
+#include <string.h>
+
+double s21_ceil(double x) {
+  return ((long)x == x || x <= 0) ? (long)x : (long)x + 1;
+}
+
+double s21_ceil_old(double x) {
+  long floor_x = (long)x;
+  if (x > 0) {
+    return floor_x + 1;
+  } else {
+    return floor_x;
+  }
+}
 
 int main() {
-  char str1[] = "";
-  char str2[] = "";
-  const char* str = trim(&str1, &str2);
-  printf("%s", str);
+  for (double i = -3; i <= 3; i += 0.25) {
+    if (ceil(i) != s21_ceil_old(i) || ceil(i) != s21_ceil(i)) {
+      printf("%.2lf new: %.2lf old: %.2lf TRUE: %.2lf \n", i, s21_ceil(i),
+             s21_ceil_old(i), ceil(i));
+    }
+  }
   return 0;
 }
