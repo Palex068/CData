@@ -1,0 +1,27 @@
+#include "s21_math.h"
+
+long double s21_exp(double x) {
+  long double result = 1.0;
+  if (x == S21_INF_POS) {
+    result = S21_INF_POS;
+  } else if (x != x) {
+    result = S21_NAN;
+  } else if (x == S21_INF_NEG) {
+    result = 0;
+  } else {
+    int n = 1;
+    long double a = x, sn = 1;
+    if (x < 0.0) {
+      a = -x;
+    }
+    for (int i = 0; i < 1500; i++) {
+      if (sn < 1.7E-50) break;
+      sn *= a / n++;
+      result += sn;
+    }
+    if (x < 0.0) {
+      result = 1 / result;
+    }
+  }
+  return result;
+}

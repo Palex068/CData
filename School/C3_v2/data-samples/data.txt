@@ -1,7 +1,0 @@
-"Hello world\0"
-"Hello world\n\0"
-"a\n\0"
-" \n\0"
-" \0"
-"\n\0"
-"\0"
