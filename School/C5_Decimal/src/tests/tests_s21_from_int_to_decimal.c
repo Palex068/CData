@@ -1,4 +1,4 @@
-#include "../tests.h"
+#include "tests.h"
 
 START_TEST(test_s21_int_to_decimal_0) {
   int test = 0;

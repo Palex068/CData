@@ -1,4 +1,4 @@
-#include "../tests.h"
+#include "tests.h"
 
 START_TEST(test_s21_dec_to_float_003f) {
   s21_decimal result = {{0, 0, 0, 0}};

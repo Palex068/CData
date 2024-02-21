@@ -1,4 +1,4 @@
-#include "../tests.h"
+#include "tests.h"
 
 START_TEST(test_s21_from_float_to_decimal_003f) {
   s21_decimal value;

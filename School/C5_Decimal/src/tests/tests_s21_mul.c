@@ -1,4 +1,4 @@
-#include "../tests.h"
+#include "tests.h"
 
 START_TEST(mul_2x2) {
   s21_decimal num1 = {{2, 0, 0, 0}};

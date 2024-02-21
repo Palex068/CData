@@ -1,4 +1,4 @@
-#include "../tests.h"
+#include "tests.h"
 
 START_TEST(test_s21_truncate_1) {
   s21_decimal src1, result_our, result_origin;

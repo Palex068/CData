@@ -1,4 +1,4 @@
-#include "../tests.h"
+#include "tests.h"
 
 // ----------------is not equal----------------- //
 START_TEST(not_equal_zero) {

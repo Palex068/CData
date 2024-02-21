@@ -1,4 +1,4 @@
-#include "../tests.h"
+#include "tests.h"
 
 START_TEST(add_1_test) {
   s21_decimal num = {{1, 0, 0, 0}};
