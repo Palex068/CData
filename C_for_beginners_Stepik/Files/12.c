@@ -109,29 +109,63 @@
 //     return 0;
 // }
 
+// #include <stdio.h>
+// #include <stdlib.h>
+// #include <string.h>
+// #define N 1001
+
+// void printString(char* str, int n) {
+//     for (int i = 0; i < n; i++) printf("%c%s", str[i], n == n - 1 ? "." : "");
+// }
+
+// int cmpFloat(const void* pa, const void* pb) { return (*(char*)pa > *(char*)pb) - (*(char*)pa <
+// *(char*)pb); }
+
+// int main() {
+//     char str[N];
+//     fgets(str, 1000, stdin);
+//     int len = strlen(str), count = 0;
+
+//     for (int i = 0; i < len; i++) {
+//         if (str[i] == '.') break;
+//         count++;
+//     }
+
+//     qsort(str, count, sizeof(str[0]), cmpFloat);
+
+//     printString(str, len);
+//     return 0;
+// }
+
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
+
 #define N 1001
 
-void printString(char* str, int n) {
-    for (int i = 0; i < n; i++) printf("%c%s", str[i], n == n - 1 ? "." : "");
+void prIntArr(int* numbers, int n) {
+    for (int i = 0; i < n; i++) printf("%d%s", numbers[i], n == n - 1 ? " \n" : " ");
 }
 
-int cmpFloat(const void* pa, const void* pb) { return (*(char*)pa > *(char*)pb) - (*(char*)pa < *(char*)pb); }
+int cmpint(const void* pa, const void* pb) {
+    int result = 0;
+    int x = *(int*)pa;
+    int y = *(int*)pb;
+    while ((x > 0 && y > 0) || result == 0) {
+        result += (x % 10 > y % 10) - (x % 10 < y % 10);
+        x /= 10;
+        y /= 10;
+    }
+    return result;
+}
 
 int main() {
-    char str[N];
-    fgets(str, 1000, stdin);
-    int len = strlen(str), count = 0;
+    int n;
+    int numbers[N];
+    scanf("%d", &n);
+    for (int i = 0; i < n; i++) scanf("%d", &numbers[i]);
 
-    for (int i = 0; i < len; i++) {
-        if (str[i] == '.') break;
-        count++;
-    }
+    qsort(numbers, n, sizeof(int), cmpint);
 
-    qsort(str, count, sizeof(str[0]), cmpFloat);
-
-    printString(str, len);
+    prIntArr(numbers, n);
     return 0;
 }
