@@ -1,0 +1,118 @@
+#suite inverse_matrix
+
+#test inverse_matrix1
+// Checking unit matrix
+const int rows = rand() % 100 + 1;
+matrix_t test = {0};
+matrix_t check = {0};
+s21_create_matrix(rows, rows, &test);
+for (int i = 0; i < rows; i++) {
+    for (int j = 0; j < rows; j++) {
+        test.matrix[i][j] = 0;
+    }
+    test.matrix[i][i] = 1;
+}
+ck_assert_int_eq(s21_inverse_matrix(&test, &check), OK);
+ck_assert_int_eq(s21_eq_matrix(&test, &check), SUCCESS);
+s21_remove_matrix(&test);
+s21_remove_matrix(&check);
+
+#test inverse_matrix2
+// Checking matrix in the task
+matrix_t test = {0};
+matrix_t check = {0};
+matrix_t total = {0};
+s21_create_matrix(3, 3, &test);
+s21_create_matrix(3, 3, &total);
+test.matrix[0][0] = 2;
+test.matrix[0][1] = 5;
+test.matrix[0][2] = 7;
+test.matrix[1][0] = 6;
+test.matrix[1][1] = 3;
+test.matrix[1][2] = 4;
+test.matrix[2][0] = 5;
+test.matrix[2][1] = -2;
+test.matrix[2][2] = -3;
+total.matrix[0][0] = 1;
+total.matrix[0][1] = -1;
+total.matrix[0][2] = 1;
+total.matrix[1][0] = -38;
+total.matrix[1][1] = 41;
+total.matrix[1][2] = -34;
+total.matrix[2][0] = 27;
+total.matrix[2][1] = -29;
+total.matrix[2][2] = 24;
+ck_assert_int_eq(s21_inverse_matrix(&test, &check), OK);
+ck_assert_int_eq(s21_eq_matrix(&total, &check), SUCCESS);
+s21_remove_matrix(&test);
+s21_remove_matrix(&check);
+s21_remove_matrix(&total);
+
+#test inverse_matrix3
+// Result matrix is NULL
+const int rows = rand() % 100 + 1;
+matrix_t test = {0};
+s21_create_matrix(rows, rows, &test);
+ck_assert_int_eq(s21_inverse_matrix(&test, NULL), ERROR);
+s21_remove_matrix(&test);
+
+#test inverse_matrix4
+// Set matrix is NULL
+matrix_t check = {0};
+ck_assert_int_eq(s21_inverse_matrix(NULL, &check), ERROR);
+
+#test inverse_matrix5
+// The matrix isn't square
+const int rows = 4;
+const int columns = 5;
+matrix_t test = {0};
+matrix_t check = {0};
+s21_create_matrix(rows, columns, &test);
+ck_assert_int_eq(s21_inverse_matrix(&test, &check), CALC_ERROR);
+s21_remove_matrix(&test);
+
+#test inverse_matrix6
+// Checking random matrix
+matrix_t test = {0};
+matrix_t check = {0};
+matrix_t total = {0};
+s21_create_matrix(3, 3, &test);
+s21_create_matrix(3, 3, &total);
+test.matrix[0][0] = 1;
+test.matrix[0][1] = 2;
+test.matrix[0][2] = 2;
+test.matrix[1][0] = 4;
+test.matrix[1][1] = 4;
+test.matrix[1][2] = 6;
+test.matrix[2][0] = 7;
+test.matrix[2][1] = 8;
+test.matrix[2][2] = 9;
+total.matrix[0][0] = -1.5;
+total.matrix[0][1] = -0.25;
+total.matrix[0][2] = 0.5;
+total.matrix[1][0] = 0.75;
+total.matrix[1][1] = -0.625;
+total.matrix[1][2] = 0.25;
+total.matrix[2][0] = 0.5;
+total.matrix[2][1] = 0.75;
+total.matrix[2][2] = -0.5;
+ck_assert_int_eq(s21_inverse_matrix(&test, &check), OK);
+ck_assert_int_eq(s21_eq_matrix(&total, &check), SUCCESS);
+s21_remove_matrix(&test);
+s21_remove_matrix(&check);
+s21_remove_matrix(&total);
+
+#test inverse_matrix7
+// The determinant is null
+const int rows = rand() % 100 + 1;
+matrix_t test = {0};
+matrix_t check = {0};
+s21_create_matrix(rows, rows, &test);
+for (int i = 0; i < rows; i++) {
+    for (int j = 0; j < rows; j++) {
+        test.matrix[i][j] = 0;
+    }
+}
+ck_assert_int_eq(s21_inverse_matrix(&test, &check), CALC_ERROR);
+s21_remove_matrix(&test);
+s21_remove_matrix(&check);

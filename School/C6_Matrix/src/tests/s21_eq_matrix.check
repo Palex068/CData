@@ -1,0 +1,97 @@
+#suite eq_matrix
+
+#test eq_matrix1
+// Checking equal matrix
+const int rows = rand() % 100 + 1;
+const int columns = rand() % 100 + 1;
+matrix_t test1 = {0};
+matrix_t test2 = {0};
+s21_create_matrix(rows, columns, &test1);
+s21_create_matrix(rows, columns, &test2);
+for (int i = 0; i < rows; i++) {
+    for (int j = 0; j < columns; j++) {
+        double random = get_rand(DBL_MIN, DBL_MAX);
+        test1.matrix[i][j] = random;
+        test2.matrix[i][j] = random;
+    }
+}
+ck_assert_int_eq(s21_eq_matrix(&test1, &test2), SUCCESS);
+s21_remove_matrix(&test1);
+s21_remove_matrix(&test2);
+
+#test eq_matrix2
+// The number of rows of each matrix is 0
+const int rows = 0;
+const int columns = rand() % 100 + 1;
+matrix_t test1 = {0};
+matrix_t test2 = {0};
+s21_create_matrix(rows, columns, &test1);
+s21_create_matrix(rows, columns, &test2);
+ck_assert_int_eq(s21_eq_matrix(&test1, &test2), FAILURE);
+
+#test eq_matrix3
+// The number of rows is different
+const int rows1 = 5;
+const int rows2 = 6;
+const int columns = rand() % 100 + 1;
+matrix_t test1 = {0};
+matrix_t test2 = {0};
+s21_create_matrix(rows1, columns, &test1);
+s21_create_matrix(rows2, columns, &test2);
+for (int i = 0; i < rows2; i++) {
+    for (int j = 0; j < columns; j++) {
+        double random = get_rand(DBL_MIN, DBL_MAX);
+        if (i != 5) test1.matrix[i][j] = random;
+        test2.matrix[i][j] = random;
+    }
+}
+ck_assert_int_eq(s21_eq_matrix(&test1, &test2), FAILURE);
+s21_remove_matrix(&test1);
+s21_remove_matrix(&test2);
+
+#test eq_matrix4
+// The number of columns is different
+const int rows = rand() % 100 + 1;
+const int columns1 = 5;
+const int columns2 = 6;
+matrix_t test1 = {0};
+matrix_t test2 = {0};
+s21_create_matrix(rows, columns1, &test1);
+s21_create_matrix(rows, columns2, &test2);
+for (int i = 0; i < rows; i++) {
+    for (int j = 0; j < columns2; j++) {
+        double random = get_rand(DBL_MIN, DBL_MAX);
+        if (j != 5) test1.matrix[i][j] = random;
+        test2.matrix[i][j] = random;
+    }
+}
+ck_assert_int_eq(s21_eq_matrix(&test1, &test2), FAILURE);
+s21_remove_matrix(&test1);
+s21_remove_matrix(&test2);
+
+#test eq_matrix5
+// Both matrices are NULL
+ck_assert_int_eq(s21_eq_matrix(NULL, NULL), FAILURE);
+
+#test eq_matrix6
+// One number in second matrix is different
+const int rows = rand() % 100 + 1;
+const int columns = rand() % 100 + 1;
+matrix_t test1 = {0};
+matrix_t test2 = {0};
+s21_create_matrix(rows, columns, &test1);
+s21_create_matrix(rows, columns, &test2);
+for (int i = 0; i < rows; i++) {
+    for (int j = 0; j < columns; j++) {
+        double random = get_rand(DBL_MIN, DBL_MAX);
+        test1.matrix[i][j] = random;
+        test2.matrix[i][j] = random;
+        if (i == (rows - 1) && j == (columns - 1)) {
+            test1.matrix[i][j] = 0.000005;
+            test2.matrix[i][j] = 0.000007;
+        }
+    }
+}
+ck_assert_int_eq(s21_eq_matrix(&test1, &test2), FAILURE);
+s21_remove_matrix(&test1);
+s21_remove_matrix(&test2);

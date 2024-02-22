@@ -1,0 +1,38 @@
+#suite create_matrix
+
+#test create_matrix1
+// Checking the number of rows, columns, internal values and total result with null values and remove function
+int rows = rand() % 100 + 1;
+int columns = rand() % 100 + 1;
+matrix_t test = {0};
+ck_assert_int_eq(s21_create_matrix(rows, columns, &test), OK);
+for (int i = 0; i < rows; i++) {
+  for (int j = 0; j < columns; j++) {
+    ck_assert_int_eq(0, test.matrix[i][j]);
+  }
+}
+ck_assert_int_eq(test.rows, rows);
+ck_assert_int_eq(test.columns, columns);
+s21_remove_matrix(&test);
+
+#test create_matrix2
+// The number of rows is null
+int rows = 0;
+int columns = rand() % 100 + 1;
+matrix_t test = {0};
+ck_assert_int_eq(s21_create_matrix(rows, columns, &test), ERROR);
+s21_remove_matrix(&test);
+
+#test create_matrix3
+// The number of columns is null
+int rows = rand() % 100 + 1;
+int columns = 0;
+matrix_t test = {0};
+ck_assert_int_eq(s21_create_matrix(rows, columns, &test), ERROR);
+s21_remove_matrix(&test);
+
+#test create_matrix4
+// Passing NULL
+int rows = rand() % 100 + 1;
+int columns = rand() % 100 + 1;
+ck_assert_int_eq(s21_create_matrix(rows, columns, NULL), ERROR);
