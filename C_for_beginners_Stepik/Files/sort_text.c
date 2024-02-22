@@ -4,26 +4,15 @@
 
 #define N 20
 
+char text[][N] = {"hello", "good bye", "abc", "hell"};
 
-char text[][N] = {
-    "hello",
-    "good bye",
-    "abc",
-    "hell"
-};
+int cmp(const void *a, const void *b) { return strcmp(a, b); }
 
-int cmp(const void *a, const void *b)
-{
-        return strcmp(a, b);
-}
+int main() {
+  int n = sizeof(text) / sizeof(*text);
 
-int main()
-{
-        int n = sizeof(text) / sizeof(*text);
+  qsort(text, n, N, cmp);
 
-        qsort(text, n, N, cmp);
-
-        int i;
-        for (i=0; i < n; ++i)
-                printf("%s\n", text[i]);
+  int i;
+  for (i = 0; i < n; ++i) printf("%s\n", text[i]);
 }

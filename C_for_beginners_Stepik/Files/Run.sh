@@ -7,7 +7,7 @@ file=$1
 clang-format $file -i 
 cppcheck --platform=win64 --enable=all --suppress=missingIncludeSystem $file
 
-gcc -Wall -Wextra -Werror $file -o build
+gcc -Wall -Wextra -Werror $file -o build.exe
 
-./build
-rm build
+./build.exe
+rm build.exe
