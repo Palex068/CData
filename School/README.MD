@@ -1,3 +1,5 @@
+# Так делать, конечно, нельзя!!! Но, если очень хочется, то можно 🙂
+
 ## Содержание
 + [Simple Bash Utils](/School/C2_SimpleBashUtils/README_RUS.md)
 + [String+](/School/C3_String/README_RUS.md)
