@@ -137,35 +137,112 @@
 //     return 0;
 // }
 
+// #include <stdio.h>
+// #include <stdlib.h>
+
+// #define N 1001
+
+// void prIntArr(int* numbers, int n) {
+//     for (int i = 0; i < n; i++) printf("%d%s", numbers[i], n == n - 1 ? " \n" : " ");
+// }
+
+// int cmpint(const void* pa, const void* pb) {
+//     int result = 0;
+//     int x = *(int*)pa;
+//     int y = *(int*)pb;
+//     while (result == 0) {
+//         result += (x % 10 > y % 10) - (x % 10 < y % 10);
+//         x /= 10;
+//         y /= 10;
+//         if (x == 0 && y == 0) break;
+//     }
+//     return result;
+// }
+
+// int main() {
+//     int n;
+//     int numbers[N];
+//     scanf("%d", &n);
+//     for (int i = 0; i < n; i++) scanf("%d", &numbers[i]);
+
+//     qsort(numbers, n, sizeof(int), cmpint);
+
+//     prIntArr(numbers, n);
+//     return 0;
+// }
+
+// #include <stdio.h>
+// #include <stdlib.h>
+// #define N 1000
+
+// void prIntArr(int* numbers, int n) {
+//     for (int i = 0; i < n; i++) printf("%d%s", numbers[i], n == n - 1 ? " \n" : " ");
+// }
+
+// // int cmpIntR(const void* pa, const void* pb) { return (*(int*)pb > *(int*)pa) - (*(int*)pb < *(int*)pa);
+// } int cmpInt(const void* pa, const void* pb) { return (*(int*)pa > *(int*)pb) - (*(int*)pa < *(int*)pb); }
+
+// int main() {
+//     int n, numbers[N], even_numbers[N], even_counter = 0;
+//     scanf("%d", &n);
+//     for (int i = 0; i < n; i++) {
+//         scanf("%d", &numbers[i]);
+//         if (numbers[i] % 2 == 0) {
+//             even_numbers[even_counter++] = numbers[i];
+//         }
+//     }
+//     qsort(even_numbers, even_counter, sizeof(int), cmpInt);
+
+//     int counter = 0;
+//     for (int i = 0; i < n; i++) {
+//         if (numbers[i] % 2 == 0) {
+//             numbers[i] = even_numbers[counter++];
+//         }
+//     }
+
+//     prIntArr(numbers, n);
+//     return 0;
+// }
+
+#include <math.h>
 #include <stdio.h>
 #include <stdlib.h>
+#define N 1000
 
-#define N 1001
+struct Point {
+    int x;
+    int y;
+};
 
-void prIntArr(int* numbers, int n) {
-    for (int i = 0; i < n; i++) printf("%d%s", numbers[i], n == n - 1 ? " \n" : " ");
+int cmp_Point(const void* p1, const void* p2) {
+    struct Point a = *(struct Point*)p1;
+    struct Point b = *(struct Point*)p2;
+
+    double alen = sqrt(pow(a.x, 2) + pow(a.y, 2));
+    double blen = sqrt(pow(b.x, 2) + pow(b.y, 2));
+    int result = (alen > blen) - (alen < blen);
+    if (!result) result == (a.x > b.x) - (a.x < b.x);
+    if (!result) result == (a.y > b.y) - (a.y < b.y);
+    return result;
 }
 
-int cmpint(const void* pa, const void* pb) {
-    int result = 0;
-    int x = *(int*)pa;
-    int y = *(int*)pb;
-    while ((x > 0 && y > 0) || result == 0) {
-        result += (x % 10 > y % 10) - (x % 10 < y % 10);
-        x /= 10;
-        y /= 10;
-    }
-    return result;
+void printPoints(struct Point* points, int n) {
+    for (int i = 0; i < n; i++) printf("%d %d%s", points[i].x, points[i].y, n == n - 1 ? " \n" : " ");
 }
 
 int main() {
     int n;
-    int numbers[N];
     scanf("%d", &n);
-    for (int i = 0; i < n; i++) scanf("%d", &numbers[i]);
 
-    qsort(numbers, n, sizeof(int), cmpint);
+    struct Point points[N];
 
-    prIntArr(numbers, n);
+    for (int i = 0; i < n; i++) {
+        scanf("%d%d", &points[i].x, &points[i].y);
+    }
+
+    qsort(points, n, sizeof(struct Point), cmp_Point);
+
+    printPoints(points, n);
+
     return 0;
 }
