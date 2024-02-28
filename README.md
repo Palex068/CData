@@ -3,10 +3,21 @@
 # Курсы
 
 ## [Stepik. Основы языка Си](/StepikC/README.md)
+## [C для начинающих (теория и задачи)](/C_for_beginners_Stepik/README.md)
 
 # Материалы
 
 ## [Основы языка C (LearnС.info)](/LearnCinfo/README.md)
+
+## [Начало работы с командной строкой Linux и оболочкой](/Materials/Bash/README.MD)
+
+## [Руководство по `check.h`](/Materials/Check/README.md)
+
+## [Windows для Linux (WSL)](/Materials/WSL/README.MD)
+
+# Ссылки
+
+[Введение в регулярные выражения](https://regex101.com/)
 
 # Статьи
 
