@@ -221,6 +221,90 @@
 //     return 0;
 // }
 
+// #include <stdio.h>
+// #include <stdlib.h>
+// #include <string.h>
+
+// #define N 101
+
+// typedef struct {
+//     char* dig;  // массив для хранения числа:
+//                 // a[0] * 100^0 + a[1] * 100^1 + .. + a[n - 1] * 100^(n-1)
+//     int n;      // размер числа в разрядах
+//     char sign;  // для положительных чисел и нуля, знак sign записывается как 0, для отрицательных - как 1
+// } LongN;
+
+// LongN* getLongN(char* s) {
+//     // сначала выделим память под саму структуру (фиолетовый прямоугольник)
+//     LongN* px = malloc(sizeof(LongN));
+
+//     px->sign = 0;
+
+//     if (s[0] == '0') {  // 0*10**0
+//         px->n = 0;
+//         px->dig = malloc(px->n + 1);
+//         px->dig[0] = 0;
+//         return px;
+//     }
+
+//     if (s[0] == '-') {
+//         px->sign = 1;
+//     }
+//     int len = strlen(s) - 1;
+//     int digits[N * 2] = {0};
+//     for (int i = 0; i <= len - px->sign; i++) {
+//         digits[i] = (s[len - i] - '0');
+//     }
+
+//     px->n = len - px->sign;
+//     px->dig = malloc(px->n);
+//     int j = 0;
+//     for (int i = 0; i <= len; i += 2, j++) {
+//         px->dig[j] = digits[i] + (i == len ? 0 : digits[i + 1]) * 10;
+//     }
+//     px->n = j - 1;
+//     // выделим памяти точно под хранение числа
+//     px->dig = realloc(px->dig, j);
+//     return px;
+// }
+
+// void longN_destroy(LongN* px) {
+//     free(px->dig);  // освобождаем желтый массив с цифрами
+//     free(px);  // освобождаем фиолетовый прямогольник, саму структуру
+// }
+
+// void longN_print(const LongN* x) {
+//     printf("%s", x->sign ? "- " : "+ ");
+
+//     for (int i = 0; i <= x->n; i++) {
+//         printf("%d ", x->dig[x->n - i]);
+//         // printf("\n");
+//     }
+// }
+
+// int main() {
+//     LongN* a;
+//     LongN* b;
+//     LongN* c;
+
+//     a = getLongN("1234000000000000000000000000000000000009");  // res = 0
+//     b = getLongN("0");                                         // res = 0
+//     c = getLongN("-123456789");                                // res = 0
+
+//     longN_print(a);  // print 0
+//     printf("\n");
+//     longN_print(b);  // print 0
+//     printf("\n");
+//     longN_print(c);  // print 0
+//     printf("\n");
+
+//     longN_destroy(a);
+//     longN_destroy(b);
+//     longN_destroy(c);
+
+//     return 0;
+// }
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -234,7 +318,7 @@ typedef struct {
     char sign;  // для положительных чисел и нуля, знак sign записывается как 0, для отрицательных - как 1
 } LongN;
 
-LongN* getLongN(char* s) {
+LongN* get_LongN(char* s) {
     // сначала выделим память под саму структуру (фиолетовый прямоугольник)
     LongN* px = malloc(sizeof(LongN));
 
@@ -274,7 +358,7 @@ void longN_destroy(LongN* px) {
 }
 
 void longN_print(const LongN* x) {
-    printf("%s", x->sign ? "- " : "");
+    printf("%s", x->sign ? "- " : "+ ");
 
     for (int i = 0; i <= x->n; i++) {
         printf("%d ", x->dig[x->n - i]);
@@ -282,20 +366,37 @@ void longN_print(const LongN* x) {
     }
 }
 
+LongN getLongN(char* s) {
+    LongN* result;
+    result = get_LongN(s);
+    return *result;
+}
+
 int main() {
     LongN* a;
     LongN* b;
     LongN* c;
 
-    a = getLongN("0");           // res = 0
-    b = getLongN("123456789");   // res = 0
-    c = getLongN("-123456789");  // res = 0
+    a = get_LongN("1234000000000000000000000000000000000009");  // res = 0
+    b = get_LongN("0");                                         // res = 0
+    c = get_LongN("-123456789");                                // res = 0
+
+    LongN d = getLongN("1234000000000000000000000000000000000009");  // res = 0
+    LongN e = getLongN("0");                                         // res = 0
+    LongN f = getLongN("-123456789");                                // res = 0
 
     longN_print(a);  // print 0
     printf("\n");
     longN_print(b);  // print 0
     printf("\n");
     longN_print(c);  // print 0
+    printf("\n");
+
+    longN_print(&d);  // print 0
+    printf("\n");
+    longN_print(&e);  // print 0
+    printf("\n");
+    longN_print(&f);  // print 0
     printf("\n");
 
     longN_destroy(a);
