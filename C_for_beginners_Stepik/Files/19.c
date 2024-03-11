@@ -89,18 +89,120 @@
 //     printf("%s ", matrix[5][((x >> 6) & 3)]);
 // }
 
+// #include <stdio.h>
+
+// int main() {
+//     unsigned int all[3];
+//     for (int i = 0; i < 3; i++) {
+//         scanf("%1o", &all[i]);
+//     }
+//     char *rwx[] = {"r", "w", "x", "-"};
+//     for (int i = 0; i < 3; i++) {
+//         for (int j = 0; j < 3; j++) {
+//             int res = (all[i] >> (2 - j)) & 1;
+//             printf("%s", res ? rwx[j] : rwx[3]);
+//         }
+//     }
+// }
+
+// #include <stdio.h>
+// #include <string.h>
+
+// struct Man {
+//     char str[3];
+//     unsigned int volume;
+//     unsigned int mask;
+// };
+
+// void print_bin(int x) {
+//     int result = 0, n = 1;
+//     while (x > 0) {
+//         result += (x % 2) * n;
+//         x /= 2;
+//         n *= 10;
+//     }
+//     printf("%08d", result);
+// }
+
+// int main() {
+//     unsigned int x = 0;
+//     char character[3];
+
+//     struct Man dict[] = {{"fe", 0, 1},  {"ma", 1, 1},  {"du", 0, 2},   {"cl", 1, 2},
+//                          {"nh", 0, 4},  {"ha", 1, 4},  {"sk", 0, 8},   {"tr", 1, 8},
+//                          {"bn", 0, 16}, {"rd", 1, 16}, {"bw", 1, 32},  {"bk", 2, 16},
+//                          {"bu", 0, 64}, {"ge", 1, 64}, {"gy", 1, 128}, {"da", 2, 64}};
+
+//     while (1 == scanf("%2s", character)) {
+//         for (int i = 0; i < 16; i++) {
+//             int cmp = strcmp(dict[i].str, character);
+//             if (cmp == 0) {
+//                 unsigned int volume = dict[i].volume;
+//                 unsigned int mask = dict[i].mask;
+//                 if (volume == 1) {
+//                     x = x | mask;
+//                 } else if (volume == 2) {
+//                     x = x | mask;
+//                     x = x | (mask * 2);
+//                 } else {
+//                     x = x & ~mask;
+//                 }
+//             }
+//         }
+//         printf("%02x ", x);
+//         print_bin(x);
+//         printf("\n");
+//     }
+
+//     return 0;
+// }
+#include <math.h>
 #include <stdio.h>
+#include <string.h>
+
+#define LEN 8
+#define MAX 6
 
 int main() {
-    unsigned int all[3];
-    for (int i = 0; i < 3; i++) {
-        scanf("%1o", &all[i]);
-    }
-    char *rwx[] = {"r", "w", "x", "-"};
-    for (int i = 0; i < 3; i++) {
-        for (int j = 0; j < 3; j++) {
-            int res = (all[i] >> (2 - j)) & 1;
-            printf("%s", res ? rwx[j] : rwx[3]);
+    int input[MAX][LEN] = {0}, x, counter = 0;
+
+    while (1 == scanf("%d", &x)) {
+        int result = 0, n = 1;
+        while (x > 0) {
+            result += (x % 2) * n;
+            x /= 2;
+            n *= 10;
+        }
+        int bit[3] = {0};
+        for (int i = 2; i >= 0; i--) {
+            bit[i] = result % 10;
+            result /= 10;
+        }
+        for (int i = 0; i < 3; i++) {
+            int m = counter % LEN;
+            int n = counter - LEN * m;
+            input[m][n] = bit[i];
+            counter++;
         }
     }
+    // печать массива
+    for (int i = 0; i < MAX; i++) {
+        for (int j = 0; j < LEN; j++) {
+            printf("%d", input[i][j]);
+        }
+        printf("\n");
+    }
+
+    // печать десятичных байтовых чисел
+    for (int i = 0; i < MAX; i++) {
+        int number = 0;
+        for (int j = 0; j < LEN; j++) {
+            number += input[i][j] * pow(2, LEN - j - 1);
+        }
+        if (counter > 0) {
+            printf("%d ", number);
+            counter -= 8;
+        }
+    }
+    return 0;
 }
