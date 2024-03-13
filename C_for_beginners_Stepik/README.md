@@ -1,5 +1,7 @@
 # C для начинающих (теория и задачи)
 
+https://stepik.org/course/57680/syllabus
+
 ## Описание курса
 + Синтаксис языка Си, в том числе работа с указателями и динамической памятью. Объяснения на пальцах. Много задач.
 + Алгоритмы (чуть-чуть). Задачи на "подумать".
@@ -21,3 +23,36 @@
 Мы очень благодарны всем, кто находит и описывает ошибки в курсе. Это помогает сделать курс лучше.
 
 Студент, помни, найденная ошибка или указанная в комментариях статья на Хабре - это плюс в карму. Плюсы в карму в мае могут стать плюсами на зачете.
+
+# [Содержание курса](/C_for_beginners_Stepik/01.md)
++ [1.1 Как учиться на курсе](/C_for_beginners_Stepik/01.md#11-как-учиться-на-курсе)
+    + [Модули курса](/C_for_beginners_Stepik/01.md#модули-курса)
+    + [Как учиться на курсе](/C_for_beginners_Stepik/01.md#как-учиться-на-курсе)
++ [1.2 Устанавливаем программы](/C_for_beginners_Stepik/01.md#12-устанавливаем-программы)
+    + [Хочу IDE](/C_for_beginners_Stepik/01.md#хочу-ide)
++ [1.3 Справочник](/C_for_beginners_Stepik/01.md#13-справочник)
+    + [Таблица приоритетов операций](/C_for_beginners_Stepik/01.md#таблица-приоритетов-операций)
+
+# [Введение](/C_for_beginners_Stepik/02.md)
++ [2.1 Что такое программирование](/C_for_beginners_Stepik/02.md#21-что-такое-программирование)
+    + [Представление данных в компьютере](/C_for_beginners_Stepik/02.md#представление-данных-в-компьютере)
+    + [Hello, world на языке Си](/C_for_beginners_Stepik/02.md#hello-world-на-языке-си)
+    + [Программирование](/C_for_beginners_Stepik/02.md#программирование)
+    + [Этапы сборки программы](/C_for_beginners_Stepik/02.md#этапы-сборки-программы)
+    + [Как собрать исполняемый модуль](/C_for_beginners_Stepik/02.md#как-собрать-исполняемый-модуль)
++ [2.2 Файловая система Linux](/C_for_beginners_Stepik/02.md#22-файловая-система-linux)
+    + [Создадим файл hello.c с текстом программы](/C_for_beginners_Stepik/02.md#создадим-файл-helloc-с-текстом-программы)
+    + [Разница между путями Windows и Linux](/C_for_beginners_Stepik/02.md#разница-между-путями-windows-и-linux)
+    + [Абсолютный и относительный путь](/C_for_beginners_Stepik/02.md#абсолютный-и-относительный-путь)
++ [2.3 Командная строка Linux](/C_for_beginners_Stepik/02.md#23-командная-строка-linux)
+    + [Команды](/C_for_beginners_Stepik/02.md#команды)
+        + [pwd - Print Working Directory](/C_for_beginners_Stepik/02.md#pwd---print-working-directory)
+        + [cd - Change directory](/C_for_beginners_Stepik/02.md#cd---change-directory)
+        + [ls - показать содержимое директории](/C_for_beginners_Stepik/02.md#ls---показать-содержимое-директории)
+        + [cat - показать содержимое файла](/C_for_beginners_Stepik/02.md#cat---показать-содержимое-файла)
+    + [Права доступа](/C_for_beginners_Stepik/02.md#права-доступа)
++ [2.4 gcc](/C_for_beginners_Stepik/02.md#24-gcc)
+    + [Собрать программу](/C_for_beginners_Stepik/02.md#собрать-программу)
+    + [Запустить программу](/C_for_beginners_Stepik/02.md#запустить-программу)
+    + [Сделаем проще](/C_for_beginners_Stepik/02.md#сделаем-проще)
+    + [Сделаем надежнее](/C_for_beginners_Stepik/02.md#сделаем-надежнее)
