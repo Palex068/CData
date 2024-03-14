@@ -65,5 +65,6 @@
         "fortran": "cd $dir && gfortran $fileName -o $fileNameWithoutExt && $dir$fileNameWithoutExt",
         "sml": "cd $dir && sml $fileName"
     },
-    "cmake.sourceDirectory": "C:/Users/Palex/Desktop/MyRep/CData/School/C3_2_string+"
+    "cmake.sourceDirectory": "C:/Users/Palex/Desktop/MyRep/CData/School/C3_2_string+",
+    "cSpell.language": "en,ru"
 }

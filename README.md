@@ -15,6 +15,8 @@
 
 ## [Windows для Linux (WSL)](/Materials/WSL/README.MD)
 
+## [Unix/Linux Command Reference](/files/fwunixref.pdf)
+
 # Ссылки
 
 [Введение в регулярные выражения](https://regex101.com/)
