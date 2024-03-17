@@ -8,7 +8,9 @@
         "limits.h": "c",
         "string.h": "c",
         "strings.h": "c",
-        "ctype.h": "c"
+        "ctype.h": "c",
+        "stddef.h": "c",
+        "stdlib.h": "c"
     },
     "code-runner.runInTerminal": false,
     "code-runner.executorMap": {
