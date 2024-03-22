@@ -158,21 +158,21 @@
 #define CLIENTBIG 1000
 
 int main() {
-  int n, i, client_id, tmp;
-  int a[CLIENTBIG + 1] = {};  // a[i] - сколько покупок сделал клиент i
+    int n, i, client_id, tmp;
+    int a[CLIENTBIG + 1] = {};  // a[i] - сколько покупок сделал клиент i
 
-  // читаем все записи
-  scanf("%d", &n);
-  for (i = 0; i < n; i++) {
-    scanf("%d %d %d", &tmp, &client_id, &tmp);
-    a[client_id]++;  // клиент client_id сделал еще 1 покупку
-  }
+    // читаем все записи
+    scanf("%d", &n);
+    for (i = 0; i < n; i++) {
+        scanf("%d %d %d", &tmp, &client_id, &tmp);
+        a[client_id]++;  // клиент client_id сделал еще 1 покупку
+    }
 
-  int x = 0;  // сколько уникальных клиентов
-  for (i = 0, x = 0; i <= CLIENTBIG; i++)  // для всех клиентов
-    if (a[i])  // если этот клиент покупал
-      x++;  // мы его учитываем, как уникального клиента
-  printf("%d\n", x);
+    int x = 0;                               // сколько уникальных клиентов
+    for (i = 0, x = 0; i <= CLIENTBIG; i++)  // для всех клиентов
+        if (a[i])                            // если этот клиент покупал
+            x++;  // мы его учитываем, как уникального клиента
+    printf("%d\n", x);
 
-  return 0;
+    return 0;
 }
