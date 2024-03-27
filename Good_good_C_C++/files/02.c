@@ -293,15 +293,143 @@
 //     return 0;
 // }
 
+// #include <stdio.h>
+
+// int main(void) {
+//     int a, b, h;
+
+//     scanf("%d, %d, %d", &a, &b, &h);
+
+//     double res = (a + b) * h / 2.0;
+
+//     printf("%.1lf", res);
+//     return 0;
+// }
+
+// #include <stdio.h>
+
+// int main(void) {
+//     int angle;
+//     scanf("%d", &angle);
+
+//     int res = angle % 360;
+//     printf("%d", res);
+//     return 0;
+// }
+
+// #include <stdio.h>
+
+// int main(void) {
+//     int rect_width = 1280, rect_height = 720;
+//     int w = 8, h = 8;
+//     scanf("%d; %d", &w, &h);
+
+//     int res_w = rect_width % w;
+//     int res_h = rect_height % h;
+
+//     printf("%d %d", res_w, res_h);
+
+//     return 0;
+// }
+
+// #include <stdio.h>
+
+// int main(void) {
+//     unsigned short time_h = 10;  // часы
+//     unsigned short time_m = 33;  // минуты
+//     unsigned short time_s = 5;   // секунды
+
+//     unsigned short h, m, s;  // добавляемое время: h - часы; m - минуты; s -
+//     секунды scanf("%hu; %hu; %hu", &h, &m, &s);
+
+//     int total_time = time_s + s + (time_m + m) * 60 + (time_h + h) * 3600;
+
+//     unsigned short total_h = total_time / 3600;
+//     unsigned short total_m = (total_time - total_h * 3600) / 60;
+//     unsigned short total_s = total_time % 60;
+
+//     printf("%02hu:%02hu:%02hu", total_h, total_m, total_s);
+
+//     return 0;
+// }
+
+// #include <stdio.h>
+
+// int main(void) {
+//     double a;
+//     scanf("%lf", &a);
+
+//     printf("%.1lf", --a);
+//     return 0;
+// }
+
+// #include <stdio.h>
+
+// int main(void) {
+//     int h, w;
+//     scanf("%d, %d", &h, &w);
+
+//     printf("%d", ++h * ++w);
+//     return 0;
+// }
+
+// #include <stdio.h>
+
+// int main(void) {
+//     int rect_width = 640, rect_height = 480;
+//     int w = 1, h = 1;
+//     scanf("%d; %d", &w, &h);
+
+//     int res = (rect_width / w) * (rect_height / h);
+//     printf("%d", res);
+
+//     return 0;
+// }
+
+// #include <stdio.h>
+
+// int main(void) {
+//     int a, b;
+//     scanf("%d %d", &a, &b);
+
+//     int res = (a *= 3) * (b -= 10);
+//     printf("%d", res);
+
+//     return 0;
+// }
+
+// #include <stdio.h>
+
+// int main(void) {
+//     double a, b;
+//     scanf("%lf %lf", &a, &b);
+
+//     double res = (a + b) * 2;
+//     printf("Периметр: %.1lf", res);
+
+//     return 0;
+// }
+
+// #include <stdio.h>
+
+// int main(void) {
+//     double s, m;
+//     scanf("%lf %lf", &s, &m);
+
+//     double res = s * (1 - m / 100.0) * 2;
+//     printf("%.2lf", res);
+
+//     return 0;
+// }
+
 #include <stdio.h>
 
 int main(void) {
-    int a, b, h;
+    int x;
+    scanf("%d", &x);
 
-    scanf("%d, %d, %d", &a, &b, &h);
-
-    double res = (a + b) * h / 2.0;
-
+    double res = x * 3600. / 1000.0;
     printf("%.1lf", res);
+
     return 0;
 }
