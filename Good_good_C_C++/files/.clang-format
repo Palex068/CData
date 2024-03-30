@@ -1,4 +1,4 @@
 ---
 BasedOnStyle: Google
 IndentWidth: 4
-ColumnLimit: 70
+ColumnLimit: 110
