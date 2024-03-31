@@ -759,19 +759,198 @@
 //     return 0;
 // }
 
-#include <math.h>
+// #include <math.h>
+// #include <stdio.h>
+
+// #define PI 3.1415
+
+// int main(void) {
+//     int a, b;
+//     scanf("%d, %d", &a, &b);
+
+//     double tan = a / (double)b;
+//     double res = atan(tan);
+
+//     printf("%.2lf %.2lf", tan, res);
+
+//     return 0;
+// }
+
+// #include <stdio.h>
+
+// #define KMH 3.6 *
+
+// int main(void) {
+//     int s_mc;
+//     scanf("%d", &s_mc);
+
+//     double s_kmh = KMH s_mc;
+
+//     printf("%.2lf", s_kmh);
+
+//     return 0;
+// }
+
+// #include <stdio.h>
+
+// #define PI 3.1415       // здесь определяйте макрос PI
+// #define GRAD 180 / PI*  // здесь формула перевода из радиан в градусы
+
+// int main(void) {
+//     double rad;
+//     scanf("%lf", &rad);
+
+//     double grad = GRAD rad;
+
+//     printf("%.2lf", grad);
+
+//     return 0;
+// }
+
+// #include <stdio.h>
+
+// #define MAX_WIDTH 256
+// #define MAX_HEIGHT 500
+
+// int main(void) {
+//     double width, height;
+//     scanf("%lf %lf", &width, &height);
+
+//     if (width > MAX_WIDTH) width = MAX_WIDTH;
+//     if (height > MAX_HEIGHT) height = MAX_HEIGHT;
+
+//     printf("%.1lf %.1lf", width, height);
+
+//     return 0;
+// }
+
+// #include <math.h>
+// #include <stdio.h>
+
+// #define MAX_LENGHT 100
+
+// int main(void) {
+//     int x, y;
+//     scanf("%d %d", &x, &y);
+
+//     double res = sqrt(x * x + y * y);
+
+//     printf(res > MAX_LENGHT ? "Radius length exceeds value of MAX_LENGTH" : "%.2lf", res);
+
+//     return 0;
+// }
+
+// #include <math.h>
+// #include <stdio.h>
+
+// #define MAX_BUFF_SIZE 1024
+
+// int main(void) {
+//     int buff_size;
+//     scanf("%d %d", &buff_size);
+
+//     if (buff_size > MAX_BUFF_SIZE) buff_size = MAX_BUFF_SIZE;
+
+//     printf("%d", buff_size);
+
+//     return 0;
+// }
+
+// #include <stdio.h>
+
+// #define MAX_WIDTH 1280
+// #define GET_WIDTH(W) (W) > MAX_WIDTH ? MAX_WIDTH : (W)
+
+// int main(void) {
+//     int width;
+//     scanf("%d", &width);
+
+//     width = GET_WIDTH(width);
+
+//     printf("width = %d", width);
+
+//     return 0;
+// }
+
+// #include <stdio.h>
+
+// #define GET_MAX(A, B) ((A) > (B) ? (A) : (B))
+
+// int main(void) {
+//     double val_1, val_2;
+//     if (scanf("%lf; %lf", &val_1, &val_2) != 2) {
+//         printf("Input error");
+//         return 0;
+//     }
+
+//     double res = GET_MAX(val_1 + 1, val_2 - 1) / (val_1 + val_2);
+
+//     printf("%.2lf", res);
+
+//     return 0;
+// }
+
+// #include <math.h>
+// #include <stdio.h>
+
+// #define GIPOT(A, B) sqrt((A) * (A) + (B) * (B))
+
+// int main(void) {
+//     int a, b;
+//     if (scanf("%d, %d", &a, &b) != 2) {
+//         printf("Input error");
+//         return 0;
+//     }
+
+//     double res = GIPOT(a + 3, b - 2);
+
+//     printf("%.2lf", res);
+
+//     return 0;
+// }
+
+// #include <stdio.h>
+
+// #define MUL_VAR_NAME(A, B) MUL_##A##_##B
+
+// int main(void) {
+//     int a, b;
+//     if (scanf("%d %d", &a, &b) != 2) {
+//         printf("Input error");
+//         return 0;
+//     }
+
+//     int MUL_VAR_NAME(a, b) = a * b;
+
+//     printf("%d", MUL_VAR_NAME(a, b));
+
+//     return 0;
+// }
+
 #include <stdio.h>
 
-#define PI 3.1415
+#if (SIZE == 1)...
+#endif
+
+#if SIZE > 10 - 8 ...
+#endif
+
+#define PERIMETR_CALC
 
 int main(void) {
     int a, b;
-    scanf("%d, %d", &a, &b);
+    if (scanf("%d, %d", &a, &b) != 2) {
+        printf("Input error.");
+        return 0;
+    }
 
-    double tan = a / (double)b;
-    double res = atan(tan);
-
-    printf("%.2lf %.2lf", tan, res);
+#ifndef PERIMETR_CALC
+    int res = a * b;
+    printf("%d", res);
+#else
+    int res = 2 * (a + b);
+    printf("%d", res);
+#endif
 
     return 0;
 }
