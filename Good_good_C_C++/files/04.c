@@ -795,20 +795,464 @@
 //     return 0;
 // }
 
-#include <stdio.h>
+// #include <stdio.h>
 
-#define MUL(X, Y) X* Y
-#define ADD(X, Y) ((X) + (Y))
-#define T_ADD(X, Y) "Adding two values " #X " and " #Y
-#define RES_N(RES) res_##RES
+// #define MUL(X, Y) X* Y
+// #define ADD(X, Y) ((X) + (Y))
+// #define T_ADD(X, Y) "Adding two values " #X " and " #Y
+// #define RES_N(RES) res_##RES
+
+// int main(void) {
+//     int a = 2, b = 5;
+//     int res_1 = MUL(7, b);
+//     int res_2 = MUL(a + 2, b - 1);
+//     int res_3 = ADD(7, b * 2);
+//     printf(T_ADD(i, j) "\n");
+//     printf("%d %d %d", RES_N(1), RES_N(2), RES_N(3));
+
+//     return 0;
+// }
+
+// #include <stdio.h>
+
+// int main(void) {
+//     char d = 10;
+//     char *gpt;
+//     gpt = &d;
+
+//     printf("gpt = %p, *gpt = %d, d = %d\n", gpt, *gpt, d);
+
+//     *gpt = 100;
+//     printf("gpt = %p, *gpt = %d, d = %d\n", gpt, *gpt, d);
+
+//     return 0;
+// }
+
+// #include <stdio.h>
+
+// int main(void) {
+//     int d = 10;
+//     int *gpt = &d;
+
+//     printf("gpt = %p, *gpt = %d, d = %d\n", gpt, *gpt, d);
+
+//     *gpt = 75432;
+//     printf("gpt = %p, *gpt = %d, d = %d\n", gpt, *gpt, d);
+
+//     return 0;
+// }
+
+// #include <stdio.h>
+
+// int main(void) {
+//     short var = 7;
+//     short* ptr_var;
+
+//     ptr_var = &var;
+//     *ptr_var = 8;
+
+//     printf("%d\n", *ptr_var);
+
+//     return 0;
+// }
+
+// #include <stdio.h>
+
+// int main(void) {
+//     short* ptr_var;
+//     *ptr_var = 8;
+
+//     return 0;
+// }
+
+// #include <stdio.h>
+
+// int main(void) {
+//     double var_d = 0;
+
+//     double* ptr_var_d = &var_d;
+
+//     *ptr_var_d = -54.38;
+
+//     return 0;
+// }
+
+// #include <stdio.h>
+
+// int main(void) {
+//     int init, k;
+
+//     scanf("%d", &init);
+//     k = init;
+//     int* ptr_k = &k;
+//     *ptr_k += 10;
+
+//     return 0;
+// }
+
+// #include <stdio.h>
+
+// int main(void) {
+//     short a, b;
+
+//     scanf("%hd", &b);
+
+//     short* ptr_a = &a;
+//     *ptr_a = b;
+
+//     printf("%d", a);
+//     return 0;
+// }
+
+// #include <stdio.h>
+
+// int main(void) {
+//     short a, b, init_a, init_b;
+
+//     scanf("%hd, %hd", &a, &b);
+//     init_a = a;
+//     init_b = b;
+
+//     short* ptr_a = &a;
+//     short* ptr_b = &b;
+
+//     *ptr_a = init_b;
+//     *ptr_b = init_a;
+
+//     return 0;
+// }
+
+// #include <stdio.h>
+
+// int main(void) {
+//     short a, b;
+
+//     scanf("%hd, %hd", &a, &b);
+
+//     short* ptr_a = &a;
+//     short* ptr_b = &b;
+
+//     int res = *ptr_a * *ptr_b;
+
+//     printf("%d", res);
+
+//     return 0;
+// }
+
+// #include <stdio.h>
+
+// int main(void) {
+//     int arg = 7;
+//     int *ptr_arg, *ptr;
+
+//     ptr_arg = &arg;
+
+//     return 0;
+// }
+
+// #include <stdio.h>
+
+// int main(void) {
+//     int arg = 7;
+//     int *ptr_arg, *ptr;
+
+//     ptr_arg = &arg;
+//     ptr = ptr_arg;
+
+//     printf("*ptr = %d, arg = %d\n", *ptr, arg);
+
+//     *ptr_arg = 100;
+//     printf("*ptr = %d, arg = %d\n", *ptr, arg);
+
+//     return 0;
+// }
+
+// #include <stdio.h>
+
+// int main(void) {
+//     int arg = 777;
+//     int *ptr_arg;
+//     char *ptr;
+
+//     ptr_arg = &arg;
+//     ptr = ptr_arg;
+
+//     return 0;
+// }
+
+// #include <stdio.h>
+
+// int main(void) {
+//     int *ptr;
+//     *ptr = 1;
+
+//     return 0;
+// }
+
+// #include <stdio.h>
+
+// int main(void) {
+//     int arg = 5;
+//     int *ptr = &arg;
+//     *ptr = 1;
+
+//     return 0;
+// }
+
+// #include <stdio.h>
+
+// int main(void) {
+//     int arg = 5;
+//     int *ptr = NULL;
+
+//     if (ptr != NULL) *ptr = 1;
+
+//     return 0;
+// }
+
+// #include <stdio.h>
+
+// int main(void) {
+//     short a, b;
+
+//     scanf("%hd, %hd", &a, &b);
+
+//     short *ptr_a = &a;
+//     short *ptr_b = &b;
+
+//     void *tmp = ptr_a;
+//     ptr_a = ptr_b;
+//     ptr_b = tmp;
+
+//     printf("%d %d", *ptr_a, *ptr_b);
+
+//     return 0;
+// }
+
+// #include <stdio.h>
+
+// int main(void) {
+//     int var;
+
+//     scanf("%d", &var);
+
+//     int *ptr_var = &var;
+//     char *ptr_ch = (char *)ptr_var;
+
+//     printf("%d", *ptr_ch);
+
+//     return 0;
+// }
+
+// #include <stdio.h>
+
+// int main(void) {
+//     short var;
+
+//     scanf("%hd", &var);
+
+//     short *ptr_var = &var;
+//     char *ptr_ch = (char *)ptr_var;
+
+//     *ptr_ch = 2;
+
+//     printf("%d", var);
+
+//     return 0;
+// }
+
+// int main(void) {
+//     char ch = 'a';
+//     char* ptr = &ch;
+
+//     int* ptr_i = (int*)ptr;
+//     *ptr_i = 0;
+
+//     return 0;
+// }
+
+// #include <stdio.h>
+
+// int main(void) {
+//     if (global_ptr != NULL) *global_ptr = 10;
+//     return 0;
+// }
+
+// #include <stdio.h>
+
+// int main(void) {
+//     int g = 4;
+//     int *ptr = &g;
+
+//     printf("ptr = %u\n", ptr);
+
+//     return 0;
+// }
+
+// #include <stdio.h>
+
+// int main(void) {
+//     int g = 4;
+//     int *ptr = &g;
+
+//     printf("%p\n", ptr);
+
+//     ptr += 3;
+//     ptr -= 4;
+//     ptr = ptr + 10;
+//     ptr = ptr - 9;
+//     --ptr;
+//     ptr++;
+
+//     printf("%p\n", ptr);
+
+//     return 0;
+// }
+
+// #include <stdio.h>
+
+// int main(void) {
+//     short g = 4, d = 1;
+//     short *ptr = &g;
+//     short *p = &d;
+
+//     printf("ptr = %u, p = %u\n", ptr, p);
+
+//     int res = ptr - p;
+
+//     printf("res = %d\n", res);
+
+//     return 0;
+// }
+
+// #include <stdio.h>
+
+// int main(void) {
+//     int g = 476789;
+//     char *ptr = (char *)&g;
+
+//     for (int i = 0; i < sizeof(g); ++i) {
+//         printf("%d ", *ptr);
+//         ptr++;
+//     }
+
+//     return 0;
+// }
+
+// #include <stdio.h>
+
+// int main(void) {
+//     int g = 476789;
+//     char *ptr = (char *)&g;
+
+//     int x = *ptr + 1;
+//     printf("x = %d\n", x);
+
+//     return 0;
+// }
+
+// #include <stdio.h>
+
+// int main(void) {
+//     double value;
+
+//     scanf("%lf", &value);
+
+//     char *ptr = (char *)&value;
+
+//     for (int i = 0; i < 8; i++) printf("%d ", *ptr++);
+
+//     return 0;
+// }
+
+// #include <stdio.h>
+
+// int main(void) {
+//     int value;
+
+//     scanf("%d", &value);
+
+//     short *ptr = (short *)&value;
+
+//     for (int i = 0; i < 2; i++) {
+//         *ptr++ += 1;
+//     }
+//     printf("%d ", value);
+
+//     return 0;
+// }
+
+// #include <stdio.h>
+
+// int main(void) {
+//     int a, b;
+
+//     scanf("%d; %d", &a, &b);
+
+//     void* p1 = (void*)a;
+//     void* p2 = (void*)b;
+
+//     int res = (p2 - p1) * sizeof(int) / sizeof(double);
+
+//     printf("%d", res);
+
+//     return 0;
+// }
+
+// #include <stdio.h>
+
+// int main(void) {
+//     int a;
+
+//     scanf("%d", &a);
+
+//     char *ptr_ch = (char *)&a;
+
+//     char count = sizeof(int);
+
+//     while (count--) {
+//         *ptr_ch++ |= 9;
+//     }
+
+//     printf("%d", a);
+
+//     return 0;
+// }
+
+// #include <stdio.h>
+
+// int main(void) {
+//     int a;
+
+//     scanf("%d", &a);
+
+//     char *ptr_ch = (char *)&a;
+
+//     char count = sizeof(int);
+//     unsigned char mask = 0b00111101;
+
+//     while (count--) {
+//         *ptr_ch++ &= mask;
+//     }
+
+//     printf("%d", a);
+
+//     return 0;
+// }
+#include <stdio.h>
+#define DELTA 1
 
 int main(void) {
-    int a = 2, b = 5;
-    int res_1 = MUL(7, b);
-    int res_2 = MUL(a + 2, b - 1);
-    int res_3 = ADD(7, b * 2);
-    printf(T_ADD(i, j) "\n");
-    printf("%d %d %d", RES_N(1), RES_N(2), RES_N(3));
+    int a, b, c, d;
+
+    scanf("%d %d %d %d", &a, &b, &c, &d);
+
+    char wight = (a > b ? a : b) - (c > d ? c : d) - DELTA >= 0;
+    char height = (a < b ? a : b) - (c < d ? c : d) - DELTA >= 0;
+
+    char res = wight * height;
+
+    printf("%s", res ? "yes" : "no");
 
     return 0;
 }
