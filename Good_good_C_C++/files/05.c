@@ -1383,66 +1383,684 @@
 //     return 0;
 // }
 
+// #include <stdio.h>
+
+// void strip_string(char* str, int max_len) {
+//     int count = 0;
+//     while (*str++ != '\0' && count++ < max_len)
+//         ;
+
+//     if (count > 0) {
+//         str -= 2;
+//         if (*str == '\n') *str = '\0';
+//     }
+// }
+
+// int words_counter(char* str, int max_len) {
+//     int count = 0, res = 0;
+//     while (*str != '\0' && count++ < max_len) {
+//         if (*str != ' ' && (*(str + 1) == ' ' || *(str + 1) == '\0')) res++;
+//         str++;
+//     }
+//     return res;
+// }
+
+// void str_norm(char* str, int max_len) {
+//     char ch = ' ';
+//     char shift = 0;
+//     char start = 1;
+
+//     for (int i = 0; i < max_len; i++) {
+//         if (start && str[i] == ch) shift++;
+//         if (start && str[i] != ch) start--;
+
+//         if (!start && shift) str[i - shift] = str[i];
+//         if (!start && str[i] == ch) {
+//             str[i - shift] = '_';
+//             if (str[i + 1] == ch) shift++;
+//         }
+//         if (str[i] == '\0') break;
+//     }
+// }
+
+// int main(void) {
+//     char str[100];
+//     fgets(str, sizeof(str), stdin);
+//     strip_string(str, sizeof(str));
+
+//     int res = words_counter(str, sizeof(str));
+
+//     if (res < 2) {
+//         printf("no");
+//         return 0;
+//     }
+
+//     str_norm(str, sizeof(str));
+
+//     int flag = 0;
+//     for (size_t i = 0; i < sizeof(str); i++) {
+//         if (flag) printf("%c", str[i]);
+//         if (str[i] == '_') flag = 1;
+//         if (flag && (str[i + 1] == '_' || str[i + 1] == '\0')) break;
+//     }
+
+//     return 0;
+// }
+
+// #include <stdio.h>
+
+// int main(void) {
+//     char source[100] = "Source string";
+//     char destination[10];
+
+//     return 0;
+// }
+
+// #include <stdio.h>
+
+// int main(void) {
+//     char source[100] = "Source string";
+//     char destination[10];
+
+//     const char* src = source;
+//     char* dst = destination;
+//     int max_len_copy = sizeof(destination);
+
+//     while (*src != '\0' && max_len_copy-- > 1) *dst++ = *src++;
+//     *dst = '\0';
+
+//     puts(destination);
+
+//     return 0;
+// }
+
+// #include <stdio.h>
+// #include <string.h>
+
+// int main(void) {
+//     char s_1[100] = "Source string";
+//     char d_1[10], d_2[20];
+
+//     strcpy(d_1, s_1);
+//     strcpy(d_2, s_1);
+
+//     puts(d_1);
+//     puts(d_2);
+
+//     return 0;
+// }
+
+// #include <stdio.h>
+// #include <string.h>
+
+// int main(void) {
+//     char s_1[100] = "Source string";
+//     char d_1[10], d_2[20];
+
+//     int max_len = sizeof(d_1) - 1;
+//     strncpy(d_1, s_1, max_len);
+//     d_1[max_len] = 0;
+//     strncpy(d_2, "Balakirev", 5);
+//     d_2[5] = 0;
+
+//     puts(d_1);
+//     puts(d_2);
+
+//     return 0;
+// }
+
+// #include <stdio.h>
+
+// int main(void) {
+//     char str[100] = "Length of the string";
+
+//     const char *buf = str;
+//     size_t length = 0;
+//     while (*buf++) length++;
+
+//     printf("length = %zu\n", length);
+
+//     return 0;
+// }
+
+// #include <stdio.h>
+// #include <string.h>
+
+// int main(void) {
+//     char str_cat[100] = "Sergey";
+//     char str[15] = "Balalkirev";
+
+//     strcat(str_cat, str);
+//     printf("%s", str_cat);
+
+//     printf("\n");
+
+//     size_t max_add = sizeof(str) - strlen(str) - 1;
+//     strncat(str, str_cat, max_add);
+//     str[sizeof(str) - 1] = '\0';
+//     printf("%s", str);
+
+//     return 0;
+// }
+
+// #include <stdio.h>
+// #include <string.h>
+
+// #define CITIES 6
+// #define CHARS 50
+
+// int main(void) {
+//     char cities[CITIES][CHARS];
+//     int index = 0, max_len = 0;
+
+//     for (int i = 0; i < CITIES; i++) {
+//         scanf("%49s", cities[i]);
+//         int size = strlen(cities[i]);
+//         if (max_len < size) {
+//             max_len = size;
+//             index = i;
+//         }
+//     }
+
+//     puts(cities[index]);
+
+//     return 0;
+// }
+// #include <stdio.h>
+// #include <string.h>
+
+// #define CITIES 6
+// #define CHARS 50
+
+// int main(void) {
+//     char cities[CITIES][CHARS];
+//     int index_max = 0, index_pre_max = 0, max_len = 0, pre_max_len = 0;
+
+//     for (int i = 0; i < CITIES; i++) {
+//         scanf("%49s", cities[i]);
+//         int size = strlen(cities[i]);
+//         if (max_len < size) {
+//             pre_max_len = max_len;
+//             max_len = size;
+//             index_pre_max = index_max;
+//             index_max = i;
+//         }
+//         if (size < max_len && pre_max_len < size) {
+//             pre_max_len = size;
+//             index_pre_max = i;
+//         }
+//     }
+
+//     printf("%s %s", cities[index_max], cities[index_pre_max]);
+
+//     return 0;
+// }
+
+// #include <stdio.h>
+// #include <string.h>
+
+// void strip_string(char* str, int max_len) {
+//     int count = 0;
+//     while (*str++ != '\0' && count++ < max_len)
+//         ;
+
+//     if (count > 0) {
+//         str -= 2;
+//         if (*str == '\n') *str = '\0';
+//     }
+// }
+
+// int main(void) {
+//     char str[100], res_str[100] = "I love language C ";
+//     fgets(str, sizeof(str), stdin);
+//     strip_string(str, sizeof(str));
+
+//     size_t max_add = sizeof(res_str) - strlen(res_str) - 1;
+
+//     strncat(res_str, str, max_add);
+
+//     puts(res_str);
+
+//     return 0;
+// }
+// #include <stdio.h>
+// #include <string.h>
+// #define MEN 7
+// #define CHARS 50
+
+// int main(void) {
+//     char ps[MEN][CHARS], ps_res[MEN * CHARS];
+//     char* ptr = ps_res;
+//     for (size_t i = 0; i < MEN; i++) {
+//         scanf("%s", ps[i]);
+//         for (size_t j = 0; j < strlen(ps[i]); j++) {
+//             *ptr++ = ps[i][j];
+//         }
+//         *ptr++ = ' ';
+//     }
+//     *(ptr - 1) = '\0';
+
+//     puts(ps_res);
+
+//     // __ASSERT_TESTS__  // макроопределение для тестирования (не убирать и должно идти непосредственно
+//     перед
+//     // return 0)
+
+//     return 0;
+// }
+// #include <stdio.h>
+// #include <string.h>
+// #define MEN 7
+// #define CHARS 50
+
+// int main(void) {
+//     char ps[MEN][CHARS], ps_res[MEN * CHARS];
+//     char* ptr = ps_res;
+//     for (size_t i = 0; i < MEN; i++) {
+//         scanf("%s", ps[i]);
+//         size_t len = strlen(ps[i]);
+//         if (len % 2 == 0) {
+//             for (size_t j = 0; j < len; j++) {
+//                 *ptr++ = ps[i][j];
+//             }
+//             *ptr++ = ' ';
+//         }
+//     }
+//     *(ptr - 1) = '\0';
+
+//     puts(ps_res);
+
+//     // __ASSERT_TESTS__  // макроопределение для тестирования (не убирать и должно идти непосредственно
+//     перед
+//     // return 0)
+
+//     return 0;
+// }
+// #include <stdio.h>
+// #include <string.h>
+// #define MEN 7
+// #define CHARS 51
+
+// int main(void) {
+//     char ps[MEN][CHARS], ps_sort[MEN * CHARS];
+//     char* ptr = ps_sort;
+//     for (size_t i = 0; i < MEN; i++) {
+//         scanf("%50s", ps[i]);
+//     }
+
+//     for (size_t i = 0; i < MEN; i++) {
+//         for (size_t j = i; j < MEN; j++) {
+//             if (strlen(ps[i]) > strlen(ps[j])) {
+//                 char tmp[CHARS];
+//                 strcpy(tmp, ps[i]);
+//                 strcpy(ps[i], ps[j]);
+//                 strcpy(ps[j], tmp);
+//             }
+//         }
+//     }
+
+//     for (size_t i = 0; i < MEN; i++) {
+//         size_t len = strlen(ps[i]);
+
+//         for (size_t j = 0; j < len; j++) {
+//             *ptr++ = ps[i][j];
+//         }
+//         *ptr++ = ' ';
+//     }
+//     *(ptr - 1) = '\0';
+
+//     puts(ps_sort);
+
+//     // __ASSERT_TESTS__  // макроопределение для тестирования (не убирать и должно идти непосредственно
+//     перед
+//     // return 0)
+
+//     return 0;
+// }
+
+// #include <stdio.h>
+
+// int main(void) {
+//     char s1[12] = "Hello";
+//     char s2[10] = "Hello";
+
+//     const char *str1 = s1;
+//     const char *str2 = s2;
+
+//     int i = 0;
+//     for (; str1[i] != '\0' && str2[i] != 0; ++i)
+//         if (str1[i] != str2[i]) {
+//             puts("Strings are not equal!");
+//             return 0;
+//         }
+
+//     if (str1[i] != str2[i]) {
+//         puts("String lengths are not equal!");
+//         return 0;
+//     }
+
+//     puts("Strings are equal!");
+
+//     return 0;
+// }
+
+// #include <stdio.h>
+// #include <string.h>
+
+// int main(void) {
+//     char s1[12] = "Hello";
+//     char s2[10] = "Hello";
+
+//     int res = strcmp(s1, s2);
+//     if (res == 0)
+//         puts("Strings are equal!");
+//     else
+//         puts("Strings are not equal!");
+
+//     return 0;
+// }
+
+// #include <stdio.h>
+// #include <string.h>
+
+// int main(void) {
+//     const char* strings[] = {"Ship", "Shopping", "Shematic", "Super", "Car", "Sherif"};
+
+//     for (int i = 0; i < sizeof(strings) / sizeof(*strings); ++i)
+//         if (strncmp(strings[i], "Sh", 2) == 0) puts(strings[i]);
+
+//     return 0;
+// }
+
+// #include <stdio.h>
+// #include <string.h>
+
+// int main(void) {
+//     char str[] = "Abrakadabra";
+//     char *ptr = strchr(str, 'a');
+
+//     printf("str = %p\nptr = %p\n", str, ptr);
+//     if (ptr != NULL) printf("*ptr = %c\n", *ptr);
+
+//     return 0;
+// }
+
+// #include <stdio.h>
+// #include <string.h>
+
+// int main(void) {
+//     char str[] = "Abrakadabra";
+//     char *ptr = strstr(str, "ra");
+
+//     printf("str = %p\nptr = %p\n", str, ptr);
+//     if (ptr != NULL) printf("ptr: %s\n", ptr);
+
+//     return 0;
+// }
+
+// #include <stdio.h>
+// #include <string.h>
+
+// int main(void) {
+//     char pass[] = "dfdfg90!#$$A";
+//     char *ptr = strpbrk(pass, "@!#$^&?");
+
+//     printf("pass = %p\nptr = %p\n", pass, ptr);
+//     if (ptr != NULL) printf("ptr: %s\n", ptr);
+
+//     return 0;
+// }
+
+// #include <stdio.h>
+// #include <string.h>
+// #define CHAR_TO_FIND '\n'
+// #define CHAR_TO_CHANGE '\0'
+
+// int main(void) {
+//     char str[100] = {0};
+//     fgets(str, sizeof(str) - 1, stdin);
+
+//     char* ptr = strrchr(str, CHAR_TO_FIND);
+
+//     if (ptr != NULL) *ptr = CHAR_TO_CHANGE;
+
+//     printf("[%s]", str);
+
+//     return 0;
+// }
+
+// #include <stdio.h>
+// #include <string.h>
+
+// #define STRING_TO_FIND "is"
+
+// int main(void) {
+//     char str[100] = {0};
+//     fgets(str, sizeof(str) - 1, stdin);
+//     char* ptr_n = strrchr(str, '\n');
+//     if (ptr_n != NULL) *ptr_n = '\0';
+
+//     char *ptr_str = str, res = 0;
+
+//     while (ptr_str != NULL) {
+//         ptr_str = strstr(ptr_str, STRING_TO_FIND);
+//         if (ptr_str != NULL) {
+//             // printf("%s", ptr_str);
+//             ptr_str++;
+//             res++;
+//         }
+//     }
+//     printf("%d", res);
+//     return 0;
+// }
+
+// #include <stdio.h>
+// #include <string.h>
+// #define CHAR_TO_CHANGE '-'
+
+// int main(void) {
+//     char str[100] = {0};
+
+//     fgets(str, sizeof(str) - 1, stdin);
+
+//     char* ptr_n = strrchr(str, '\n');
+//     if (ptr_n != NULL) *ptr_n = '\0';
+
+//     char res[300];
+//     char shift = 0;
+
+//     for (size_t i = 0; i <= strlen(str); i++) {
+//         res[i + shift] = str[i];
+//         if (str[i] == CHAR_TO_CHANGE) {
+//             res[i + 1 + shift] = '+';
+//             res[i + 2 + shift] = '-';
+//             shift += 2;
+//         }
+//     }
+
+//     puts(res);
+
+//     return 0;
+// }
+
+// #include <stdio.h>
+// #include <string.h>
+
+// int main(void) {
+//     char str[100] = {0};
+//     fgets(str, sizeof(str) - 1, stdin);
+//     char* ptr_n = strrchr(str, '\n');
+//     if (ptr_n != NULL) *ptr_n = '\0';
+
+//     char *ptr = str, shift = 0;
+
+//     while (*ptr != '\0') {
+//         *(ptr - shift) = *ptr;
+//         if (*ptr == '-' && *(ptr + 1) == '-') shift++;
+//         ptr++;
+//     }
+//     *(ptr - shift) = '\0';
+//     puts(str);
+//     return 0;
+// }
+
+// #include <stdio.h>
+// #include <string.h>
+
+// #define CITIES 10
+// #define CHARS 50
+// #define STRING_TO_FIND "на"
+
+// int main(void) {
+//     char cities[CITIES][CHARS];
+
+//     for (int i = 0; i < CITIES; i++) {
+//         scanf("%49s", cities[i]);
+//     }
+//     for (int i = 0; i < CITIES; i++) {
+//         if (strstr(cities[i], STRING_TO_FIND) != NULL)
+//             continue;
+//         else
+//             printf("%s ", cities[i]);
+//     }
+
+//     return 0;
+// }
+// #include <stdio.h>
+// #include <string.h>
+
+// #define CITIES 10
+// #define CHARS 50
+
+// int main(void) {
+//     char cities[CITIES][CHARS];
+
+//     for (int i = 0; i < CITIES; i++) {
+//         scanf("%49s", cities[i]);
+//     }
+//     for (size_t i = 0; i < CITIES; i++) {
+//         char res = 1;
+//         for (size_t j = 1; j < i; j++) {
+//             res *= strcmp(cities[i], cities[j]);
+//         }
+
+//         if (res == 0)
+//             continue;
+//         else
+//             printf("%s ", cities[i]);
+//     }
+
+//     return 0;
+// }
+// #include <stdio.h>
+
+// int main(void) {
+//     int h, m, s;
+
+//     scanf("%d:%d:%d", &h, &m, &s);
+
+//     printf("%02d:%02d:%02d", s, m, h);
+
+//     return 0;
+// }
+
+// #include <stdio.h>
+// #include <string.h>
+
+// int main(void) {
+//     char str[100] = {0};
+//     fgets(str, sizeof(str) - 1, stdin);
+//     char* ptr_n = strrchr(str, '\n');
+//     if (ptr_n != NULL) *ptr_n = '\0';
+//     size_t len = strlen(str);
+//     char res = 1;
+//     char dog_count = 0, dog_index = -1;
+//     char dot_count = 0, dot_index = -1;
+
+//     // посчитаем @ и сохраним его индекс
+//     for (size_t i = 0; i < len; i++) {
+//         if (str[i] == '@') {
+//             dog_count++;
+//             dog_index = i;
+//         }
+//     }
+//     if (dog_count != 1) {
+//         res = 0;
+//         // puts("@");
+//     }
+
+//     // посчитаем точки после @
+
+//     for (size_t i = dog_index; i < len; i++) {
+//         if (str[i] == '.') {
+//             dot_count++;
+//             dot_index = i;
+//         }
+//     }
+//     if (dot_count != 1 || dot_index == dog_index + 1) {
+//         res = 0;
+//         // puts(".");
+//     }
+
+//     printf("%d", res);
+
+//     return 0;
+// }
+
+// #include <stdio.h>
+
+// int main(void) {
+//     double width = 2.4, height = 0.76, depth = 3.14;
+//     char info[100];
+//     const char format[] = "(%.2f x %.2f x %.2f)";
+
+//     sprintf(info, format, width, height, depth);
+//     puts(info);
+
+//     return 0;
+// }
+
+// #include <stdio.h>
+
+// int main(void) {
+//     double width = 2.4, height = 0.76, depth = 3.14;
+//     char name[] = "Chair";
+//     char info[100];
+
+//     sprintf(info, "(%s: %.2f x %.2f x %.2f)", name, width, height, depth);
+//     puts(info);
+
+//     return 0;
+// }
+
+// #include <stdio.h>
+// #include <stdlib.h>
+// #include <string.h>
+
+// int main(void) {
+//     double width = 2.4, height = 0.76, depth = 3.14;
+//     char name[] = "Chair";
+//     const size_t size = strlen(name) + 100;
+//     char* info = (char*)malloc(size);
+
+//     sprintf(info, "(%.30s: %.2f x %.2f x %.2f)", name, width, height, depth);
+//     puts(info);
+
+//     free(info);
+
+//     return 0;
+// }
+
 #include <stdio.h>
-
-void strip_string(char* str, int max_len) {
-    int count = 0;
-    while (*str++ != '\0' && count++ < max_len)
-        ;
-
-    if (count > 0) {
-        str -= 2;
-        if (*str == '\n') *str = '\0';
-    }
-}
-
-int words_counter(char* str, int max_len) {
-    int count = 0, res = 0;
-    while (*str != '\0' && count++ < max_len) {
-        if (*str != ' ' && (*(str + 1) == ' ' || *(str + 1) == '\0')) res++;
-        str++;
-    }
-    return res;
-}
-
-void str_norm(char* str, int max_len) {
-    char ch = ' ';
-    char shift = 0;
-    char start = 1;
-
-    for (int i = 0; i < max_len; i++) {
-        if (start && str[i] == ch) shift++;
-        if (start && str[i] != ch) start--;
-
-        if (!start && shift) str[i - shift] = str[i];
-        if (!start && str[i] == ch) {
-            str[i - shift] = '_';
-            if (str[i + 1] == ch) shift++;
-        }
-        if (str[i] == '\0') break;
-    }
-}
+#include <stdlib.h>
 
 int main(void) {
-    char str[100];
-    fgets(str, sizeof(str), stdin);
-    strip_string(str, sizeof(str));
+    int a = atoi("123");
+    long b = atol("234235354");
+    long long c = atoll("23423535456456");
+    double d = atof("4564.4545");
 
-    int res = words_counter(str, sizeof(str));
-
-    if (res < 2) {
-        printf("no");
-        return 0;
-    }
-
-    str_norm(str, sizeof(str));
-
-    int flag = 0;
-    for (size_t i = 0; i < sizeof(str); i++) {
-        if (flag) printf("%c", str[i]);
-        if (str[i] == '_') flag = 1;
-        if (flag && (str[i + 1] == '_' || str[i + 1] == '\0')) break;
-    }
+    printf("a = %d\nb = %ld\nc = %lld\nd = %f\n", a, b, c, d);
 
     return 0;
 }
