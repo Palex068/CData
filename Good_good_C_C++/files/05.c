@@ -2051,16 +2051,252 @@
 //     return 0;
 // }
 
-#include <stdio.h>
-#include <stdlib.h>
+// #include <stdio.h>
+// #include <stdlib.h>
 
-int main(void) {
-    int a = atoi("123");
-    long b = atol("234235354");
-    long long c = atoll("23423535456456");
-    double d = atof("4564.4545");
+// int main(void) {
+//     int a = atoi("123");
+//     long b = atol("234235354");
+//     long long c = atoll("23423535456456");
+//     double d = atof("4564.4545");
 
-    printf("a = %d\nb = %ld\nc = %lld\nd = %f\n", a, b, c, d);
+//     printf("a = %d\nb = %ld\nc = %lld\nd = %f\n", a, b, c, d);
 
-    return 0;
-}
+//     return 0;
+// }
+
+// #include <stdio.h>
+
+// int main(void) {
+//     int h, m, s;
+
+//     scanf("%d %d %d", &h, &m, &s);
+
+//     if (h < 0 || h > 24)
+//         printf("--:");
+//     else
+//         printf("%02d:", h);
+//     if (m < 0 || m > 59)
+//         printf("--:");
+//     else
+//         printf("%02d:", m);
+//     if (s < 0 || s > 59)
+//         printf("--");
+//     else
+//         printf("%02d", s);
+
+//     return 0;
+// }
+
+// #include <stdio.h>
+// #include <stdlib.h>
+// #include <string.h>
+
+// int main(void) {
+//     char str[100] = {0};
+//     fgets(str, sizeof(str) - 1, stdin);
+//     char* ptr_n = strrchr(str, '\n');
+//     if (ptr_n != NULL) *ptr_n = '\0';
+
+//     int h = 0, w = 0, d = 0;
+//     char* ptr = strchr(str, ':') + 1;
+//     h = atoi(ptr);
+//     ptr = strchr(ptr, 'x') + 1;
+//     w = atoi(ptr);
+//     d = atoi((strchr(ptr, 'x') + 1));
+
+//     printf("%d %d %d", h, w, d);
+
+//     // __ASSERT_TESTS__
+//     // макроопределение для тестирования (не убирать и должно идти непосредственно перед return 0)
+//     return 0;
+// }
+
+// #include <stdio.h>
+// #include <stdlib.h>
+// #include <string.h>
+
+// int main(void) {
+//     char str[200] = {0};
+//     fgets(str, sizeof(str) - 1, stdin);
+//     char* ptr_n = strrchr(str, '\n');
+//     if (ptr_n != NULL) *ptr_n = '\0';
+
+//     double csv[50];
+//     char* ptr = strchr(str, ':');
+//     int count = 0;
+
+//     csv[count++] = atof(++ptr);
+
+//     while (strpbrk(ptr, ";")) {
+//         ptr = strchr(ptr, ';');
+//         csv[count++] = atof(++ptr);
+//     }
+//     for (int i = 0; i < count; i++) {
+//         printf("%.2lf ", csv[i]);
+//     }
+
+//     // __ASSERT_TESTS__
+//     // макроопределение для тестирования (не убирать и должно идти непосредственно перед return 0)
+//     return 0;
+// }
+
+// #include <stdio.h>
+// #include <stdlib.h>
+// #include <string.h>
+
+// #define TOTAL 10
+
+// typedef struct {
+//     char name[20];
+//     double price;
+// } data;
+
+// int main(void) {
+//     char str[TOTAL][50];
+//     int count = 0;
+//     while (count < TOTAL && fgets(str[count], sizeof(str) - 1, stdin)) {
+//         char* ptr_n = strrchr(str[count], '\n');
+//         if (ptr_n != NULL) *ptr_n = '\0';
+//         count++;
+//     }
+//     data data[TOTAL];
+//     for (int i = 0; i < count; i++) {
+//         char* ptr = str[i];
+//         char* name = data[i].name;
+//         while (1) {
+//             *name++ = *ptr++;
+//             if (*ptr == ':') {
+//                 *name = '\0';
+//                 break;
+//             }
+//         }
+
+//         ptr = strchr(ptr, ';') + 1;
+
+//         data[i].price = atof(ptr);
+//         if (data[i].price != 12300.0) {
+//             printf("%s %lf ", data[i].name, data[i].price);
+//         }
+//     }
+
+//     return 0;
+// }
+
+// #include <stdio.h>
+// #include <stdlib.h>
+// #include <string.h>
+
+// #define TOTAL 20
+
+// int main(void) {
+//     char str[100] = {0};
+//     fgets(str, sizeof(str) - 1, stdin);
+//     char* ptr_n = strrchr(str, '\n');
+//     if (ptr_n != NULL) *ptr_n = '\0';
+
+//     double res = 0, count = 0;
+
+//     char* ptr = str;
+//     while (strpbrk(ptr, ":,")) {
+//         ptr = strpbrk(ptr, ":,") + 1;
+//         res += atof(ptr);
+//         count++;
+//     }
+//     printf("%.3lf ", res / count);
+
+//     return 0;
+// }
+
+// #include <stdio.h>
+
+// int main() {
+//     char name[50];
+//     scanf("%[^:]:", name);
+//     int k, count = 0;
+//     double ans = 0;
+//     while (scanf("%d,", &k) == 1) {
+//         ans += k;
+//         count++;
+//     }
+//     printf("%.3f", ans / count);
+//     return 0;
+// }
+
+// #include <stdio.h>
+// #include <stdlib.h>
+// #include <string.h>
+
+// #define TOTAL 20
+
+// int main(void) {
+//     char str[100] = {0};
+//     fgets(str, sizeof(str) - 1, stdin);
+//     char* ptr_n = strrchr(str, '\n');
+//     if (ptr_n != NULL) *ptr_n = '\0';
+
+//     int count = 0;
+
+//     char student[20];
+//     char* ptr = str;
+//     char* name = student;
+//     while (1) {
+//         *name++ = *ptr++;
+//         if (*ptr == ' ') {
+//             *name = '\0';
+//             break;
+//         }
+//     }
+
+//     int nums[20];
+
+//     ptr = str;
+//     while (strpbrk(ptr, " ")) {
+//         ptr = strpbrk(ptr, " ") + 1;
+//         nums[count++] = atof(ptr);
+//     }
+
+//     printf("%s: ", student);
+
+//     for (int i = 0; i < count; i++) {
+//         printf("%d%s", nums[i], i == count - 1 ? "" : ", ");
+//     }
+
+//     return 0;
+// }
+
+// #include <stdio.h>
+// #include <stdlib.h>
+// #include <string.h>
+
+// #define TOTAL 10
+
+// int main(void) {
+//     char str[TOTAL][50], *p_sort[TOTAL];
+//     int count = 0;
+//     while (count < TOTAL && fgets(str[count], sizeof(str) - 1, stdin)) {
+//         char* ptr_n = strrchr(str[count], '\n');
+//         if (ptr_n != NULL) *ptr_n = '\0';
+//         count++;
+//     }
+
+//     char tmp[50];
+
+//     for (int i = 0; i < count; i++) {
+//         for (int j = i; j < count; j++) {
+//             if (atof(strrchr(str[i], ';') + 1) < atof(strrchr(str[j], ';') + 1)) {
+//                 strcpy(tmp, str[i]);
+//                 strcpy(str[i], str[j]);
+//                 strcpy(str[j], tmp);
+//             }
+//         }
+//     }
+//     for (int i = 0; i < count; i++) {
+//         char* ptr = strchr(str[i], ':');
+//         *ptr = '\0';
+
+//         printf("%s ", str[i]);
+//     }
+
+//     return 0;
+// }
