@@ -714,91 +714,639 @@
 //         }
 //     }
 // }
+// #include <stdio.h>
+
+// #define SIZE 3
+
+// int is_win(int (*matrix)[SIZE]);
+// int ch_to_int(char ch);
+
+// int main(void) {
+//     int pole[SIZE][SIZE] = {0};
+//     int* ptr_p = &pole[0][0];
+//     int count = 0;
+//     while (count < SIZE * SIZE && scanf("%d", ptr_p) == 1) {
+//         *ptr_p = (*ptr_p == 1) ? 'x' : (*ptr_p == 2) ? 'o' : *ptr_p;
+//         ptr_p++;
+//         count++;
+//     }
+
+//     int result = is_win(pole);
+
+//     printf("%d", result);
+
+//     return 0;
+// }
+
+// int ch_to_int(char ch) {
+//     if (ch == 'x') return 1;
+//     if (ch == 'o') return 2;
+//     return 0;
+// }
+
+// int is_win(int (*matrix)[SIZE]) {
+//     // проверим строки
+//     for (int i = 0; i < SIZE; i++) {
+//         int row_count = 0;
+//         int nulls = 1;
+//         for (int j = 0; j < SIZE; j++) {
+//             if (matrix[i][j] == 0) {
+//                 nulls = 0;
+//                 break;
+//             }
+//             row_count += ch_to_int(matrix[i][j]);
+//         }
+//         if (nulls && row_count == 3) return 1;
+//         if (nulls && row_count == 6) return 2;
+//     }
+
+//     // проверим столбцы
+//     for (int i = 0; i < SIZE; i++) {
+//         int cell_count = 0;
+//         int nulls = 1;
+//         for (int j = 0; j < SIZE; j++) {
+//             if (matrix[j][i] == 0) {
+//                 nulls = 0;
+//                 break;
+//             }
+//             cell_count += ch_to_int(matrix[j][i]);
+//         }
+//         if (nulls && cell_count == 3) return 1;
+//         if (nulls && cell_count == 6) return 2;
+//     }
+
+//     // проверим диагонали
+//     int diag1_sum = 0;
+//     int diag2_sum = 0;
+//     int nulls = 1;
+//     for (int i = 0; i < SIZE; i++) {
+//         if (matrix[i][i] == 0) {
+//             nulls = 0;
+//             break;
+//         }
+//         diag1_sum += ch_to_int(matrix[i][i]);
+//         diag2_sum += ch_to_int(matrix[i][SIZE - i - 1]);
+//     }
+//     if (nulls && diag1_sum == 3) return 1;
+//     if (nulls && diag2_sum == 3) return 1;
+//     if (nulls && diag1_sum == 6) return 2;
+//     if (nulls && diag2_sum == 6) return 2;
+
+//     // проверим нули
+//     for (int i = 0; i < SIZE; i++) {
+//         for (int j = 0; j < SIZE; j++) {
+//             if (matrix[i][j] == 0) {
+//                 return 0;
+//             }
+//         }
+//     }
+//     return 3;
+// }
+
+// #include <stdio.h>
+
+// #define SIZE 10
+
+// void filter(int dst[], size_t size_dst, const int src[], size_t size_src, int (*is_correct)(int)) {
+//     for (int i = 0; i < size_dst; ++i) dst[i] = 0;
+
+//     for (int i = 0, j = 0; i < size_src; ++i)
+//         if (is_correct(src[i])) dst[j++] = src[i];
+// }
+
+// int is_even(int x) { return x % 2 == 0; }
+
+// int main(void) {
+//     int digits[] = {-3, 4, 10, 11, -5, 3};
+//     int result[SIZE];
+
+//     filter(result, SIZE, digits, sizeof(digits) / sizeof(*digits), is_even);
+
+//     for (int i = 0; i < SIZE; ++i) printf("%d ", result[i]);
+
+//     return 0;
+// }
+
+// #include <stdio.h>
+
+// double (*ptr_func)(int, int);
+
+// int main(void) {
+
+//     return 0;
+// }
+
+// #include <stdio.h>
+
+// double max_2(double a, double b) { return (a > b) ? a : b; }
+
+// int main(void) {
+//     double a, b;
+//     scanf("%lf, %lf", &a, &b);
+
+//     double (*ptr_max_2)(double, double);
+//     ptr_max_2 = max_2;
+
+//     double result = ptr_max_2(a, b);
+
+//     printf("%.1lf", result);
+//     //__ASSERT_TESTS__
+//     // макроопределение для тестирования (не убирать и должно идти непосредственно перед return 0)
+//     return 0;
+// }
+
+// #include <stdio.h>
+// #include <string.h>
+
+// void copy_string(char* dst, size_t max_len_dst, const char* src, int (*to_copy)(const char)) {
+//     size_t counter = 0;
+//     int index = 0, shift = 0;
+//     char* dst_ptr = dst;
+//     while (src[index] != '\0' && counter + shift + 1 < max_len_dst) {
+//         if (to_copy(src[index])) {
+//             if (((int)src[index]) < 0) shift++;
+//             // printf("%c ", src[index]);
+//             *dst_ptr++ = src[index];
+//             counter++;
+//         }
+
+//         index++;
+//     }
+
+//     // printf("\n%d %d\n", counter, shift);
+
+//     dst[max_len_dst - shift - 1] = '\0';
+// }
+
+// int is_alpha(const char ch) {
+//     int res = 1;
+//     if ((ch >= 'a' && ch <= 'z') || (ch >= 'A' && ch <= 'Z')) {
+//         res = 0;
+//     }
+//     return res;
+// }
+
+// int (*to_copy)(const char) = is_alpha;
+
+// int main(void) {
+//     char str[100] = {0}, str2[20];
+//     fgets(str, sizeof(str) - 1, stdin);
+//     char* ptr_n = strrchr(str, '\n');
+//     if (ptr_n != NULL) *ptr_n = '\0';
+
+//     copy_string(str2, 20, str, to_copy);
+
+//     printf("%s", str2);
+
+//     return 0;
+// }
+
+// #include <stdio.h>
+// #define MAX 20
+
+// int sum_ar(const int *ar, size_t len_ar, int (*request)(int)) {
+//     int res = 0;
+//     for (size_t i = 0; i < len_ar; i++) {
+//         if (request(ar[i])) res += ar[i];
+//     }
+//     return res;
+// }
+
+// int is_even(int num) {
+//     int res = 1;
+//     if (num % 2) res = 0;
+//     return res;
+// }
+
+// int (*request)(int) = is_even;
+
+// int main(void) {
+//     int marks[MAX] = {0};
+//     int x;
+//     size_t count = 0;
+//     while (scanf("%d", &x) == 1 && count < MAX) {
+//         marks[count++] = x;
+//     }
+
+//     int result = sum_ar(marks, count, request);
+
+//     printf("%d", result);
+
+//     return 0;
+// }
+
+// #include <stdio.h>
+
+// int is_odd(int num) {
+//     int res = 0;
+//     if (num % 2) res = 1;
+//     return res;
+// }
+
+// int is_positive(int num) {
+//     int res = 0;
+//     if (num >= 0) res = 1;
+//     return res;
+// }
+
+// int is_negative(int num) {
+//     int res = 1;
+//     if (num >= 0) res = 0;
+//     return res;
+// }
+
+// int deflt(int num) {
+//     int res = num * 0 + 1;
+//     return res;
+// }
+
+// int sum_ar(const int *ar, size_t len_ar, int (*func)(int)) {
+//     int res = 0;
+//     for (size_t i = 0; i < len_ar; i++) {
+//         if (func(ar[i])) res += ar[i];
+//     }
+//     return res;
+// }
+
+// int main(void) {
+//     // здесь массив указателей funcs на критериальные функции
+//     int marks[20] = {0};
+
+//     int item = 0;
+//     scanf("%d", &item);  // выбор критерия суммирования
+
+//     int x;
+//     size_t count = 0, len = sizeof(marks) / sizeof(marks[0]);
+//     while (scanf("%d", &x) == 1 && count < len) {
+//         marks[count++] = x;
+//     }
+
+//     int (*funcs[4])(int) = {is_odd, is_positive, is_negative, deflt};
+
+//     int sum = 0;  // переменная для хранения суммы
+//     switch (item) {
+//         case 1:
+//             sum = sum_ar(marks, len, funcs[item - 1]);
+//             break;
+//         case 2:
+//             sum = sum_ar(marks, len, funcs[item - 1]);
+//             break;
+//         case 3:
+//             sum = sum_ar(marks, len, funcs[item - 1]);
+//             break;
+//         default:
+//             sum = sum_ar(marks, len, funcs[item - 1]);
+//     }
+
+//     printf("%d", sum);
+
+//     return 0;
+// }
+
+// #include <stdio.h>
+// #include <string.h>
+
+// int is_digit(const char a) {
+//     int res = 0;
+//     if (a >= '0' && a <= '9') res = 1;
+//     return res;
+// }
+
+// int match_ab(const char a, const char b) {
+//     int a_is_digit = is_digit(a);
+//     int b_is_digit = is_digit(b);
+
+//     if (a_is_digit == b_is_digit) return a < b;
+//     if (a_is_digit > b_is_digit)
+//         return 1;
+//     else
+//         return 0;
+// }
+
+// void swap(char* a, char* b) {
+//     char tmp = *a;
+//     *a = *b;
+//     *b = tmp;
+// }
+
+// void sort_string(char* str, size_t max_len, int (*match_ab)(const char, const char)) {
+//     max_len = strlen(str);
+//     for (size_t i = 0; i < max_len; i++) {
+//         for (size_t j = i; j < max_len; j++) {
+//             if (!match_ab(str[i], str[j])) swap(&str[i], &str[j]);
+//         }
+//     }
+// }
+
+// int main(void) {
+//     char str[100] = {0};
+//     fgets(str, sizeof(str) - 1, stdin);
+//     char* ptr_n = strrchr(str, '\n');
+//     if (ptr_n != NULL) *ptr_n = '\0';
+
+//     sort_string(str, strlen(str) - 1, match_ab);
+
+//     puts(str);
+
+//     return 0;
+// }
+
+// #include <stdio.h>
+// #define MAX 4
+
+// void swap(int* a, int* b) {
+//     int tmp = *a;
+//     *a = *b;
+//     *b = tmp;
+// }
+
+// int match_ab(const int a, const int b) { return a < b; }
+
+// int sum_big2(int a, int b, int c, int d) {
+//     int nums[MAX] = {a, b, c, d};
+//     for (size_t i = 0; i < MAX; i++) {
+//         for (size_t j = i; j < MAX; j++) {
+//             if (match_ab(nums[i], nums[j])) swap(&nums[i], &nums[j]);
+//         }
+//     }
+//     return nums[0] + nums[1];
+// }
+
+// int main(void) {
+//     int a, b, c, d;
+//     scanf("%d %d %d %d", &a, &b, &c, &d);
+
+//     int result = sum_big2(a, b, c, d);
+
+//     printf("%d", result);
+
+//     return 0;
+// }
+
+// int max2(int a, int b) { return (a > b) ? a : b; }
+
+// int main(void) {
+//     int x = 1, y = 2;
+//     int res = max2(x, y);
+
+//     return 0;
+// }
+
+// #include <stdio.h>
+// #include <stdlib.h>
+// #define N 100
+
+// double norm(int a, int b) {
+//     double res = 0;
+//     size_t count = N;
+//     for (size_t i = 0; i < count; i++) {
+//         res += a + rand() % (b - a + 1);
+//     }
+//     return res / N;
+// }
+
+// int main(void) {
+//     double y = norm(-2, 10);
+
+//     printf("%.2lf", y);
+//     //__ASSERT_TESTS__
+//     // макроопределение для тестирования (не убирать и должно идти непосредственно перед return 0)
+//     return 0;
+// }
+
+// #include <math.h>
+// #include <stdio.h>
+// #include <stdlib.h>
+
+// #define N 100
+
+// double norm(int a, int b) {
+//     double res = 0;
+//     size_t count = N;
+//     for (size_t i = 0; i < count; i++) {
+//         res += a + rand() % (b - a + 1);
+//     }
+//     return res / N;
+// }
+
+// double reley(double x1, double x2) {
+//     double res = sqrt(x1 * x1 + x2 * x2);
+//     return res;
+// }
+
+// int main(void) {
+//     double y = reley(norm(0, 5), norm(0, 5));
+
+//     printf("%.2lf", y);
+//     //__ASSERT_TESTS__
+//     // макроопределение для тестирования (не убирать и должно идти непосредственно перед return 0)
+//     return 0;
+// }
+
+// #include <stdio.h>
+// #define MAX_SIZE 20
+
+// void swap(short* a, short* b) {
+//     short tmp = *a;
+//     *a = *b;
+//     *b = tmp;
+// }
+
+// void print_array(short array[], short size) {
+//     for (int i = 0; i < size; i++) {
+//         printf("%d%s", array[i], i == size - 1 ? "" : " ");
+//     }
+// }
+
+// void reverse(short* array, short size) {
+//     for (int i = 0; i < size / 2; i++) {
+//         swap((array + i), (array + size - i - 1));
+//     }
+// }
+
+// int main(void) {
+//     short digs[MAX_SIZE];
+//     int count = 0;
+//     while (count < MAX_SIZE && scanf("%hd", &digs[count]) == 1) count++;
+
+//     reverse(digs, count);
+
+//     print_array(digs, count);
+
+//     return 0;
+// }
+
+// #include <stdio.h>
+// #include <string.h>
+
+// // void strip_str(char* str, const char* strip) {
+// //     char *ptr = str, shift = 0;
+// //     while (*ptr != '\0') {
+// //         *(ptr - shift) = *ptr;
+// //         if (strchr(strip, *ptr) != NULL) shift++;
+// //         ptr++;
+// //     }
+// //     *(ptr - shift) = '\0';
+// //     return;
+// // }
+
+// void strip_str(const char* str, const char* find) {
+//     char* ptr = strpbrk(str, find);
+//     while (ptr) {
+//         strcpy(ptr, ptr + 1);
+//         ptr = strpbrk(str, find);
+//     }
+
+//     return;
+// }
+
+// int main(void) {
+//     char str[100] = {0}, str2[20] = ".,-!?";
+//     fgets(str, sizeof(str) - 1, stdin);
+//     char* ptr_n = strrchr(str, '\n');
+//     if (ptr_n != NULL) *ptr_n = '\0';
+
+//     const char* str_ptr = str;
+//     const char* str2_ptr = str2;
+
+//     strip_str(str_ptr, str2_ptr);
+
+//     puts(str);
+
+//     return 0;
+// }
+
+// #include <stdio.h>
+
+// void rcs(int x) {
+//     printf("Down: x = %d\n", x);
+
+//     if (x > 1) rcs(x - 1);
+
+//     printf("Up: x = %d\n", x);
+// }
+
+// int main(void) {
+//     rcs(4);
+
+//     return 0;
+// }
+
+// #include <stdio.h>
+
+// #define N 5
+
+// void show_pole(const char (*p)[N]) {
+//     for (int i = 0; i < N; ++i) {
+//         for (int j = 0; j < N; ++j) printf("%c ", (p[i][j] == 0) ? '#' : '0');
+//         putchar('\n');
+//     }
+// }
+
+// void open_zeros(const char (*p)[N], char (*pp)[N], int i, int j) {
+//     if (p[i][j] != 0 || pp[i][j] == 1) return;
+
+//     pp[i][j] = 1;  // открываем клетку
+
+//     if (i - 1 >= 0 && p[i - 1][j] == 0) open_zeros(p, pp, i - 1, j);
+//     if (i + 1 < N && p[i + 1][j] == 0) open_zeros(p, pp, i + 1, j);
+//     if (j - 1 >= 0 && p[i][j - 1] == 0) open_zeros(p, pp, i, j - 1);
+//     if (j + 1 < N && p[i][j + 1] == 0) open_zeros(p, pp, i, j + 1);
+// }
+
+// int main(void) {
+//     char pole[N][N] = {
+//         {1, 1, 1, 1, 1}, {1, 1, 0, 1, 1}, {0, 0, 0, 0, 1}, {1, 1, 0, 0, 0}, {1, 1, 0, 1, 1},
+//     };
+
+//     char ppole[N][N] = {0};
+
+//     show_pole(ppole);
+//     open_zeros(pole, ppole, 2, 2);
+
+//     puts("--------------------");
+//     show_pole(ppole);
+
+//     return 0;
+// }
+
+// #include <stdio.h>
+// #define MAX_RECURSION 4
+
+// void recursive(int num) {
+//     if (num > MAX_RECURSION) return;
+
+//     recursive(num + 1);
+
+//     printf("%d ", num);
+//     return;
+// }
+
+// int main(void) {
+//     recursive(1);
+
+//     return 0;
+// }
+
+// #include <stdio.h>
+// #define MAX_LENGTH 20
+
+// size_t range_to_ar(int* ptr_a, size_t max_len, int from, int to, size_t count) {
+//     if (from > to || count >= max_len)
+//         return (size_t)(to - from + 1) > (size_t)max_len ? max_len : (size_t)(to - from + 1);
+
+//     ptr_a[count] = from;
+//     // printf("UP:%d %d\n", from, count);
+
+//     range_to_ar(ptr_a, max_len, from + 1, to, count + 1);
+
+//     // printf("DOWN:%d %d\n", from, count);
+
+//     return (size_t)(to - from + 1) > (size_t)max_len ? max_len : (size_t)(to - from + 1);
+// }
+
+// size_t range_to_ar(int* ptr_a, size_t max_len, int from, int to, size_t count) {
+//     if (from > to || count == max_len) {
+//         return count;
+//     }
+
+//     *(ptr_a + count) = from;
+//     return range_to_ar(ptr_a, max_len, ++from, to, ++count);
+// }
+
+// int main(void) {
+//     int max_rec;
+//     int ar[MAX_LENGTH];
+//     scanf("%d", &max_rec);
+
+//     size_t cnt = range_to_ar(ar, MAX_LENGTH, 1, max_rec, 0);
+
+//     // printf("%d\n", cnt);
+
+//     for (size_t i = 0; i < cnt; i++) {
+//         printf("%d ", ar[i]);
+//     }
+
+//     return 0;
+// }
+
 #include <stdio.h>
+#define MAX_LENGTH 20
 
-#define SIZE 3
-
-int is_win(int (*matrix)[SIZE]);
-int ch_to_int(char ch);
+int sum_ar(const short* ar, size_t len, size_t indx) {
+    if (indx == len) return 0;
+    // printf("%d ", ar[indx]);
+    return ar[indx] + sum_ar(ar, len, indx + 1);
+}
 
 int main(void) {
-    int pole[SIZE][SIZE] = {0};
-    int* ptr_p = &pole[0][0];
+    short ar[MAX_LENGTH];
     int count = 0;
-    while (count < SIZE * SIZE && scanf("%d", ptr_p) == 1) {
-        *ptr_p = (*ptr_p == 1) ? 'x' : (*ptr_p == 2) ? 'o' : *ptr_p;
-        ptr_p++;
-        count++;
-    }
+    while (count < MAX_LENGTH && scanf("%hd", &ar[count]) != EOF) count++;
+    // printf("%d ", count);
+    int sum = sum_ar(ar, count, 0);
 
-    int result = is_win(pole);
-
-    printf("%d", result);
+    printf("%d ", sum);
 
     return 0;
-}
-
-int ch_to_int(char ch) {
-    if (ch == 'x') return 1;
-    if (ch == 'o') return 2;
-    return 0;
-}
-
-int is_win(int (*matrix)[SIZE]) {
-    // проверим строки
-    for (int i = 0; i < SIZE; i++) {
-        int row_count = 0;
-        int nulls = 1;
-        for (int j = 0; j < SIZE; j++) {
-            if (matrix[i][j] == 0) {
-                nulls = 0;
-                break;
-            }
-            row_count += ch_to_int(matrix[i][j]);
-        }
-        if (nulls && row_count == 3) return 1;
-        if (nulls && row_count == 6) return 2;
-    }
-
-    // проверим столбцы
-    for (int i = 0; i < SIZE; i++) {
-        int cell_count = 0;
-        int nulls = 1;
-        for (int j = 0; j < SIZE; j++) {
-            if (matrix[j][i] == 0) {
-                nulls = 0;
-                break;
-            }
-            cell_count += ch_to_int(matrix[j][i]);
-        }
-        if (nulls && cell_count == 3) return 1;
-        if (nulls && cell_count == 6) return 2;
-    }
-
-    // проверим диагонали
-    int diag1_sum = 0;
-    int diag2_sum = 0;
-    int nulls = 1;
-    for (int i = 0; i < SIZE; i++) {
-        if (matrix[i][i] == 0) {
-            nulls = 0;
-            break;
-        }
-        diag1_sum += ch_to_int(matrix[i][i]);
-        diag2_sum += ch_to_int(matrix[i][SIZE - i - 1]);
-    }
-    if (nulls && diag1_sum == 3) return 1;
-    if (nulls && diag2_sum == 3) return 1;
-    if (nulls && diag1_sum == 6) return 2;
-    if (nulls && diag2_sum == 6) return 2;
-
-    // проверим нули
-    for (int i = 0; i < SIZE; i++) {
-        for (int j = 0; j < SIZE; j++) {
-            if (matrix[i][j] == 0) {
-                return 0;
-            }
-        }
-    }
-    return 3;
 }
