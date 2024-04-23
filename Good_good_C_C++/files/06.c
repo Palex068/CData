@@ -1596,27 +1596,85 @@
 //     return 0;
 // }
 
-#include <stdarg.h>
-#include <stdio.h>
-#define MAX 100
-#define COUNT 5
+// #include <stdarg.h>
+// #include <stdio.h>
+// #define MAX 100
+// #define COUNT 5
 
-void ar_fill(double* ar, size_t len, ...) {
-    va_list arg;
-    va_start(arg, len);  // позволяет указать, счетчик вариадических переменных
+// void ar_fill(double* ar, size_t len, ...) {
+//     va_list arg;
+//     va_start(arg, len);  // позволяет указать, счетчик вариадических переменных
+//     for (size_t i = 0; i < len; i++) {
+//         ar[i] = va_arg(arg, double);
+//     }
+//     va_end(arg);
+//     return;
+// }
+
+// int main(void) {
+//     double array[MAX] = {0}, *ptr = array;
+//     size_t count = COUNT;
+//     ar_fill(ptr, count, 0.1, 0.2, 0.3, 0.4, 0.5);
+//     for (int i = 0; i < COUNT; i++) {
+//         printf("%.1lf ", array[i]);
+//     }
+
+//     return 0;
+// }
+
+// #include <stdarg.h>
+// #include <stdio.h>
+
+// void ar_scan(const double *ar, size_t len, ...) {
+//     va_list arg;
+//     va_start(arg, len);
+//     for (size_t i = 0; i < len; i++) {
+//         *(va_arg(arg, double *)) = ar[i];
+//     }
+//     va_end(arg);
+//     return;
+// }
+
+// int main(void) {
+//     const double weights[40] = {1.25, 4.34, -5.43, 0.01, -0.8};
+//     double w1, w2, w3;
+//     ar_scan(weights, 3, &w1, &w2, &w3);
+
+//     printf("%.2f %.2f %.2f", w1, w2, w3);
+
+//     return 0;
+// }
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#define MAX 20
+
+int get_data_csv(double arr[], size_t len, char* str) {
+    char* ptr = str;
+    int res = 0;
     for (size_t i = 0; i < len; i++) {
-        ar[i] = va_arg(arg, double);
+        ptr = strpbrk(ptr, ";:");
+        if (ptr == NULL) break;
+        // printf("%s\n", ptr);
+        arr[i] = atof(++ptr);
+        res++;
     }
-    va_end(arg);
-    return;
+    return res;
 }
 
 int main(void) {
-    double array[MAX] = {0}, *ptr = array;
-    size_t count = COUNT;
-    ar_fill(ptr, count, 0.1, 0.2, 0.3, 0.4, 0.5);
-    for (int i = 0; i < COUNT; i++) {
-        printf("%.1lf ", array[i]);
+    char str[100] = {0};
+    fgets(str, sizeof(str) - 1, stdin);
+    char* ptr_n = strrchr(str, '\n');
+    if (ptr_n != NULL) *ptr_n = '\0';
+
+    double numbers[MAX];
+    ptr_n = str;
+    int count = get_data_csv(numbers, MAX, ptr_n);
+
+    for (int i = 0; i < count; i++) {
+        printf("%.2lf ", numbers[i]);
     }
 
     return 0;
