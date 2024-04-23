@@ -1330,23 +1330,296 @@
 //     return 0;
 // }
 
-#include <stdio.h>
-#define MAX_LENGTH 20
+// #include <stdio.h>
+// #define MAX_LENGTH 20
 
-int sum_ar(const short* ar, size_t len, size_t indx) {
-    if (indx == len) return 0;
-    // printf("%d ", ar[indx]);
-    return ar[indx] + sum_ar(ar, len, indx + 1);
+// int sum_ar(const short* ar, size_t len, size_t indx) {
+//     if (indx == len) return 0;
+//     // printf("%d ", ar[indx]);
+//     return ar[indx] + sum_ar(ar, len, indx + 1);
+// }
+
+// int main(void) {
+//     short ar[MAX_LENGTH];
+//     int count = 0;
+//     while (count < MAX_LENGTH && scanf("%hd", &ar[count]) != EOF) count++;
+//     // printf("%d ", count);
+//     int sum = sum_ar(ar, count, 0);
+
+//     printf("%d ", sum);
+
+//     return 0;
+// }
+
+// #include <stdio.h>
+// #define MAX_LENGTH 20
+
+// size_t to_flat(short* v,         /* массив, в который заносятся значения */
+//                size_t max_len_v, /* максимальная длина массива v */
+//                short* table[], /* массив на массив, из которого читаются значения */
+//                size_t len,     /* длина массива table (первая размерность) */
+//                size_t count_v, /* число записанных в массив v значений (начальное значение 0) */
+//                size_t indx_t, /* индекс для перебора указателей (первой размерности) массива table
+//                (начальное
+//                                  значение 0) */
+//                size_t indx) /* индекс для перебора элементов массивов (условно, вторая размерность),
+//                                на которые ссылается текущий указатель table[indx_t] (начальное значение
+//                                0)*/
+// {
+//     // for (indx_t = 0; indx_t < len; indx_t++) {
+//     //     for (indx = 0; table[indx_t][indx] != 0; indx++) {
+//     //         v[count_v] = table[indx_t][indx];
+//     //         // printf("%d = %d ", count_v, v[count_v]);
+//     //         if (++count_v == max_len_v) return count_v;
+//     //     }
+//     // }
+
+//     // return count_v;
+
+//     if (indx_t < len && count_v < max_len_v) {
+//         if (table[indx_t][indx]) {
+//             v[count_v++] = table[indx_t][indx++];
+//         } else {
+//             indx_t++;
+//             indx = 0;
+//         }
+//     } else {
+//         return count_v;
+//     }
+
+//     return to_flat(v, max_len_v, table, len, count_v, indx_t, indx);
+// }
+
+// int main(void) {
+//     short ar_1[] = {-4, 2, 3, 7, 0};
+//     short ar_2[] = {11, 6, 10, 8, 13, 98, -5, 0};
+//     short ar_3[] = {-47, 0};
+//     short ar_4[] = {8, 11, 56, -3, -2, 0};
+
+//     short* table[] = {ar_1, ar_4, ar_3, ar_2};
+
+//     short flat[MAX_LENGTH];
+//     size_t cnt = to_flat(flat, MAX_LENGTH, table, sizeof(table) / sizeof(*table), 0, 0, 0);
+
+//     // printf("\n%d\n", (int)cnt);
+
+//     for (size_t i = 0; i < cnt; i++) {
+//         printf("%d ", flat[i]);
+//     }
+//     return 0;
+// }
+
+// #include <ctype.h>
+// #include <stdio.h>
+// #include <string.h>
+
+// char* char_to_morse(char ch) {
+//     char symbols[] = "AJS2BKT3CLU4DMV5ENW6FOX7GPY8HQZ9IR10 ";
+//     size_t len = strlen(symbols);
+//     char* morse[] = {".-",   ".---",  "...",  "..---", "-...",  "-.-",   "-",    "...--", "-.-.", ".-..",
+//                      "..-",  "....-", "-..",  "--",    "...-",  ".....", ".",    "-.",    ".--",  "-....",
+//                      "..-.", "---",   "-..-", "--...", "--.",   ".--.",  "-.--", "---..", "....", "--.-",
+//                      "--..", "----.", "..",   ".-.",   ".----", "-----", "-...-"};
+//     for (size_t i = 0; i < len; i++) {
+//         if (symbols[i] == toupper(ch)) return morse[i];
+//     }
+//     return " ";
+// }
+
+// void str_to_morse(char* str) {
+//     for (size_t i = 0; str[i] != '\0'; i++) {
+//         printf("%s%s", char_to_morse(str[i]), str[i + 1] == '\0' ? "" : " ");
+//     }
+// }
+
+// int main(void) {
+//     char str[100] = {0};
+//     fgets(str, sizeof(str) - 1, stdin);
+//     char* ptr_n = strrchr(str, '\n');
+//     if (ptr_n != NULL) *ptr_n = '\0';
+
+//     str_to_morse(str);
+
+//     return 0;
+// }
+
+// #include <stdio.h>
+// #include <string.h>
+
+// char morse_to_char(const char* str) {
+//     const char symbols[] = "AJS2BKT3CLU4DMV5ENW6FOX7GPY8HQZ9IR10 ";
+//     size_t len = strlen(symbols);
+//     const char* morse[] = {".-",   ".---", "...",   "..---", "-...", "-.-",  "-",    "...--",
+//                            "-.-.", ".-..", "..-",   "....-", "-..",  "--",   "...-", ".....",
+//                            ".",    "-.",   ".--",   "-....", "..-.", "---",  "-..-", "--...",
+//                            "--.",  ".--.", "-.--",  "---..", "....", "--.-", "--..", "----.",
+//                            "..",   ".-.",  ".----", "-----", "-...-"};
+//     for (size_t i = 0; i < len; i++) {
+//         if (strcmp(morse[i], str) == 0) return symbols[i];
+//     }
+//     return ' ';
+// }
+
+// void morse_to_str(const char* str, size_t len) {
+//     char s[6] = {0};
+//     int count = 0;
+//     for (size_t i = 0; i <= len; i++) {
+//         if (str[i] == ' ' || str[i] == '\0') {
+//             s[count] = '\0';
+//             printf("%c", morse_to_char(s));
+//             // printf("%s", s);
+//             count = 0;
+//             continue;
+//         }
+//         s[count++] = str[i];
+//     }
+// }
+
+// int main(void) {
+//     char str[100] = {0};
+//     fgets(str, sizeof(str) - 1, stdin);
+//     char* ptr_n = strrchr(str, '\n');
+//     if (ptr_n != NULL) *ptr_n = '\0';
+//     size_t len = strlen(str);
+//     morse_to_str(str, len);
+
+//     return 0;
+// }
+
+// #include <stdarg.h>
+// #include <stdio.h>
+
+// int sum(int count, ...) {
+//     int s = 0;
+//     va_list arg;  // указатель на параметр
+//     va_start(arg, count);  // получение адреса первого вариадического параметра
+
+//     for (int i = 0; i < count; ++i) {
+//         s += va_arg(arg, int);  // получение значение вариадического параметра
+//                                 // и переход к следующему параметру
+//     }
+
+//     va_end(arg);  // завершение процедуры перебора вариадических параметров
+
+//     return s;
+// }
+
+// int main(void) {
+//     int res = sum(5, 1, 2, 3, 4, 5);
+//     printf("res = %d\n", res);
+
+//     return 0;
+// }
+
+// #include <stdarg.h>
+// #include <stdio.h>
+
+// double mean(int total, ...) {
+//     int res = 0;
+//     va_list arg;  // указатель на параметр
+//     va_start(arg, total);  // получение адреса первого вариадического параметра
+
+//     for (int i = 0; i < total; i++) {
+//         res += va_arg(arg, int);  // получение значение вариадического параметра
+//                                   // и переход к следующему параметру
+//     }
+
+//     va_end(arg);  // завершение процедуры перебора вариадических параметров
+
+//     return res / (double)total;
+// }
+
+// int main(void) {
+//     double res = mean(7, 5, -10, 11, 0, 12, 4, 2);
+//     printf("%.2lf", res);
+
+//     return 0;
+// }
+// #include <stdarg.h>
+// #include <stdio.h>
+// #include <string.h>
+
+// double v_norm2(char* format, ...) {
+//     double res = 0;
+//     va_list arg;
+//     va_start(arg, format);
+//     int total;
+//     if (strcmp(format, "vector2") == 0)
+//         total = 2;
+//     else if (strcmp(format, "vector3") == 0)
+//         total = 3;
+//     else if (strcmp(format, "vector4") == 0)
+//         total = 4;
+//     else {
+//         va_end(arg);
+//         return 0.0;
+//     }
+//     for (int i = 0; i < total; i++) {
+//         double coord = va_arg(arg, double);
+//         res += coord * coord;
+//     }
+
+//     va_end(arg);
+
+//     return res;
+// }
+
+// int main(void) {
+//     double res = v_norm2("vector2", 1.0, 2.0);
+//     printf("%.1lf", res);
+
+//     return 0;
+// }
+
+// #include <stdarg.h>
+// #include <stdio.h>
+// #include <string.h>
+
+// double sumf(const char* format, ...) {
+//     double res = 0;
+//     va_list arg;
+//     va_start(arg, format);
+//     int total = strlen(format);
+//     for (int i = 0; i < total; i++) {
+//         double num = va_arg(arg, double);
+//         if (format[i] == '+') {
+//             res += num;
+//         }
+//     }
+//     return res;
+// }
+
+// int main(void) {
+//     double res = sumf("++ + +", 1.0, 2.0, 3.0, 4.0, 5.0, 6.0);
+//     printf("%.2f ", res);
+
+//     return 0;
+// }
+
+#include <stdarg.h>
+#include <stdio.h>
+#define MAX 100
+#define COUNT 5
+
+void ar_fill(double* ar, size_t len, ...) {
+    double res = 0;
+    va_list* ar;
+    va_list arg;
+    va_start(arg, len);
+    for (int i = 0; i < len; i++) {
+        ar[i] = va_arg(arg, double);
+    }
+    va_end(arg);
+    return;
 }
 
 int main(void) {
-    short ar[MAX_LENGTH];
-    int count = 0;
-    while (count < MAX_LENGTH && scanf("%hd", &ar[count]) != EOF) count++;
-    // printf("%d ", count);
-    int sum = sum_ar(ar, count, 0);
-
-    printf("%d ", sum);
+    double array[MAX] = {0}, *ptr = array;
+    size_t count = COUNT;
+    ar_fill("++ + +", 1.0, 2.0, 3.0, 4.0, 5.0, 6.0);
+    for (int i = 0; i < COUNT; i++) {
+        printf("%lf", ar[i]);
+    }
 
     return 0;
 }

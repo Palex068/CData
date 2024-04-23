@@ -10,7 +10,8 @@
         "strings.h": "c",
         "ctype.h": "c",
         "stddef.h": "c",
-        "stdlib.h": "c"
+        "stdlib.h": "c",
+        "stdarg.h": "c"
     },
     "code-runner.runInTerminal": false,
     "code-runner.executorMap": {
