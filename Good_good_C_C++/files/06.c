@@ -1602,11 +1602,9 @@
 #define COUNT 5
 
 void ar_fill(double* ar, size_t len, ...) {
-    double res = 0;
-    va_list* ar;
     va_list arg;
-    va_start(arg, len);
-    for (int i = 0; i < len; i++) {
+    va_start(arg, len);  // позволяет указать, счетчик вариадических переменных
+    for (size_t i = 0; i < len; i++) {
         ar[i] = va_arg(arg, double);
     }
     va_end(arg);
@@ -1616,9 +1614,9 @@ void ar_fill(double* ar, size_t len, ...) {
 int main(void) {
     double array[MAX] = {0}, *ptr = array;
     size_t count = COUNT;
-    ar_fill("++ + +", 1.0, 2.0, 3.0, 4.0, 5.0, 6.0);
+    ar_fill(ptr, count, 0.1, 0.2, 0.3, 0.4, 0.5);
     for (int i = 0; i < COUNT; i++) {
-        printf("%lf", ar[i]);
+        printf("%.1lf ", array[i]);
     }
 
     return 0;

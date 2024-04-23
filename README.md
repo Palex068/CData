@@ -4,6 +4,7 @@
 
 ## [Stepik. Основы языка Си](/StepikC/README.md)
 ## [C для начинающих (теория и задачи)](/C_for_beginners_Stepik/README.md)
+## [Добрый, добрый C/C++ с Сергеем Балакиревым](/Good_good_C_C++/README.MD)
 
 # Материалы
 
@@ -16,6 +17,8 @@
 ## [Windows для Linux (WSL)](/Materials/WSL/README.MD)
 
 ## [Unix/Linux Command Reference](/files/fwunixref.pdf)
+
+## [stdarg.h](/Materials/Headers/Stdarg_h.md)
 
 # Ссылки
 
