@@ -563,36 +563,474 @@
 
 //     return 0;
 // }
+// #include <stdio.h>
+// #define NOTES_COUNT 5
+
+// typedef enum { _do = 1, _re = 2, _mi = 3, _fa = 4, _sol = 5, _la = 6, _si = 7 } NOTES;
+
+// int get_major(NOTES note) {
+//     int res = 0;
+//     switch (note) {
+//         case _do:
+//         case _mi:
+//         case _sol:
+//             res = 1;
+//             break;
+//         default:
+//             res = 0;
+//     }
+//     return res;
+// }
+
+// int main(void) {
+//     NOTES accord[NOTES_COUNT];
+//     for (size_t i = 0; i < NOTES_COUNT; i++) {
+//         int note;
+//         scanf("%d", &note);
+//         accord[i] = note;
+//     }
+
+//     for (size_t i = 0; i < NOTES_COUNT; i++) {
+//         if (get_major(accord[i])) printf("%d ", accord[i]);
+//     }
+
+//     return 0;
+// }
+
+// #include <stdio.h>
+// #include <string.h>
+
+// #define MAX_WORDS 20
+
+// int is_correct(const char* str) {
+//     int res = 0;
+//     char* str_for_search[4] = {"RA", "Ra", "rA", "ra"};
+//     for (size_t i = 0; i < 4; i++) {
+//         if (strstr(str, str_for_search[i]) != NULL) {
+//             res = 1;
+//             break;
+//         }
+//     }
+//     return res;
+// }
+
+// typedef int (*FUNC_CORRECT)(const char*);
+
+// FUNC_CORRECT filter = is_correct;
+
+// int get_correct_words(const char (*words)[50], int count_words, FUNC_CORRECT filter) {
+//     int res = 0;
+//     for (int i = 0; i < count_words; i++) {
+//         // puts(words[i]);
+//         if (filter(words[i])) res++;
+//     }
+//     return res;
+// }
+
+// int main() {
+//     char words[MAX_WORDS][50];
+
+//     int count = 0;
+//     int result;
+
+//     while (count < MAX_WORDS && scanf("%49s", words[count]) == 1) {
+//         if (strlen(words[count]) < 2) break;
+//         // puts(words[count]);
+//         count++;
+//     }
+
+//     // for (size_t i = 0; i < count; i++) {
+//     //     puts(words[i]);
+//     // }
+
+//     result = get_correct_words(words, count, filter);
+
+//     printf("%d", result);
+
+//     return 0;
+// }
+// #include <stdio.h>
+
+// typedef struct tag_vector {
+//     short x;
+//     short y;
+//     short z;
+// } VECTOR;
+
+// int main() {
+//     VECTOR vector;
+
+//     scanf("%hd %hd %hd", &vector.x, &vector.y, &vector.z);
+
+//     // __ASSERT_TESTS__
+//     // макроопределение для тестирования (не убирать и должно идти непосредственно перед return 0)
+
+//     return 0;
+// }
+
+// #include <stdio.h>
+
+// struct tag_price {
+//     char name[100];
+//     unsigned int rubs;
+//     unsigned short kops;
+//     unsigned int foreign_key;
+// };
+
+// struct tag_price price_100 = {};
+
+// int main(void) {
+//     struct tag_price pr = price_100;
+
+//     printf("%s %d %d %d", pr.name, pr.rubs, pr.kops, pr.foreign_key);
+
+//     // __ASSERT_TESTS__
+//     // макроопределение для тестирования (не убирать и должно идти непосредственно перед return 0)
+//     return 0;
+// }
+
+// #include <stdio.h>
+// #include <string.h>
+
+// typedef struct tag_fio {
+//     char firstname[50];
+//     char otch[50];
+//     char lastname[50];
+// } FIO;
+
+// typedef struct tag_student {
+//     FIO fio;
+//     short old;
+//     short height;
+//     short weight;
+// } STUDENT;
+
+// void _getline(char* buffer, size_t max_len) {
+//     fgets(buffer, max_len - 1, stdin);
+//     char* ptr_n = strrchr(buffer, '\n');
+//     if (ptr_n != NULL) *ptr_n = '\0';
+// }
+
+// int main(void) {
+//     char fname[50], otch[50], lname[50];  // имя, отчество, фамилия
+//     short old, height, weight;            // возраст, высота, вес
+
+//     _getline(fname, sizeof(fname));
+//     _getline(otch, sizeof(otch));
+//     _getline(lname, sizeof(lname));
+
+//     scanf("%hd, %hd, %hd", &old, &height, &weight);
+
+//     STUDENT st = {.old = old, .height = height, .weight = weight};
+
+//     strcpy(st.fio.firstname, fname);
+//     strcpy(st.fio.otch, otch);
+//     strcpy(st.fio.lastname, lname);
+
+//     // printf("%s\n%s\n%s\n%d\n%d\n%d", st.fio.firstname, st.fio.otch, st.fio.lastname, st.height, st.old,
+//     // st.weight);
+
+//     // __ASSERT_TESTS__
+//     // макроопределение для тестирования (не убирать и должно идти непосредственно перед return 0)
+//     return 0;
+// }
+
+// #include <stdio.h>
+
+// typedef struct tag_time {
+//     unsigned char hours;
+//     unsigned char minutes;
+//     unsigned char seconds;
+// } TIME;
+
+// int main(void) {
+//     TIME tm1, tm2, tm_sum;
+
+//     char shift_minutes = 0;
+//     char shift_hours = 0;
+
+//     scanf("%d %d %d", &tm1.hours, &tm1.minutes, &tm1.seconds);
+//     scanf("%d %d %d", &tm2.hours, &tm2.minutes, &tm2.seconds);
+
+//     tm_sum.seconds = (tm1.seconds + tm2.seconds) % 60;
+//     shift_minutes = tm1.seconds + tm2.seconds < 60 ? 0 : 1;
+//     tm_sum.minutes = (tm1.minutes + tm2.minutes + shift_minutes) % 60;
+//     shift_hours = tm1.minutes + tm2.minutes + shift_minutes < 60 ? 0 : 1;
+//     tm_sum.hours = tm1.hours + tm2.hours + shift_hours;
+
+//     printf("%02d:%02d:%02d", tm_sum.hours, tm_sum.minutes, tm_sum.seconds);
+
+//     // __ASSERT_TESTS__
+//     // макроопределение для тестирования (не убирать и должно идти непосредственно перед return 0)
+//     return 0;
+// }
+
+// #include <stdio.h>
+
+// typedef struct tag_point_3d {
+//     int x;
+//     int y;
+//     int z;
+// } POINTS_3D;
+
+// int main(void) {
+//     enum { total_points = 100 };
+
+//     POINTS_3D points[total_points];
+
+//     size_t i;
+
+//     for (i = 0; i < total_points; i++) {
+//         if (scanf("%d %d %d", &points[i].x, &points[i].y, &points[i].z) != 3) break;
+//     }
+//     i--;
+//     printf("%d %d %d", points[i].x, points[i].y, points[i].z);
+
+//     // __ASSERT_TESTS__
+//     // макроопределение для тестирования (не убирать и должно идти непосредственно перед return 0)
+//     return 0;
+// }
+
+// #include <stdio.h>
+
+// typedef struct tag_geom {
+//     char type;   // тип геометрической фигуры
+//     int x0, y0;  // координаты верхнего левого угла
+//     int x1, y1;  // координаты нижнего правого угла
+// } GEOM;
+
+// int main(void) {
+//     GEOM geom = {1, 10, 20, 50, 30};
+
+//     GEOM* ptr_geom = &geom;
+
+//     printf("%d %d %d %d %d", ptr_geom->type, ptr_geom->x0, ptr_geom->y0, ptr_geom->x1, ptr_geom->y1);
+
+//     // __ASSERT_TESTS__
+//     // макроопределение для тестирования (не убирать)
+//     return 0;
+// }
+
+// #include <stdio.h>
+// #include <stdlib.h>
+
+// typedef struct tag_rub {
+//     double ratio_usd;  // курс доллара к рублю (1$ = xx рублей)
+//     int rubs;          // количество рублей
+// } RUB;
+
+// int main(void) {
+//     RUB* account_r = malloc(sizeof(RUB));
+
+//     account_r->ratio_usd = 91.32;
+
+//     scanf("%d", &account_r->rubs);
+
+//     printf("%.2lf", account_r->rubs / account_r->ratio_usd);
+
+//     // __ASSERT_TESTS__
+//     // макроопределение для тестирования (не убирать)
+
+//     free(account_r);
+//     return 0;
+// }
+
+// #include <stdio.h>
+// #include <stdlib.h>
+
+// typedef struct {
+//     double re;  // действительная часть
+//     double im;  // мнимая часть
+// } COMPLEX;
+
+// COMPLEX complex_sum(COMPLEX cmp1, COMPLEX cmp2) {
+//     COMPLEX res = {cmp1.re + cmp2.re, cmp1.im + cmp2.im};
+//     return res;
+// }
+
+// int main(void) {
+//     COMPLEX cmp_1, cmp_2;
+
+//     scanf("%lf, %lf, %lf, %lf", &cmp_1.re, &cmp_1.im, &cmp_2.re, &cmp_2.im);
+
+//     COMPLEX result = complex_sum(cmp_1, cmp_2);
+
+//     // __ASSERT_TESTS__
+//     // макроопределение для тестирования (не убирать)
+
+//     return 0;
+// }
+// #include <stdio.h>
+// #include <stdlib.h>
+
+// typedef struct {
+//     int x;
+//     int y;
+// } POINT;
+
+// int rect_square(const POINT* left_up, const POINT* right_down) {
+//     int res = (right_down->x - left_up->x) * (right_down->y - left_up->y);
+//     return res;
+// }
+
+// int main(void) {
+//     POINT p1, p2;
+
+//     scanf("%d %d %d %d", &p1.x, &p1.y, &p2.x, &p2.y);
+
+//     int result = rect_square(&p1, &p2);
+
+//     printf("%d", result);
+
+//     return 0;
+// }
+
+// #include <stdio.h>
+// #include <stdlib.h>
+// #define MAX 20
+
+// typedef struct {
+//     int x;
+//     int y;
+// } POINT;
+
+// typedef struct {
+//     double mean_x;
+//     double mean_y;
+// } DATA;
+
+// DATA get_means(const POINT points[], size_t count) {
+//     DATA res = {0, 0};
+//     for (size_t i = 0; i < count; i++) {
+//         res.mean_x += points[i].x;
+//         res.mean_y += points[i].y;
+//     }
+//     res.mean_x /= count;
+//     res.mean_y /= count;
+
+//     return res;
+// }
+
+// int main(void) {
+//     POINT points[MAX];
+
+//     size_t count = 0;
+//     for (size_t i = 0; i < MAX; i++) {
+//         if (scanf("%d %d", &points[i].x, &points[i].y) == 2)
+//             count++;
+//         else
+//             break;
+//     }
+
+//     DATA result = get_means(points, count);
+
+//     printf("%.2lf %.2lf", result.mean_x, result.mean_y);
+
+//     return 0;
+// }
+
+// #include <stdarg.h>
+// #include <stdio.h>
+// #include <stdlib.h>
+// #include <string.h>
+
+// typedef struct {
+//     char fname[100];  // строка максимальной длиной 100 символов (фамилия)
+//     char old;         // возраст;
+//     char stag;        // стаж;
+//     int salary;       // зарплата;
+//     double efs;       // эффективность труда сотрудника;
+// } PERSON;
+
+// void fill_data(PERSON* p, char* str, ...) {
+//     va_list arg;
+//     char* ptr = str;
+//     // puts(str);
+//     va_start(arg, str);
+//     while (ptr != NULL) {
+//         switch (*(++ptr)) {
+//             case 'f':
+//                 strcpy(p->fname, va_arg(arg, char*));
+//                 // puts(p->fname);
+//                 break;
+//             case 'o':
+//                 p->old = va_arg(arg, int);
+//                 // printf("%d\n", p->old);
+//                 break;
+//             case 'g':
+//                 p->stag = va_arg(arg, int);
+//                 // printf("%d\n", p->stag);
+//                 break;
+//             case 's':
+//                 p->salary = va_arg(arg, int);
+//                 // printf("%d\n", p->salary);
+//                 break;
+//             case 'e':
+//                 p->efs = va_arg(arg, double);
+//                 // printf("%.2lf\n", p->efs);
+//                 break;
+//             default:
+//                 break;
+//         }
+//         ptr = strpbrk(ptr, "#");
+//         // if (ptr != NULL) puts(ptr);
+//     }
+//     va_end(arg);
+// }
+
+// int main(void) {
+//     PERSON user;
+
+//     fill_data(&user, "#o #e #s #f", 47, 23.5, 500000, "Alexander");
+
+//     return 0;
+// }
+
 #include <stdio.h>
+#include <stdlib.h>
 
-typedef enum calc_types { _perimetr = 1, _square = 2 } types;
+typedef struct tag_obj {
+    int data;
+    struct tag_obj* next;
+} OBJ;
 
-double calc_rect(double width, double height, types form) {
-    double res = 0;
-    switch (form) {
-        case _perimetr:
-            res = (width + height) * 2;
-            break;
-        case _square:
-            res = width * height;
-            break;
-        default:
-            puts("Wrong type");
+OBJ* push(OBJ* top, int data) {
+    OBJ* ptr = malloc(sizeof(OBJ));
+    ptr->data = data;
+    ptr->next = top;
+    return ptr;
+}
+
+OBJ* pop(OBJ* top) {
+    if (top == NULL) return top;
+
+    printf("Deleted: %d\n", top->data);
+
+    OBJ* ptr_next = top->next;
+    free(top);
+
+    return ptr_next;
+}
+
+void show_stack(const OBJ* top) {
+    const OBJ* current = top;
+    while (current != NULL) {
+        printf("%d\n", current->data);
+        current = current->next;
     }
-    return res;
 }
 
 int main(void) {
-    types oper;
-    int num;
-    double w, h;
-    scanf("%d %lf %lf", &num, &w, &h);
+    OBJ* top = NULL;
 
-    oper = num;
+    top = push(top, 1);
+    top = push(top, 2);
+    top = push(top, 3);
+    top = push(top, 4);
 
-    double result = calc_rect(w, h, oper);
+    show_stack(top);
 
-    printf("%.1lf", result);
+    while (top) top = pop(top);
 
     return 0;
 }
