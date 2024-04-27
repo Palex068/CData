@@ -11,7 +11,8 @@
         "ctype.h": "c",
         "stddef.h": "c",
         "stdlib.h": "c",
-        "stdarg.h": "c"
+        "stdarg.h": "c",
+        "algorithm": "c"
     },
     "code-runner.runInTerminal": false,
     "code-runner.executorMap": {
