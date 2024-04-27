@@ -986,51 +986,245 @@
 //     return 0;
 // }
 
-#include <stdio.h>
-#include <stdlib.h>
+// #include <stdio.h>
+// #include <stdlib.h>
 
-typedef struct tag_obj {
-    int data;
-    struct tag_obj* next;
-} OBJ;
+// typedef struct tag_obj {
+//     int data;
+//     struct tag_obj* next;
+// } OBJ;
 
-OBJ* push(OBJ* top, int data) {
-    OBJ* ptr = malloc(sizeof(OBJ));
-    ptr->data = data;
-    ptr->next = top;
-    return ptr;
-}
+// OBJ* push(OBJ* top, int data) {
+//     OBJ* ptr = malloc(sizeof(OBJ));
+//     ptr->data = data;
+//     ptr->next = top;
+//     return ptr;
+// }
 
-OBJ* pop(OBJ* top) {
-    if (top == NULL) return top;
+// OBJ* pop(OBJ* top) {
+//     if (top == NULL) return top;
 
-    printf("Deleted: %d\n", top->data);
+//     printf("Deleted: %d\n", top->data);
 
-    OBJ* ptr_next = top->next;
-    free(top);
+//     OBJ* ptr_next = top->next;
+//     free(top);
 
-    return ptr_next;
-}
+//     return ptr_next;
+// }
 
-void show_stack(const OBJ* top) {
-    const OBJ* current = top;
-    while (current != NULL) {
-        printf("%d\n", current->data);
-        current = current->next;
-    }
-}
+// void show_stack(const OBJ* top) {
+//     const OBJ* current = top;
+//     while (current != NULL) {
+//         printf("%d\n", current->data);
+//         current = current->next;
+//     }
+// }
 
-int main(void) {
-    OBJ* top = NULL;
+// int main(void) {
+//     OBJ* top = NULL;
 
-    top = push(top, 1);
-    top = push(top, 2);
-    top = push(top, 3);
-    top = push(top, 4);
+//     top = push(top, 1);
+//     top = push(top, 2);
+//     top = push(top, 3);
+//     top = push(top, 4);
 
-    show_stack(top);
+//     show_stack(top);
 
-    while (top) top = pop(top);
+//     while (top) top = pop(top);
 
-    return 0;
-}
+//     return 0;
+// }
+
+// #include <stdio.h>
+// #include <stdlib.h>
+// #include <string.h>
+
+// typedef struct tag_obj {
+//     struct tag_obj* next;
+//     char url[1024];
+// } OBJ;
+
+// OBJ* push(OBJ* top, char* url) {
+//     OBJ* ptr = malloc(sizeof(OBJ));
+//     ptr->next = top;
+//     strcpy(ptr->url, url);
+//     return ptr;
+// }
+
+// OBJ* pop(OBJ* top) {
+//     if (top == NULL) return top;
+
+//     OBJ* ptr_next = top->next;
+//     free(top);
+
+//     return ptr_next;
+// }
+
+// void show_stack(const OBJ* top) {
+//     const OBJ* current = top;
+//     while (current != NULL) {
+//         printf("%s\n", current->url);
+//         current = current->next;
+//     }
+// }
+
+// int main(void) {
+//     OBJ* top = NULL;
+
+//     top = push(top,
+//     "https://proproprogs.ru/c_base/c_etapy-translyacii-programmy-v-mashinnyy-kod-standarty"); top =
+//     push(top, "https://proproprogs.ru/c_base/c_struktura-i-ponimanie-raboty-programmy-hello-world"); top =
+//     push(top,
+//                "https://proproprogs.ru/c_base/"
+//                "c_dvoichnaya-shestnadcaterichnaya-i-vosmerichnaya-sistemy-schisleniya");
+//     top = push(top, "https://proproprogs.ru/c_base/c_lokalnye-i-globalnye-peremennye");
+//     top = push(top, "https://proproprogs.ru/c_base/c_perechisleniya-enum-direktiva-typedef");
+
+//     // show_stack(top);
+
+//     // while (top) top = pop(top);
+//     //__ASSERT_TESTS__
+//     // макроопределение для тестирования (не убирать)
+
+//     // здесь освобождайте память, занимаемую стеком
+//     return 0;
+// }
+
+// #include <stdio.h>
+// #include <stdlib.h>
+
+// typedef enum { coord_int = 1, coord_double = 2 } TYPE_COORD;
+
+// typedef union {
+//     int coord_i;
+//     double coord_d;
+// } COORD;
+
+// typedef struct {
+//     COORD x, y;
+//     TYPE_COORD type;
+// } POINT2;
+
+// int main(void) {
+//     POINT2 pt;
+//     int type = 0;
+//     scanf("%d", &type);
+//     pt.type = type;
+//     // printf("%d ", pt.type);
+//     if (pt.type == 1) {
+//         scanf("%d %d", &pt.x.coord_i, &pt.y.coord_i);
+//         // printf("%d %d", pt.x.coord_i, pt.y.coord_i);
+//     } else {
+//         scanf("%lf %lf", &pt.x.coord_d, &pt.y.coord_d);
+//         // printf("%.2lf %.2lf", pt.x.coord_d, pt.y.coord_d);
+//     }
+//     // __ASSERT_TESTS__
+//     return 0;
+// }
+
+// #include <stdio.h>
+
+// int main() {
+//     typedef union {
+//         int data_i;
+//         double data_d;
+//     } DATA;
+
+//     DATA d;
+
+//     // d = (DATA)10; // wrong answer
+//     // d = (DATA)0.74; // wrong answer
+//     // d = (DATA){.data_d = 0.5};
+//     // d.data_d = -0.01;
+//     // d.data_i = 12;
+//     // d = (DATA){.data_d = 0.5, .data_i = -5};
+//     // d = (DATA){10};
+//     // printf("%d %.2lf", d.data_i, d.data_d);
+//     return 0;
+// }
+
+// #include <stdio.h>
+
+// typedef enum { param_int = 1, param_double = 2 } TYPE_PARAM;
+
+// typedef union {
+//     int data_i;
+//     double data_d;
+// } DATA;
+
+// DATA sum_ar(DATA a[], size_t count, TYPE_PARAM type) {
+//     DATA res = {0};
+//     for (size_t i = 0; i < count; i++) {
+//         if (type == param_int)
+//             res.data_i += a[i].data_i;
+//         else
+//             res.data_d += a[i].data_d;
+//     }
+//     return res;
+// }
+
+// int main(void) {
+//     DATA arr_i[] = {{1}, {2}, {3}, {4}, {5}};
+//     DATA arr_d[] = {{.data_d = 1.1}, {.data_d = 2.2}, {.data_d = 3.3}, {.data_d = 4.4}, {.data_d = 5.5}};
+
+//     size_t len_i = sizeof(arr_i) / sizeof(arr_i[0]);
+//     size_t len_d = sizeof(arr_d) / sizeof(arr_d[0]);
+
+//     printf("%d: ", (int)len_i);
+//     for (size_t i = 0; i < len_i; i++) {
+//         printf("%d ", arr_i[i].data_i);
+//     }
+
+//     printf("\n%d: ", (int)len_d);
+//     for (size_t i = 0; i < len_d; i++) {
+//         printf("%.1lf ", arr_d[i].data_d);
+//     }
+
+//     DATA res_1 = sum_ar(arr_i, len_i, 1);
+//     DATA res_2 = sum_ar(arr_d, len_d, 2);
+//     DATA res_i = sum_ar((DATA[]){{10}, {20}, {30}, {40}, {50}}, 5, 1);
+//     DATA res_d = sum_ar(
+//         (DATA[]){{.data_d = 10.1}, {.data_d = 20.2}, {.data_d = 30.3}, {.data_d = 40.4}, {.data_d = 50.5}},
+//         5, 2);
+
+//     printf("\nres_1 = %d res_2 = %.1lf", res_1.data_i, res_2.data_d);
+//     printf("\nres_i = %d res_d = %.1lf", res_i.data_i, res_d.data_d);
+//     return 0;
+// }
+
+// #include <stdio.h>
+
+// typedef struct {
+//     unsigned old : 7;
+//     unsigned salary : 20;
+//     unsigned height : 8;
+//     unsigned weight : 7;
+// } PERSON_DATA;
+
+// int main(void) {
+//     PERSON_DATA pd = {45, 876043, 186, 83};
+
+//     printf("%d", (int)sizeof(pd));
+
+//     // __ASSERT_TESTS__
+
+//     return 0;
+// }
+
+// #include <stdio.h>
+
+// struct date_time {
+//     unsigned day : 5;
+//     unsigned month : 4;
+//     unsigned year : 12;
+//     unsigned sec : 6;
+//     unsigned min : 6;
+//     unsigned hour : 5;
+// };
+
+// int main(void) {
+//     struct date_time dt = {3, 5, 2023, 11, 7, 10};
+//     printf("%02u/%02u/%u %02u:%02u:%02u\n", dt.day, dt.month, dt.year, dt.hour, dt.min, dt.sec);
+
+//     return 0;
+// }
