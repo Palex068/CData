@@ -286,26 +286,189 @@
 //     return 0;
 // }
 
+// #include <stdio.h>
+
+// typedef struct {
+//     unsigned id;
+//     unsigned width;
+//     unsigned height;
+//     unsigned depth;
+//     double weight;
+// } BOX;
+
+// int main(void) {
+//     FILE* fp = stdout;  // имитация отрытого файлового потока
+
+//     BOX tmp;
+
+//     scanf("%u; %u; %u; %u; %lf", &tmp.id, &tmp.width, &tmp.height, &tmp.depth, &tmp.weight);
+
+//     fprintf(fp, "box %u: %u x %u x %u", tmp.id, tmp.width, tmp.height, tmp.depth);
+
+//     // fclose(fp); закрывать стандартный поток не нужно
+
+//     return 0;
+// }
+
+// #include <stdio.h>
+// #include <string.h>
+
+// enum { max_lines = 10, max_string_len = 200 };
+
+// int main(void) {
+//     char text[max_lines][max_string_len];
+
+//     FILE* fp = fopen("test_file.txt", "r");  // имитация отрытого файлового потока
+
+//     size_t count = 0;
+
+//     while (count < max_lines && !feof(fp)) {
+//         fgets(text[count], sizeof(text[0]), fp);
+//         char* ptr = strchr(text[count], '\n');
+//         if (ptr != NULL) *ptr = '\0';
+//         count++;
+//     }
+
+//     for (size_t i = 0; i < count; i++) {
+//         puts(text[i]);
+//     }
+
+//     fclose(fp);  //    закрывать стандартный поток не нужно
+
+//     return 0;
+// }
+
+// #include <stdio.h>
+// #include <string.h>
+
+// enum { max_lines = 10, max_string_len = 200 };
+
+// int main(void) {
+//     char text[max_lines][max_string_len];
+
+//     FILE* fp = stdin;  // имитация отрытого файлового потока
+
+//     size_t count = 0;
+
+//     while (count < max_lines && !feof(fp)) {
+//         fgets(text[count], sizeof(text[0]), fp);
+//         char* ptr = strchr(text[count], '\n');
+//         if (ptr != NULL) *ptr = '\0';
+//         count++;
+//     }
+
+//     for (size_t i = 0; i < count; i++) {
+//         puts(text[i]);
+//     }
+
+//     // fclose(fp);  //    закрывать стандартный поток не нужно
+
+//     return 0;
+// }
+
+// #include <stdio.h>
+
+// enum { buffer_size = 512 };
+
+// int main(void) {
+//     char buffer[buffer_size] = {0};
+
+//     FILE* fp = fopen("test_file.txt", "r");
+//     if (fp == NULL) {
+//         perror("test_file.txt");
+//         return 1;
+//     }
+
+//     setvbuf(fp, buffer, _IOLBF, buffer_size);
+
+//     fclose(fp);
+//     return 0;
+// }
+
+// #include <stdio.h>
+
+// int main(void) {
+//     double data[] = {0.1, 0.2, -0.3, 0.4, -0.5};
+
+//     FILE* fp = fopen("my_file.dat", "wb");
+//     if (fp == NULL) {
+//         perror("my_file.dat");
+//         return 1;
+//     }
+
+//     int res = fwrite(data, sizeof(double), sizeof(data) / sizeof(*data), fp);
+//     fclose(fp);
+
+//     printf("%d", res);
+
+//     return 0;
+// }
+
+// #include <stdio.h>
+
+// int main(void) {
+//     short data[] = {79 + 256 * 80, 81 + 256 * 82, 83 + 256 * 84, 85 + 256 * 86};
+//     FILE* fp = stdout;  // имитация выходного потока
+
+//     fwrite(&data, sizeof(short), sizeof(data) / sizeof(*data), fp);
+
+//     // fclose(fp);
+
+//     return 0;
+// }
+
+// #include <stdio.h>
+
+// int main(void) {
+//     short data[10] = {0};
+//     FILE* fp = stdin;  // имитация входного потока
+
+//     size_t count = 0;
+
+//     while (fread(&data[count], sizeof(*data), 1, fp) == 1) count++;
+//     // fclose(fp);
+
+//     for (size_t i = 0; i < count; i++) {
+//         printf("%d ", (int)data[i]);
+//     }
+
+//     return 0;
+// // }
+// #include <stdio.h>
+
+// int main(void) {
+//     int* ptr;
+//     const int* ptr_cnst;
+//     int* const cnst_ptr;
+
+//     *cnst_ptr = 77;
+//     // *ptr_cnst = 10;//
+//     // cnst_ptr++;//
+//     ptr = cnst_ptr;
+//     // cnst_ptr = ptr;//
+//     ptr_cnst = ptr;
+//     // ptr = ptr_cnst;
+//     --ptr_cnst;
+
+//     return 0;
+// }
+// }
+
 #include <stdio.h>
 
-typedef struct {
-    unsigned id;
-    unsigned width;
-    unsigned height;
-    unsigned depth;
-    double weight;
-} BOX;
-
 int main(void) {
-    FILE* fp = stdout;  // имитация отрытого файлового потока
+    size_t count;
 
-    BOX tmp;
-
-    scanf("%u; %u; %u; %u; %lf", &tmp.id, &tmp.width, &tmp.height, &tmp.depth, &tmp.weight);
-
-    fprintf(fp, "box %u: %u x %u x %u", tmp.id, tmp.width, tmp.height, tmp.depth);
-
-    // fclose(fp); закрывать стандартный поток не нужно
+    scanf("%d", &count);
+    for (size_t j = 0; j < count; j++) {
+        for (size_t i = count - j - 1; i > 0; i--) {
+            printf("%c", ' ');
+        }
+        for (size_t k = 0; k < j * 2 + 1; k++) {
+            printf("%c", '*');
+        }
+        printf("%c", '\n');
+    }
 
     return 0;
 }
