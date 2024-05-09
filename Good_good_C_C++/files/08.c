@@ -454,21 +454,44 @@
 // }
 // }
 
+// #include <stdio.h>
+
+// int main(void) {
+//     size_t count;
+
+//     scanf("%d", &count);
+//     for (size_t j = 0; j < count; j++) {
+//         for (size_t i = count - j - 1; i > 0; i--) {
+//             printf("%c", ' ');
+//         }
+//         for (size_t k = 0; k < j * 2 + 1; k++) {
+//             printf("%c", '*');
+//         }
+//         printf("%c", '\n');
+//     }
+
+//     return 0;
+// }
+
+#ifdef __cplusplus
+#include <iostream>
+#else
 #include <stdio.h>
+#endif
 
-int main(void) {
-    size_t count;
+double mean_2(int a, int b) {
+    double res = (a + b) / (double)2;
+    return res;
+}
 
-    scanf("%d", &count);
-    for (size_t j = 0; j < count; j++) {
-        for (size_t i = count - j - 1; i > 0; i--) {
-            printf("%c", ' ');
-        }
-        for (size_t k = 0; k < j * 2 + 1; k++) {
-            printf("%c", '*');
-        }
-        printf("%c", '\n');
-    }
+int main() {
+    int a, b;
+
+    scanf("%d %d", &a, &b);
+
+    double result = mean_2(a, b);
+
+    printf("%.1lf", result);
 
     return 0;
 }

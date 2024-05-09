@@ -51,7 +51,10 @@
         "sstream": "cpp",
         "stdexcept": "cpp",
         "streambuf": "cpp",
-        "typeinfo": "cpp"
+        "typeinfo": "cpp",
+        "ctime": "cpp",
+        "iomanip": "cpp",
+        "cstring": "cpp"
     },
     "code-runner.runInTerminal": false,
     "code-runner.executorMap": {

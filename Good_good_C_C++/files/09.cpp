@@ -1411,17 +1411,882 @@
 //     return 0;
 // }
 
-#include <stdio.h>
+// #include <stdio.h>
+
+// int main(void) {
+//     int n = 7;
+//     while (n-- > 0) {
+//         int n = 5;
+//         printf("%d\n", n);
+//         n++;
+//     }
+
+//     printf("%d\n", n);
+
+//     return 0;
+// }
+
+// #include <stdio.h>
+
+// int func_overload(int x) { return 0; }
+
+// int func_overload(int x, int y) { return 1; }
+
+// // double func_overload(int x) { return 3; }
+
+// int func_overload(short x) { return 5; }
+
+// int func_overload(double x) { return 2; }
+
+// // int func_overload(const int x) { return 6; }
+
+// // int func_overload(int y) { return 4; }
+
+// int func_overload(unsigned int x) { return 7; }
+
+// int main(void) { return 0; }
+
+// #include <stdio.h>
+
+// int perimetr(unsigned a, unsigned b) { return 2 * (a + b); }
+
+// float perimetr(float a, float b) { return 2.0f * (a + b); }
+
+// int main(void) {
+//     int res_1 = perimetr(10, 20);
+//     float res_2 = perimetr(10, 20);
+//     float res_3 = perimetr(10.0f, 20.0f);
+//     int res_4 = perimetr(10u, 20u);
+//     float res_5 = perimetr(10u, 20u);
+//     float res_6 = perimetr(10.0, 20.0);
+//     double res_7 = perimetr(10.0f, 20.0f);
+//     return 0;
+// }
+
+// int get_perimetr(int a, int b, int c) {
+//     int res = a + b + c;
+//     return res;
+// }
+// int get_perimetr(int a, int b) {
+//     int res = (a + b) * 2;
+//     return res;
+// }
+
+// #include <cmath>
+// #include <iostream>
+
+// double get_square(int a, int b, int c) {
+//     double p = (a + b + c) / 2.0;
+//     double res = sqrt(p * (p - a) * (p - b) * (p - c));
+//     return res;
+// }
+
+// int get_square(int a, int b) {
+//     int res = a * b;
+//     return res;
+// }
+
+// int main() {
+//     int a, b, c, d, e;
+//     std::cin >> a >> b >> c >> d >> e;
+
+//     double tr_sq = get_square(a, b, c);
+//     int qr_sq = get_square(d, e);
+
+//     printf("%.1lf %.1lf", tr_sq, (double)qr_sq);
+
+//     return 0;
+// }
+// #include <cmath>
+// #include <iostream>
+
+// double min2(double a, double b) { return a < b ? a : b; }
+
+// int min2(int a, int b) { return a < b ? a : b; }
+
+// int main() {
+//     int a;
+//     double b;
+
+//     std::cin >> a >> b;
+
+//     double result = min2((double)a, b);
+
+//     printf("%.1lf", result);
+
+//     return 0;
+// }
+
+// #ifdef __cplusplus
+// #include <iostream>
+// #else
+// #include <stdio.h>
+// #endif
+
+// double mean_2(int a, int b) {
+//     double res = (a + b) / (double)2;
+//     return res;
+// }
+
+// int main() {
+//     int a, b;
+
+//     scanf("%d %d", &a, &b);
+
+//     double result = mean_2(a, b);
+
+//     printf("%.1lf", result);
+
+//     return 0;
+// }
+
+// #include <iomanip>
+// #include <iostream>
+
+// enum { max_ar_len = 100 };
+
+// double get_mean(const short* d, const size_t len) {
+//     double res = 0;
+//     for (size_t i = 0; i < len; i++) {
+//         res += d[i];
+//     }
+//     return res / len;
+// }
+// double get_mean(const int* d, const size_t len) {
+//     double res = 0;
+//     for (size_t i = 0; i < len; i++) {
+//         res += d[i];
+//     }
+//     return res / len;
+// }
+// double get_mean(const double* d, const size_t len) {
+//     double res = 0;
+//     for (size_t i = 0; i < len; i++) {
+//         res += d[i];
+//     }
+//     return res / len;
+// }
+
+// int main() {
+//     short ar[max_ar_len];
+//     size_t count = 0;
+
+//     while (count < max_ar_len && std::cin >> ar[count]) count++;
+
+//     double result = get_mean(ar, count);
+
+//     std::cout << std::fixed << std::setprecision(2) << result << std::endl;
+
+//     return 0;
+// }
+
+// #include <iostream>
+
+// using calc_type = enum { calc_perimetr, calc_square };
+
+// int get_rect_value(int w, int h, calc_type type = calc_perimetr) {
+//     int res = 0;
+//     switch (type) {
+//         case calc_square:
+//             res = w * h;
+//             break;
+
+//         case calc_perimetr:
+//             res = (w + h) * 2;
+//             break;
+
+//         default:
+//             puts("Invalid type");
+//             break;
+//     }
+//     return res;
+// }
+
+// int main() {
+//     int a, b;
+
+//     std::cin >> a >> b;
+
+//     int result = get_rect_value(a, b);
+
+//     std::cout << result << std::endl;
+
+//     return 0;
+// }
+// #include <cstring>
+// #include <iostream>
+// #include <string>
+
+// bool check_password(char* str, const char* chars = "$%!?@#") {
+//     bool res = (strlen(str) >= 8 && strpbrk(str, chars) != nullptr);
+//     return res;
+// }
+
+// int main() {
+//     char str[100];
+
+//     scanf("%s", str);
+
+//     bool result = check_password(str);
+
+//     std::cout << (result ? "yes" : "no") << std::endl;
+
+//     return 0;
+// }
+
+// #include <iostream>
+// #include <string>
+
+// using std::cin;
+// using std::cout;
+// using std::string;
+
+// bool check_password(string password, string chars = "$%!?@#") {
+//     return password.size() >= 8 && password.find_first_of(chars) != string::npos;
+// }
+
+// int main() {
+//     string s;
+//     cin >> s;
+
+//     check_password(s) ? cout << "yes" : cout << "no";
+
+//     return 0;
+// }
+
+// #include <string.h>
+
+// #include <iostream>
+// #include <string>
+
+// enum { tag_const = 5 };  // посчитаем <...> </...>
+
+// std::string char_copy(char* src) {
+//     std::string dest = "";
+//     size_t count = strlen(src);
+//     for (size_t i = 0; i < count; i++) {
+//         dest += src[i];
+//     }
+//     return dest;
+// }
+// void string_copy(char* dest, std::string src) {
+//     for (char ch : src) {
+//         *dest++ = ch;
+//     }
+//     *dest = '\0';
+//     return;
+// }
+
+// void set_tag(char str[], int len, char tag[] = "h1") {
+//     if ((int)(strlen(str) + strlen(tag) + tag_const) < len) {
+//         std::string res{"<" + char_copy(tag) + ">" + char_copy(str) + "</" + char_copy(tag) + ">"};
+//         string_copy(str, res);
+//     }
+
+//     return;
+// }
+
+// int main() {
+//     std::string title, tag;
+
+//     getline(std::cin, title);
+//     getline(std::cin, tag);
+
+//     char char_title_1[100];
+//     char char_title_2[100];
+//     char char_tag[100];
+//     string_copy(char_title_1, title);
+//     string_copy(char_title_2, title);
+//     string_copy(char_tag, tag);
+
+//     set_tag(char_title_1, 100);
+//     set_tag(char_title_2, 100, char_tag);
+
+//     std::cout << char_title_1 << std::endl;
+//     std::cout << char_title_2 << std::endl;
+
+//     return 0;
+// }
+// #include <string.h>
+
+// #include <iostream>
+// #include <string>
+
+// enum { tag_const = 5 };  // посчитаем <...> </...>
+
+// void set_tag(char str[], int len, char tag[20] = "h1") {
+//     if ((int)(strlen(str) + strlen(tag) + tag_const) < len) {
+//         char res[100];
+//         sprintf(res, "<%s>%s</%s>", tag, str, tag);
+//         strcpy(str, res);
+//     }
+
+//     return;
+// }
+
+// int main() {
+//     std::string title, tag;
+
+//     getline(std::cin, title);
+//     getline(std::cin, tag);
+
+//     char char_title_1[100];
+//     char char_title_2[100];
+//     char char_tag[100];
+
+//     strcpy(char_title_1, title.data());
+//     strcpy(char_title_2, title.data());
+//     strcpy(char_tag, tag.data());
+
+//     set_tag(char_title_1, 100);
+//     set_tag(char_title_2, 100, char_tag);
+
+//     std::cout << char_title_1 << std::endl;
+//     std::cout << char_title_2 << std::endl;
+
+//     return 0;
+// }
+
+// #include <iostream>
+
+// using calc_type = enum { calc_perimetr, calc_square };
+
+// int get_rect(int w, int h, calc_type type = calc_perimetr) {
+//     int res = 0;
+//     switch (type) {
+//         case calc_square:
+//             res = w * h;
+//             break;
+//         default:
+//             res = (w + h) * 2;
+//             break;
+//     }
+//     return res;
+// }
+// double get_rect(double w, double h, calc_type type = calc_perimetr) {
+//     double res = 0;
+//     switch (type) {
+//         case calc_square:
+//             res = w * h;
+//             break;
+//         default:
+//             res = (w + h) * 2;
+//             break;
+//     }
+//     return res;
+// }
+
+// int main() {
+//     int a, b;
+//     double c, d;
+
+//     std::cin >> a >> b >> c >> d;
+
+//     int result_1 = get_rect(a, b);
+//     double result_2 = get_rect(c, d);
+
+//     std::cout << result_1 << "\n" << result_2 << std::endl;
+
+//     return 0;
+// }
+// #include <iostream>
+
+// using type_sort = enum { sort_asc, sort_desc };
+
+// void swap(short& a, short& b) {
+//     short tmp = a;
+//     a = b;
+//     b = tmp;
+//     return;
+// }
+
+// int sort(short* ar, size_t len, type_sort type = sort_asc) {
+//     int res = 0;
+//     int cpy[len];
+//     for (size_t i = 0; i < len; i++) {
+//         cpy[i] = ar[i];
+//     }
+//     for (size_t i = 0; i < len; i++) {
+//         for (size_t j = i + 1; j < len; j++) {
+//             if (type == sort_asc && ar[i] > ar[j]) {
+//                 swap(ar[i], ar[j]);
+//             }
+//             if (type == sort_desc && ar[i] < ar[j]) {
+//                 swap(ar[i], ar[j]);
+//             }
+//         }
+//     }
+//     for (size_t i = 0; i < len; i++) {
+//         if (cpy[i] != ar[i]) res++;
+//     }
+
+//     return res;
+// }
+
+// int main() {
+//     short ar[] = {-5, 4, 10, 0, -100, -1, -2, 98};
+
+//     int result = sort(ar, sizeof(ar) / sizeof(ar[0]));
+
+//     std::cout << result << std::endl;
+
+//     return 0;
+// }
+
+// #include <algorithm>
+// #include <iostream>
+
+// enum type_sort { sort_asc, sort_desc };
+
+// int sort(short* ar, unsigned len, type_sort type = sort_asc) {
+//     short* b_arr = new short[len];
+//     std::copy_n(ar, len, b_arr);
+//     if (type)
+//         std::sort(ar, ar + len, [](short a, short b) { return a > b; });
+//     else
+//         std::sort(ar, ar + len);
+//     int cnt = 0;
+//     for (size_t i = 0; i < len; i++)
+//         if (ar[i] != b_arr[i]) cnt++;
+//     delete[] b_arr;
+//     return cnt;
+// }
+
+// int main() {
+//     short ar[] = {-5, 4, 10, 0, -100, -1, -2, 98};
+
+//     int result = sort(ar, sizeof(ar) / sizeof(ar[0]));
+
+//     std::cout << result << std::endl;
+
+//     return 0;
+// }
+
+// #include <iostream>
+
+// inline int get_max_3(int a, int b, int c) {
+//     if (a > b) {
+//         if (a > c) return a;
+//     } else {
+//         if (b > c) return b;
+//     }
+//     return c;
+// }
+
+// int main() {
+//     int a, b, c;
+
+//     std::cin >> a >> b >> c;
+
+//     int result = get_max_3(a, b, c);
+
+//     std::cout << result << std::endl;
+//     return 0;
+// }
+
+// #include <iostream>
+
+// enum { max_len = 10 };
+
+// inline int sum_ar_int(int ar[], size_t count) {
+//     int res = 0;
+//     for (size_t i = 0; i < count; i++) {
+//         res += ar[i];
+//     }
+//     return res;
+// }
+
+// int main() {
+//     int ar[max_len];
+
+//     for (size_t i = 0; i < max_len; i++) {
+//         std::cin >> ar[i];
+//     }
+
+//     int result = sum_ar_int(ar, max_len);
+
+//     std::cout << result << std::endl;
+//     return 0;
+// }
+// #include <iostream>
+
+// enum { max_len = 10 };
+
+// inline void range(int ar[], int count, int start, int stop, int step) {
+//     for (int i = 0; i < count; i++) {
+//         int value = start + i * step;
+//         if (value < stop)
+//             ar[i] = value;
+//         else
+//             break;
+//     }
+//     return;
+// }
+
+// int main() {
+//     int ar[max_len] = {0}, a, b, c;
+
+//     std::cin >> a >> b >> c;
+
+//     range(ar, max_len, a, b, c);
+
+//     for (size_t i = 0; i < max_len; i++) {
+//         std::cout << ar[i] << " ";
+//     }
+
+//     std::cout << std::endl;
+//     return 0;
+// }
+
+// #include <iostream>
+
+// enum { max_size = 20 };
+
+// bool is_even(int num) { return num % 2 == 0; }
+
+// using fn = bool (*)(int);
+
+// fn even = is_even;
+
+// int sum_ar(const int *ar, size_t len_ar, fn even) {
+//     int res = 0;
+//     for (size_t i = 0; i < len_ar; i++) {
+//         if (even(ar[i])) res += ar[i];
+//     }
+//     return res;
+// }
+
+// int main(void) {
+//     int marks[max_size] = {0};
+//     int x;
+//     size_t count = 0;
+//     while (count < max_size && std::cin >> x) {
+//         marks[count] = x;
+//         count++;
+//     }
+
+//     int result = sum_ar(marks, count, even);
+
+//     std::cout << result << std::endl;
+
+//     return 0;
+// }
+
+// #include <iostream>
+
+// enum { max_size = 20 };
+
+// void reverse(short* ar, int count) {
+//     for (int i = 0; i < count / 2; i++) {
+//         short tmp = ar[i];
+//         ar[i] = ar[count - i - 1];
+//         ar[count - i - 1] = tmp;
+//     }
+// }
+
+// int main(void) {
+//     short digs[max_size];
+//     int count = 0;
+//     while (count < max_size && std::cin >> digs[count]) count++;
+
+//     reverse(digs, count);
+
+//     for (int i = 0; i < count; i++) {
+//         std::cout << digs[i] << " ";
+//     }
+
+//     return 0;
+// }
+
+// const char symbol_f = 'f';
+// const short* ptr_sh;
+// int count = 0;
+// const int& lnk = count;
+
+// auto var_1 = symbol_f;
+// auto var_2 = &symbol_f;
+// auto var_3 = ptr_sh;
+// auto var_4 = &count;
+// auto var_5 = lnk;
+// auto var_6 = *ptr_sh;
+
+// #include <iostream>
+
+// int main(void) {
+//     // auto lmd_2 = [](const char* msg) { std::cout << msg; };
+//     // lmd_2("Hello");
+//     // auto rec = [](int x) {
+//     //     if (x < 10) rec(x - 1);
+//     // };
+
+//     // rec(2);
+//     // auto r = [](int x, int y = 0) { return x + y; };
+//     // r(1);
+//     // auto lmd = [](int a, int b) { return 2 * (a + b); };
+//     // lmd(1, 2);
+//     // auto lmd_3 = [](int a, int b, int c) {
+//     //     int p = a + b + c;
+//     //     return p;
+//     // };
+//     // auto f = []() { return -1; };
+//     // auto f = [](int x) { return (x < 0) ? -x : x; };
+//     // auto f = [](double a) { (a > 0.0 && a < 10.0) ? std::cout << "yes" : std::cout << "no"; }(5);
+
+//     return 0;
+// }
+
+// #include <cmath>
+// #include <iostream>
+
+// int main(void) {
+//     int a, b, c;
+//     std::cin >> a >> b >> c;
+
+//     auto sq_tr = [](int a, int b, int c) {
+//         double p = (a + b + c) / 2.0;
+//         return sqrt(p * (p - a) * (p - b) * (p - c));
+//     };
+
+//     printf("%.2lf", sq_tr(a, b, c));
+
+//     // __ASSERT_TESTS__
+//     return 0;
+// }
+// #include <cmath>
+// #include <iostream>
+
+// using fn = bool (*)(int);
+
+// int main(void) {
+//     fn func_filter[] = {[](int x) { return x % 2 == 0; }, [](int x) { return x < 0; },
+//                         [](int x) { return x > 0; }};
+
+//     int a;
+
+//     std::cin >> a;
+
+//     printf("%d", func_filter[1](a));
+
+//     // __ASSERT_TESTS__
+//     return 0;
+// }
+
+// #include <iostream>
+
+// enum { max_length_ar = 20 };
+// using filter_func = bool (*)(short);
+
+// void remove_elem(short* ar, int& len, filter_func filter) {
+//     int shift = 0;
+//     for (int i = 0; i + shift < len; i++) {
+//         while (filter(ar[i + shift])) shift++;
+//         ar[i] = ar[i + shift];
+//         // printf("%d ", ar[i]);
+//     }
+//     len -= shift;
+// }
+
+// int main(void) {
+//     short marks[max_length_ar] = {0};
+//     int count = 0;
+//     while (count < max_length_ar && std::cin >> marks[count]) count++;
+
+//     remove_elem(marks, count, [](short x) { return x < 3; });
+
+//     for (int i = 0; i < count; i++) {
+//         std::cout << marks[i] << " ";
+//     }
+//     std::cout << std::endl;
+
+//     return 0;
+// }
+
+// #include <iostream>
+
+// enum { max_length_ar = 20 };
+// using filter_func = bool (*)(int);
+
+// int sum_elem(const int* ar, size_t len, filter_func filter) {
+//     int res = 0;
+//     for (size_t i = 0; i < len; i++) {
+//         if (filter(ar[i])) res += ar[i];
+//     }
+//     return res;
+// }
+
+// int main(void) {
+//     int marks[max_length_ar] = {0};
+//     int count = 0;
+//     while (count < max_length_ar && std::cin >> marks[count]) count++;
+
+//     int result = sum_elem(marks, (size_t)count, [](int x) -> bool { return x % 6 == 0; });
+
+//     std::cout << result << std::endl;
+
+//     return 0;
+// }
+// #include <iostream>
+
+// enum { max_length_ar = 20 };
+// using filter_func = bool (*)(int, int);
+
+// int sum_elem(const int* ar, size_t len, filter_func filter) {
+//     int res = 0;
+//     for (size_t i = 1; i < len; i++) {
+//         if (filter(ar[i - 1], ar[i])) res += ar[i];
+//     }
+//     return res;
+// }
+
+// int main(void) {
+//     int marks[max_length_ar] = {0};
+//     int count = 0;
+//     while (count < max_length_ar && std::cin >> marks[count]) count++;
+
+//     int result =
+//         sum_elem(marks, (size_t)count, [](int a, int b) -> bool { return a % 2 == 0 && b % 3 == 0; });
+
+//     std::cout << result << std::endl;
+
+//     return 0;
+// }
+
+// #include <iostream>
+
+// int main(void) {
+//     int ar[10];
+//     int size_ar = sizeof(ar);
+
+//     return 0;
+// }
+
+// #include <iostream>
+
+// int main(void) {
+//     char msg[] = "hello";
+//     int count = 0;
+//     int& lnk = count;
+//     char* ptr = msg;
+
+//     auto lmd_1 = [msg, count, lnk, ptr]() { return count + 1; };
+//     auto lmd_5 = [ptr](int step) { *ptr += step; };
+//     auto lmd_2 = [=]() { std::cout << msg; };
+//     auto lmd_7 = [lnk](int step) { lnk += step; };
+//     auto lmd_3 = [&count](int step) { count += step; };
+//     auto lmd_4 = [&lnk](int step) { lnk += step; };
+//     auto lmd_6 = [*ptr](int step) { *ptr += step; };
+
+//     return 0;
+// }
+
+// #include <iostream>
+
+// int main(void) {
+//     int count = 1;
+//     int& lnk = count;
+
+//     auto r = [lnk](int step) mutable { lnk += step; };
+
+//     r(5);
+//     std::cout << count << std::endl;
+
+//     return 0;
+// }
+
+// #include <iostream>
+
+// int main(void) {
+//     int w, h;
+//     std::cin >> w >> h;
+
+//     auto sum_ab = [w, h]() { return w + h; };
+
+//     int result = sum_ab();
+
+//     std::cout << result << std::endl;
+
+//     // __ASSERT_TESTS__
+//     return 0;
+// }
+
+// #include <iostream>
+// #include <string>
+
+// void get_line(char* buff, size_t max_buff) {
+//     std::string line;
+//     getline(std::cin, line);
+
+//     int i = 0;
+//     for (; i < line.length() && i < max_buff - 1; ++i) buff[i] = line[i];
+//     buff[i] = '\0';
+// }
+
+// int main(void) {
+//     char str[100];
+//     //  get_line(str, sizeof(str));
+
+//     auto gl = [&str]() {
+//         size_t max_buff = sizeof(str);
+//         std::string line;
+//         getline(std::cin, line);
+
+//         size_t i = 0;
+//         for (; i < line.length() && i < max_buff - 1; ++i) str[i] = line[i];
+//         str[i] = '\0';
+//     };
+
+//     gl();
+
+//     std::cout << str << std::endl;
+//     return 0;
+// }
+
+#include <cmath>
+#include <iostream>
+
+enum { size_pole = 10 };
+
+int is_verify(char (*pg)[size_pole], int x, int y) {
+    for (int i = -1; i <= 1; ++i)
+        for (int j = -1; j <= 1; ++j) {
+            int xx = x + i, yy = y + j;
+            if (xx < 0 || xx >= size_pole || yy < 0 || yy >= size_pole) continue;
+            if (pg[xx][yy] == '*') return 0;
+        }
+    return 1;
+}
 
 int main(void) {
-    int n = 7;
-    while (n-- > 0) {
-        int n = 5;
-        printf("%d\n", n);
-        n++;
+    char pg[size_pole][size_pole] = {0};
+
+    auto is_v = [&pg](int x, int y) {
+        for (int phi = 0; phi < 360; phi += 45) {
+            int i = round(cos(phi * 3.14159265 / 180));
+            int j = round(sin(phi * 3.14159265 / 180));
+            int xx = x + i, yy = y + j;
+            if (xx < 0 || xx >= size_pole || yy < 0 || yy >= size_pole) continue;
+            if (pg[xx][yy] == '*') return 0;
+        }
+        return 1;
+    };
+
+    int mines = 0;
+    do {
+        int i = rand() % size_pole;
+        int j = rand() % size_pole;
+        if (is_v(i, j)) {
+            pg[i][j] = '*';
+            mines++;
+        }
+    } while (mines < 12);
+
+    //----------- вывод поля в консоль ---------------------------------
+    for (int i = 0; i < size_pole; ++i) {
+        for (int j = 0; j < size_pole; ++j) printf("%c ", (pg[i][j] == 0) ? '#' : '*');
+        putchar('\n');
     }
+    //----------- завершение вывода поля в консоль ----------------------
 
-    printf("%d\n", n);
-
+    // __ASSERT_TESTS__
     return 0;
 }
