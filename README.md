@@ -4,7 +4,9 @@
 
 ## [Stepik. Основы языка Си](/StepikC/README.md)
 ## [C для начинающих (теория и задачи)](/C_for_beginners_Stepik/README.md)
+## [С для начинающих (альтернатива)](/C_for_beginners/README.MD)
 ## [Добрый, добрый C/C++ с Сергеем Балакиревым](/Good_good_C_C++/README.MD)
+## [Введение в программирование (C++)](/Introduction_to_Programming_Cpp/README.MD)
 
 # Материалы
 
