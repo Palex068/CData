@@ -218,8 +218,7 @@
 // #define ili ||
 // #define poka while(
 // #define ne !
-// #define dumai \
-//     {}
+// #define dumai {}
 // #define verni return
 // #define uhodi return
 // #define ravno ==
@@ -265,14 +264,262 @@
 // verni 0;
 // konchi
 
+// #include <iostream>
+
+// int main() {
+//     int a, b;
+
+//     std::cin >> a >> b;
+
+//     std::cout << (a > b ? a : b) << std::endl;
+
+//     return 0;
+// }
+
+// #include <iostream>
+
+// int main() {
+//     int a, b;
+
+//     std::cin >> a >> b;
+
+//     std::cout << (a > b ? 1 : 2) * (a != b) << std::endl;
+
+//     return 0;
+// }
+
+// #include <iostream>
+
+// int max(int a, int b) { return a > b ? a : b; }
+
+// int main() {
+//     int a, b, c;
+
+//     std::cin >> a >> b >> c;
+
+//     int result = max(a, max(b, c));
+
+//     std::cout << result << std::endl;
+
+//     return 0;
+// }
+
+// #include <iostream>
+
+// int main() {
+//     int a, b, c;
+//     std::cin >> a >> b >> c;
+//     if (a < b) a = b;
+//     if (a < c) a = c;
+//     std::cout << a;
+//     return 0;
+// }
+
+// #include <iostream>
+
+// int main() {
+//     int a, b, c;
+
+//     std::cin >> a >> b >> c;
+
+//     int result = ((a + b) > c) && ((a + c) > b) && ((c + b) > a);
+
+//     std::cout << (result ? "YES" : "NO") << std::endl;
+
+//     return 0;
+// }
+
+// #include <iostream>
+
+// int main() {
+//     int a, b, c;
+
+//     std::cin >> a >> b >> c;
+
+//     int result = ((a + b) > c) && ((a + c) > b) && ((c + b) > a);
+
+//     std::cout << (result ? "YES" : "NO") << std::endl;
+
+//     return 0;
+// }
+
+// #include <iostream>
+
+// int main() {
+//     int a, b, c;
+
+//     std::cin >> a >> b >> c;
+
+//     int result = (a == b) + (a == c) + (c == b);
+
+//     std::cout << (result == 1 ? 2 : result) << std::endl;
+
+//     return 0;
+// }
+
+// #include <iostream>
+
+// int main() {
+//     int a, b, c, d;
+
+//     std::cin >> a >> b >> c >> d;
+
+//     int result = (a == c) || (b == d);
+
+//     std::cout << (result ? "YES" : "NO") << std::endl;
+
+//     return 0;
+// }
+
+// #include <cmath>
+// #include <iostream>
+
+// int main() {
+//     int a, b, c, d;
+
+//     std::cin >> a >> b >> c >> d;
+
+//     int result = abs(a - c) <= 1 && abs(b - d) <= 1;
+
+//     std::cout << (result ? "YES" : "NO") << std::endl;
+
+//     return 0;
+// }
+
+// #include <cmath>
+// #include <iostream>
+
+// int main() {
+//     int a, b, c, d;
+
+//     std::cin >> a >> b >> c >> d;
+
+//     int result = abs(a - c) == abs(b - d);
+
+//     std::cout << (result ? "YES" : "NO") << std::endl;
+
+//     return 0;
+// }
+
+// #include <cmath>
+// #include <iostream>
+
+// int main() {
+//     int a, b, c, d;
+
+//     std::cin >> a >> b >> c >> d;
+
+//     int result = abs(a - c) == abs(b - d) || (a == c) || (b == d);
+
+//     std::cout << (result ? "YES" : "NO") << std::endl;
+
+//     return 0;
+// }
+
+// #include <cmath>
+// #include <iostream>
+
+// int main() {
+//     int a, b, c, d;
+
+//     std::cin >> a >> b >> c >> d;
+
+//     int result = abs(a - c) == 1 && abs(b - d) == 2 || abs(a - c) == 2 && abs(b - d) == 1;
+
+//     std::cout << (result ? "YES" : "NO") << std::endl;
+
+//     return 0;
+// }
+
+// #include <cmath>
+// #include <iostream>
+
+// int min(int a, int b) { return a < b ? a : b; }
+// void swap(int* a, int* b) {
+//     int tmp = *a;
+//     *a = *b;
+//     *b = tmp;
+// }
+
+// int main() {
+//     int a, b, c, d;
+
+//     std::cin >> a >> b >> c >> d;
+
+//     if (a > b) swap(&a, &b);
+
+//     int result = min(c, min(d, min(abs(a - c), abs(b - d))));
+
+//     std::cout << result << std::endl;
+
+//     return 0;
+// }
+
+// #include <iostream>
+
+// void swap(int* a, int* b) {
+//     int tmp = *a;
+//     *a = *b;
+//     *b = tmp;
+// }
+
+// int main() {
+//     int a, b, c;
+
+//     std::cin >> a >> b >> c;
+
+//     if (a > b) swap(&a, &b);
+//     if (a > c) swap(&c, &a);
+//     if (b > c) swap(&c, &b);
+
+//     printf("%d %d %d", a, b, c);
+
+//     return 0;
+// }
 #include <iostream>
 
+void swap(int& a, int& b) {
+    int tmp = a;
+    a = b;
+    b = tmp;
+}
+
+void sort_three(int& a, int& b, int& c) {
+    if (a > b) swap(a, b);
+    if (a > c) swap(c, a);
+    if (b > c) swap(c, b);
+}
+
 int main() {
-    int a, b;
+    int a, b, c;
+    std::cin >> a >> b >> c;
+    int a1, b1, c1;
+    std::cin >> a1 >> b1 >> c1;
 
-    std::cin >> a >> b;
+    sort_three(a, b, c);
+    sort_three(a1, b1, c1);
 
-    std::cout << (a > b ? a : b) << std::endl;
+    int result = 0;
+    if (a == a1 && b == b1 && c == c1)
+        result = 3;
+    else if (a <= a1 && b <= b1 && c <= c1)
+        result = 1;
+    else if (a >= a1 && b >= b1 && c >= c1)
+        result = 2;
 
+    switch (result) {
+        case 1:
+            puts("The first box is smaller than the second one");
+            break;
+        case 2:
+            puts("The first box is larger than the second one");
+            break;
+        case 3:
+            puts("Boxes are equal");
+            break;
+        default:
+            puts("Boxes are incomparable");
+            break;
+    }
     return 0;
 }
