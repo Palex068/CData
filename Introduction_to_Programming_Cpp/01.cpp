@@ -476,50 +476,413 @@
 
 //     return 0;
 // }
+
+// #include <iostream>
+
+// void swap(int& a, int& b) {
+//     int tmp = a;
+//     a = b;
+//     b = tmp;
+// }
+
+// void sort_three(int& a, int& b, int& c) {
+//     if (a > b) swap(a, b);
+//     if (a > c) swap(c, a);
+//     if (b > c) swap(c, b);
+// }
+
+// int main() {
+//     int a, b, c;
+//     std::cin >> a >> b >> c;
+//     int a1, b1, c1;
+//     std::cin >> a1 >> b1 >> c1;
+
+//     sort_three(a, b, c);
+//     sort_three(a1, b1, c1);
+
+//     int result = 0;
+//     if (a == a1 && b == b1 && c == c1)
+//         result = 3;
+//     else if (a <= a1 && b <= b1 && c <= c1)
+//         result = 1;
+//     else if (a >= a1 && b >= b1 && c >= c1)
+//         result = 2;
+
+//     switch (result) {
+//         case 1:
+//             puts("The first box is smaller than the second one");
+//             break;
+//         case 2:
+//             puts("The first box is larger than the second one");
+//             break;
+//         case 3:
+//             puts("Boxes are equal");
+//             break;
+//         default:
+//             puts("Boxes are incomparable");
+//             break;
+//     }
+//     return 0;
+// }
+
+// #include <iostream>
+
+// int main() {
+//     int n, i = 1;
+//     std::cin >> n;
+
+//     while (i * i <= n) {
+//         printf("%d ", i * i);
+//         i++;
+//     }
+
+//     return 0;
+// }
+
+// #include <iostream>
+
+// int main() {
+//     int n, i = 2;
+//     std::cin >> n;
+
+//     while (i <= n) {
+//         if (n % i == 0) {
+//             printf("%d", i);
+//             break;
+//         }
+//         i++;
+//     }
+//     return 0;
+// }
+
+// #include <iostream>
+
+// int main() {
+//     int n, i = 1;
+//     std::cin >> n;
+
+//     while (i <= n) {
+//         printf("%d ", i);
+//         i *= 2;
+//     }
+//     return 0;
+// }
+
+// #include <iostream>
+
+// int main() {
+//     int n, i = 1, res = 1;
+//     std::cin >> n;
+
+//     while (i <= n) {
+//         res = i;
+//         i *= 2;
+//     }
+//     printf("%s", res == n ? "YES" : "NO");
+//     return 0;
+// }
+
+// #include <iostream>
+
+// int main() {
+//     int n, count = 0;
+
+//     while (std::cin >> n && n != 0) count++;
+
+//     printf("%d", count);
+//     return 0;
+// }
+
+// #include <iostream>
+
+// int main() {
+//     int n, sum = 0;
+
+//     while (std::cin >> n && n != 0) sum += n;
+
+//     printf("%d", sum);
+//     return 0;
+// }
+
+// #include <iostream>
+
+// int main() {
+//     int n, max = 0, count = 0;
+
+//     while (std::cin >> n && n != 0) {
+//         if (n > max) {
+//             max = n;
+//             count = 0;
+//         }
+//         if (n == max) count++;
+//     }
+//     printf("%d", count);
+//     return 0;
+// }
+
+// #include <iostream>
+
+// int main() {
+//     int n, max = 0, sec_max = 0;
+
+//     while (std::cin >> n && n != 0) {
+//         if (n >= max) {
+//             sec_max = max;
+//             max = n;
+//         } else if (sec_max < n)
+//             sec_max = n;
+//     }
+//     printf("%d", sec_max);
+//     return 0;
+// }
+
+// #include <iostream>
+
+// int main() {
+//     size_t count;
+//     int f0 = 0, f1 = 1, res = 1;
+
+//     std::cin >> count;
+
+//     for (size_t i = 1; i < count; i++) {
+//         res = f0 + f1;
+//         f0 = f1;
+//         f1 = res;
+//     }
+
+//     printf("%d", res);
+//     return 0;
+// }
+
+// #include <iostream>
+
+// int main() {
+//     int f0 = 0, f1 = 1, res = 1, number, count = 1;
+
+//     std::cin >> number;
+
+//     for (; res < number; count++) {
+//         res = f0 + f1;
+//         f0 = f1;
+//         f1 = res;
+//     }
+
+//     printf("%d", f1 == number ? count : -1);
+//     return 0;
+// }
+
+// #include <iostream>
+
+// int main() {
+//     int n, mem = 0, count = 0, max_count = 1;
+
+//     while (std::cin >> n && n != 0) {
+//         if (n != mem) {
+//             count = 0;
+//             mem = n;
+//         }
+//         if (n == mem) count++;
+//         if (max_count < count) max_count = count;
+//     }
+
+//     printf("%d", max_count);
+//     return 0;
+// }
+
+// #include <iostream>
+
+// int main() {
+//     int n, n0 = 0, n1 = 0, n2 = 0, count = 0;
+
+//     while (std::cin >> n && n != 0) {
+//         n0 = n1;
+//         n1 = n2;
+//         n2 = n;
+//         if (n0 < n1 && n1 > n2 && n0 != 0) count++;
+//     }
+
+//     printf("%d", count);
+//     return 0;
+// }
+
+// #include <iostream>
+
+// int main() {
+//     int n, n0 = 0, n1 = 0, n2 = 0;
+//     int max_count = 0, len = 0, min_len = 0;
+
+//     while (std::cin >> n && n != 0) {
+//         n0 = n1;
+//         n1 = n2;
+//         n2 = n;
+//         if (n0 < n1 && n1 > n2 && n0 != 0) {
+//             if (min_len == 0) min_len = len;
+//             if (len < min_len) min_len = len;
+//             max_count++;
+//             len = 0;
+//         }
+//         if (max_count) len++;
+//     }
+
+//     printf("%d", min_len);
+//     return 0;
+// }
+
+// #include <cmath>
+// #include <iostream>
+
+// int main() {
+//     double n;
+
+//     std::cin >> n;
+
+//     double result = n - trunc(n);
+
+//     std::cout << result;
+//     return 0;
+// }
+
+// #include <iostream>
+
+// int main() {
+//     double n;
+
+//     std::cin >> n;
+
+//     double result = (int)(n * 10) % 10;
+
+//     std::cout << result;
+//     return 0;
+// }
+
+// #include <cmath>
+// #include <iostream>
+
+// int main() {
+//     double a, b, c;
+
+//     std::cin >> a >> b >> c;
+
+//     double p = (a + b + c) / 2;
+//     double result = sqrt(p * (p - a) * (p - b) * (p - c));
+
+//     std::cout << result;
+//     return 0;
+// }
+
+// #include <iostream>
+
+// int main() {
+//     double p, x, y;
+
+//     std::cin >> p >> x >> y;
+
+//     double rub = x * (1 + p / 100);
+//     int res_rub = (int)rub;
+//     double cop = y * (1 + p / 100) + rub * 100 - res_rub * 100;
+//     res_rub += (int)cop / 100;
+//     int res_cop = (int)cop % 100;
+
+//     printf("%d %d", res_rub, res_cop);
+//     return 0;
+// }
+
+// #include <iostream>
+
+// int main() {
+//     int p, x, y, k;
+//     std::cin >> p >> x >> y >> k;
+
+//     for (int i = 0; i < k; i++) {
+//         int res = (x * 100 + y) * (p + 100) / 100;
+//         x = res / 100;
+//         y = res % 100;
+//     }
+//     printf("%d %d", x, y);
+
+//     return 0;
+// }
+
+// #include <iostream>
+
+// int main() {
+//     int n, count = 0;
+//     double result = 0;
+//     while (std::cin >> n && n != 0) {
+//         result += n;
+//         count++;
+//     }
+//     std::cout.precision(9);
+//     std::cout << result / count;
+//     return 0;
+// }
+
+// #include <cmath>
+// #include <iostream>
+// #include <vector>
+
+// int main() {
+//     int n, count = 0;
+//     std::vector<int> a;
+//     double mean = 0;
+//     while (std::cin >> n && n != 0) {
+//         a.push_back(n);
+//         mean += n;
+//         count++;
+//     }
+//     mean /= count;
+
+//     double result = 0;
+
+//     for (int i = 0; i < count; i++) {
+//         result += (a[i] - mean) * (a[i] - mean);
+//     }
+
+//     result = sqrt(result / --count);
+
+//     printf("%.11lf\n", result);
+
+//     return 0;
+// }
+
+// #include <cmath>
+// #include <iomanip>
+// #include <iostream>
+
+// int main() {
+//     using namespace std;
+//     // входное число, счетчик чисел, сумма чисел, сумма квадратов чисел
+//     int n, cnt = 0, sum = 0, sum2 = 0;
+//     // результат - стандартное отклонение
+//     double res;
+//     while (cin >> n && n != 0) {
+//         cnt++;
+//         // находим сумму и сумму квадратов
+//         sum += n;
+//         sum2 += n * n;
+//     }
+//     // для увеличения точности все возможные операции до
+//     // деления выполняем над целыми
+//     res = sqrt((double)(cnt * sum2 - sum * sum) / (cnt * (cnt - 1)));  // средне квадратичное отклонение
+//     cout << setprecision(11) << fixed;
+//     cout << res;
+//     return 0;
+// }
+
+#include <iomanip>
 #include <iostream>
 
-void swap(int& a, int& b) {
-    int tmp = a;
-    a = b;
-    b = tmp;
-}
-
-void sort_three(int& a, int& b, int& c) {
-    if (a > b) swap(a, b);
-    if (a > c) swap(c, a);
-    if (b > c) swap(c, b);
-}
-
 int main() {
-    int a, b, c;
-    std::cin >> a >> b >> c;
-    int a1, b1, c1;
-    std::cin >> a1 >> b1 >> c1;
+    using namespace std;
+    size_t count;
+    double n, x, result = 0;
+    cin >> count >> x;
 
-    sort_three(a, b, c);
-    sort_three(a1, b1, c1);
-
-    int result = 0;
-    if (a == a1 && b == b1 && c == c1)
-        result = 3;
-    else if (a <= a1 && b <= b1 && c <= c1)
-        result = 1;
-    else if (a >= a1 && b >= b1 && c >= c1)
-        result = 2;
-
-    switch (result) {
-        case 1:
-            puts("The first box is smaller than the second one");
-            break;
-        case 2:
-            puts("The first box is larger than the second one");
-            break;
-        case 3:
-            puts("Boxes are equal");
-            break;
-        default:
-            puts("Boxes are incomparable");
-            break;
+    for (size_t i = 0; i <= count; i++) {
+        cin >> n;
+        result *= x;
+        result += n;
     }
+    cout << result;
     return 0;
 }
