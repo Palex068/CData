@@ -869,20 +869,112 @@
 //     return 0;
 // }
 
-#include <iomanip>
+// #include <iomanip>
+// #include <iostream>
+
+// int main() {
+//     using namespace std;
+//     size_t count;
+//     double n, x, result = 0;
+//     cin >> count >> x;
+
+//     for (size_t i = 0; i <= count; i++) {
+//         cin >> n;
+//         result *= x;
+//         result += n;
+//     }
+//     cout << result;
+//     return 0;
+// }
+
+// #include <cmath>
+// #include <iomanip>
+// #include <iostream>
+
+// void swap(double& a, double& b) {
+//     double tmp = a;
+//     a = b;
+//     b = tmp;
+// }
+
+// int main() {
+//     double a, b, c;
+//     std::cin >> a >> b >> c;
+
+//     double D = b * b - 4 * a * c;
+
+//     if (D < 0) return 0;
+
+//     double x1 = (-b + sqrt(D)) / (2 * a);
+//     double x2 = (-b - sqrt(D)) / (2 * a);
+
+//     if (x1 == x2)
+//         std::cout << x1;
+//     else {
+//         if (x1 > x2) swap(x1, x2);
+//         std::cout << x1 << " " << x2 << std::endl;
+//     }
+//     return 0;
+// }
+
+// #include <cmath>
+// #include <iomanip>
+// #include <iostream>
+
+// void swap(double& a, double& b) {
+//     double tmp = a;
+//     a = b;
+//     b = tmp;
+// }
+
+// int main() {
+//     double a, b, c;
+//     std::cin >> a >> b >> c;
+
+//     if (a == 0) {
+//         if (b == 0) {
+//             if (c == 0) {
+//                 std::cout << 3;
+//                 return 0;
+//             } else {
+//                 std::cout << 0;
+//                 return 0;
+//             }
+//         } else {
+//             std::cout << 1 << " " << (double)c / -b;
+//             return 0;
+//         }
+//     }
+
+//     double D = b * b - 4 * a * c;
+
+//     if (D < 0) {
+//         std::cout << 0;
+//         return 0;
+//     }
+
+//     double x1 = (-b + sqrt(D)) / (2 * a);
+//     double x2 = (-b - sqrt(D)) / (2 * a);
+
+//     if (x1 == x2)
+//         std::cout << 1 << " " << x1;
+//     else {
+//         if (x1 > x2) swap(x1, x2);
+//         std::cout << 2 << " " << x1 << " " << x2;
+//     }
+//     std::cout << std::endl;
+//     return 0;
+// }
+
 #include <iostream>
 
 int main() {
-    using namespace std;
-    size_t count;
-    double n, x, result = 0;
-    cin >> count >> x;
+    double a, b, c, d, e, f;
+    std::cin >> a >> b >> c >> d >> e >> f;
 
-    for (size_t i = 0; i <= count; i++) {
-        cin >> n;
-        result *= x;
-        result += n;
-    }
-    cout << result;
+    double x = (b * f - d * e) / (b * c - d * a);
+    double y = (c * e - f * a) / (b * c - d * a);
+
+    std::cout << x << " " << y << std::endl;
     return 0;
 }
