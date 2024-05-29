@@ -966,15 +966,532 @@
 //     return 0;
 // }
 
+// #include <iostream>
+
+// int main() {
+//     double a, b, c, d, e, f;
+//     std::cin >> a >> b >> c >> d >> e >> f;
+
+//     double x = (b * f - d * e) / (b * c - d * a);
+//     double y = (c * e - f * a) / (b * c - d * a);
+
+//     std::cout << x << " " << y << std::endl;
+//     return 0;
+// }
+
+// #include <cmath>
+// #include <iostream>
+
+// double eps = 0.000001;
+// double norm(double x) { return fabs(x) <= eps ? 0 : x; }
+
+// int main() {
+//     double a, b, c, d, e, f;
+//     std::cin >> a >> b >> c >> d >> e >> f;
+
+//     double D = a * d - b * c;
+//     double Dx = e * d - b * f;
+//     double Dy = a * f - c * e;
+
+//     if (D != 0) {
+//         std::cout << 2 << ' ' << norm(Dx / D) << ' ' << norm(Dy / D);
+//     } else {
+//         if (Dx == 0 && Dy == 0) {
+//             if (a == 0 && b == 0 && c == 0 && d == 0) {
+//                 if (e != 0 || f != 0) {
+//                     std::cout << 0;
+//                 } else {
+//                     std::cout << 5;
+//                 }
+//             } else {
+//                 if (a == 0 && c == 0) {
+//                     if (b != 0) {
+//                         double y = e / b;
+//                         std::cout << 4 << " " << y;
+//                     } else {
+//                         double y = f / d;
+//                         std::cout << 4 << " " << y;
+//                     }
+//                 } else {
+//                     if (b == 0 && d == 0) {
+//                         if (a != 0) {
+//                             double x = e / a;
+//                             std::cout << 3 << " " << x;
+//                         } else {
+//                             double x = f / c;
+//                             std::cout << 3 << " " << x;
+//                         }
+//                     } else {
+//                         if (b != 0) {
+//                             double n = e / b;
+//                             double k = -a / b;
+//                             std::cout << 1 << " " << k << " " << n;
+//                         } else {
+//                             double n = f / d;
+//                             double k = -c / d;
+//                             std::cout << 1 << " " << k << " " << n;
+//                         }
+//                     }
+//                 }
+//             }
+//         } else {
+//             std::cout << 0;
+//         }
+//     }
+//     std::cout << std::endl;
+//     return 0;
+// }
+
+// #include <iostream>
+// #include <vector>
+
+// int main() {
+//     size_t count;
+//     std::cin >> count;
+//     std::vector<int> a(count);
+
+//     for (size_t i = 0; i < count; i++) {
+//         std::cin >> a[i];
+//     }
+
+//     for (size_t i = 0; i < count; i++) {
+//         if (a[i] % 2 == 0) std::cout << a[i] << " ";
+//     }
+//     std::cout << std::endl;
+//     return 0;
+// }
+
+// #include <iostream>
+// #include <vector>
+
+// int main() {
+//     size_t count;
+//     std::cin >> count;
+//     std::vector<int> a(count);
+
+//     for (size_t i = 0; i < count; i++) {
+//         std::cin >> a[i];
+//     }
+//     int result = 0;
+//     for (size_t i = 0; i < count; i++) {
+//         if (a[i] > 0) result++;
+//     }
+//     std::cout << result << std::endl;
+//     return 0;
+// }
+
+// #include <iostream>
+// #include <vector>
+
+// int main() {
+//     size_t count;
+//     std::cin >> count;
+//     std::vector<int> a(count);
+
+//     for (size_t i = 0; i < count; i++) {
+//         std::cin >> a[i];
+//     }
+//     int result = 0;
+//     for (size_t i = 1; i < count; i++) {
+//         if (a[i] > a[i - 1]) std::cout << a[i] << " ";
+//     }
+//     std::cout << std::endl;
+//     return 0;
+// }
+
+// #include <iostream>
+// #include <vector>
+
+// int main() {
+//     size_t count;
+//     std::cin >> count;
+//     std::vector<int> a(count);
+
+//     for (size_t i = 0; i < count; i++) {
+//         std::cin >> a[i];
+//     }
+//     int result = 0;
+//     for (size_t i = 1; i < count; i++) {
+//         if (a[i] > 0 && a[i - 1] > 0) {
+//             std::cout << a[i - 1] << " " << a[i] << std::endl;
+//             break;
+//         }
+//         if (a[i] < 0 && a[i - 1] < 0) {
+//             std::cout << a[i] << " " << a[i - 1] << std::endl;
+//             break;
+//         }
+//     }
+//     return 0;
+// }
+
+// #include <iostream>
+// #include <vector>
+
+// int main() {
+//     size_t count;
+//     std::cin >> count;
+//     std::vector<int> a(count);
+
+//     for (size_t i = 0; i < count; i++) {
+//         std::cin >> a[i];
+//     }
+//     int min_plus = INT32_MAX;
+//     for (size_t i = 0; i < count; i++) {
+//         if (a[i] > 0 && a[i] < min_plus) {
+//             min_plus = a[i];
+//         }
+//     }
+//     std::cout << min_plus << std::endl;
+//     return 0;
+// }
+
+// #include <iostream>
+// #include <vector>
+
+// int main() {
+//     size_t count;
+//     std::cin >> count;
+//     std::vector<int> a(count);
+//     int min_odd = 0;
+
+//     for (size_t i = 0; i < count; i++) {
+//         std::cin >> a[i];
+//         if (a[i] % 2) min_odd = a[i];
+//     }
+
+//     for (size_t i = 0; i < count; i++) {
+//         if (a[i] % 2 && a[i] < min_odd) {
+//             min_odd = a[i];
+//         }
+//     }
+
+//     std::cout << min_odd << std::endl;
+//     return 0;
+// }
+
+// #include <iostream>
+// #include <vector>
+
+// int main() {
+//     size_t count;
+//     std::cin >> count;
+//     std::vector<int> a(count);
+
+//     for (size_t i = 0; i < count; i++) {
+//         std::cin >> a[i];
+//     }
+
+//     int result = 1;
+//     for (size_t i = 1; i < count; i++) {
+//         if (a[i] != a[i - 1]) result++;
+//     }
+
+//     std::cout << result << std::endl;
+//     return 0;
+// }
+
+// #include <iostream>
+// #include <vector>
+
+// void swap(int& a, int& b) {
+//     int tmp = a;
+//     a = b;
+//     b = tmp;
+// }
+
+// int main() {
+//     size_t count;
+//     std::cin >> count;
+//     std::vector<int> a(count);
+
+//     for (size_t i = 0; i < count; i++) {
+//         std::cin >> a[i];
+//     }
+
+//     for (size_t i = 1; i < count; i++) {
+//         if (i % 2) swap(a[i], a[i - 1]);
+//     }
+
+//     for (size_t i = 0; i < count; i++) {
+//         std::cout << a[i] << " ";
+//     }
+//     std::cout << std::endl;
+//     return 0;
+// }
+
+// #include <iostream>
+// #include <vector>
+
+// enum { shift = 1 };
+
+// int main() {
+//     size_t count;
+//     std::cin >> count;
+//     std::vector<int> a(count);
+
+//     for (size_t i = 0; i < count; i++) {
+//         std::cin >> a[i];
+//     }
+
+//     for (size_t i = 0; i < count; i++) {
+//         std::cout << a[(count + i + shift) % count] << " ";
+//     }
+
+//     std::cout << std::endl;
+//     return 0;
+// }
+
+// #include <iostream>
+// #include <vector>
+
+// int main() {
+//     size_t count;
+//     std::cin >> count;
+//     std::vector<int> a(count);
+
+//     for (size_t i = 0; i < count; i++) {
+//         std::cin >> a[i];
+//     }
+
+//     int result = 0;
+
+//     for (size_t i = 0; i < count; i++) {
+//         for (size_t j = i + 1; j < count; j++) {
+//             if (a[i] == a[j]) result++;
+//         }
+//     }
+
+//     std::cout << result << std::endl;
+//     return 0;
+// }
+
+// #include <iostream>
+// #include <vector>
+
+// int main() {
+//     size_t count;
+//     std::cin >> count;
+//     std::vector<int> a(count);
+
+//     for (size_t i = 0; i < count; i++) {
+//         std::cin >> a[i];
+//     }
+
+//     for (size_t i = 0; i < count; i++) {
+//         int result = 0;
+//         for (size_t j = 0; j < count; j++) {
+//             if (i == j)
+//                 continue;
+//             else if (a[i] == a[j])
+//                 result++;
+//         }
+//         if (result == 0) std::cout << a[i] << " ";
+//     }
+
+//     std::cout << std::endl;
+//     return 0;
+// }
+
+// #include <cmath>
+// #include <iostream>
+
+// enum { rows = 8, columns = 2 };
+
+// int main() {
+//     int a[rows][columns];
+
+//     for (size_t i = 0; i < rows; i++) {
+//         for (size_t j = 0; j < columns; j++) {
+//             std::cin >> a[i][j];
+//         }
+//     }
+//     int result = 0;
+//     for (size_t i = 0; i < rows; i++) {
+//         for (size_t j = 0; j < rows; j++) {
+//             if (i == j)
+//                 continue;
+//             else if (a[i][1] == a[j][1] || a[i][0] == a[j][0] ||
+//                      abs(a[i][1] - a[j][1]) == abs(a[i][0] - a[j][0]))
+//                 result++;
+//         }
+//     }
+
+//     std::cout << (result == 0 ? "NO" : "YES") << std::endl;
+//     return 0;
+// }
+
+// #include <iostream>
+// #include <vector>
+
+// int main() {
+//     size_t count, throws, left, right;
+//     std::cin >> count >> throws;
+//     std::vector<int> a(count);
+
+//     for (size_t i = 0; i < throws; i++) {
+//         std::cin >> left >> right;
+//         for (size_t j = left - 1; j < right; j++) {
+//             a[j] = 1;
+//         }
+//     }
+
+//     for (size_t i = 0; i < count; i++) {
+//         if (a[i])
+//             std::cout << ".";
+//         else
+//             std::cout << "I";
+//     }
+//     std::cout << std::endl;
+//     return 0;
+// }
+
+// #include <iostream>
+
+// int main() {
+//     int n, m, n_max = 0, m_max = 0;
+//     std::cin >> n >> m;
+//     int a[n][m];
+//     int max = INT32_MIN;
+//     for (int i = 0; i < n; i++) {
+//         for (int j = 0; j < m; j++) {
+//             std::cin >> a[i][j];
+//             if (a[i][j] > max) {
+//                 max = a[i][j];
+//                 n_max = i;
+//                 m_max = j;
+//             }
+//         }
+//     }
+
+//     std::cout << n_max << " " << m_max << std::endl;
+//     return 0;
+// }
+// #include <iostream>
+
+// int main() {
+//     int n;
+//     std::cin >> n;
+//     int a[n][n] = {};
+
+//     for (int i = 0; i < n; i++) {
+//         for (int j = 0; j < n; j++) {
+//             if (i == j || n - i - 1 == j || i == n / 2 || j == n / 2) {
+//                 a[i][j] = 1;
+//             }
+//         }
+//     }
+//     for (int i = 0; i < n; i++) {
+//         for (int j = 0; j < n; j++) {
+//             std::cout << (a[i][j] ? "*" : ".") << (j == n - 1 ? "\n" : " ");
+//         }
+//     }
+//     std::cout << std::endl;
+//     return 0;
+// }
+
+// #include <iostream>
+
+// enum { max = 100 };
+
+// int main() {
+//     int n;
+//     std::cin >> n;
+//     int a[max][max] = {};
+
+//     for (int i = 0; i < n; i++) {
+//         for (int j = 0; j < n; j++) {
+//             if (i < j) {
+//                 a[i][j] = (n - i + j) % n;
+//                 a[j][i] = a[i][j];
+//             }
+//         }
+//     }
+//     for (int i = 0; i < n; i++) {
+//         for (int j = 0; j < n; j++) {
+//             std::cout << a[i][j] << (j == n - 1 ? "\n" : " ");
+//         }
+//     }
+//     return 0;
+// }
+
+// #include <iostream>
+
+// int main() {
+//     using namespace std;
+//     int n;
+//     cin >> n;
+//     int a[100][100];
+//     for (int i = 0; i < n; i++) {
+//         for (int j = 0; j < n; j++) {
+//             a[i][j] = abs(i - j);
+//             cout << a[i][j] << " ";
+//         }
+//         cout << endl;
+//     }
+//     return 0;
+// }
+
+// #include <iostream>
+
+// int main() {
+//     int n;
+//     std::cin >> n;
+//     int a[100][100];
+
+//     for (int i = 0; i < n; i++)
+//         for (int j = 0; j < n - i; j++) {
+//             a[i][i + j] = j;
+//             a[i + j][i] = j;
+//         }
+
+//     for (int i = 0; i < n; i++) {
+//         for (int j = 0; j < n; j++) std::cout << a[i][j] << " ";
+//         std::cout << std::endl;
+//     }
+//     return 0;
+// }
+
+// #include <iostream>
+// using namespace std;
+// int main() {
+//     int n;
+//     cin >> n;
+//     int i = n * n;
+//     while (i-- > 0) cout << abs(i / n - i % n) << (i % n ? " " : "\n");
+// }
+
 #include <iostream>
 
+enum { max = 100 };
+
+void swap(int& a, int& b) {
+    int tmp = a;
+    a = b;
+    b = tmp;
+}
+
 int main() {
-    double a, b, c, d, e, f;
-    std::cin >> a >> b >> c >> d >> e >> f;
+    int n, m;
+    std::cin >> n >> m;
+    int a[max][max] = {};
 
-    double x = (b * f - d * e) / (b * c - d * a);
-    double y = (c * e - f * a) / (b * c - d * a);
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < m; j++) {
+            std::cin >> a[i][j];
+        }
+    }
 
-    std::cout << x << " " << y << std::endl;
+    int b, c;
+    std::cin >> b >> c;
+
+    for (int i = 0; i < n; i++) {
+        swap(a[i][b], a[i][c]);
+    }
+
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < m; j++) {
+            std::cout << a[i][j] << (j == m - 1 ? "\n" : " ");
+        }
+    }
     return 0;
 }
