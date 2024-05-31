@@ -1460,38 +1460,380 @@
 //     while (i-- > 0) cout << abs(i / n - i % n) << (i % n ? " " : "\n");
 // }
 
+// #include <iostream>
+
+// enum { max = 100 };
+
+// void swap(int& a, int& b) {
+//     int tmp = a;
+//     a = b;
+//     b = tmp;
+// }
+
+// int main() {
+//     int n, m;
+//     std::cin >> n >> m;
+//     int a[max][max] = {};
+
+//     for (int i = 0; i < n; i++) {
+//         for (int j = 0; j < m; j++) {
+//             std::cin >> a[i][j];
+//         }
+//     }
+
+//     int b, c;
+//     std::cin >> b >> c;
+
+//     for (int i = 0; i < n; i++) {
+//         swap(a[i][b], a[i][c]);
+//     }
+
+//     for (int i = 0; i < n; i++) {
+//         for (int j = 0; j < m; j++) {
+//             std::cout << a[i][j] << (j == m - 1 ? "\n" : " ");
+//         }
+//     }
+//     return 0;
+// }
+// #include <iostream>
+
+// enum { max = 100 };
+
+// int main() {
+//     int n;
+//     std::cin >> n;
+//     int a[max][max] = {};
+
+//     for (int i = 0; i < n; i++) {
+//         for (int j = 0; j < n; j++) {
+//             std::cin >> a[i][j];
+//         }
+//     }
+//     int result = 0;
+//     for (int i = 0; i < n; i++) {
+//         for (int j = 0; j < n; j++) {
+//             if (i == j) continue;
+//             if (a[i][j] != a[j][i]) result++;
+//         }
+//     }
+
+//     std::cout << (result ? "NO" : "YES");
+//     return 0;
+// }
+
+// #include <iostream>
+
+// enum { max = 100 };
+
+// int main() {
+//     int n;
+//     std::cin >> n;
+//     int a[max][max] = {};
+
+//     for (int i = 0; i < n; i++) {
+//         for (int j = 0; j < n; j++) {
+//             std::cin >> a[i][j];
+//         }
+//     }
+//     int k;
+//     std::cin >> k;
+
+//     for (int i = 0; i < n; i++) {
+//         int row = i + k;
+//         if (row < 0 || row > n - 1)
+//             continue;
+//         else
+//             std::cout << a[row][i] << " ";
+//     }
+//     std::cout << std::endl;
+//     return 0;
+// }
+// #include <iostream>
+
+// enum { max = 1000 };
+
+// int main() {
+//     int n, m;
+//     std::cin >> n >> m;
+//     int a[max][max] = {};
+
+//     for (int i = 0; i < n; i++) {
+//         for (int j = 0; j < m; j++) {
+//             std::cin >> a[i][j];
+//         }
+//     }
+
+//     for (int j = 0; j < m; j++) {
+//         for (int i = 0; i < n; i++) {
+//             std::cout << a[i][j] << (i == n - 1 ? "\n" : " ");
+//         }
+//     }
+//     std::cout << std::endl;
+//     return 0;
+// }
+// #include <iostream>
+
+// enum { max = 100 };
+
+// int main() {
+//     int n, m;
+//     std::cin >> n >> m;
+//     int a[max][max] = {};
+
+//     for (int i = 0; i < n; i++) {
+//         for (int j = 0; j < m; j++) {
+//             std::cin >> a[i][j];
+//         }
+//     }
+
+//     for (int j = 0; j < m; j++) {
+//         for (int i = 0; i < n; i++) {
+//             std::cout << a[n - 1 - i][j] << (i == n - 1 ? "\n" : " ");
+//         }
+//     }
+//     std::cout << std::endl;
+//     return 0;
+// }
+// #include <iostream>
+
+// enum { max = 100 };
+
+// int main() {
+//     int n, m;
+//     std::cin >> n >> m;
+//     int a[max][max] = {};
+//     int count = 0;
+//     for (int i = 0; i < n; i++) {
+//         for (int j = 0; j < m; j++) {
+//             int column = i % 2 ? m - 1 - j : j;
+//             a[i][column] = ++count;
+//         }
+//     }
+
+//     for (int i = 0; i < n; i++) {
+//         for (int j = 0; j < m; j++) {
+//             printf("%4d%s", a[i][j], (j == m - 1 ? "\n" : ""));
+//         }
+//     }
+//     return 0;
+// }
+// #include <iostream>
+
+// enum { max = 100 };
+
+// int main() {
+//     int n, m;
+//     std::cin >> n >> m;
+//     int a[max][max] = {};
+//     int count = 0;
+//     for (int k = 0; k < n + m - 1; k++) {
+//         for (int i = 0; i < n; i++) {
+//             for (int j = 0; j < m; j++) {
+//                 if (i == k - j || j == k - i) {
+//                     a[i][j] = ++count;
+//                 }
+//             }
+//         }
+//     }
+
+//     for (int i = 0; i < n; i++) {
+//         for (int j = 0; j < m; j++) {
+//             printf("%4d%s", a[i][j], (j == m - 1 ? "\n" : ""));
+//         }
+//     }
+//     return 0;
+// }
+// #include <iostream>
+
+// enum { max = 100 };
+
+// int main() {
+//     int n, m;
+//     std::cin >> n >> m;
+//     int a[max][max] = {};
+//     int count = 0;
+//     for (int k = 0; k < n + m - 1; k++) {
+//         for (int i = 0; i < n; i++) {
+//             for (int j = 0; j < m; j++) {
+//                 if (i == k - j || j == k - i) {
+//                     a[i][j] = ++count;
+//                 }
+//             }
+//         }
+//     }
+
+//     for (int i = 0; i < n; i++) {
+//         for (int j = 0; j < m; j++) {
+//             printf("%4d%s", a[i][j], (j == m - 1 ? "\n" : ""));
+//         }
+//     }
+//     return 0;
+// }
+// #include <iostream>
+
+// enum { max = 100 };
+
+// int main() {
+//     int n, m;
+//     std::cin >> n >> m;
+//     int a[max][max] = {};
+//     int count = 0;
+
+//     for (int k = 0; k < n + m; k++) {
+//         for (int i = 0; i < n + m; i++) {
+//             int j = k - i;
+//             if (j >= 0 && i >= 0 && j < m && i < n) {
+//                 a[i][j] = ++count;
+//             }
+//         }
+//     }
+
+//     for (int i = 0; i < n; i++) {
+//         for (int j = 0; j < m; j++) {
+//             printf("%4d%s", a[i][j], (j == m - 1 ? "\n" : ""));
+//         }
+//     }
+//     return 0;
+// }
+
+// #include <iostream>
+
+// enum { max = 100 };
+
+// int main() {
+//     int N, M;
+//     std::cin >> N >> M;
+//     int a[max][max] = {};
+//     int left, right, up, down, flag, counter;
+//     left = right = up = down = flag = counter = 0;
+
+//     while (counter < N * M) {
+//         if (flag == 0) {  // >
+//             for (int i = left; i < M - right; i++) {
+//                 a[up][i] = ++counter;
+//             }
+//             flag = 1;
+//             up++;
+//         } else if (flag == 1) {  // v
+//             for (int i = up; i < N - down; i++) {
+//                 a[i][M - right - 1] = ++counter;
+//             }
+//             flag = 2;
+//             right++;
+//         } else if (flag == 2) {  // <
+//             for (int i = M - right - 1; i > left - 1; i--) {
+//                 a[N - down - 1][i] = ++counter;
+//             }
+//             flag = 3;
+//             down++;
+//         } else if (flag == 3) {  // ^
+//             for (int i = N - down - 1; i > up - 1; i--) {
+//                 a[i][left] = ++counter;
+//             }
+//             flag = 0;
+//             left++;
+//         }
+//     }
+//     for (int i = 0; i < N; i++) {
+//         for (int j = 0; j < M; j++) {
+//             printf("%4d%s", a[i][j], (j == M - 1 ? "\n" : ""));
+//         }
+//     }
+
+//     return 0;
+// }
+
+// #include <iostream>
+
+// int min(int a, int b) { return a > b ? b : a; }
+
+// int min4(int a, int b, int c, int d) { return min(min(a, b), min(c, d)); }
+
+// int main() {
+//     int a, b, c, d;
+//     std::cin >> a >> b >> c >> d;
+
+//     int result = min4(a, b, c, d);
+
+//     std::cout << result << std::endl;
+
+//     return 0;
+// }
+
+// #include <cmath>
+// #include <iostream>
+
+// double distance(double a, double b, double c, double d) {
+//     double res = sqrt((a - c) * (a - c) + (b - d) * (b - d));
+//     return res;
+// }
+
+// int main() {
+//     double a, b, c, d;
+//     std::cin >> a >> b >> c >> d;
+
+//     double result = distance(a, b, c, d);
+
+//     std::cout << result << std::endl;
+
+//     return 0;
+// }
+
+// #include <cmath>
+// #include <iostream>
+// enum { left = -1, right = 1 };
+
+// bool IsPointInSquare(double x, double y) {
+//     bool res = (x >= left) * (y >= left) * (x <= right) * (y <= right);
+//     return res;
+// }
+
+// int main() {
+//     double x, y;
+//     std::cin >> x >> y;
+
+//     bool result = IsPointInSquare(x, y);
+
+//     std::cout << (result ? "YES" : "NO") << std::endl;
+
+//     return 0;
+// }
+
+// #include <cmath>
+// #include <iostream>
+
+// enum { left = -1, right = 1 };
+
+// bool IsPointInSquare(double x, double y) {
+//     bool res = fabs(x) + fabs(y) <= right;
+//     return res;
+// }
+
+// int main() {
+//     double x, y;
+//     std::cin >> x >> y;
+
+//     bool result = IsPointInSquare(x, y);
+
+//     std::cout << (result ? "YES" : "NO") << std::endl;
+
+//     return 0;
+// }
+#include <cmath>
 #include <iostream>
 
-enum { max = 100 };
-
-void swap(int& a, int& b) {
-    int tmp = a;
-    a = b;
-    b = tmp;
+bool IsPointInCircle(double x, double y, double xc, double yc, double r) {
+    bool res = (xc - x) * (xc - x) + (yc - y) * (yc - y) <= r * r;
+    return res;
 }
 
 int main() {
-    int n, m;
-    std::cin >> n >> m;
-    int a[max][max] = {};
+    double x, y, xc, yc, r;
+    std::cin >> x >> y >> xc >> yc >> r;
 
-    for (int i = 0; i < n; i++) {
-        for (int j = 0; j < m; j++) {
-            std::cin >> a[i][j];
-        }
-    }
+    bool result = IsPointInCircle(x, y, xc, yc, r);
 
-    int b, c;
-    std::cin >> b >> c;
+    std::cout << (result ? "YES" : "NO") << std::endl;
 
-    for (int i = 0; i < n; i++) {
-        swap(a[i][b], a[i][c]);
-    }
-
-    for (int i = 0; i < n; i++) {
-        for (int j = 0; j < m; j++) {
-            std::cout << a[i][j] << (j == m - 1 ? "\n" : " ");
-        }
-    }
     return 0;
 }
