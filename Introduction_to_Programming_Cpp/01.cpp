@@ -1819,19 +1819,58 @@
 
 //     return 0;
 // }
+// #include <cmath>
+// #include <iostream>
+
+// bool IsPointInCircle(double x, double y, double xc, double yc, double r) {
+//     bool res = (xc - x) * (xc - x) + (yc - y) * (yc - y) <= r * r;
+//     return res;
+// }
+
+// int main() {
+//     double x, y, xc, yc, r;
+//     std::cin >> x >> y >> xc >> yc >> r;
+
+//     bool result = IsPointInCircle(x, y, xc, yc, r);
+
+//     std::cout << (result ? "YES" : "NO") << std::endl;
+
+//     return 0;
+// }
+
 #include <cmath>
 #include <iostream>
 
-bool IsPointInCircle(double x, double y, double xc, double yc, double r) {
+bool IsPointInCircle(double x, double y, double xc = -1, double yc = 1, double r = 2) {
     bool res = (xc - x) * (xc - x) + (yc - y) * (yc - y) <= r * r;
+    return res;
+}
+bool IsPointInCircleOut(double x, double y, double xc = -1, double yc = 1, double r = 2) {
+    bool res = (xc - x) * (xc - x) + (yc - y) * (yc - y) < r * r;
+    return res;
+}
+bool IsPointInArea(double x, double y, double n1 = 2, double k1 = 2, double n2 = -1, double k2 = 0) {
+    bool res1 = IsPointInCircle(x, y);
+    // std::cout << res1;
+    bool res2 = (n1 * x + k1 <= y);
+    // std::cout << res2;
+    bool res3 = (n2 * x + k2 <= y);
+    // std::cout << res3;
+    bool res4 = IsPointInCircleOut(x, y);
+    // std::cout << !res4;
+    bool res5 = (n1 * x + k1 >= y);
+    // std::cout << res5;
+    bool res6 = (n2 * x + k2 >= y);
+    // std::cout << res6;
+    bool res = res1 * res2 * res3 || !res4 * res5 * res6;
     return res;
 }
 
 int main() {
-    double x, y, xc, yc, r;
-    std::cin >> x >> y >> xc >> yc >> r;
+    double x, y;
+    std::cin >> x >> y;
 
-    bool result = IsPointInCircle(x, y, xc, yc, r);
+    bool result = IsPointInArea(x, y);
 
     std::cout << (result ? "YES" : "NO") << std::endl;
 
