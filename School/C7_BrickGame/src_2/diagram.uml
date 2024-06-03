@@ -1,0 +1,21 @@
+@startuml
+skin rose
+
+hide empty description
+
+[*] -> Start
+Start --> Terminate
+Start --> Spawn
+Spawn --> Move
+Move --> Shift
+Move --> Pause
+Pause -> Move
+Move --> Terminate
+Shift --> Move
+Shift --> Connect
+Connect --> Spawn
+Connect --> GameOver
+GameOver -> Terminate
+GameOver --> Start
+Terminate -> [*]
+@enduml
