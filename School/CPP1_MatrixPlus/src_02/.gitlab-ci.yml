@@ -1,0 +1,41 @@
+stages:
+  - build
+  - codestyle
+  - tests
+  - deploy
+
+building:
+  stage: build
+  tags:
+    - gitlab
+  only:
+    - develop
+  script:
+    - find $CI_PROJECT_DIR -name "Makefile" -execdir make \;
+  artifacts:
+    paths:
+      - $CI_PROJECT_DIR/src/s21_matrix_oop.a
+      - $CI_PROJECT_DIR/src/test
+      - $CI_PROJECT_DIR/src/report/index.html
+    expire_in: 30 days
+
+stylecheck:
+  stage: codestyle
+  tags:
+    - gitlab
+  script:
+    - name_ch="*.[cch]"
+    - output=$(clang-format -style="{$(grep ./materials/linters/.clang-format -e "BasedOnStyle")}" -n $(find $CI_PROJECT_DIR/src -name $name_ch) 2>&1) 
+    - if [ -n "$output" ]; then echo "$output" && return 2; fi
+
+testing:
+  stage: tests
+  dependencies:
+    - building
+  tags:
+    - gitlab
+  script:
+    - $CI_PROJECT_DIR/src/test
+  after_script:
+    - bash $CI_PROJECT_DIR/src/tg_notif.sh $CI_JOB_STATUS
+    
