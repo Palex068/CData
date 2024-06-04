@@ -54,7 +54,13 @@
         "typeinfo": "cpp",
         "ctime": "cpp",
         "iomanip": "cpp",
-        "cstring": "cpp"
+        "cstring": "cpp",
+        "errno.h": "c",
+        "tetris.h": "c",
+        "s21_matrix_oop.C": "cpp",
+        "chrono": "cpp",
+        "ratio": "cpp",
+        "cinttypes": "cpp"
     },
     "code-runner.runInTerminal": false,
     "code-runner.executorMap": {

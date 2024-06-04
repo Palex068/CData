@@ -1838,41 +1838,158 @@
 //     return 0;
 // }
 
-#include <cmath>
+// #include <cmath>
+// #include <iostream>
+
+// bool IsPointInCircle(double x, double y, double xc = -1, double yc = 1, double r = 2) {
+//     bool res = (xc - x) * (xc - x) + (yc - y) * (yc - y) <= r * r;
+//     return res;
+// }
+// bool IsPointInCircleOut(double x, double y, double xc = -1, double yc = 1, double r = 2) {
+//     bool res = (xc - x) * (xc - x) + (yc - y) * (yc - y) < r * r;
+//     return res;
+// }
+// bool IsPointInArea(double x, double y, double n1 = 2, double k1 = 2, double n2 = -1, double k2 = 0) {
+//     bool res1 = IsPointInCircle(x, y);
+//     // std::cout << res1;
+//     bool res2 = (n1 * x + k1 <= y);
+//     // std::cout << res2;
+//     bool res3 = (n2 * x + k2 <= y);
+//     // std::cout << res3;
+//     bool res4 = IsPointInCircleOut(x, y);
+//     // std::cout << !res4;
+//     bool res5 = (n1 * x + k1 >= y);
+//     // std::cout << res5;
+//     bool res6 = (n2 * x + k2 >= y);
+//     // std::cout << res6;
+//     bool res = res1 * res2 * res3 || !res4 * res5 * res6;
+//     return res;
+// }
+
+// int main() {
+//     double x, y;
+//     std::cin >> x >> y;
+
+//     bool result = IsPointInArea(x, y);
+
+//     std::cout << (result ? "YES" : "NO") << std::endl;
+
+//     return 0;
+// }
+
+// #include <iostream>
+
+// double mypow(double a, int n) {
+//     if (n == 0) return 1;
+//     if (n < 0) return 1 / mypow(a, -n);
+//     if (n > 1) return a * mypow(a, n - 1);
+//     return a;
+// }
+
+// int main() {
+//     double a;
+//     int n;
+//     std::cin >> a >> n;
+
+//     double result = mypow(a, n);
+
+//     std::cout << result << std::endl;
+
+//     return 0;
+// }
+
+// #include <cmath>
+// #include <iostream>
+
+// int IsPrime(int n) {
+//     if (n == 2) return 1;
+//     if (n % 2 == 0) return 0;
+//     for (size_t i = 3, isqrt = sqrt(n); i <= isqrt; i += 2) {
+//         if (n % i == 0) return 0;
+//     }
+//     return n;
+// }
+
+// int main() {
+//     int n;
+//     std::cin >> n;
+//     bool result = IsPrime(n);
+//     std::cout << (result ? "YES" : "NO") << std::endl;
+//     return 0;
+// }
+
+// #include <cmath>
+// #include <iostream>
+
+// double power(double a, int n) {
+//     if (n == 0) return 1;
+//     if (n % 2) return a * power(a * a, n / 2);
+//     return power(a * a, n / 2);
+// }
+
+// int main() {
+//     double a;
+//     int n;
+//     std::cin >> a >> n;
+
+//     double result = power(a, n);
+
+//     std::cout << result << std::endl;
+
+//     return 0;
+// }
+
+// #include <iostream>
+
+// int sum() {
+//     int n = 0;
+//     if (std::cin >> n && n) n += sum();
+//     return n;
+// }
+
+// int main() {
+//     int result = sum();
+
+//     std::cout << result << std::endl;
+
+//     return 0;
+// }
+
+// #include <iostream>
+// #include <vector>
+
+// // int fib(int n) {
+// //     if (n <= 2) return 1;
+// //     return fib(n - 1) + fib(n - 2);
+// // }
+
+// size_t fib(size_t i) {
+//     static std::vector<int> fibs = {0, 1};
+//     if (fibs.size() <= i) fibs.push_back(fib(i - 1) + fib(i - 2));
+//     return fibs[i];
+// }
+
+// int main() {
+//     int n;
+//     std::cin >> n;
+//     int result = fib(n);
+//     std::cout << result << std::endl;
+//     return 0;
+// }
+
 #include <iostream>
 
-bool IsPointInCircle(double x, double y, double xc = -1, double yc = 1, double r = 2) {
-    bool res = (xc - x) * (xc - x) + (yc - y) * (yc - y) <= r * r;
-    return res;
-}
-bool IsPointInCircleOut(double x, double y, double xc = -1, double yc = 1, double r = 2) {
-    bool res = (xc - x) * (xc - x) + (yc - y) * (yc - y) < r * r;
-    return res;
-}
-bool IsPointInArea(double x, double y, double n1 = 2, double k1 = 2, double n2 = -1, double k2 = 0) {
-    bool res1 = IsPointInCircle(x, y);
-    // std::cout << res1;
-    bool res2 = (n1 * x + k1 <= y);
-    // std::cout << res2;
-    bool res3 = (n2 * x + k2 <= y);
-    // std::cout << res3;
-    bool res4 = IsPointInCircleOut(x, y);
-    // std::cout << !res4;
-    bool res5 = (n1 * x + k1 >= y);
-    // std::cout << res5;
-    bool res6 = (n2 * x + k2 >= y);
-    // std::cout << res6;
-    bool res = res1 * res2 * res3 || !res4 * res5 * res6;
-    return res;
+int num(int n) {
+    for (int i = 1; i < n; i++) {
+        if ((i * i + i) / 2 >= n - 1) return i;
+    }
+    return n;
 }
 
 int main() {
-    double x, y;
-    std::cin >> x >> y;
-
-    bool result = IsPointInArea(x, y);
-
-    std::cout << (result ? "YES" : "NO") << std::endl;
-
+    int n;
+    std::cin >> n;
+    int result = num(n);
+    std::cout << result << std::endl;
     return 0;
 }
