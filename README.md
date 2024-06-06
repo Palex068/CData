@@ -7,6 +7,7 @@
 ## [С для начинающих (альтернатива)](/C_for_beginners/README.MD)
 ## [Добрый, добрый C/C++ с Сергеем Балакиревым](/Good_good_C_C++/README.MD)
 ## [Введение в программирование (C++)](/Introduction_to_Programming_Cpp/README.MD)
+## [ООП C/C++ с Сергеем Балакиревым](/OOP_C_C++/README.md)
 
 # Материалы
 

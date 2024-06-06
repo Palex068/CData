@@ -1,4 +1,4 @@
-/OOP_C_C++/01.md# ООП C/C++
+# ООП C/C++
 
 https://proproprogs.ru/c_lang
 
