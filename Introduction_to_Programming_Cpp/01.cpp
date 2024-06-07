@@ -1977,19 +1977,159 @@
 //     return 0;
 // }
 
-#include <iostream>
+// #include <iostream>
 
-int num(int n) {
-    for (int i = 1; i < n; i++) {
-        if ((i * i + i) / 2 >= n - 1) return i;
-    }
-    return n;
-}
+// int num(int n) {
+//     for (int i = 1; i < n; i++) {
+//         if ((i * i + i) / 2 >= n - 1) return i;
+//     }
+//     return n;
+// }
+
+// int main() {
+//     int n;
+//     std::cin >> n;
+//     int result = num(n);
+//     std::cout << result << std::endl;
+//     return 0;
+// }
+
+// #include <iostream>
+
+// int main() {
+//     char n;
+//     std::cin >> n;
+//     int result = isdigit(n);
+//     std::cout << (result ? "yes" : "no") << std::endl;
+//     return 0;
+// }
+
+// #include <iostream>
+
+// int main() {
+//     char n;
+//     std::cin >> n;
+//     n = toupper(n);
+//     std::cout << n << std::endl;
+//     return 0;
+// }
+
+// #include <iostream>
+
+// int main() {
+//     char n;
+//     std::cin >> n;
+//     if (islower(n)) {
+//         n = toupper(n);
+//     } else if (isupper(n)) {
+//         n = tolower(n);
+//     }
+//     std::cout << n << std::endl;
+//     return 0;
+// }
+
+// #include <iostream>
+// #include <string>
+
+// int main() {
+//     std::string str;
+//     int count = 1;
+//     getline(std::cin, str);
+
+//     for (auto ch : str) {
+//         if (ch == ' ') {
+//             count++;
+//         }
+//     }
+//     std::cout << count << std::endl;
+//     return 0;
+// }
+
+// #include <iostream>
+// #include <string>
+
+// int main() {
+//     std::string str;
+//     int count = 1;
+//     getline(std::cin, str);
+
+//     for (auto ch : str) {
+//         if (isspace(ch)) {
+//             count++;
+//         }
+//     }
+//     std::cout << count << std::endl;
+//     return 0;
+// }
+
+// #include <algorithm>
+// #include <iostream>
+// #include <string>
+
+// int main() {
+//     std::string str;
+//     getline(std::cin, str);
+//     std::string revers = str;
+//     reverse(revers.begin(), revers.end());
+
+//     int result = revers == str;
+
+//     std::cout << (result ? "yes" : "no") << std::endl;
+//     return 0;
+// }
+
+// #include <iostream>
+// #include <string>
+// #include <vector>
+
+// int main() {
+//     using namespace std;
+//     vector<string> str;
+//     string s;
+//     while (std::cin >> s) {
+//         str.push_back(s);
+//     }
+
+//     int max = 0;
+//     string result;
+//     for (string st : str) {
+//         int size = st.size();
+//         if (size > max) {
+//             max = size;
+//             result = st;
+//         }
+//     }
+//     std::cout << result << std::endl;
+//     return 0;
+// }
+
+// #include <iostream>
+// #include <string>
+// int main() {
+//     std::string sgood = "", snew;
+//     while (std::cin >> snew)
+//         if (snew.length() > sgood.length()) sgood = snew;
+//     std::cout << sgood << std::endl;
+//     return 0;
+// }
+#include <iostream>
+#include <string>
 
 int main() {
-    int n;
-    std::cin >> n;
-    int result = num(n);
-    std::cout << result << std::endl;
+    int result = 1, D[4];
+    std::string str;
+
+    int n = scanf("%d.%d.%d.%d", &D[0], &D[1], &D[2], &D[3]);
+    if (n != 4) result = 0;
+
+    std::cin >> str;
+    if (str != "") result = 0;
+
+    for (auto digit : D) {
+        if (digit < 0 || digit > 255) {
+            result = 0;
+        }
+    }
+    std::cout << (result ? "YES" : "NO") << std::endl;
     return 0;
 }
