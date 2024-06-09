@@ -2112,24 +2112,473 @@
 //     std::cout << sgood << std::endl;
 //     return 0;
 // }
+
+// #include <iostream>
+// #include <string>
+
+// int main() {
+//     int result = 1, D[4];
+//     std::string str;
+
+//     int n = scanf("%d.%d.%d.%d", &D[0], &D[1], &D[2], &D[3]);
+//     if (n != 4) result = 0;
+
+//     std::cin >> str;
+//     if (str != "") result = 0;
+
+//     for (auto digit : D) {
+//         if (digit < 0 || digit > 255) {
+//             result = 0;
+//         }
+//     }
+//     std::cout << (result ? "YES" : "NO") << std::endl;
+//     return 0;
+// }
+
+// #include <iostream>
+// #include <set>
+
+// int main() {
+//     std::set<int> Digits;
+//     int digit;
+//     size_t count;
+//     std::cin >> count;
+
+//     for (size_t i = 0; i < count; i++) {
+//         std::cin >> digit;
+//         Digits.insert(digit);
+//     }
+//     int result = Digits.size();
+//     std::cout << result << std::endl;
+//     return 0;
+// }
+
+// #include <iostream>
+// #include <set>
+
+// int main() {
+//     std::set<int> First, Second;
+//     int digit;
+//     size_t count;
+//     std::cin >> count;
+//     for (size_t i = 0; i < count; i++) {
+//         std::cin >> digit;
+//         First.insert(digit);
+//     }
+//     int result = 0;
+//     std::cin >> count;
+//     for (size_t i = 0; i < count; i++) {
+//         std::cin >> digit;
+//         Second.insert(digit);
+//         if (First.find(digit) != First.end()) {
+//             result++;
+//         }
+//     }
+//     std::cout << result << std::endl;
+//     return 0;
+// }
+// #include <iostream>
+// #include <set>
+
+// int main() {
+//     std::set<int> First, Second, result;
+//     int digit;
+//     size_t count;
+//     std::cin >> count;
+//     for (size_t i = 0; i < count; i++) {
+//         std::cin >> digit;
+//         First.insert(digit);
+//     }
+//     std::cin >> count;
+//     for (size_t i = 0; i < count; i++) {
+//         std::cin >> digit;
+//         Second.insert(digit);
+//         if (First.find(digit) != First.end()) {
+//             result.insert(digit);
+//         }
+//     }
+//     for (int number : result) {
+//         std::cout << number << " ";
+//     }
+//     std::cout << std::endl;
+
+//     return 0;
+// }
+
+// #include <iostream>
+// #include <map>
+
+// int main() {
+//     using namespace std;
+//     map<string, string> Dict;
+//     size_t count;
+//     std::cin >> count;
+//     for (size_t i = 0; i < count; i++) {
+//         string key, value;
+//         std::cin >> key >> value;
+//         Dict.insert({key, value});
+//         Dict.insert({value, key});
+//     }
+//     string word;
+//     std::cin >> word;
+//     word = Dict[word];
+//     std::cout << word << std::endl;
+
+//     return 0;
+// }
+// #include <iostream>
+// #include <map>
+// #include <set>
+// #include <string>
+// #include <vector>
+
+// int main() {
+//     using namespace std;
+//     map<string, set<string>> Dict, Result;
+//     size_t count;
+//     std::cin >> count >> ws;
+//     string str;
+//     set<string> value;
+//     for (size_t j = 0; j < count; j++) {
+//         vector<string> parser;
+//         getline(cin, str);
+//         str += ',';
+//         string word = "";
+//         for (size_t i = 0; i < str.length(); i++) {
+//             char ch = str.data()[i];
+//             if (isalpha(ch)) {
+//                 word += ch;
+//             } else if (word != "") {
+//                 parser.push_back(word);
+//                 word = "";
+//             }
+//         }
+//         for (size_t i = 1; i < parser.size(); i++) {
+//             value.insert(parser[i]);
+//             if (Result.find(parser[i]) != Result.end()) {
+//                 Result[parser[i]].insert(parser[0]);
+//             } else {
+//                 Result.insert({parser[i], {parser[0]}});
+//             }
+//         }
+//         Dict.insert({parser[0], value});
+//     }
+//     cout << Result.size() << "\n";
+//     for (auto d : Result) {
+//         cout << d.first << " - ";
+//         int n = d.second.size();
+//         for (auto w : d.second) cout << w << (--n ? ", " : "\n");
+//     }
+//     return 0;
+// }
+
+// #include <iostream>
+// #include <map>
+// #include <set>
+// #include <string>
+// #include <vector>
+
+// std::string to_lower(const std::string str) {
+//     std::string result;
+//     for (char ch : str) {
+//         result += tolower(ch);
+//     }
+//     return result;
+// }
+// int upper_count(const std::string str) {
+//     int result = 0;
+//     for (char ch : str) {
+//         result += isupper(ch);
+//     }
+//     return result;
+// }
+
+// int main() {
+//     std::map<std::string, std::set<std::string>> Dict;
+//     size_t count;
+//     std::cin >> count >> std::ws;
+//     std::string str;
+//     for (size_t j = 0; j < count; j++) {
+//         std::string word;
+//         std::cin >> word;
+//         std::string lower_word = to_lower(word);
+//         if (Dict.find(lower_word) != Dict.end()) {
+//             Dict[lower_word].insert(word);
+//         } else {
+//             Dict.insert({lower_word, {word}});
+//         }
+//     }
+//     std::cin >> std::ws;
+//     std::vector<std::string> parser;
+//     getline(std::cin, str);
+//     str += ' ';
+//     std::string word = "";
+//     for (size_t i = 0; i < str.length(); i++) {
+//         char ch = str.data()[i];
+//         if (isalpha(ch)) {
+//             word += ch;
+//         } else if (word != "") {
+//             parser.push_back(word);
+//             word = "";
+//         }
+//     }
+//     // for (auto d : Dict) {
+//     //     std::cout << d.first << " - ";
+//     //     int n = d.second.size();
+//     //     for (auto w : d.second) std::cout << w << (--n ? ", " : "\n");
+//     // }
+
+//     int result = 0;
+//     for (auto d : parser) {
+//         std::string l_d = to_lower(d);
+//         if (Dict.find(l_d) != Dict.end()) {
+//             if (Dict[l_d].find(d) != Dict[l_d].end()) {
+//                 continue;
+//             } else
+//                 result++;
+//         } else
+
+//             if (upper_count(d) != 1) {
+//             result++;
+//         }
+//     }
+//     std::cout << result << std::endl;
+//     return 0;
+// }
+
+// #include <iostream>
+// #include <set>
+
+// int main() {
+//     using namespace std;
+//     size_t count;
+//     cin >> count >> std::ws;
+//     multiset<long> digits;
+//     for (size_t j = 0; j < count; j++) {
+//         long digit;
+//         cin >> digit;
+//         digits.insert(digit);
+//     }
+
+//     for (auto d : digits) {
+//         cout << d << " ";
+//     }
+//     return 0;
+// }
+
+// #include <iostream>
+// #include <set>
+
+// int main() {
+//     using namespace std;
+//     int size;
+//     size_t count;
+//     cin >> size >> count >> ws;
+//     set<int> digits;
+//     for (size_t j = 0; j < count; j++) {
+//         int digit;
+//         cin >> digit;
+//         digits.insert(digit);
+//     }
+//     int result = 0;
+//     for (auto d : digits) {
+//         if (size <= d) {
+//             result++;
+//             size = d + 3;
+//         }
+//     }
+//     std::cout << result << std::endl;
+//     return 0;
+// }
+
+// #include <algorithm>
+// #include <iostream>
+// #include <vector>
+
+// struct data {
+//     int number;
+//     int points;
+// };
+
+// bool cmp(data a, data b) {
+//     if (a.points > b.points) return 1;
+//     if (a.points == b.points) {
+//         if (a.number >= b.number)
+//             return 0;
+//         else
+//             return 1;
+//     }
+//     return 0;
+// }
+
+// int main() {
+//     using namespace std;
+//     size_t count;
+//     cin >> count >> ws;
+//     vector<data> D(count);
+//     for (size_t j = 0; j < count; j++) {
+//         data tmp;
+//         cin >> tmp.number >> tmp.points;
+//         D[j] = tmp;
+//     }
+//     sort(D.begin(), D.end(), cmp);
+
+//     for (auto d : D) {
+//         cout << d.number << ' ' << d.points << '\n';
+//     }
+//     return 0;
+// }
+
+// #include <bits/stdc++.h>
+// using namespace std;
+// int main() {
+//     int n;
+//     cin >> n;
+//     vector<pair<int, int>> a(n);
+//     while (n-- && cin >> a[n].second >> a[n].first) a[n].first = -a[n].first;
+//     sort(a.begin(), a.end());
+//     for (auto now : a) cout << now.second << " " << -now.first << "\n";
+//     return 0;
+// }
+
+// #include <iostream>
+// #include <set>
+
+// int main() {
+//     using namespace std;
+//     int size;
+//     size_t count;
+//     cin >> size >> count >> ws;
+//     set<int> digits;
+//     for (size_t j = 0; j < count; j++) {
+//         int digit;
+//         cin >> digit;
+//         digits.insert(digit);
+//     }
+//     int result = 0;
+//     for (auto d : digits) {
+//         if (size <= d) {
+//             result++;
+//             size = d + 3;
+//         }
+//     }
+//     std::cout << result << std::endl;
+//     return 0;
+// }
+
+// #include <algorithm>
+// #include <cmath>
+// #include <iostream>
+// #include <vector>
+
+// struct Point {
+//     int x;
+//     int y;
+//     double len() { return sqrt(x * x + y * y); }
+// };
+
+// bool cmp(Point a, Point b) { return a.len() <= b.len(); }
+
+// int main() {
+//     using namespace std;
+//     size_t count;
+//     cin >> count >> ws;
+//     vector<Point> D(count);
+//     for (size_t j = 0; j < count; j++) {
+//         cin >> D[j].x >> D[j].y;
+//     }
+//     sort(D.begin(), D.end(), cmp);
+
+//     for (auto d : D) {
+//         cout << d.x << ' ' << d.y << '\n';
+//     }
+//     return 0;
+// }
+
+// #include <bits/stdc++.h>
+// using namespace std;
+// int n, x, y;
+// int main() {
+//     cin >> n;
+//     pair<double, pair<int, int> > a[n];
+//     for (int i = 0; i < n; i++) {
+//         cin >> x >> y;
+//         a[i] = {sqrt(x * x + y * y), {x, y}};
+//     }
+//     sort(a, a + n);
+//     for (int i = 0; i < n; i++) cout << a[i].second.first << " " << a[i].second.second << '\n';
+// }
+
+// #include <algorithm>
+// #include <cmath>
+// #include <iostream>
+// #include <string>
+// #include <vector>
+
+// using namespace std;
+// struct Student {
+//     string firstName;
+//     string lastName;
+//     int a;
+//     int b;
+//     int c;
+//     int mean() { return a + b + c; }
+// };
+
+// bool cmp(Student a, Student b) { return a.mean() > b.mean(); }
+
+// int main() {
+//     size_t count;
+//     cin >> count >> ws;
+//     vector<Student> D(count);
+//     for (size_t j = 0; j < count; j++) {
+//         cin >> D[j].firstName >> D[j].lastName;
+//         cin >> D[j].a >> D[j].b >> D[j].c;
+//     }
+//     sort(D.begin(), D.end(), cmp);
+
+//     for (auto d : D) {
+//         cout << d.firstName << ' ' << d.lastName << '\n';
+//     }
+//     return 0;
+// }
+
+/*
+ * Известно, что на доске 8×8 можно расставить 8 ферзей так, чтобы они не били друг друга.
+ * Вам дана расстановка 8 ферзей на доске, определите, есть ли среди них пара бьющих друг друга.
+ *
+ * Формат входных данных
+ * Программа получает на вход восемь пар чисел, каждое число от 1 до 8 - координаты 8 ферзей.
+ * Формат выходных данных
+ * Если ферзи не бьют друг друга, выведите слово NO, иначе выведите YES.
+ */
+
+/*
+#include <cmath>
 #include <iostream>
-#include <string>
+
+enum { rows = 10, columns = 10 };
 
 int main() {
-    int result = 1, D[4];
-    std::string str;
+    int a[rows][columns];
 
-    int n = scanf("%d.%d.%d.%d", &D[0], &D[1], &D[2], &D[3]);
-    if (n != 4) result = 0;
-
-    std::cin >> str;
-    if (str != "") result = 0;
-
-    for (auto digit : D) {
-        if (digit < 0 || digit > 255) {
-            result = 0;
+    for (size_t i = 0; i < rows; i++) {
+        for (size_t j = 0; j < columns; j++) {
+            std::cin >> a[i][j];
         }
     }
-    std::cout << (result ? "YES" : "NO") << std::endl;
+    int result = 0;
+    for (size_t i = 0; i < rows; i++) {
+        for (size_t j = 0; j < rows; j++) {
+            if (i == j)
+                continue;
+            else if (a[i][1] == a[j][1] || a[i][0] == a[j][0] ||
+                     abs(a[i][1] - a[j][1]) == abs(a[i][0] - a[j][0]))
+                result++;
+        }
+    }
+
+    std::cout << (result == 0 ? "NO" : "YES") << std::endl;
     return 0;
 }
+*/
