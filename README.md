@@ -31,6 +31,8 @@
 
 ## [stdarg.h](/Materials/Headers/Stdarg_h.md)
 
+## [Основные положения ООП (S21)](/Materials/OOP/s21_oop_basics_ru.md)
+
 # Ссылки
 
 [Введение в регулярные выражения](https://regex101.com/)
