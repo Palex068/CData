@@ -1,6 +1,8 @@
 # Ссылки в работу
 
 ## [Основы программирования: C++ Кувшинов Д.Р.](https://teccxx.neocities.org/mx1/#contents)
+## [refactoring.guru](https://refactoring.guru/ru)
+## [Описание функций языка Си](http://all-ht.ru/inf/prog/c/func/abort.html)
 
 # Курсы
 
