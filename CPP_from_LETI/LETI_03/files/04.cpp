@@ -1712,170 +1712,734 @@
 //     return 0;
 // }
 
-#include <ctime>
-#include <iostream>
+// #include <ctime>
+// #include <iostream>
+
+// /**
+//  * Интерфейс Снимка предоставляет способ извлечения метаданных снимка, таких как
+//  * дата создания или название. Однако он не раскрывает состояние Создателя.
+//  */
+// class Memento {
+//    public:
+//     virtual std::string GetName() const = 0;
+//     virtual std::string date() const = 0;
+//     virtual std::string state() const = 0;
+// };
+
+// /**
+//  * Конкретный снимок содержит инфраструктуру для хранения состояния Создателя.
+//  */
+// class ConcreteMemento : public Memento {
+//    private:
+//     std::string state_;
+//     std::string date_;
+
+//    public:
+//     ConcreteMemento(std::string state) : state_(state) {
+//         this->state_ = state;
+//         std::time_t now = std::time(0);
+//         this->date_ = std::ctime(&now);
+//     }
+//     /**
+//      * Создатель использует этот метод, когда восстанавливает своё состояние.
+//      */
+//     std::string state() const override { return this->state_; }
+//     /**
+//      * Остальные методы используются Опекуном для отображения метаданных.
+//      */
+//     std::string GetName() const override { return this->date_ + " / (" + this->state_.substr(0, 9) +
+//     "...)"; } std::string date() const override { return this->date_; }
+// };
+
+// /**
+//  * Создатель содержит некоторое важное состояние, которое может со временем
+//  * меняться. Он также объявляет метод сохранения состояния внутри снимка и метод
+//  * восстановления состояния из него.
+//  */
+// class Originator {
+//     /**
+//      * @var string Для удобства состояние создателя хранится внутри одной
+//      * переменной.
+//      */
+//    private:
+//     std::string state_;
+
+//     std::string GenerateRandomString(int length = 10) {
+//         const char alphanum[] =
+//             "0123456789"
+//             "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+//             "abcdefghijklmnopqrstuvwxyz";
+//         int stringLength = sizeof(alphanum) - 1;
+
+//         std::string random_string;
+//         for (int i = 0; i < length; i++) {
+//             random_string += alphanum[std::rand() % stringLength];
+//         }
+//         return random_string;
+//     }
+
+//    public:
+//     Originator(std::string state) : state_(state) {
+//         std::cout << "Originator: My initial state is: " << this->state_ << "\n";
+//     }
+//     /**
+//      * Бизнес-логика Создателя может повлиять на его внутреннее состояние. Поэтому
+//      * клиент должен выполнить резервное копирование состояния с помощью метода
+//      * save перед запуском методов бизнес-логики.
+//      */
+//     void DoSomething() {
+//         std::cout << "Originator: I'm doing something important.\n";
+//         this->state_ = this->GenerateRandomString(30);
+//         std::cout << "Originator: and my state has changed to: " << this->state_ << "\n";
+//     }
+
+//     /**
+//      * Сохраняет текущее состояние внутри снимка.
+//      */
+//     Memento *Save() { return new ConcreteMemento(this->state_); }
+//     /**
+//      * Восстанавливает состояние Создателя из объекта снимка.
+//      */
+//     void Restore(Memento *memento) {
+//         this->state_ = memento->state();
+//         std::cout << "Originator: My state has changed to: " << this->state_ << "\n";
+//     }
+// };
+
+// /**
+//  * Опекун не зависит от класса Конкретного Снимка. Таким образом, он не имеет
+//  * доступа к состоянию создателя, хранящемуся внутри снимка. Он работает со
+//  * всеми снимками через базовый интерфейс Снимка.
+//  */
+// class Caretaker {
+//     /**
+//      * @var Memento[]
+//      */
+//    private:
+//     std::vector<Memento *> mementos_;
+
+//     /**
+//      * @var Originator
+//      */
+//     Originator *originator_;
+
+//    public:
+//     Caretaker(Originator *originator) : originator_(originator) { this->originator_ = originator; }
+
+//     void Backup() {
+//         std::cout << "\nCaretaker: Saving Originator's state...\n";
+//         this->mementos_.push_back(this->originator_->Save());
+//     }
+//     void Undo() {
+//         if (!this->mementos_.size()) {
+//             return;
+//         }
+//         Memento *memento = this->mementos_.back();
+//         this->mementos_.pop_back();
+//         std::cout << "Caretaker: Restoring state to: " << memento->GetName() << "\n";
+//         try {
+//             this->originator_->Restore(memento);
+//         } catch (...) {
+//             this->Undo();
+//         }
+//     }
+//     void ShowHistory() const {
+//         std::cout << "Caretaker: Here's the list of mementos:\n";
+//         for (Memento *memento : this->mementos_) {
+//             std::cout << memento->GetName() << "\n";
+//         }
+//     }
+// };
+// /**
+//  * Клиентский код.
+//  */
+
+// void ClientCode() {
+//     Originator *originator = new Originator("Super-duper-super-puper-super.");
+//     Caretaker *caretaker = new Caretaker(originator);
+//     caretaker->Backup();
+//     originator->DoSomething();
+//     caretaker->Backup();
+//     originator->DoSomething();
+//     caretaker->Backup();
+//     originator->DoSomething();
+//     std::cout << "\n";
+//     caretaker->ShowHistory();
+//     std::cout << "\nClient: Now, let's rollback!\n\n";
+//     caretaker->Undo();
+//     std::cout << "\nClient: Once more!\n\n";
+//     caretaker->Undo();
+
+//     delete originator;
+//     delete caretaker;
+// }
+
+// int main() {
+//     std::srand(static_cast<unsigned int>(std::time(NULL)));
+//     ClientCode();
+//     return 0;
+// }
 
 /**
- * Интерфейс Снимка предоставляет способ извлечения метаданных снимка, таких как
- * дата создания или название. Однако он не раскрывает состояние Создателя.
+ * Паттерн Наблюдатель
+ *
+ * Назначение: Создаёт механизм подписки, позволяющий одним объектам следить и
+ * реагировать на события, происходящие в других объектах.
+ *
+ * Обратите внимание, что существует множество различных терминов с похожими
+ * значениями, связанных с этим паттерном. Просто помните, что Субъекта также
+ * называют Издателем, а Наблюдателя часто называют Подписчиком и наоборот.
+ * Также глаголы «наблюдать», «слушать» или «отслеживать» обычно означают одно и
+ * то же.
  */
-class Memento {
+
+// #include <iostream>
+// #include <list>
+// #include <string>
+
+// class IObserver {
+//    public:
+//     virtual ~IObserver(){};
+//     virtual void Update(const std::string &message_from_subject) = 0;
+// };
+
+// class ISubject {
+//    public:
+//     virtual ~ISubject(){};
+//     virtual void Attach(IObserver *observer) = 0;
+//     virtual void Detach(IObserver *observer) = 0;
+//     virtual void Notify() = 0;
+// };
+
+// /**
+//  * Издатель владеет некоторым важным состоянием и оповещает наблюдателей о его
+//  * изменениях.
+//  */
+
+// class Subject : public ISubject {
+//    public:
+//     virtual ~Subject() { std::cout << "Goodbye, I was the Subject.\n"; }
+
+//     /**
+//      * Методы управления подпиской.
+//      */
+//     void Attach(IObserver *observer) override { list_observer_.push_back(observer); }
+//     void Detach(IObserver *observer) override { list_observer_.remove(observer); }
+//     void Notify() override {
+//         std::list<IObserver *>::iterator iterator = list_observer_.begin();
+//         HowManyObserver();
+//         while (iterator != list_observer_.end()) {
+//             (*iterator)->Update(message_);
+//             ++iterator;
+//         }
+//     }
+
+//     void CreateMessage(std::string message = "Empty") {
+//         this->message_ = message;
+//         Notify();
+//     }
+//     void HowManyObserver() {
+//         std::cout << "There are " << list_observer_.size() << " observers in the list.\n";
+//     }
+
+//     /**
+//      * Обычно логика подписки – только часть того, что делает Издатель. Издатели
+//      * часто содержат некоторую важную бизнес-логику, которая запускает метод
+//      * уведомления всякий раз, когда должно произойти что-то важное (или после
+//      * этого).
+//      */
+//     void SomeBusinessLogic() {
+//         this->message_ = "change message message";
+//         Notify();
+//         std::cout << "I'm about to do some thing important\n";
+//     }
+
+//    private:
+//     std::list<IObserver *> list_observer_;
+//     std::string message_;
+// };
+
+// class Observer : public IObserver {
+//    public:
+//     Observer(Subject &subject) : subject_(subject) {
+//         this->subject_.Attach(this);
+//         std::cout << "Hi, I'm the Observer \"" << ++Observer::static_number_ << "\".\n";
+//         this->number_ = Observer::static_number_;
+//     }
+//     virtual ~Observer() { std::cout << "Goodbye, I was the Observer \"" << this->number_ << "\".\n"; }
+
+//     void Update(const std::string &message_from_subject) override {
+//         message_from_subject_ = message_from_subject;
+//         PrintInfo();
+//     }
+//     void RemoveMeFromTheList() {
+//         subject_.Detach(this);
+//         std::cout << "Observer \"" << number_ << "\" removed from the list.\n";
+//     }
+//     void PrintInfo() {
+//         std::cout << "Observer \"" << this->number_ << "\": a new message is available --> "
+//                   << this->message_from_subject_ << "\n";
+//     }
+
+//    private:
+//     std::string message_from_subject_;
+//     Subject &subject_;
+//     static int static_number_;
+//     int number_;
+// };
+
+// int Observer::static_number_ = 0;
+
+// void ClientCode() {
+//     Subject *subject = new Subject;
+//     Observer *observer1 = new Observer(*subject);
+//     Observer *observer2 = new Observer(*subject);
+//     Observer *observer3 = new Observer(*subject);
+//     Observer *observer4;
+//     Observer *observer5;
+
+//     subject->CreateMessage("Hello World! :D");
+//     observer3->RemoveMeFromTheList();
+
+//     subject->CreateMessage("The weather is hot today! :p");
+//     observer4 = new Observer(*subject);
+
+//     observer2->RemoveMeFromTheList();
+//     observer5 = new Observer(*subject);
+
+//     subject->CreateMessage("My new car is great! ;)");
+//     observer5->RemoveMeFromTheList();
+
+//     observer4->RemoveMeFromTheList();
+//     observer1->RemoveMeFromTheList();
+
+//     delete observer5;
+//     delete observer4;
+//     delete observer3;
+//     delete observer2;
+//     delete observer1;
+//     delete subject;
+// }
+
+// int main() {
+//     ClientCode();
+//     return 0;
+// }
+
+// #include <iostream>
+// #include <typeinfo>
+// /**
+//  * Базовый класс Состояния объявляет методы, которые должны реализовать все
+//  * Конкретные Состояния, а также предоставляет обратную ссылку на объект
+//  * Контекст, связанный с Состоянием. Эта обратная ссылка может использоваться
+//  * Состояниями для передачи Контекста другому Состоянию.
+//  */
+
+// class Context;
+
+// class State {
+//     /**
+//      * @var Context
+//      */
+//    protected:
+//     Context *context_;
+
+//    public:
+//     virtual ~State() {}
+
+//     void set_context(Context *context) { this->context_ = context; }
+
+//     virtual void Handle1() = 0;
+//     virtual void Handle2() = 0;
+// };
+
+/**
+//  * Контекст определяет интерфейс, представляющий интерес для клиентов. Он также
+//  * хранит ссылку на экземпляр подкласса Состояния, который отображает текущее
+//  * состояние Контекста.
+//  */
+// class Context {
+//     /**
+//      * @var State Ссылка на текущее состояние Контекста.
+//      */
+//    private:
+//     State *state_;
+
+//    public:
+//     Context(State *state) : state_(nullptr) { this->TransitionTo(state); }
+//     ~Context() { delete state_; }
+//     /**
+//      * Контекст позволяет изменять объект Состояния во время выполнения.
+//      */
+//     void TransitionTo(State *state) {
+//         std::cout << "Context: Transition to " << typeid(*state).name() << ".\n";
+//         if (this->state_ != nullptr) delete this->state_;
+//         this->state_ = state;
+//         this->state_->set_context(this);
+//     }
+//     /**
+//      * Контекст делегирует часть своего поведения текущему объекту Состояния.
+//      */
+//     void Request1() { this->state_->Handle1(); }
+//     void Request2() { this->state_->Handle2(); }
+// };
+
+// /**
+//  * Конкретные Состояния реализуют различные модели поведения, связанные с
+//  * состоянием Контекста.
+//  */
+
+// class ConcreteStateA : public State {
+//    public:
+//     void Handle1() override;
+
+//     void Handle2() override { std::cout << "ConcreteStateA handles request2.\n"; }
+// };
+
+// class ConcreteStateB : public State {
+//    public:
+//     void Handle1() override { std::cout << "ConcreteStateB handles request1.\n"; }
+//     void Handle2() override {
+//         std::cout << "ConcreteStateB handles request2.\n";
+//         std::cout << "ConcreteStateB wants to change the state of the context.\n";
+//         this->context_->TransitionTo(new ConcreteStateA);
+//     }
+// };
+
+// void ConcreteStateA::Handle1() {
+//     {
+//         std::cout << "ConcreteStateA handles request1.\n";
+//         std::cout << "ConcreteStateA wants to change the state of the context.\n";
+
+//         this->context_->TransitionTo(new ConcreteStateB);
+//     }
+// }
+
+// /**
+//  * Клиентский код.
+//  */
+// void ClientCode() {
+//     Context *context = new Context(new ConcreteStateA);
+//     context->Request1();
+//     context->Request2();
+//     delete context;
+// }
+
+// int main() {
+//     ClientCode();
+//     return 0;
+// }
+
+// #include <algorithm>
+// #include <iostream>
+
+// /**
+//  * Интерфейс Стратегии объявляет операции, общие для всех поддерживаемых версий
+//  * некоторого алгоритма.
+//  *
+//  * Контекст использует этот интерфейс для вызова алгоритма, определённого
+//  * Конкретными Стратегиями.
+//  */
+// class Strategy {
+//    public:
+//     virtual ~Strategy() {}
+//     virtual std::string DoAlgorithm(const std::vector<std::string> &data) const = 0;
+// };
+
+// /**
+//  * Контекст определяет интерфейс, представляющий интерес для клиентов.
+//  */
+
+// class Context {
+//     /**
+//      * @var Strategy Контекст хранит ссылку на один из объектов Стратегии.
+//      * Контекст не знает конкретного класса стратегии. Он должен работать со
+//      * всеми стратегиями через интерфейс Стратегии.
+//      */
+//    private:
+//     Strategy *strategy_;
+//     /**
+//      * Обычно Контекст принимает стратегию через конструктор, а также
+//      * предоставляет сеттер для её изменения во время выполнения.
+//      */
+//    public:
+//     Context(Strategy *strategy = nullptr) : strategy_(strategy) {}
+//     ~Context() { delete this->strategy_; }
+//     /**
+//      * Обычно Контекст позволяет заменить объект Стратегии во время выполнения.
+//      */
+//     void set_strategy(Strategy *strategy) {
+//         delete this->strategy_;
+//         this->strategy_ = strategy;
+//     }
+//     /**
+//      * Вместо того, чтобы самостоятельно реализовывать множественные версии
+//      * алгоритма, Контекст делегирует некоторую работу объекту Стратегии.
+//      */
+//     void DoSomeBusinessLogic() const {
+//         // ...
+//         std::cout << "Context: Sorting data using the strategy (not sure how it'll do it)\n";
+//         std::string result = this->strategy_->DoAlgorithm(std::vector<std::string>{"a", "e", "c", "b",
+//         "d"}); std::cout << result << "\n";
+//         // ...
+//     }
+// };
+
+// /**
+//  * Конкретные Стратегии реализуют алгоритм, следуя базовому интерфейсу
+//  * Стратегии. Этот интерфейс делает их взаимозаменяемыми в Контексте.
+//  */
+// class ConcreteStrategyA : public Strategy {
+//    public:
+//     std::string DoAlgorithm(const std::vector<std::string> &data) const override {
+//         std::string result;
+//         std::for_each(std::begin(data), std::end(data),
+//                       [&result](const std::string &letter) { result += letter; });
+//         std::sort(std::begin(result), std::end(result));
+
+//         return result;
+//     }
+// };
+// class ConcreteStrategyB : public Strategy {
+//     std::string DoAlgorithm(const std::vector<std::string> &data) const override {
+//         std::string result;
+//         std::for_each(std::begin(data), std::end(data),
+//                       [&result](const std::string &letter) { result += letter; });
+//         std::sort(std::begin(result), std::end(result));
+//         for (int i = 0; i < result.size() / 2; i++) {
+//             std::swap(result[i], result[result.size() - i - 1]);
+//         }
+
+//         return result;
+//     }
+// };
+// /**
+//  * Клиентский код выбирает конкретную стратегию и передаёт её в контекст. Клиент
+//  * должен знать о различиях между стратегиями, чтобы сделать правильный выбор.
+//  */
+
+// void ClientCode() {
+//     Context *context = new Context(new ConcreteStrategyA);
+//     std::cout << "Client: Strategy is set to normal sorting.\n";
+//     context->DoSomeBusinessLogic();
+//     std::cout << "\n";
+//     std::cout << "Client: Strategy is set to reverse sorting.\n";
+//     context->set_strategy(new ConcreteStrategyB);
+//     context->DoSomeBusinessLogic();
+//     delete context;
+// }
+
+// int main() {
+//     ClientCode();
+//     return 0;
+// }
+
+// /**
+//  * Абстрактный Класс определяет шаблонный метод, содержащий скелет некоторого
+//  * алгоритма, состоящего из вызовов (обычно) абстрактных примитивных операций.
+//  *
+//  * Конкретные подклассы должны реализовать эти операции, но оставить сам
+//  * шаблонный метод без изменений.
+//  */
+// class AbstractClass {
+//     /**
+//      * Шаблонный метод определяет скелет алгоритма.
+//      */
+//    public:
+//     void TemplateMethod() const {
+//         this->BaseOperation1();
+//         this->RequiredOperations1();
+//         this->BaseOperation2();
+//         this->Hook1();
+//         this->RequiredOperation2();
+//         this->BaseOperation3();
+//         this->Hook2();
+//     }
+//     /**
+//      * Эти операции уже имеют реализации.
+//      */
+//    protected:
+//     void BaseOperation1() const { std::cout << "AbstractClass says: I am doing the bulk of the work\n"; }
+//     void BaseOperation2() const {
+//         std::cout << "AbstractClass says: But I let subclasses override some operations\n";
+//     }
+//     void BaseOperation3() const {
+//         std::cout << "AbstractClass says: But I am doing the bulk of the work anyway\n";
+//     }
+//     /**
+//      * А эти операции должны быть реализованы в подклассах.
+//      */
+//     virtual void RequiredOperations1() const = 0;
+//     virtual void RequiredOperation2() const = 0;
+//     /**
+//      * Это «хуки». Подклассы могут переопределять их, но это не обязательно,
+//      * поскольку у хуков уже есть стандартная (но пустая) реализация. Хуки
+//      * предоставляют дополнительные точки расширения в некоторых критических
+//      * местах алгоритма.
+//      */
+//     virtual void Hook1() const {}
+//     virtual void Hook2() const {}
+// };
+// /**
+//  * Конкретные классы должны реализовать все абстрактные операции базового
+//  * класса. Они также могут переопределить некоторые операции с реализацией по
+//  * умолчанию.
+//  */
+// class ConcreteClass1 : public AbstractClass {
+//    protected:
+//     void RequiredOperations1() const override {
+//         std::cout << "ConcreteClass1 says: Implemented Operation1\n";
+//     }
+//     void RequiredOperation2() const override { std::cout << "ConcreteClass1 says: Implemented
+//     Operation2\n"; }
+// };
+// /**
+//  * Обычно конкретные классы переопределяют только часть операций базового
+//  * класса.
+//  */
+// class ConcreteClass2 : public AbstractClass {
+//    protected:
+//     void RequiredOperations1() const override {
+//         std::cout << "ConcreteClass2 says: Implemented Operation1\n";
+//     }
+//     void RequiredOperation2() const override { std::cout << "ConcreteClass2 says: Implemented
+//     Operation2\n"; } void Hook1() const override { std::cout << "ConcreteClass2 says: Overridden Hook1\n";
+//     }
+// };
+// /**
+//  * Клиентский код вызывает шаблонный метод для выполнения алгоритма. Клиентский
+//  * код не должен знать конкретный класс объекта, с которым работает, при
+//  * условии, что он работает с объектами через интерфейс их базового класса.
+//  */
+// void ClientCode(AbstractClass *class_) {
+//     // ...
+//     class_->TemplateMethod();
+//     // ...
+// }
+
+// int main() {
+//     std::cout << "Same client code can work with different subclasses:\n";
+//     ConcreteClass1 *concreteClass1 = new ConcreteClass1;
+//     ClientCode(concreteClass1);
+//     std::cout << "\n";
+//     std::cout << "Same client code can work with different subclasses:\n";
+//     ConcreteClass2 *concreteClass2 = new ConcreteClass2;
+//     ClientCode(concreteClass2);
+//     delete concreteClass1;
+//     delete concreteClass2;
+//     return 0;
+// }
+
+/**
+ * Интерфейс Посетителя объявляет набор методов посещения, соответствующих
+ * классам компонентов. Сигнатура метода посещения позволяет посетителю
+ * определить конкретный класс компонента, с которым он имеет дело.
+ */
+class ConcreteComponentA;
+class ConcreteComponentB;
+
+class Visitor {
    public:
-    virtual std::string GetName() const = 0;
-    virtual std::string date() const = 0;
-    virtual std::string state() const = 0;
+    virtual void VisitConcreteComponentA(const ConcreteComponentA *element) const = 0;
+    virtual void VisitConcreteComponentB(const ConcreteComponentB *element) const = 0;
 };
 
 /**
- * Конкретный снимок содержит инфраструктуру для хранения состояния Создателя.
+ * Интерфейс Компонента объявляет метод accept, который в качестве аргумента
+ * может получать любой объект, реализующий интерфейс посетителя.
  */
-class ConcreteMemento : public Memento {
-   private:
-    std::string state_;
-    std::string date_;
-
+class Component {
    public:
-    ConcreteMemento(std::string state) : state_(state) {
-        this->state_ = state;
-        std::time_t now = std::time(0);
-        this->date_ = std::ctime(&now);
-    }
-    /**
-     * Создатель использует этот метод, когда восстанавливает своё состояние.
-     */
-    std::string state() const override { return this->state_; }
-    /**
-     * Остальные методы используются Опекуном для отображения метаданных.
-     */
-    std::string GetName() const override { return this->date_ + " / (" + this->state_.substr(0, 9) + "...)"; }
-    std::string date() const override { return this->date_; }
+    virtual ~Component() {}
+    virtual void Accept(Visitor *visitor) const = 0;
 };
 
 /**
- * Создатель содержит некоторое важное состояние, которое может со временем
- * меняться. Он также объявляет метод сохранения состояния внутри снимка и метод
- * восстановления состояния из него.
+ * Каждый Конкретный Компонент должен реализовать метод accept таким образом,
+ * чтобы он вызывал метод посетителя, соответствующий классу компонента.
  */
-class Originator {
+class ConcreteComponentA : public Component {
     /**
-     * @var string Для удобства состояние создателя хранится внутри одной
-     * переменной.
+     * Обратите внимание, мы вызываем visitConcreteComponentA, что соответствует
+     * названию текущего класса. Таким образом мы позволяем посетителю узнать, с
+     * каким классом компонента он работает.
      */
-   private:
-    std::string state_;
-
-    std::string GenerateRandomString(int length = 10) {
-        const char alphanum[] =
-            "0123456789"
-            "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-            "abcdefghijklmnopqrstuvwxyz";
-        int stringLength = sizeof(alphanum) - 1;
-
-        std::string random_string;
-        for (int i = 0; i < length; i++) {
-            random_string += alphanum[std::rand() % stringLength];
-        }
-        return random_string;
-    }
-
    public:
-    Originator(std::string state) : state_(state) {
-        std::cout << "Originator: My initial state is: " << this->state_ << "\n";
-    }
+    void Accept(Visitor *visitor) const override { visitor->VisitConcreteComponentA(this); }
     /**
-     * Бизнес-логика Создателя может повлиять на его внутреннее состояние. Поэтому
-     * клиент должен выполнить резервное копирование состояния с помощью метода
-     * save перед запуском методов бизнес-логики.
+     * Конкретные Компоненты могут иметь особые методы, не объявленные в их
+     * базовом классе или интерфейсе. Посетитель всё же может использовать эти
+     * методы, поскольку он знает о конкретном классе компонента.
      */
-    void DoSomething() {
-        std::cout << "Originator: I'm doing something important.\n";
-        this->state_ = this->GenerateRandomString(30);
-        std::cout << "Originator: and my state has changed to: " << this->state_ << "\n";
-    }
+    std::string ExclusiveMethodOfConcreteComponentA() const { return "A"; }
+};
 
+class ConcreteComponentB : public Component {
     /**
-     * Сохраняет текущее состояние внутри снимка.
+     * То же самое здесь: visitConcreteComponentB => ConcreteComponentB
      */
-    Memento *Save() { return new ConcreteMemento(this->state_); }
-    /**
-     * Восстанавливает состояние Создателя из объекта снимка.
-     */
-    void Restore(Memento *memento) {
-        this->state_ = memento->state();
-        std::cout << "Originator: My state has changed to: " << this->state_ << "\n";
-    }
+   public:
+    void Accept(Visitor *visitor) const override { visitor->VisitConcreteComponentB(this); }
+    std::string SpecialMethodOfConcreteComponentB() const { return "B"; }
 };
 
 /**
- * Опекун не зависит от класса Конкретного Снимка. Таким образом, он не имеет
- * доступа к состоянию создателя, хранящемуся внутри снимка. Он работает со
- * всеми снимками через базовый интерфейс Снимка.
+ * Конкретные Посетители реализуют несколько версий одного и того же алгоритма,
+ * которые могут работать со всеми классами конкретных компонентов.
+ *
+ * Максимальную выгоду от паттерна Посетитель вы почувствуете, используя его со
+ * сложной структурой объектов, такой как дерево Компоновщика. В этом случае
+ * было бы полезно хранить некоторое промежуточное состояние алгоритма при
+ * выполнении методов посетителя над различными объектами структуры.
  */
-class Caretaker {
-    /**
-     * @var Memento[]
-     */
-   private:
-    std::vector<Memento *> mementos_;
-
-    /**
-     * @var Originator
-     */
-    Originator *originator_;
-
+class ConcreteVisitor1 : public Visitor {
    public:
-    Caretaker(Originator *originator) : originator_(originator) { this->originator_ = originator; }
+    void VisitConcreteComponentA(const ConcreteComponentA *element) const override {
+        std::cout << element->ExclusiveMethodOfConcreteComponentA() << " + ConcreteVisitor1\n";
+    }
 
-    void Backup() {
-        std::cout << "\nCaretaker: Saving Originator's state...\n";
-        this->mementos_.push_back(this->originator_->Save());
+    void VisitConcreteComponentB(const ConcreteComponentB *element) const override {
+        std::cout << element->SpecialMethodOfConcreteComponentB() << " + ConcreteVisitor1\n";
     }
-    void Undo() {
-        if (!this->mementos_.size()) {
-            return;
-        }
-        Memento *memento = this->mementos_.back();
-        this->mementos_.pop_back();
-        std::cout << "Caretaker: Restoring state to: " << memento->GetName() << "\n";
-        try {
-            this->originator_->Restore(memento);
-        } catch (...) {
-            this->Undo();
-        }
+};
+
+class ConcreteVisitor2 : public Visitor {
+   public:
+    void VisitConcreteComponentA(const ConcreteComponentA *element) const override {
+        std::cout << element->ExclusiveMethodOfConcreteComponentA() << " + ConcreteVisitor2\n";
     }
-    void ShowHistory() const {
-        std::cout << "Caretaker: Here's the list of mementos:\n";
-        for (Memento *memento : this->mementos_) {
-            std::cout << memento->GetName() << "\n";
-        }
+    void VisitConcreteComponentB(const ConcreteComponentB *element) const override {
+        std::cout << element->SpecialMethodOfConcreteComponentB() << " + ConcreteVisitor2\n";
     }
 };
 /**
- * Клиентский код.
+ * Клиентский код может выполнять операции посетителя над любым набором
+ * элементов, не выясняя их конкретных классов. Операция принятия направляет
+ * вызов к соответствующей операции в объекте посетителя.
  */
-
-void ClientCode() {
-    Originator *originator = new Originator("Super-duper-super-puper-super.");
-    Caretaker *caretaker = new Caretaker(originator);
-    caretaker->Backup();
-    originator->DoSomething();
-    caretaker->Backup();
-    originator->DoSomething();
-    caretaker->Backup();
-    originator->DoSomething();
-    std::cout << "\n";
-    caretaker->ShowHistory();
-    std::cout << "\nClient: Now, let's rollback!\n\n";
-    caretaker->Undo();
-    std::cout << "\nClient: Once more!\n\n";
-    caretaker->Undo();
-
-    delete originator;
-    delete caretaker;
+void ClientCode(std::array<const Component *, 2> components, Visitor *visitor) {
+    // ...
+    for (const Component *comp : components) {
+        comp->Accept(visitor);
+    }
+    // ...
 }
 
 int main() {
-    std::srand(static_cast<unsigned int>(std::time(NULL)));
-    ClientCode();
+    std::array<const Component *, 2> components = {new ConcreteComponentA, new ConcreteComponentB};
+    std::cout << "The client code works with all visitors via the base Visitor interface:\n";
+    ConcreteVisitor1 *visitor1 = new ConcreteVisitor1;
+    ClientCode(components, visitor1);
+    std::cout << "\n";
+    std::cout << "It allows the same client code to work with different types of visitors:\n";
+    ConcreteVisitor2 *visitor2 = new ConcreteVisitor2;
+    ClientCode(components, visitor2);
+
+    for (const Component *comp : components) {
+        delete comp;
+    }
+    delete visitor1;
+    delete visitor2;
+
     return 0;
 }
