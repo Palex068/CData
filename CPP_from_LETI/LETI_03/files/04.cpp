@@ -1298,94 +1298,584 @@
 //     return 0;
 // }
 
+// #include <iostream>
+// #include <string>
+// #include <unordered_map>
+// #include <vector>
+
+// /**
+//  * Интерфейс Субъекта объявляет общие операции как для Реального Субъекта, так и
+//  * для Заместителя. Пока клиент работает с Реальным Субъектом, используя этот
+//  * интерфейс, вы сможете передать ему заместителя вместо реального субъекта.
+//  */
+// class Subject {
+//    public:
+//     virtual void Request() const = 0;
+// };
+// /**
+//  * Реальный Субъект содержит некоторую базовую бизнес-логику. Как правило,
+//  * Реальные Субъекты способны выполнять некоторую полезную работу, которая к
+//  * тому же может быть очень медленной или точной – например, коррекция входных
+//  * данных. Заместитель может решить эти задачи без каких-либо изменений в коде
+//  * Реального Субъекта.
+//  */
+// class RealSubject : public Subject {
+//    public:
+//     void Request() const override { std::cout << "RealSubject: Handling request.\n"; }
+// };
+// /**
+//  * Интерфейс Заместителя идентичен интерфейсу Реального Субъекта.
+//  */
+// class Proxy : public Subject {
+//     /**
+//      * @var RealSubject
+//      */
+//    private:
+//     RealSubject *real_subject_;
+
+//     bool CheckAccess() const {
+//         // Некоторые реальные проверки должны проходить здесь.
+//         std::cout << "Proxy: Checking access prior to firing a real request.\n";
+//         return true;
+//     }
+//     void LogAccess() const { std::cout << "Proxy: Logging the time of request.\n"; }
+
+//     /**
+//      * Заместитель хранит ссылку на объект класса РеальныйСубъект. Клиент может
+//      * либо лениво загрузить его, либо передать Заместителю.
+//      */
+//    public:
+//     Proxy(RealSubject *real_subject) : real_subject_(new RealSubject(*real_subject)) {}
+
+//     ~Proxy() { delete real_subject_; }
+//     /**
+//      * Наиболее распространёнными областями применения паттерна Заместитель
+//      * являются ленивая загрузка, кэширование, контроль доступа, ведение журнала и
+//      * т.д. Заместитель может выполнить одну из этих задач, а затем, в зависимости
+//      * от результата, передать выполнение одноимённому методу в связанном объекте
+//      * класса Реального Субъект.
+//      */
+//     void Request() const override {
+//         if (this->CheckAccess()) {
+//             this->real_subject_->Request();
+//             this->LogAccess();
+//         }
+//     }
+// };
+// /**
+//  * Клиентский код должен работать со всеми объектами (как с реальными, так и
+//  * заместителями) через интерфейс Субъекта, чтобы поддерживать как реальные
+//  * субъекты, так и заместителей. В реальной жизни, однако, клиенты в основном
+//  * работают с реальными субъектами напрямую. В этом случае, для более простой
+//  * реализации паттерна, можно расширить заместителя из класса реального
+//  * субъекта.
+//  */
+// void ClientCode(const Subject &subject) {
+//     // ...
+//     subject.Request();
+//     // ...
+// }
+
+// int main() {
+//     std::cout << "Client: Executing the client code with a real subject:\n";
+//     RealSubject *real_subject = new RealSubject;
+//     ClientCode(*real_subject);
+//     std::cout << "\n";
+//     std::cout << "Client: Executing the same client code with a proxy:\n";
+//     Proxy *proxy = new Proxy(real_subject);
+//     ClientCode(*proxy);
+
+//     delete real_subject;
+//     delete proxy;
+//     return 0;
+// }
+
+// #include <iostream>
+
+// /**
+//  * Интерфейс Обработчика объявляет метод построения цепочки обработчиков. Он
+//  * также объявляет метод для выполнения запроса.
+//  */
+// class Handler {
+//    public:
+//     virtual Handler *SetNext(Handler *handler) = 0;
+//     virtual std::string Handle(std::string request) = 0;
+// };
+// /**
+//  * Поведение цепочки по умолчанию может быть реализовано внутри базового класса
+//  * обработчика.
+//  */
+// class AbstractHandler : public Handler {
+//     /**
+//      * @var Handler
+//      */
+//    private:
+//     Handler *next_handler_;
+
+//    public:
+//     AbstractHandler() : next_handler_(nullptr) {}
+//     Handler *SetNext(Handler *handler) override {
+//         this->next_handler_ = handler;
+//         // Возврат обработчика отсюда позволит связать обработчики простым способом,
+//         // вот так:
+//         // $monkey->setNext($squirrel)->setNext($dog);
+//         return handler;
+//     }
+//     std::string Handle(std::string request) override {
+//         if (this->next_handler_) {
+//             return this->next_handler_->Handle(request);
+//         }
+
+//         return {};
+//     }
+// };
+// /**
+//  * Все Конкретные Обработчики либо обрабатывают запрос, либо передают его
+//  * следующему обработчику в цепочке.
+//  */
+// class MonkeyHandler : public AbstractHandler {
+//    public:
+//     std::string Handle(std::string request) override {
+//         if (request == "Banana") {
+//             return "Monkey: I'll eat the " + request + ".\n";
+//         } else {
+//             return AbstractHandler::Handle(request);
+//         }
+//     }
+// };
+// class SquirrelHandler : public AbstractHandler {
+//    public:
+//     std::string Handle(std::string request) override {
+//         if (request == "Nut") {
+//             return "Squirrel: I'll eat the " + request + ".\n";
+//         } else {
+//             return AbstractHandler::Handle(request);
+//         }
+//     }
+// };
+// class DogHandler : public AbstractHandler {
+//    public:
+//     std::string Handle(std::string request) override {
+//         if (request == "MeatBall") {
+//             return "Dog: I'll eat the " + request + ".\n";
+//         } else {
+//             return AbstractHandler::Handle(request);
+//         }
+//     }
+// };
+// /**
+//  * Обычно клиентский код приспособлен для работы с единственным обработчиком. В
+//  * большинстве случаев клиенту даже неизвестно, что этот обработчик является
+//  * частью цепочки.
+//  */
+// void ClientCode(Handler &handler) {
+//     std::vector<std::string> food = {"Nut", "Banana", "Cup of coffee"};
+//     for (const std::string &f : food) {
+//         std::cout << "Client: Who wants a " << f << "?\n";
+//         const std::string result = handler.Handle(f);
+//         if (!result.empty()) {
+//             std::cout << "  " << result;
+//         } else {
+//             std::cout << "  " << f << " was left untouched.\n";
+//         }
+//     }
+// }
+// /**
+//  * Другая часть клиентского кода создает саму цепочку.
+//  */
+// int main() {
+//     MonkeyHandler *monkey = new MonkeyHandler;
+//     SquirrelHandler *squirrel = new SquirrelHandler;
+//     DogHandler *dog = new DogHandler;
+//     monkey->SetNext(squirrel)->SetNext(dog);
+
+//     /**
+//      * Клиент должен иметь возможность отправлять запрос любому обработчику, а не
+//      * только первому в цепочке.
+//      */
+//     std::cout << "Chain: Monkey > Squirrel > Dog\n\n";
+//     ClientCode(*monkey);
+//     std::cout << "\n";
+//     std::cout << "Subchain: Squirrel > Dog\n\n";
+//     ClientCode(*squirrel);
+
+//     delete monkey;
+//     delete squirrel;
+//     delete dog;
+
+//     return 0;
+// }
+
+// /**
+//  * Паттерн Итератор
+//  *
+//  * Назначение: Даёт возможность последовательно обходить элементы составных
+//  * объектов, не раскрывая их внутреннего представления.
+//  */
+// #include <iostream>
+// #include <string>
+// #include <vector>
+
+// /**
+//  * C++ has its own implementation of iterator that works with a different
+//  * generics containers defined by the standard library.
+//  */
+// template <typename T, typename U>
+// class Iterator {
+//    public:
+//     typedef typename std::vector<T>::iterator iter_type;
+//     Iterator(U *p_data, bool reverse = false) : m_p_data_(p_data) { m_it_ = m_p_data_->m_data_.begin(); }
+
+//     void First() { m_it_ = m_p_data_->m_data_.begin(); }
+
+//     void Next() { m_it_++; }
+
+//     bool IsDone() { return (m_it_ == m_p_data_->m_data_.end()); }
+
+//     iter_type Current() { return m_it_; }
+
+//    private:
+//     U *m_p_data_;
+//     iter_type m_it_;
+// };
+
+// /**
+//  * Конкретные Коллекции предоставляют один или несколько методов для получения
+//  * новых экземпляров итератора, совместимых с классом коллекции.
+//  */
+// template <class T>
+// class Container {
+//     friend class Iterator<T, Container>;
+
+//    public:
+//     void Add(T a) { m_data_.push_back(a); }
+
+//     Iterator<T, Container> *CreateIterator() { return new Iterator<T, Container>(this); }
+
+//    private:
+//     std::vector<T> m_data_;
+// };
+
+// class Data {
+//    public:
+//     Data(int a = 0) : m_data_(a) {}
+
+//     void set_data(int a) { m_data_ = a; }
+
+//     int data() { return m_data_; }
+
+//    private:
+//     int m_data_;
+// };
+
+// /**
+//  * The client code may or may not know about the Concrete Iterator or Collection
+//  * classes, for this implementation the container is generic so you can used
+//  * with an int or with a custom class.
+//  */
+// void ClientCode() {
+//     std::cout << "________________Iterator with int______________________________________" << std::endl;
+//     Container<int> cont;
+
+//     for (int i = 0; i < 10; i++) {
+//         cont.Add(i);
+//     }
+
+//     Iterator<int, Container<int>> *it = cont.CreateIterator();
+//     for (it->First(); !it->IsDone(); it->Next()) {
+//         std::cout << *it->Current() << std::endl;
+//     }
+
+//     Container<Data> cont2;
+//     Data a(100), b(1000), c(10000);
+//     cont2.Add(a);
+//     cont2.Add(b);
+//     cont2.Add(c);
+
+//     std::cout << "________________Iterator with custom Class______________________________" << std::endl;
+//     Iterator<Data, Container<Data>> *it2 = cont2.CreateIterator();
+//     for (it2->First(); !it2->IsDone(); it2->Next()) {
+//         std::cout << it2->Current()->data() << std::endl;
+//     }
+//     delete it;
+//     delete it2;
+// }
+
+// int main() {
+//     ClientCode();
+//     return 0;
+// }
+
+// #include <iostream>
+// #include <string>
+// /**
+//  * Интерфейс Посредника предоставляет метод, используемый компонентами для
+//  * уведомления посредника о различных событиях. Посредник может реагировать на
+//  * эти события и передавать исполнение другим компонентам.
+//  */
+// class BaseComponent;
+// class Mediator {
+//    public:
+//     virtual void Notify(BaseComponent *sender, std::string event) const = 0;
+// };
+
+// /**
+//  * Базовый Компонент обеспечивает базовую функциональность хранения экземпляра
+//  * посредника внутри объектов компонентов.
+//  */
+// class BaseComponent {
+//    protected:
+//     Mediator *mediator_;
+
+//    public:
+//     BaseComponent(Mediator *mediator = nullptr) : mediator_(mediator) {}
+//     void set_mediator(Mediator *mediator) { this->mediator_ = mediator; }
+// };
+
+// /**
+//  * Конкретные Компоненты реализуют различную функциональность. Они не зависят от
+//  * других компонентов. Они также не зависят от каких-либо конкретных классов
+//  * посредников.
+//  */
+// class Component1 : public BaseComponent {
+//    public:
+//     void DoA() {
+//         std::cout << "Component 1 does A.\n";
+//         this->mediator_->Notify(this, "A");
+//     }
+//     void DoB() {
+//         std::cout << "Component 1 does B.\n";
+//         this->mediator_->Notify(this, "B");
+//     }
+// };
+
+// class Component2 : public BaseComponent {
+//    public:
+//     void DoC() {
+//         std::cout << "Component 2 does C.\n";
+//         this->mediator_->Notify(this, "C");
+//     }
+//     void DoD() {
+//         std::cout << "Component 2 does D.\n";
+//         this->mediator_->Notify(this, "D");
+//     }
+// };
+
+// /**
+//  * Конкретные Посредники реализуют совместное поведение, координируя отдельные
+//  * компоненты.
+//  */
+// class ConcreteMediator : public Mediator {
+//    private:
+//     Component1 *component1_;
+//     Component2 *component2_;
+
+//    public:
+//     ConcreteMediator(Component1 *c1, Component2 *c2) : component1_(c1), component2_(c2) {
+//         this->component1_->set_mediator(this);
+//         this->component2_->set_mediator(this);
+//     }
+//     void Notify(BaseComponent *sender, std::string event) const override {
+//         if (event == "A") {
+//             std::cout << "Mediator reacts on A and triggers following operations:\n";
+//             this->component2_->DoC();
+//         }
+//         if (event == "D") {
+//             std::cout << "Mediator reacts on D and triggers following operations:\n";
+//             this->component1_->DoB();
+//             this->component2_->DoC();
+//         }
+//     }
+// };
+
+// /**
+//  * Клиентский код.
+//  */
+
+// void ClientCode() {
+//     Component1 *c1 = new Component1;
+//     Component2 *c2 = new Component2;
+//     ConcreteMediator *mediator = new ConcreteMediator(c1, c2);
+//     std::cout << "Client triggers operation A.\n";
+//     c1->DoA();
+//     std::cout << "\n";
+//     std::cout << "Client triggers operation D.\n";
+//     c2->DoD();
+
+//     delete c1;
+//     delete c2;
+//     delete mediator;
+// }
+
+// int main() {
+//     ClientCode();
+//     return 0;
+// }
+
+#include <ctime>
 #include <iostream>
-#include <string>
-#include <unordered_map>
-#include <vector>
 
 /**
- * Интерфейс Субъекта объявляет общие операции как для Реального Субъекта, так и
- * для Заместителя. Пока клиент работает с Реальным Субъектом, используя этот
- * интерфейс, вы сможете передать ему заместителя вместо реального субъекта.
+ * Интерфейс Снимка предоставляет способ извлечения метаданных снимка, таких как
+ * дата создания или название. Однако он не раскрывает состояние Создателя.
  */
-class Subject {
+class Memento {
    public:
-    virtual void Request() const = 0;
+    virtual std::string GetName() const = 0;
+    virtual std::string date() const = 0;
+    virtual std::string state() const = 0;
 };
+
 /**
- * Реальный Субъект содержит некоторую базовую бизнес-логику. Как правило,
- * Реальные Субъекты способны выполнять некоторую полезную работу, которая к
- * тому же может быть очень медленной или точной – например, коррекция входных
- * данных. Заместитель может решить эти задачи без каких-либо изменений в коде
- * Реального Субъекта.
+ * Конкретный снимок содержит инфраструктуру для хранения состояния Создателя.
  */
-class RealSubject : public Subject {
+class ConcreteMemento : public Memento {
+   private:
+    std::string state_;
+    std::string date_;
+
    public:
-    void Request() const override { std::cout << "RealSubject: Handling request.\n"; }
-};
-/**
- * Интерфейс Заместителя идентичен интерфейсу Реального Субъекта.
- */
-class Proxy : public Subject {
+    ConcreteMemento(std::string state) : state_(state) {
+        this->state_ = state;
+        std::time_t now = std::time(0);
+        this->date_ = std::ctime(&now);
+    }
     /**
-     * @var RealSubject
+     * Создатель использует этот метод, когда восстанавливает своё состояние.
+     */
+    std::string state() const override { return this->state_; }
+    /**
+     * Остальные методы используются Опекуном для отображения метаданных.
+     */
+    std::string GetName() const override { return this->date_ + " / (" + this->state_.substr(0, 9) + "...)"; }
+    std::string date() const override { return this->date_; }
+};
+
+/**
+ * Создатель содержит некоторое важное состояние, которое может со временем
+ * меняться. Он также объявляет метод сохранения состояния внутри снимка и метод
+ * восстановления состояния из него.
+ */
+class Originator {
+    /**
+     * @var string Для удобства состояние создателя хранится внутри одной
+     * переменной.
      */
    private:
-    RealSubject *real_subject_;
+    std::string state_;
 
-    bool CheckAccess() const {
-        // Некоторые реальные проверки должны проходить здесь.
-        std::cout << "Proxy: Checking access prior to firing a real request.\n";
-        return true;
+    std::string GenerateRandomString(int length = 10) {
+        const char alphanum[] =
+            "0123456789"
+            "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+            "abcdefghijklmnopqrstuvwxyz";
+        int stringLength = sizeof(alphanum) - 1;
+
+        std::string random_string;
+        for (int i = 0; i < length; i++) {
+            random_string += alphanum[std::rand() % stringLength];
+        }
+        return random_string;
     }
-    void LogAccess() const { std::cout << "Proxy: Logging the time of request.\n"; }
 
-    /**
-     * Заместитель хранит ссылку на объект класса РеальныйСубъект. Клиент может
-     * либо лениво загрузить его, либо передать Заместителю.
-     */
    public:
-    Proxy(RealSubject *real_subject) : real_subject_(new RealSubject(*real_subject)) {}
-
-    ~Proxy() { delete real_subject_; }
+    Originator(std::string state) : state_(state) {
+        std::cout << "Originator: My initial state is: " << this->state_ << "\n";
+    }
     /**
-     * Наиболее распространёнными областями применения паттерна Заместитель
-     * являются ленивая загрузка, кэширование, контроль доступа, ведение журнала и
-     * т.д. Заместитель может выполнить одну из этих задач, а затем, в зависимости
-     * от результата, передать выполнение одноимённому методу в связанном объекте
-     * класса Реального Субъект.
+     * Бизнес-логика Создателя может повлиять на его внутреннее состояние. Поэтому
+     * клиент должен выполнить резервное копирование состояния с помощью метода
+     * save перед запуском методов бизнес-логики.
      */
-    void Request() const override {
-        if (this->CheckAccess()) {
-            this->real_subject_->Request();
-            this->LogAccess();
+    void DoSomething() {
+        std::cout << "Originator: I'm doing something important.\n";
+        this->state_ = this->GenerateRandomString(30);
+        std::cout << "Originator: and my state has changed to: " << this->state_ << "\n";
+    }
+
+    /**
+     * Сохраняет текущее состояние внутри снимка.
+     */
+    Memento *Save() { return new ConcreteMemento(this->state_); }
+    /**
+     * Восстанавливает состояние Создателя из объекта снимка.
+     */
+    void Restore(Memento *memento) {
+        this->state_ = memento->state();
+        std::cout << "Originator: My state has changed to: " << this->state_ << "\n";
+    }
+};
+
+/**
+ * Опекун не зависит от класса Конкретного Снимка. Таким образом, он не имеет
+ * доступа к состоянию создателя, хранящемуся внутри снимка. Он работает со
+ * всеми снимками через базовый интерфейс Снимка.
+ */
+class Caretaker {
+    /**
+     * @var Memento[]
+     */
+   private:
+    std::vector<Memento *> mementos_;
+
+    /**
+     * @var Originator
+     */
+    Originator *originator_;
+
+   public:
+    Caretaker(Originator *originator) : originator_(originator) { this->originator_ = originator; }
+
+    void Backup() {
+        std::cout << "\nCaretaker: Saving Originator's state...\n";
+        this->mementos_.push_back(this->originator_->Save());
+    }
+    void Undo() {
+        if (!this->mementos_.size()) {
+            return;
+        }
+        Memento *memento = this->mementos_.back();
+        this->mementos_.pop_back();
+        std::cout << "Caretaker: Restoring state to: " << memento->GetName() << "\n";
+        try {
+            this->originator_->Restore(memento);
+        } catch (...) {
+            this->Undo();
+        }
+    }
+    void ShowHistory() const {
+        std::cout << "Caretaker: Here's the list of mementos:\n";
+        for (Memento *memento : this->mementos_) {
+            std::cout << memento->GetName() << "\n";
         }
     }
 };
 /**
- * Клиентский код должен работать со всеми объектами (как с реальными, так и
- * заместителями) через интерфейс Субъекта, чтобы поддерживать как реальные
- * субъекты, так и заместителей. В реальной жизни, однако, клиенты в основном
- * работают с реальными субъектами напрямую. В этом случае, для более простой
- * реализации паттерна, можно расширить заместителя из класса реального
- * субъекта.
+ * Клиентский код.
  */
-void ClientCode(const Subject &subject) {
-    // ...
-    subject.Request();
-    // ...
+
+void ClientCode() {
+    Originator *originator = new Originator("Super-duper-super-puper-super.");
+    Caretaker *caretaker = new Caretaker(originator);
+    caretaker->Backup();
+    originator->DoSomething();
+    caretaker->Backup();
+    originator->DoSomething();
+    caretaker->Backup();
+    originator->DoSomething();
+    std::cout << "\n";
+    caretaker->ShowHistory();
+    std::cout << "\nClient: Now, let's rollback!\n\n";
+    caretaker->Undo();
+    std::cout << "\nClient: Once more!\n\n";
+    caretaker->Undo();
+
+    delete originator;
+    delete caretaker;
 }
 
 int main() {
-    std::cout << "Client: Executing the client code with a real subject:\n";
-    RealSubject *real_subject = new RealSubject;
-    ClientCode(*real_subject);
-    std::cout << "\n";
-    std::cout << "Client: Executing the same client code with a proxy:\n";
-    Proxy *proxy = new Proxy(real_subject);
-    ClientCode(*proxy);
-
-    delete real_subject;
-    delete proxy;
+    std::srand(static_cast<unsigned int>(std::time(NULL)));
+    ClientCode();
     return 0;
 }
