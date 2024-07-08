@@ -7,8 +7,8 @@ file=$1
 clang-format $file -i 
 cppcheck --platform=win64 --enable=all --suppress=missingIncludeSystem $file
 
-g++ -std=c++14 -Wall -Wextra -Werror $file -o build.exe
-# g++ -std=c++14 $file -o build.exe
+# g++ -std=c++14 -Wall -Wextra -Werror $file -o build.exe
+g++ -std=c++14 $file -o build.exe
 
 ./build.exe
 rm build.exe

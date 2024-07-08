@@ -3,6 +3,9 @@
 ## [Основы программирования: C++ Кувшинов Д.Р.](https://teccxx.neocities.org/mx1/#contents)
 ## [refactoring.guru](https://refactoring.guru/ru)
 ## [Описание функций языка Си](http://all-ht.ru/inf/prog/c/func/abort.html)
+## [Эффективное использование GNU Make](https://www.opennet.ru/docs/RUS/gnumake/)
+## [Программирование на C++ и Python (Курс для студентов ФФ НГУ)](https://cpp-python-nsu.inp.nsk.su/)
+## [Google testing framework (gtest)](https://habr.com/ru/articles/119090/)
 
 # Курсы
 
