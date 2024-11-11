@@ -1,0 +1,32 @@
+Message from the developers: 
+Hello dear friend! 
+Let's play a game. 
+Something like the good old text-based adventures with puzzle elements. 
+Each task is a challenge, usually some kind of hurdle you have to overcome. 
+Only those who complete them will be able to advance. 
+
+Here are some tips to help you find your way: 
+1. Throughout your journey, you will feel a sense of uncertainty and a severe lack of information: THAT'S OK. It's part of the game. Remember that the information in the repository and Google is always there for you. Just like other players. Communicate. Search. Collect. Do not be afraid to make mistakes. 
+2. There may be a game in the game and another game in the game. That's normal. Just like in real life. Recursion is beautiful.
+3. Levels can be very different from each other. That's normal. It's part of the game. You can't just learn one recipe and apply it everywhere. The only way to get there is to keep learning and adapting. 
+4. It's a multiplayer game, even if it doesn't seem like it at first.
+5. You can do most of it on your own.
+6. Be careful with sources of information. Check. Think. Analyze. Compare. Do not trust.
+7. Pay attention to the text of the problem. Think. Check.
+8. If the task seems unclear or impossible — it only seems that way. Take your time, sit in silence or with your favorite music. In 10-15 minutes, return to the assignment and read the entire text again. 
+9. If tip #8 didn't help — find a guide. You are surrounded by many walkers just like you and they will be happy to help you find your way out.
+10. Watch the time! It's deceptive. You must complete at least one challenge per day!
+11. Be careful not to miss anything important. Check the repository carefully!
+12. Always push to the develop branch only! The master branch will be ignored. Work in the src directory.
+13. Remember that each task goes through a series of checks: code style check, static analyzer check, check for correct work with memory, check with a set of autotests, check with a checklist. Be careful.
+14. You will encounter various tasks along the way. The tasks marked with an asterisk (*) are for the most foolhardy. They are more difficult and not mandatory. However, completing them will give you extra experience and knowledge.
+15. Some things may seem important, but they are not. 
+16. Remember that in the end, the fact that you complete the challenge is not as important as HOW you complete it.
+17. The main goal of our journey is to understand what "HOW" means.
+18. Separate the wheat from the chaff.
+19. Divide and conquer. Decompose. 
+20. Think about the big picture (good code, obviously). Move from the general to the specific.
+21. Do not cheat, do not try to deceive the system and others. You will fool yourself first.
+22. Do not copy the work of others, but if you use help — always understand it to the end. Otherwise your journey will be meaningless.
+23. Check the "materials" folder often. There can be a lot of useful stuff there!
+24. Reread these tips several times.
