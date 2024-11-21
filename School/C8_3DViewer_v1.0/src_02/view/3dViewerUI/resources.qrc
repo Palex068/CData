@@ -1,0 +1,28 @@
+<RCC>
+    <qresource prefix="/res">
+        <file>assets/img/3d.svg</file>
+        <file>assets/fonts/SpaceCrusaders-x3DP0.ttf</file>
+        <file>assets/fonts/SpaceCrusadersItalic-ZV1Zx.ttf</file>
+        <file>assets/img/footerline.png</file>
+        <file>assets/fonts/Montserrat-Regular.ttf</file>
+        <file>assets/img/cross.svg</file>
+        <file>assets/img/minimize.svg</file>
+        <file>assets/img/bottom_line.png</file>
+        <file>assets/img/open.svg</file>
+        <file>assets/img/edge.svg</file>
+        <file>assets/img/vertice.svg</file>
+        <file>assets/img/zoom_in.svg</file>
+        <file>assets/img/zoom_out.svg</file>
+        <file>assets/img/filename.svg</file>
+        <file>assets/img/edges_ico.svg</file>
+        <file>assets/img/info.svg</file>
+        <file>assets/img/vertex_ico.svg</file>
+        <file>assets/img/face_ico.svg</file>
+        <file>assets/img/vert_ico.svg</file>
+        <file>assets/fonts/TechnoCharmDemoVersionRegular-ALaZm.otf</file>
+        <file>assets/img/gif_ico.svg</file>
+        <file>assets/img/photo_ico.svg</file>
+        <file>assets/img/icon.ico</file>
+        <file>assets/AppIcon.icns</file>
+    </qresource>
+</RCC>

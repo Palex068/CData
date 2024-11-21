@@ -1,0 +1,15 @@
+debug/dgif_lib.o
+debug/egif_lib.o
+debug/gif_err.o
+debug/gif_hash.o
+debug/gifalloc.o
+debug/quantize.o
+debug/qgifimage.o
+debug/dialog.o
+debug/main.o
+debug/glview.o
+debug/parser.o
+debug/mainwindow.o
+debug/moc_dialog.o
+debug/moc_glview.o
+debug/moc_mainwindow.o

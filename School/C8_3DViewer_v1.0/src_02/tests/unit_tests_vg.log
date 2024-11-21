@@ -1,0 +1,14 @@
+==9880== Memcheck, a memory error detector
+==9880== Copyright (C) 2002-2022, and GNU GPL'd, by Julian Seward et al.
+==9880== Using Valgrind-3.19.0 and LibVEX; rerun with -h for copyright info
+==9880== Command: tests/test_modules
+==9880== Parent PID: 9879
+==9880== 
+==9880== 
+==9880== HEAP SUMMARY:
+==9880==     in use at exit: 0 bytes in 0 blocks
+==9880==   total heap usage: 2,973 allocs, 2,973 frees, 486,448 bytes allocated
+==9880== 
+==9880== All heap blocks were freed -- no leaks are possible
+==9880== 
+==9880== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
