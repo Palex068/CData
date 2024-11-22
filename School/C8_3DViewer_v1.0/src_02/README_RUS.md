@@ -12,7 +12,7 @@
 
 ## Обзор приложения
 
-![3dViewer](misc/images/overview.gif)
+![3dViewer](./images/overview.gif)
 
 ## Установка и команды
 
