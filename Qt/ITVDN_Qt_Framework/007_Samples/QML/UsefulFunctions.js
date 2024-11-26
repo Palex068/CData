@@ -1,0 +1,3 @@
+function returnSomething() {
+    return "Something"
+}

@@ -1,0 +1,9 @@
+<RCC>
+    <qresource prefix="/">
+        <file>main.qml</file>
+        <file>qtquickcontrols2.conf</file>
+        <file>MyRect.qml</file>
+        <file>MyComponents/MyRectInFolder.qml</file>
+        <file>UsefulFunctions.js</file>
+    </qresource>
+</RCC>
