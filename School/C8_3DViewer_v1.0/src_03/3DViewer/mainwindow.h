@@ -58,7 +58,11 @@ class MainWindow : public QMainWindow {
 
   void on_screenshot_clicked();
 
- private:
+  void on_bg_color_2_clicked();
+
+  void on_widget_customContextMenuRequested(const QPoint &pos);
+
+  private:
   Ui::MainWindow *ui;
   void saveSettings();
   void loadSettings();
