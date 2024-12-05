@@ -60,9 +60,13 @@
 
 [«Забытые» парадигмы программирования](https://habr.com/ru/articles/223253/)
 
+[Ресурс проверки уровня знаний](https://testprovider.com/ru)
+
+## Статьи
+
 [Оптимальный путь новичка в мире C++/Qt](./Articles/001.md) [Habr](https://habr.com/ru/articles/504096/)
 
-[Ресурс проверки уровня знаний](https://testprovider.com/ru)
+[Документируем код эффективно при помощи Doxygen](./Articles/002.md) [Habr](https://habr.com/ru/articles/252101/)
 
 ## Литература
 
