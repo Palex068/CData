@@ -2,6 +2,8 @@
 
 ## Ссылки в работу
 
+[Программирование на C и C++](http://grep.cs.msu.ru/cpp.com.ru/index.html)
+
 [Основы программирования: C++ Кувшинов Д.Р.](https://teccxx.neocities.org/mx1/#contents)
 
 [refactoring.guru](https://refactoring.guru/ru)
@@ -67,6 +69,8 @@
 [Оптимальный путь новичка в мире C++/Qt](./Articles/001.md) [Habr](https://habr.com/ru/articles/504096/)
 
 [Документируем код эффективно при помощи Doxygen](./Articles/002.md) [Habr](https://habr.com/ru/articles/252101/)
+
+[Введение в программирование с curses.h](./Articles/Ncurses/001.md)
 
 ## Литература
 
