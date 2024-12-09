@@ -3,8 +3,15 @@
 /**
  * @brief Entry point of program
  */
-
 int main(void) {
+  /** 
+  * @brief Сочетание `srand(time(NULL))` устанавливает
+  * в качестве базы генератора псевдослучайных чисел
+  * текущее время,  используется для того, чтобы при
+  * разных запусках генератора псевдослучайных чисел
+  * была всякий раз разная база и, соответственно, 
+  * разный ряд получаемых значений.
+  */
   srand(time(NULL));
   updateCurrentState();
   updateCurrentFigure(true);
@@ -69,7 +76,7 @@ void initScreen() {
   init_pair(7, COLOR_RED, -1);
 
   init_pair(8, COLOR_BLACK, COLOR_RED);  // for blinking pause
-
+  // TODO Почитать о atexit()
   atexit((void (*)(void))endwin);
 }
 
@@ -80,6 +87,7 @@ char* scorePath(char* buffer) {
 
 void initScore() {
   loadScore();
+  // TODO Почитать о atexit() - позволяет выполнять код при завершении
   atexit(saveScore);
 }
 

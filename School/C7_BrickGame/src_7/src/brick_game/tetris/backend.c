@@ -104,7 +104,7 @@ void userInput(UserAction_t action, bool hold) {
   }
 }
 
-/** @brief Парсер клавишь */
+/** @brief Парсер клавиш */
 UserAction_t isPress(int key) {
   UserAction_t action = -1;
   switch (key) {

@@ -68,7 +68,13 @@
 
 [Оптимальный путь новичка в мире C++/Qt](./Articles/001.md) [Habr](https://habr.com/ru/articles/504096/)
 
-[Документируем код эффективно при помощи Doxygen](./Articles/002.md) [Habr](https://habr.com/ru/articles/252101/)
+### Doxygen
+
+[Генерируем документацию к проектам на C/C++ с Doxygen](./Articles/Doxygen/001.md)
+
+[Документируем код эффективно при помощи Doxygen](./Articles/Doxygen/002.md) [Habr](https://habr.com/ru/articles/252101/)
+
+### curses.h
 
 [Введение в программирование с curses.h](./Articles/Ncurses/001.md)
 
