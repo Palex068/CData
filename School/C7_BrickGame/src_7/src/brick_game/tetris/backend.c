@@ -1,8 +1,9 @@
 #include "backend.h"
 
 /** @brief Предназначена для получения данных для отрисовки в интерфейсе.
- * Например, для тетриса истечение таймера приводит к смещению фигуры вниз на
- * один ряд. Эта функция должна вызываться из интерфейса с некоторой
+ *  @note Для тетриса истечение таймера приводит к смещению фигуры вниз на
+ * один ряд.
+ * @note Эта функция должна вызываться из интерфейса с некоторой
  * периодичностью для поддержания интерфейса в актуальном состоянии.
  * @return Возвращает структуру, содержащую информацию о текущем состоянии игры.
  */
@@ -11,9 +12,11 @@ GameInfo_t updateCurrentState() {
   return *state;
 }
 
-/** @brief Инициирует начальные значения и выделяет память.
- *  @note Информация о текущем состоянии игры `GameInfo_t`
- *  может быть представлена внутри библиотеки игры статическим объектом.
+/** 
+ * @brief Инициирует начальные значения и выделяет память.
+ * @note Информация о текущем состоянии игры `GameInfo_t`
+ * может быть представлена внутри библиотеки игры статическим объектом.
+ * 
  */
 GameInfo_t *stateWrapper() {
   static GameInfo_t state[] = {0};
@@ -29,8 +32,11 @@ GameInfo_t *stateWrapper() {
   return state;
 }
 
-/** @brief Возвращает показатели текущей фигуры (также генерирует
- * новую фигуру и добавляет её координаты на поле матрицы) */
+/** 
+ * @brief Возвращает показатели текущей фигуры (также генерирует
+ * новую фигуру и добавляет её координаты на поле матрицы) 
+ * 
+ */
 Figures *updateCurrentFigure(bool flag) {
   static Figures figure[] = {0};
   if (flag) {
@@ -40,8 +46,11 @@ Figures *updateCurrentFigure(bool flag) {
   return figure;
 }
 
-/** @brief Возвращает показатели следующей фигуры (также генерирует
- * новую фигуру и добавляет её координаты на поле матрицы) */
+/** 
+ * @brief Возвращает показатели следующей фигуры (также генерирует
+ * новую фигуру и добавляет её координаты на поле матрицы) 
+ * 
+ */
 Figures *updateNextFigure(bool flag) {
   static Figures next[] = {0};
   if (flag) {
@@ -51,8 +60,10 @@ Figures *updateNextFigure(bool flag) {
   return next;
 }
 
-/** @brief Принимает на вход пользовательское действие `action` и
+/** 
+ * @brief Принимает на вход пользовательское действие `action` и
  * дополнительный параметр `hold`, который отвечает за зажатие клавиши.
+ * 
  */
 void userInput(UserAction_t action, bool hold) {
   if (hold) return;
@@ -63,6 +74,7 @@ void userInput(UserAction_t action, bool hold) {
 
   chtype ch = 0;
   switch (action) {
+    // Приглашение к началу игры
     case Start:
       mvprintw(5, 5, "Press ENTER to start!");
       mvprintw(6, 10, "q to quit!");
@@ -71,6 +83,7 @@ void userInput(UserAction_t action, bool hold) {
       clear();
       refresh();
       break;
+    // Режим паузы
     case Pause:
       attron(A_BLINK);
       attron(COLOR_PAIR(8));
@@ -82,20 +95,26 @@ void userInput(UserAction_t action, bool hold) {
       clear();
       refresh();
       break;
+    // Конец игры
     case Terminate:
       return;
+    // Сдвиг влево
     case Left:
       moveLeft();
       break;
+    // Поворот фигуры
     case Up:
       rotate();
       break;
+    // Сдвиг вправо
     case Right:
       moveRight();
       break;
+    // Сдвиг вниз
     case Down:
       moveDown(false);
       break;
+    // Сброс фигуры
     case Action:
       while (!moveDown(false)) continue;
       break;
@@ -104,7 +123,10 @@ void userInput(UserAction_t action, bool hold) {
   }
 }
 
-/** @brief Парсер клавиш */
+/** 
+ * @brief Парсер клавиш
+ * 
+ */
 UserAction_t isPress(int key) {
   UserAction_t action = -1;
   switch (key) {
@@ -136,7 +158,10 @@ UserAction_t isPress(int key) {
   return action;
 }
 
-/** @brief Добавление текущей фигуры на поле матрицы */
+/** 
+ * @brief Добавление текущей фигуры на поле матрицы
+ * 
+ */
 void addFigure() {
   GameInfo_t state = updateCurrentState();
 
@@ -151,7 +176,10 @@ void addFigure() {
   }
 }
 
-/** @brief Добавление следующей фигуры на поле матрицы */
+/** 
+ * @brief Добавление следующей фигуры на поле матрицы 
+ *
+ */
 void addNext() {
   GameInfo_t state = updateCurrentState();
   Figures *next = updateNextFigure(false);
@@ -363,7 +391,11 @@ int **mallocMatrix(int W, int H) {
 
   return matrix;
 }
-
+/**
+ * @brief Освобождаем выделенную память матриц игрового "стакана"
+ * и окна следующей фигуры
+ * 
+ */
 void clearMatrix() {
   GameInfo_t state = updateCurrentState();
   if (state.field != NULL) {

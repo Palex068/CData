@@ -78,6 +78,8 @@
 
 [Введение в программирование с curses.h](./Articles/Ncurses/001.md)
 
+[Новые проклятия: руководство по ncurses](./Articles/Ncurses/002.md)
+
 ## Литература
 
 + К.Ю. Поляков, А.П. Шестаков, Е.А. Еремин. [Алгоритмизация и программирование](http://kpolyakov.spb.ru/download/inf-2011-01.pdf) // Информатика, № 17, 2011, с. 4-33. [зеркало](https://youngcoder.ru/lessons/2/komp_arifm.pdf), [открыть](/Lib/komp_arifm.pdf)
