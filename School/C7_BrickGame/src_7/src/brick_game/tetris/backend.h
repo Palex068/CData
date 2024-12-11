@@ -19,6 +19,10 @@
 #define R_BOUNCE 2  // right bounce
 #define L_BOUNCE 3  // left bounce
 
+/** 
+ * @brief Пользовательский ввод
+ * 
+*/
 typedef enum {
   Start,
   Pause,
@@ -30,6 +34,10 @@ typedef enum {
   Action
 } UserAction_t;
 
+/**
+ * @brief Структура описывающее состояние игры
+ * 
+ */
 typedef struct {
   int** field;
   int** next;

@@ -193,7 +193,10 @@ void addNext() {
   }
 }
 
-/** @brief Удаление текущей фигуры с поля матрицы */
+/** 
+ * @brief Удаление текущей фигуры с поля матрицы 
+ * 
+ */
 void delFigure() {
   GameInfo_t state = updateCurrentState();
   Figures *figure = updateCurrentFigure(false);
@@ -207,7 +210,10 @@ void delFigure() {
   }
 }
 
-/** @brief Удаление следующей фигуры с поле матрицы */
+/** 
+ * @brief Удаление следующей фигуры с поле матрицы 
+ * 
+ */
 void delNext() {
   GameInfo_t state = updateCurrentState();
   Figures *next = updateNextFigure(false);
@@ -221,18 +227,28 @@ void delNext() {
   }
 }
 
+/** 
+ * @brief Движение фигуры вниз
+ * 
+ */
 int moveDown(bool timeout) {
   int message = OK;
+  // Убираем текущую фигуру
   delFigure();
   Figures *figure = updateCurrentFigure(false);
   figure->y++;
+  // Проверка на столкновения
   if (isCollision()) {
     message = IS_FALL;
     figure->y--;
+    // Возвращаем положение фигуры
     addFigure();
+    // Удаляем строки, подсчитываем очки
     lineElimination();
+    // Перенос и генерация следующей фигуры
     takeNextFigure();
   } else {
+    // Перенос фигуры
     addFigure();
   }
 
@@ -242,6 +258,10 @@ int moveDown(bool timeout) {
   return message;
 }
 
+/** 
+ * @brief Движение фигуры влево
+ * 
+ */
 void moveLeft() {
   delFigure();
   Figures *figure = updateCurrentFigure(false);
@@ -250,6 +270,10 @@ void moveLeft() {
   addFigure();
 }
 
+/** 
+ * @brief Движение фигуры вправо
+ * 
+ */
 void moveRight() {
   delFigure();
   Figures *figure = updateCurrentFigure(false);
@@ -258,6 +282,10 @@ void moveRight() {
   addFigure();
 }
 
+/** 
+ * @brief Поворот фигуры
+ * 
+ */
 void rotate() {
   delFigure();
   Figures *figure = updateCurrentFigure(false);
@@ -286,7 +314,7 @@ int isCollision() {
         if (figure->y + y >= HEIGHT ||
             state.field[figure->y + y][figure->x + x])
           return COLLIDE;
-        // TODO: отпрыжка от фигур по абсолютным координатам
+        // TODO: Отскок от фигур по абсолютным координатам
         if (figure->x + x >= WIDTH) return R_BOUNCE;
         if (figure->x + x < 0) return L_BOUNCE;
       }
@@ -295,7 +323,10 @@ int isCollision() {
   return OK;
 }
 
-/** @brief Удаляет строки, подсчитывает очки */
+/** 
+ * @brief Удаляет строки, подсчитывает очки 
+ * 
+ */
 void lineElimination() {
   GameInfo_t *state = stateWrapper();
 
