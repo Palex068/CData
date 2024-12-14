@@ -1,0 +1,72 @@
+PROJECT_NAME           = "3D_Viewer"
+
+PROJECT_NUMBER         = v1.0
+
+PROJECT_BRIEF          = Implement the 3D_Viewer in the C / CPP programming language using a structural approach
+
+PROJECT_LOGO           =
+
+OUTPUT_DIRECTORY       = "docs"
+
+OUTPUT_LANGUAGE        = English
+
+TAB_SIZE               = 4
+
+OPTIMIZE_OUTPUT_FOR_C  = YES
+
+GENERATE_TODOLIST      = YES
+
+QUIET                  = NO
+
+WARNINGS               = YES
+
+WARN_IF_UNDOCUMENTED   = YES
+
+WARN_IF_DOC_ERROR      = YES
+
+WARN_NO_PARAMDOC       = NO
+
+WARN_AS_ERROR          = NO
+
+INPUT                  = "./" ./../README_RUS.md
+
+FILE_PATTERNS          = *.c \
+                         *.h \
+                         *.cpp \
+                         *.hpp
+
+RECURSIVE              = YES
+
+EXCLUDE                = ./tests ./build
+
+USE_MDFILE_AS_MAINPAGE = ./../README.md
+
+GENERATE_HTML          = YES
+
+HTML_OUTPUT            = html
+
+HTML_FILE_EXTENSION    = .html
+
+HTML_COLORSTYLE_HUE    = 10
+
+HTML_COLORSTYLE_SAT    = 255
+
+HTML_COLORSTYLE_GAMMA  = 110
+
+HTML_DYNAMIC_MENUS     = YES
+
+GENERATE_TREEVIEW      = YES
+
+ENUM_VALUES_PER_LINE   = 4
+
+TREEVIEW_WIDTH         = 250
+
+GENERATE_MAN           = YES
+
+MAN_OUTPUT             = man
+
+MAN_EXTENSION          = .3
+
+MAN_SUBDIR             =
+
+GENERATE_LEGEND        = YES
