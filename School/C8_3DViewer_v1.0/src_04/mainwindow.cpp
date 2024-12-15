@@ -53,7 +53,7 @@ void MainWindow::load_Settings() {
 void MainWindow::on_actionClose_triggered() { close(); }
 
 void MainWindow::on_button_open_path_clicked() {
-  __buffpath = QFileDialog::getOpenFileName(this, tr("Open File"), "/",
+  __buffpath = QFileDialog::getOpenFileName(this, tr("Open File"), "../../objs/",
                                             tr("Objects Files (*.obj)"));
   ui->label_path->setText(__buffpath);
   QByteArray ba = __buffpath.toLocal8Bit();  // convert Qstring->char *;

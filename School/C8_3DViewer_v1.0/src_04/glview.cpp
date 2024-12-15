@@ -4,17 +4,17 @@
 
 #define GL_SILENCE_DEPRECATION
 
-glview ::glview(QWidget* parent) : QOpenGLWidget{parent} {
+glview::glview(QWidget* parent) : QOpenGLWidget{parent} {
   object = {{0}, 0, 0, NULL, NULL};
 }
 
-void glview ::initializeGL() {
+void glview::initializeGL() {
   glEnable(GL_DEPTH_TEST);
   glEnable(GL_COLOR_MATERIAL);
   glEnable(GL_LINE_STIPPLE);
 }
 
-void glview ::paintGL() {
+void glview::paintGL() {
   update();
   glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
   //Блок отвечает за проекцию

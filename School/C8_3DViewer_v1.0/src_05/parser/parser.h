@@ -16,4 +16,6 @@ int realloc_polygon(Figure *figure);
 int realloc_down_polygon(Figure *figure);
 int realloc_vertex_p(Polygon *polygon);
 
+int my_getline(char **line, size_t *len, FILE *fp);
+
 #endif

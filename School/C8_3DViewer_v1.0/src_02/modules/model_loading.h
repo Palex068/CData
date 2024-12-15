@@ -28,6 +28,8 @@ int memory_allocation(obj_data *data);
  */
 void count_vertices_and_indices(FILE *file, obj_data *data);
 
+int my_getline(char **line, size_t *len, FILE *fp);
+
 /**
  * @brief Free memory in a data object.
  * @param data pointer to an object with data

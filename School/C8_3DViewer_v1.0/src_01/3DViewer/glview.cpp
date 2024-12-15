@@ -55,7 +55,7 @@ void glView::paint_file_first() {
   count_surfaces = 0;
   scale = 1;
   QByteArray temp = filename.toLocal8Bit();
-  strlcpy(file_str, temp.data(), filename.length() + 1);
+  strncpy(file_str, temp.data(), filename.length() + 1);
 
   all_points = return_points(&top_pointers, file_str);
   all_surfaces = return_surfaces(&edge, &count_surfaces, file_str, all_points);

@@ -2,8 +2,14 @@
 #define GLWIDGET_H
 
 #define GL_SILENCE_DEPRECATION
-#include <GLUT/glut.h>
-#include <OpenGL/gl.h>
+// #include <GLUT/glut.h>
+// #include <OpenGL/gl.h>
+
+#include <QColorDialog>
+#include <QMouseEvent>
+#include <QOpenGLFunctions>
+#include <QWheelEvent>
+#include <QtOpenGLWidgets/QOpenGLWidget>
 
 #include <QMessageBox>
 #include <QOpenGLWidget>
