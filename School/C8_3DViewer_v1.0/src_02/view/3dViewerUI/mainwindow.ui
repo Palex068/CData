@@ -45,10 +45,10 @@ background-color: rgb(52, 57, 66);
 </string>
     </property>
     <property name="frameShape">
-     <enum>QFrame::StyledPanel</enum>
+     <enum>QFrame::Shape::StyledPanel</enum>
     </property>
     <property name="frameShadow">
-     <enum>QFrame::Raised</enum>
+     <enum>QFrame::Shadow::Raised</enum>
     </property>
     <widget class="GlWidget" name="OpenGlWidget" native="true">
      <property name="enabled">
@@ -84,10 +84,10 @@ background-color: black;
 </string>
      </property>
      <property name="frameShape">
-      <enum>QFrame::StyledPanel</enum>
+      <enum>QFrame::Shape::StyledPanel</enum>
      </property>
      <property name="frameShadow">
-      <enum>QFrame::Raised</enum>
+      <enum>QFrame::Shadow::Raised</enum>
      </property>
     </widget>
     <widget class="QFrame" name="title">
@@ -100,10 +100,10 @@ background-color: black;
       </rect>
      </property>
      <property name="frameShape">
-      <enum>QFrame::StyledPanel</enum>
+      <enum>QFrame::Shape::StyledPanel</enum>
      </property>
      <property name="frameShadow">
-      <enum>QFrame::Raised</enum>
+      <enum>QFrame::Shadow::Raised</enum>
      </property>
      <widget class="QLabel" name="h1">
       <property name="geometry">
@@ -134,7 +134,7 @@ color: qlineargradient(spread:pad, x1:0.5, y1:0, x2:0.5, y2:26, stop:0.9 rgba(95
        <string>3D Viewer</string>
       </property>
       <property name="alignment">
-       <set>Qt::AlignCenter</set>
+       <set>Qt::AlignmentFlag::AlignCenter</set>
       </property>
      </widget>
      <widget class="QFrame" name="icon">
@@ -158,10 +158,10 @@ color: qlineargradient(spread:pad, x1:0.5, y1:0, x2:0.5, y2:26, stop:0.9 rgba(95
        <string notr="true">image: url(:/res/assets/img/3d.svg);</string>
       </property>
       <property name="frameShape">
-       <enum>QFrame::StyledPanel</enum>
+       <enum>QFrame::Shape::StyledPanel</enum>
       </property>
       <property name="frameShadow">
-       <enum>QFrame::Raised</enum>
+       <enum>QFrame::Shadow::Raised</enum>
       </property>
      </widget>
     </widget>
@@ -181,10 +181,10 @@ color: qlineargradient(spread:pad, x1:0.5, y1:0, x2:0.5, y2:26, stop:0.9 rgba(95
 </string>
      </property>
      <property name="frameShape">
-      <enum>QFrame::StyledPanel</enum>
+      <enum>QFrame::Shape::StyledPanel</enum>
      </property>
      <property name="frameShadow">
-      <enum>QFrame::Raised</enum>
+      <enum>QFrame::Shadow::Raised</enum>
      </property>
      <widget class="QFrame" name="open_file_layer">
       <property name="geometry">
@@ -199,10 +199,10 @@ color: qlineargradient(spread:pad, x1:0.5, y1:0, x2:0.5, y2:26, stop:0.9 rgba(95
        <string notr="true">background-color: rgb(37, 39, 45);</string>
       </property>
       <property name="frameShape">
-       <enum>QFrame::StyledPanel</enum>
+       <enum>QFrame::Shape::StyledPanel</enum>
       </property>
       <property name="frameShadow">
-       <enum>QFrame::Raised</enum>
+       <enum>QFrame::Shadow::Raised</enum>
       </property>
       <widget class="QPushButton" name="renderBtn">
        <property name="geometry">
@@ -284,10 +284,10 @@ color: rgb(255, 255, 255);</string>
        </rect>
       </property>
       <property name="frameShape">
-       <enum>QFrame::StyledPanel</enum>
+       <enum>QFrame::Shape::StyledPanel</enum>
       </property>
       <property name="frameShadow">
-       <enum>QFrame::Raised</enum>
+       <enum>QFrame::Shadow::Raised</enum>
       </property>
       <widget class="QFrame" name="translate">
        <property name="geometry">
@@ -312,10 +312,10 @@ border: none;
 }</string>
        </property>
        <property name="frameShape">
-        <enum>QFrame::StyledPanel</enum>
+        <enum>QFrame::Shape::StyledPanel</enum>
        </property>
        <property name="frameShadow">
-        <enum>QFrame::Raised</enum>
+        <enum>QFrame::Shadow::Raised</enum>
        </property>
        <widget class="QLabel" name="translate_title_4">
         <property name="geometry">
@@ -370,7 +370,7 @@ border: none;
               <number>0</number>
              </property>
              <property name="orientation">
-              <enum>Qt::Horizontal</enum>
+              <enum>Qt::Orientation::Horizontal</enum>
              </property>
             </widget>
            </item>
@@ -403,7 +403,7 @@ border: none;
               <number>0</number>
              </property>
              <property name="orientation">
-              <enum>Qt::Horizontal</enum>
+              <enum>Qt::Orientation::Horizontal</enum>
              </property>
             </widget>
            </item>
@@ -436,7 +436,7 @@ border: none;
               <number>0</number>
              </property>
              <property name="orientation">
-              <enum>Qt::Horizontal</enum>
+              <enum>Qt::Orientation::Horizontal</enum>
              </property>
             </widget>
            </item>
@@ -468,10 +468,10 @@ border: none;
 }</string>
        </property>
        <property name="frameShape">
-        <enum>QFrame::StyledPanel</enum>
+        <enum>QFrame::Shape::StyledPanel</enum>
        </property>
        <property name="frameShadow">
-        <enum>QFrame::Raised</enum>
+        <enum>QFrame::Shadow::Raised</enum>
        </property>
        <widget class="QLabel" name="rotate_title">
         <property name="geometry">
@@ -526,7 +526,7 @@ border: none;
               <number>1</number>
              </property>
              <property name="orientation">
-              <enum>Qt::Horizontal</enum>
+              <enum>Qt::Orientation::Horizontal</enum>
              </property>
             </widget>
            </item>
@@ -559,7 +559,7 @@ border: none;
               <number>0</number>
              </property>
              <property name="orientation">
-              <enum>Qt::Horizontal</enum>
+              <enum>Qt::Orientation::Horizontal</enum>
              </property>
             </widget>
            </item>
@@ -592,7 +592,7 @@ border: none;
               <number>0</number>
              </property>
              <property name="orientation">
-              <enum>Qt::Horizontal</enum>
+              <enum>Qt::Orientation::Horizontal</enum>
              </property>
             </widget>
            </item>
@@ -633,10 +633,10 @@ padding-right: 3px;
 }</string>
        </property>
        <property name="frameShape">
-        <enum>QFrame::StyledPanel</enum>
+        <enum>QFrame::Shape::StyledPanel</enum>
        </property>
        <property name="frameShadow">
-        <enum>QFrame::Raised</enum>
+        <enum>QFrame::Shadow::Raised</enum>
        </property>
        <widget class="QLabel" name="rotate_title_4">
         <property name="geometry">
@@ -670,7 +670,7 @@ padding-right: 3px;
          <number>50</number>
         </property>
         <property name="orientation">
-         <enum>Qt::Horizontal</enum>
+         <enum>Qt::Orientation::Horizontal</enum>
         </property>
        </widget>
        <widget class="QPushButton" name="out_btn">
@@ -750,7 +750,7 @@ image: url(:/res/assets/img/zoom_in.svg);
          <string>Display method</string>
         </property>
         <property name="alignment">
-         <set>Qt::AlignCenter</set>
+         <set>Qt::AlignmentFlag::AlignCenter</set>
         </property>
        </widget>
        <widget class="QSlider" name="vert_size_val">
@@ -763,7 +763,7 @@ image: url(:/res/assets/img/zoom_in.svg);
          </rect>
         </property>
         <property name="orientation">
-         <enum>Qt::Horizontal</enum>
+         <enum>Qt::Orientation::Horizontal</enum>
         </property>
        </widget>
        <widget class="QLabel" name="vert_size_title">
@@ -779,7 +779,7 @@ image: url(:/res/assets/img/zoom_in.svg);
          <string>size:</string>
         </property>
         <property name="alignment">
-         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
         </property>
        </widget>
        <widget class="QLabel" name="vert_color_title">
@@ -795,7 +795,7 @@ image: url(:/res/assets/img/zoom_in.svg);
          <string>color:</string>
         </property>
         <property name="alignment">
-         <set>Qt::AlignCenter</set>
+         <set>Qt::AlignmentFlag::AlignCenter</set>
         </property>
        </widget>
        <widget class="QWidget" name="layoutWidget">
@@ -876,7 +876,7 @@ background-color: rgb(255, 255, 255);</string>
          <string>Type</string>
         </property>
         <property name="alignment">
-         <set>Qt::AlignCenter</set>
+         <set>Qt::AlignmentFlag::AlignCenter</set>
         </property>
        </widget>
        <widget class="QWidget" name="layoutWidget_2">
@@ -927,7 +927,7 @@ background-color: rgb(255, 255, 255);</string>
          <number>100</number>
         </property>
         <property name="orientation">
-         <enum>Qt::Horizontal</enum>
+         <enum>Qt::Orientation::Horizontal</enum>
         </property>
        </widget>
        <widget class="QLabel" name="edge_color_title">
@@ -943,7 +943,7 @@ background-color: rgb(255, 255, 255);</string>
          <string>color:</string>
         </property>
         <property name="alignment">
-         <set>Qt::AlignCenter</set>
+         <set>Qt::AlignmentFlag::AlignCenter</set>
         </property>
        </widget>
        <widget class="QLabel" name="edge_thic_title">
@@ -959,7 +959,7 @@ background-color: rgb(255, 255, 255);</string>
          <string>thickness:</string>
         </property>
         <property name="alignment">
-         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
         </property>
        </widget>
        <widget class="QPushButton" name="edge_color_val">
@@ -1001,7 +1001,7 @@ background-color: rgb(255, 255, 255);</string>
          <string>background-color:</string>
         </property>
         <property name="alignment">
-         <set>Qt::AlignCenter</set>
+         <set>Qt::AlignmentFlag::AlignCenter</set>
         </property>
        </widget>
        <widget class="QPushButton" name="background_color_val">
@@ -1079,10 +1079,10 @@ font-weight: bold;</string>
 border-radius: 0;</string>
      </property>
      <property name="frameShape">
-      <enum>QFrame::StyledPanel</enum>
+      <enum>QFrame::Shape::StyledPanel</enum>
      </property>
      <property name="frameShadow">
-      <enum>QFrame::Raised</enum>
+      <enum>QFrame::Shadow::Raised</enum>
      </property>
      <widget class="QFrame" name="obj_info">
       <property name="geometry">
@@ -1099,10 +1099,10 @@ color: rgb(255, 255, 255);
 </string>
       </property>
       <property name="frameShape">
-       <enum>QFrame::StyledPanel</enum>
+       <enum>QFrame::Shape::StyledPanel</enum>
       </property>
       <property name="frameShadow">
-       <enum>QFrame::Raised</enum>
+       <enum>QFrame::Shadow::Raised</enum>
       </property>
       <widget class="QFrame" name="frame_2">
        <property name="geometry">
@@ -1114,10 +1114,10 @@ color: rgb(255, 255, 255);
         </rect>
        </property>
        <property name="frameShape">
-        <enum>QFrame::StyledPanel</enum>
+        <enum>QFrame::Shape::StyledPanel</enum>
        </property>
        <property name="frameShadow">
-        <enum>QFrame::Raised</enum>
+        <enum>QFrame::Shadow::Raised</enum>
        </property>
        <widget class="QLabel" name="filename_title">
         <property name="geometry">
@@ -1169,7 +1169,7 @@ color: rgba(91, 181, 255, 0.9);</string>
          <bool>true</bool>
         </property>
         <property name="cursorMoveStyle">
-         <enum>Qt::LogicalMoveStyle</enum>
+         <enum>Qt::CursorMoveStyle::LogicalMoveStyle</enum>
         </property>
        </widget>
       </widget>
@@ -1183,10 +1183,10 @@ color: rgba(91, 181, 255, 0.9);</string>
         </rect>
        </property>
        <property name="frameShape">
-        <enum>QFrame::StyledPanel</enum>
+        <enum>QFrame::Shape::StyledPanel</enum>
        </property>
        <property name="frameShadow">
-        <enum>QFrame::Raised</enum>
+        <enum>QFrame::Shadow::Raised</enum>
        </property>
        <widget class="QLabel" name="vert_title">
         <property name="geometry">
@@ -1234,7 +1234,7 @@ font-weight: bold;</string>
          <string>0</string>
         </property>
         <property name="alignment">
-         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
         </property>
        </widget>
       </widget>
@@ -1248,10 +1248,10 @@ font-weight: bold;</string>
         </rect>
        </property>
        <property name="frameShape">
-        <enum>QFrame::StyledPanel</enum>
+        <enum>QFrame::Shape::StyledPanel</enum>
        </property>
        <property name="frameShadow">
-        <enum>QFrame::Raised</enum>
+        <enum>QFrame::Shadow::Raised</enum>
        </property>
        <widget class="QLabel" name="edges_title">
         <property name="geometry">
@@ -1299,7 +1299,7 @@ font-weight: bold;</string>
          <string>0</string>
         </property>
         <property name="alignment">
-         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
         </property>
        </widget>
       </widget>
@@ -1316,7 +1316,7 @@ font-weight: bold;</string>
         <string notr="true">background-color: rgba(255, 255, 255, 0.3);</string>
        </property>
        <property name="orientation">
-        <enum>Qt::Vertical</enum>
+        <enum>Qt::Orientation::Vertical</enum>
        </property>
       </widget>
       <widget class="Line" name="delim1">
@@ -1332,7 +1332,7 @@ font-weight: bold;</string>
         <string notr="true">background-color: rgba(255, 255, 255, 0.3);</string>
        </property>
        <property name="orientation">
-        <enum>Qt::Vertical</enum>
+        <enum>Qt::Orientation::Vertical</enum>
        </property>
       </widget>
      </widget>
@@ -1357,10 +1357,10 @@ padding-right: 5px;
 }</string>
      </property>
      <property name="frameShape">
-      <enum>QFrame::StyledPanel</enum>
+      <enum>QFrame::Shape::StyledPanel</enum>
      </property>
      <property name="frameShadow">
-      <enum>QFrame::Raised</enum>
+      <enum>QFrame::Shadow::Raised</enum>
      </property>
      <widget class="QPushButton" name="minimizeBtn">
       <property name="geometry">
@@ -1412,10 +1412,10 @@ background-color: none;
 image: url(:/res/assets/img/bottom_line.png);</string>
      </property>
      <property name="frameShape">
-      <enum>QFrame::StyledPanel</enum>
+      <enum>QFrame::Shape::StyledPanel</enum>
      </property>
      <property name="frameShadow">
-      <enum>QFrame::Raised</enum>
+      <enum>QFrame::Shadow::Raised</enum>
      </property>
      <widget class="QFrame" name="take_a_shot">
       <property name="geometry">
@@ -1438,10 +1438,10 @@ padding-left: 2px;
 }</string>
       </property>
       <property name="frameShape">
-       <enum>QFrame::StyledPanel</enum>
+       <enum>QFrame::Shape::StyledPanel</enum>
       </property>
       <property name="frameShadow">
-       <enum>QFrame::Raised</enum>
+       <enum>QFrame::Shadow::Raised</enum>
       </property>
       <widget class="QPushButton" name="snap_btn">
        <property name="geometry">
@@ -1502,10 +1502,10 @@ background-color: rgb(0, 0, 0);
 }</string>
      </property>
      <property name="frameShape">
-      <enum>QFrame::StyledPanel</enum>
+      <enum>QFrame::Shape::StyledPanel</enum>
      </property>
      <property name="frameShadow">
-      <enum>QFrame::Raised</enum>
+      <enum>QFrame::Shadow::Raised</enum>
      </property>
     </widget>
     <zorder>bg_mock</zorder>

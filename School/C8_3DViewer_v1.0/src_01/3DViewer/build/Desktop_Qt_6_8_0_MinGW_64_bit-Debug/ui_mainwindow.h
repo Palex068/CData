@@ -228,7 +228,7 @@ public:
         pushButton_color_background->setGeometry(QRect(1090, 670, 161, 32));
         widget = new glView(centralwidget);
         widget->setObjectName("widget");
-        widget->setGeometry(QRect(30, 20, 900, 951));
+        widget->setGeometry(QRect(60, -40, 900, 951));
         groupBox_3 = new QGroupBox(centralwidget);
         groupBox_3->setObjectName("groupBox_3");
         groupBox_3->setGeometry(QRect(970, 710, 281, 51));
@@ -292,7 +292,7 @@ public:
         label_scale = new QLabel(centralwidget);
         label_scale->setObjectName("label_scale");
         label_scale->setGeometry(QRect(1176, 355, 61, 21));
-        label_scale->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
+        label_scale->setAlignment(Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter);
         pushButton = new QPushButton(centralwidget);
         pushButton->setObjectName("pushButton");
         pushButton->setGeometry(QRect(1140, 323, 121, 32));
@@ -305,7 +305,7 @@ public:
         label_film_process = new QLabel(centralwidget);
         label_film_process->setObjectName("label_film_process");
         label_film_process->setGeometry(QRect(1230, 970, 41, 20));
-        label_film_process->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
+        label_film_process->setAlignment(Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter);
         label_film_process_5 = new QLabel(centralwidget);
         label_film_process_5->setObjectName("label_film_process_5");
         label_film_process_5->setGeometry(QRect(1273, 970, 20, 20));

@@ -529,8 +529,8 @@
    <widget class="glView" name="widget" native="true">
     <property name="geometry">
      <rect>
-      <x>30</x>
-      <y>20</y>
+      <x>60</x>
+      <y>-40</y>
       <width>900</width>
       <height>951</height>
      </rect>
@@ -809,7 +809,7 @@
      <string>100</string>
     </property>
     <property name="alignment">
-     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+     <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
     </property>
    </widget>
    <widget class="QPushButton" name="pushButton">
@@ -864,7 +864,7 @@
      <string>0</string>
     </property>
     <property name="alignment">
-     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+     <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
     </property>
    </widget>
    <widget class="QLabel" name="label_film_process_5">

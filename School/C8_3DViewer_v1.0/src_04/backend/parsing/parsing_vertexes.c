@@ -1,6 +1,17 @@
 #include "../3d_viewer.h"
 
-// 0 is ok
+/**
+ * @brief Функция парсинга вершин
+ * @details Функция проверяет переполнение массива, выделяет дополнительное
+ * место при необходимости, далее при помощи sscanf считывает три вершины и
+ * заносит в массив, и проверяет на минимальные и максимальные значения в
+ * массиве максимальных и минимальных значений осей.
+ * @param data_object Структура объекта
+ * @param input_line Входящая строка
+ * @param current_vertex Число уже считанных вершин в массив
+ * @param countVertexesInMalloc Число выделенного места в массиве
+ * @return Возвращает код успеха где 0 - успех, 1 - не успех.
+ */
 int parsing_vertexes(object_t *data_object, char *input_line,
                      unsigned int current_vertex,
                      unsigned int *countVertexesInMalloc) {
